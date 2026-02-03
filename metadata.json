@@ -1,0 +1,8 @@
+{
+  "name": "Nexus AI Consulting - Corporate Premium",
+  "description": "Une vitrine corporate haut de gamme pour un cabinet de conseil en IA et Automatisation, alliant stratégie et excellence technologique.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
