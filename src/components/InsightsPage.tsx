@@ -12,11 +12,27 @@ const InsightsPage: React.FC = () => {
   // Expanded dummy data
   const allArticles: InsightPost[] = [
     {
-      id: '5', // Using ID 5 as requested by user context implies specific attention, but I will map it to 'osez-ia' or '5' in detail page. Actually the user said "pour l'article sur 'osez l'ia'..." implying a specific one. I will use a unique ID 'osez-ia' to avoid collision or just '7'. Let's use '7'.
+      id: '5',
       title: "Osez l'IA : Une stratégie nationale pour la compétitivité",
       category: "Stratégie",
       date: "21 Jan 2026",
       image: "/images/articles/osez-ia-hero.png",
+      readTime: "5 min"
+    },
+    {
+      id: '4',
+      title: "Orchestration d'agents IA : un levier stratégique de performance et de valeur",
+      category: "Point de vue",
+      date: "10 Déc 2025",
+      image: "/images/articles/ai-orchestration-hero.png",
+      readTime: "7 min"
+    },
+    {
+      id: '2',
+      title: "Intelligence artificielle : quel retour sur investissement ?",
+      category: "Point de vue",
+      date: "24 Nov 2025",
+      image: "/images/articles/roi-ia-hero.png",
       readTime: "5 min"
     },
     {
@@ -28,14 +44,6 @@ const InsightsPage: React.FC = () => {
       readTime: "8 min"
     },
     {
-      id: '2',
-      title: "Optimiser les flux de données : L'art du désilotage moderne.",
-      category: "Expertise",
-      date: "05 Oct 2024",
-      image: "https://picsum.photos/600/400?abstract&seed=11",
-      readTime: "12 min"
-    },
-    {
       id: '3',
       title: "IA Financière : Pourquoi l'audit manuel devient un risque majeur.",
       category: "Finance",
@@ -44,15 +52,7 @@ const InsightsPage: React.FC = () => {
       readTime: "6 min"
     },
     {
-      id: '4',
-      title: "Orchestration d'agents IA : un levier stratégique de performance et de valeur",
-      category: "Point de vue",
-      date: "10 Déc 2025",
-      image: "/images/articles/ai-orchestration-hero.png",
-      readTime: "7 min"
-    },
-    {
-      id: '99', // Renaming old ID 5 to avoid confusion or just keeping it. The list had ID 5 "Cybersécurité". I'll keep the others as they were but I need to make sure IDs are unique. The previous list had 1, 2, 3, 4, 5, 6. I'll insert new one as ID '7'.
+      id: '99',
       title: "Cybersécurité et IA Générative : Les nouvelles frontières.",
       category: "Expertise",
       date: "15 Sep 2024",

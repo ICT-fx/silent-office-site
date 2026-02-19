@@ -109,7 +109,7 @@ const SolutionsSection: React.FC = () => {
 
                 {/* CENTERED TITLE */}
                 <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <h2 className="text-6xl lg:text-8xl font-bold text-white tracking-tight">Nos Solutions.</h2>
+                    <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white tracking-tight">Nos Solutions.</h2>
                 </div>
 
                 {/* ACCORDION LIST */}
@@ -145,16 +145,16 @@ const SolutionsSection: React.FC = () => {
                                 {/* HEADLINE / TITLE ROW */}
                                 <div
                                     onClick={() => navigate(solution.link)}
-                                    className={`group pt-12 pb-0 cursor-pointer flex items-end justify-between transition-all duration-300 relative z-20 ${isActive ? 'translate-x-4' : ''}`}
+                                    className={`group py-6 cursor-pointer flex items-center justify-between transition-all duration-300 relative z-20`}
                                 >
                                     <h3
-                                        className={`text-4xl lg:text-7xl font-bold transition-all duration-300 leading-[0.85] tracking-tight transform translate-y-2
+                                        className={`text-xl md:text-3xl lg:text-5xl font-bold transition-all duration-300 tracking-tight
                                         ${isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-400'}`}
                                     >
                                         {solution.title}
                                     </h3>
 
-                                    <span className={`text-sm font-mono mb-4 transition-colors duration-300 ${isActive ? 'text-[#FFB600]' : 'text-gray-600'
+                                    <span className={`text-sm font-mono transition-colors duration-300 ${isActive ? 'text-[#FFB600]' : 'text-gray-600'
                                         }`}>
                                         0{idx + 1}
                                     </span>
@@ -165,7 +165,7 @@ const SolutionsSection: React.FC = () => {
                                     className={`overflow-hidden transition-all duration-500 ease-in-out relative z-30 ${isActive ? 'max-h-[600px] opacity-100 mb-10 mt-12' : 'max-h-0 opacity-0 mb-0 mt-0'
                                         }`}
                                 >
-                                    <div className="bg-white rounded-[32px] p-8 lg:p-12 shadow-2xl flex flex-col md:flex-row gap-12 items-center mx-4 relative overflow-hidden">
+                                    <div className="bg-white rounded-[20px] md:rounded-[32px] p-5 md:p-8 lg:p-12 shadow-2xl flex flex-col md:flex-row gap-8 md:gap-12 items-center mx-0 md:mx-4 relative overflow-hidden">
                                         {/* Decorative Elements inside card */}
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -206,7 +206,7 @@ const SolutionsSection: React.FC = () => {
                     })}
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

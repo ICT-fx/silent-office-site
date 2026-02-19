@@ -23,6 +23,510 @@ const ArticleDetailPage: React.FC = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
+    // -------- CONTENU ARTICLE 2 (ROI IA) --------
+    if (id === '2') {
+        return (
+            <div className="min-h-screen bg-white">
+                {/* Scroll Progress Bar */}
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#FFB600] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                {/* Hero Section */}
+                <div className="relative h-[60vh] overflow-hidden bg-[#0F172A]">
+                    <img src="/images/articles/roi-ia-hero.png" alt="Intelligence artificielle : quel retour sur investissement ?" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/70 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#FFB600] text-[#1A1A1A] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                                Point de vue
+                            </span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
+                                Intelligence artificielle : quel retour sur investissement ?
+                            </h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                Le paradoxe des investissements croissants et des retours incertains.
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={16} className="text-[#FFB600]" />
+                                    <span>24 Nov 2025</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Clock size={16} className="text-[#FFB600]" />
+                                    <span>5 min de lecture</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <User size={16} className="text-[#FFB600]" />
+                                    <span>Co-rédigé avec Henri Lajarrige et Ouissam Taleb Bendiab</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Article Content */}
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#FFB600] transition-colors mb-12 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    {/* Intro */}
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#1A1A1A] mb-8 border-l-4 border-[#FFB600] pl-6">
+                            Les conseils d’administration multiplient les discussions sur la course à l’Intelligence artificielle, mais sous l’effervescence, la réalité est plus nuancée. Les organisations investissent massivement, cependant les retours tardent à se concrétiser et restent difficiles à mesurer.
+                        </p>
+                        <p>
+                            L’enquête 2025 de Deloitte, menée auprès de 1854 dirigeants à travers l’Europe et le Moyen-Orient (249 en France et 1742 en Europe) et appuyée par 24 entretiens approfondis, montre que la dynamique s’accélère. Dans 10 % des organisations, le dirigeant pilote directement la stratégie IA. De plus en plus d’entreprises considèrent l’intelligence artificielle (IA) comme un impératif stratégique, et non plus simplement comme une évolution technologique, notamment à mesure que l’IA agentique remet en question les hypothèse sur le fonctionnement futur des entreprises.
+                        </p>
+                        <p>
+                            Pour capter la valeur de l’IA, les entreprises leaders adoptent une approche pilotée par le dirigeant et généralisée à l’ensemble de l’organisation. Elles deviennent également plus sélectives dans le choix des cas d’usage et mettent en place des programmes structurés afin de conduire les transformations organisationnelles nécessaires à un déploiement à grande échelle de l’IA. L’IA générative (GenAI) offre déjà des gains de productivité mesurables. Quant à l’IA agentique, elle implique une plus grande complexité, mais offre un potentiel de refonte complète des processus.
+                        </p>
+                        <p>
+                            Cependant, intégrer l’IA au cœur d’une organisation ne se résume pas à une simple mise à jour technologique. Cela est comparable à la transition de la vapeur à l’électricité. Lorsque les usines sont passées de la vapeur à l’électricité, elles ont dû reconfigurer leurs lignes de production, repenser l’organisation du travail, investir dans de nouvelles infrastructures et former leurs équipes. Les bénéfices réels ne sont apparus que lorsque les organisations ont radicalement transformé leur mode de fonctionnement. Il en va de même pour l’IA, qui requiert une planification rigoureuse, des investissements à long terme et souvent une transformation organisationnelle en profondeur. À terme, l’IA s’intégrera au cœur des opérations, redéfinissant ainsi la création de valeur pour l’entreprise.
+                        </p>
+                    </div>
+
+                    {/* Illustration */}
+                    <div className="my-12 rounded-2xl overflow-hidden shadow-lg">
+                        <img src="/images/articles/roi-ia-hero.png" alt="Intelligence artificielle et transformation digitale" className="w-full h-auto" />
+                    </div>
+
+                    {/* Section 1: Investments */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">Des investissements en hausse, un ROI à concrétiser</h2>
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Tous secteurs confondus, les investissements dans l’IA connaissent une croissance rapide. Selon notre enquête, 85 % des entreprises françaises (vs 98 % en Europe) ont augmenté leurs investissements au cours des 12 derniers mois, et 92 % prévoient de les accroître à nouveau cette année.
+                        </p>
+
+                        {/* Figure 1: Evolution des investissements */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 1. Evolution des investissements en IA en France (12 derniers mois)</h4>
+                            <p className="text-sm text-gray-500 mb-8 italic">Comment les investissements de votre organisation dans l’IA ont-ils évolué au cours des 12 derniers mois ?</p>
+
+                            <div className="space-y-4">
+                                {/* Bar 1 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation très forte (+40%+)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-200/50 rounded-full" style={{ width: '5%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">5%</span>
+                                    </div>
+                                </div>
+                                {/* Bar 2 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation significative (+20% à +39%)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-300/50 rounded-full" style={{ width: '15%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">15%</span>
+                                    </div>
+                                </div>
+                                {/* Bar 3 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation modérée (+11% à +19%)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-400/50 rounded-full" style={{ width: '37%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">37%</span>
+                                    </div>
+                                </div>
+                                {/* Bar 4 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Légère augmentation (+6% à +10%)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-500/50 rounded-full" style={{ width: '28%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">28%</span>
+                                    </div>
+                                </div>
+                                {/* Bar 5 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Stabilité (entre -5% et +5%)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-600/50 rounded-full" style={{ width: '12%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">12%</span>
+                                    </div>
+                                </div>
+                                {/* Bar 6 */}
+                                <div className="flex items-center gap-4 text-sm">
+                                    <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Légère diminution (-6% à -10%)</div>
+                                    <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
+                                        <div className="absolute left-0 top-0 bottom-0 bg-teal-800/50 rounded-full" style={{ width: '2%' }}></div>
+                                        <span className="relative z-10 font-bold text-[#1A1A1A]">2%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-4">Source: Étude Deloitte 2025</p>
+                        </div>
+
+                        {/* Figure 2: Prévisions */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 2. Prévisions des investissements (12 prochains mois)</h4>
+                            <p className="text-sm text-gray-500 mb-8 italic">Au cours des 12 prochains mois, comment votre organisation prévoit-elle de faire évoluer ses investissements financiers dédiés à l’IA ?</p>
+
+                            <div className="h-64 flex items-end justify-between gap-2 md:gap-4 px-2">
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">6%</div>
+                                    <div className="w-full bg-teal-200/70 rounded-t-md relative hover:bg-teal-200 transition-colors" style={{ height: '6%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Très forte +40%</div>
+                                </div>
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">30%</div>
+                                    <div className="w-full bg-teal-300/70 rounded-t-md relative hover:bg-teal-300 transition-colors" style={{ height: '30%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Significative +20%</div>
+                                </div>
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">35%</div>
+                                    <div className="w-full bg-teal-400/70 rounded-t-md relative hover:bg-teal-400 transition-colors" style={{ height: '35%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Modérée +11%</div>
+                                </div>
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">21%</div>
+                                    <div className="w-full bg-teal-500/70 rounded-t-md relative hover:bg-teal-500 transition-colors" style={{ height: '21%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Légère +6%</div>
+                                </div>
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">6%</div>
+                                    <div className="w-full bg-teal-600/70 rounded-t-md relative hover:bg-teal-600 transition-colors" style={{ height: '6%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Stable</div>
+                                </div>
+                                <div className="w-1/6 h-full flex flex-col justify-end items-center group">
+                                    <div className="text-xs font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity">2%</div>
+                                    <div className="w-full bg-teal-800/70 rounded-t-md relative hover:bg-teal-800 transition-colors" style={{ height: '2%' }}></div>
+                                    <div className="text-[10px] md:text-xs text-center mt-2 text-gray-500 font-medium leading-tight h-10 flex items-start justify-center">Diminution</div>
+                                </div>
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-8">Source: Étude Deloitte 2025</p>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Pourtant, malgré cette dynamique, la plupart des répondants indiquent qu’il faut entre deux et quatre ans pour obtenir un retour sur investissement satisfaisant pour un cas d’usage type de l’IA. Ce délai est nettement plus long que la période de retour sur investissement habituellement attendue pour les technologies, qui se situe entre sept et douze mois.
+                        </p>
+                        <blockquote className="border-l-4 border-[#FFB600] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
+                            "Le délai pour concrétiser les gains liés à l’IA varie selon les secteurs d’activités mais, en moyenne, les bénéfices significatifs mettent plusieurs années à se matérialiser."
+                            <span className="block mt-2 text-xs font-bold uppercase not-italic text-gray-400">— Dirigeant d’une entreprise de biens de consommation</span>
+                        </blockquote>
+
+                        {/* Figure 3: Délai ROI Comparison */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 3. Délai de retour sur investissement</h4>
+                            <p className="text-sm text-gray-500 mb-8 italic">Pour le cas d’usage de l’IA au sein de votre organisation, quel est le délai moyen observé pour obtenir un retour sur investissement ?</p>
+
+                            <div className="space-y-6">
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">Plus de 5 ans</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '2%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">2%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '1px' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">4-5 ans</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '6%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">6%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '8%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">8%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">3-4 ans</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '26%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">26%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '19%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">19%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">2-3 ans</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '40%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">40%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '43%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">43%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">1-2 ans</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '29%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">29%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '34%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">34%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-3 text-right font-medium text-gray-600">Moins d'un an</div>
+                                    <div className="col-span-9 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-4 rounded-sm" style={{ width: '9%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">9%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-4 rounded-sm" style={{ width: '7%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">7%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex justify-center gap-6 mt-6 text-xs font-bold">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 bg-[#003831] rounded-sm"></div> Europe
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 bg-teal-300 rounded-sm"></div> France
+                                </div>
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-4">Source: Étude Deloitte 2025</p>
+                        </div>
+                    </section>
+
+                    {/* Section 2: GenAI ROI */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">La GenAI, catalyseur d’un retour sur investissement rapide</h2>
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            L’IA générative s’impose comme un levier de retour sur investissement (ROI) rapide, bien plus que les précédentes vagues d’IA. Les dirigeants y voient la promesse d’une efficacité immédiate : automatisation des tâches répétitives, génération de contenus, assistance à la décision.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            En France, cette approche à court terme traduit une volonté claire : démontrer rapidement les bénéfices, dans un contexte de forte pression budgétaire et de nécessité de preuves concrètes pour maintenir l’adhésion des directions générales. En effet, 18 % des entreprises françaises constatent déjà un ROI, et 45 % en attendent un en moins d’un an.
+                        </p>
+
+                        {/* Figure 4: ROI Attendu GenAI */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 4. ROI attendu de la GenAI</h4>
+
+                            <div className="space-y-6 mt-8">
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-4 text-right font-medium text-gray-600">Nous constatons déjà une valeur</div>
+                                    <div className="col-span-8 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-5 rounded-sm" style={{ width: '18%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">18%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-5 rounded-sm" style={{ width: '21%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">21%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-4 text-right font-medium text-gray-600">Moins d'un an</div>
+                                    <div className="col-span-8 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-5 rounded-sm" style={{ width: '40%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">40%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-5 rounded-sm" style={{ width: '47%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">47%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-4 text-right font-medium text-gray-600">1-3 ans</div>
+                                    <div className="col-span-8 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-5 rounded-sm" style={{ width: '39%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">39%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-5 rounded-sm" style={{ width: '33%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">33%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Row */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-4 text-right font-medium text-gray-600">3-5 ans</div>
+                                    <div className="col-span-8 space-y-1">
+                                        <div className="flex items-center">
+                                            <div className="bg-[#003831] h-5 rounded-sm" style={{ width: '10%' }}></div>
+                                            <span className="ml-2 text-xs text-[#003831] font-bold">10%</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="bg-teal-300 h-5 rounded-sm" style={{ width: '5%' }}></div>
+                                            <span className="ml-2 text-xs text-teal-600 font-bold">5%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex justify-center gap-6 mt-8 text-xs font-bold">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 bg-[#003831] rounded-sm"></div> Europe
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 bg-teal-300 rounded-sm"></div> France
+                                </div>
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Cette perception d’un ROI rapide explique en grande partie l’adoption accélérée de la GenAI : elle permet de générer de la valeur sans nécessiter de refonte technologique majeure.
+                        </p>
+                    </section>
+
+                    {/* Section 3: Obstacles */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">Obstacles au ROI et le rôle de la GenAI pour les dépasser</h2>
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Les freins à l’adoption de l’IA et à la réalisation du ROI sont avant tout organisationnels et humains. En Europe, ils se traduisent par : un manque de compétences en IA (29 %), des infrastructures et des données insuffisantes (26 %), une gouvernance peu structurée (21 %) et des préoccupations en matière de sécurité et de souveraineté (25 %-28 %).
+                        </p>
+                        <blockquote className="border-l-4 border-[#FFB600] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
+                            "Tout le monde demande à son organisation d’adopter l’IA, même sans savoir exactement quels résultats en attendre. Il y a un tel engouement que je pense que les entreprises s’attendent à ce qu’elle résolve tout, comme par magie."
+                            <span className="block mt-2 text-xs font-bold uppercase not-italic text-gray-400">— Dirigeant d’une entreprise de télécommunications</span>
+                        </blockquote>
+
+                        {/* Figure 5: Obstacles */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 5. Les obstacles au ROI de l’IA</h4>
+                            <p className="text-sm text-gray-500 mb-8 italic">Quels obstacles freinent votre organisation dans la réalisation du ROI de ses projets IA ?</p>
+
+                            <div className="space-y-4">
+                                {/* Obstacle 1 */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-5 text-right font-medium text-gray-600 text-xs md:text-sm">Manque de talents, compétences techniques</div>
+                                    <div className="col-span-7 space-y-1">
+                                        <div className="flex items-center"><div className="bg-[#003831] h-3 rounded-sm" style={{ width: '30%' }}></div><span className="ml-2 text-[10px] text-[#003831]">30%</span></div>
+                                        <div className="flex items-center"><div className="bg-teal-300 h-3 rounded-sm" style={{ width: '33%' }}></div><span className="ml-2 text-[10px] text-teal-600">33%</span></div>
+                                    </div>
+                                </div>
+                                {/* Obstacle 2 */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-5 text-right font-medium text-gray-600 text-xs md:text-sm">Souveraineté de l'IA/des données</div>
+                                    <div className="col-span-7 space-y-1">
+                                        <div className="flex items-center"><div className="bg-[#003831] h-3 rounded-sm" style={{ width: '29%' }}></div><span className="ml-2 text-[10px] text-[#003831]">29%</span></div>
+                                        <div className="flex items-center"><div className="bg-teal-300 h-3 rounded-sm" style={{ width: '23%' }}></div><span className="ml-2 text-[10px] text-teal-600">23%</span></div>
+                                    </div>
+                                </div>
+                                {/* Obstacle 3 */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-5 text-right font-medium text-gray-600 text-xs md:text-sm">Infrastructures techno / données</div>
+                                    <div className="col-span-7 space-y-1">
+                                        <div className="flex items-center"><div className="bg-[#003831] h-3 rounded-sm" style={{ width: '27%' }}></div><span className="ml-2 text-[10px] text-[#003831]">27%</span></div>
+                                        <div className="flex items-center"><div className="bg-teal-300 h-3 rounded-sm" style={{ width: '26%' }}></div><span className="ml-2 text-[10px] text-teal-600">26%</span></div>
+                                    </div>
+                                </div>
+                                {/* Obstacle 4 */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-5 text-right font-medium text-gray-600 text-xs md:text-sm">Évolution des coûts et économie</div>
+                                    <div className="col-span-7 space-y-1">
+                                        <div className="flex items-center"><div className="bg-[#003831] h-3 rounded-sm" style={{ width: '26%' }}></div><span className="ml-2 text-[10px] text-[#003831]">26%</span></div>
+                                        <div className="flex items-center"><div className="bg-teal-300 h-3 rounded-sm" style={{ width: '23%' }}></div><span className="ml-2 text-[10px] text-teal-600">23%</span></div>
+                                    </div>
+                                </div>
+                                {/* Obstacle 5 */}
+                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
+                                    <div className="col-span-5 text-right font-medium text-gray-600 text-xs md:text-sm">Manque d'engagement / financement</div>
+                                    <div className="col-span-7 space-y-1">
+                                        <div className="flex items-center"><div className="bg-[#003831] h-3 rounded-sm" style={{ width: '26%' }}></div><span className="ml-2 text-[10px] text-[#003831]">26%</span></div>
+                                        <div className="flex items-center"><div className="bg-teal-300 h-3 rounded-sm" style={{ width: '27%' }}></div><span className="ml-2 text-[10px] text-teal-600">27%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 4: Comparison Table */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">GenAI vs Agentic AI : deux logiques de ROI</h2>
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Les entreprises distinguent désormais deux modèles économiques autour de l’IA :
+                        </p>
+                        <ul className="list-disc pl-6 space-y-4 text-gray-700 mb-8">
+                            <li><strong className="text-[#1A1A1A]">La GenAI</strong> se positionne comme un moteur de ROI express, immédiat et quantifiable, avec des impacts mesurables en termes de productivité, rapidité et économies.</li>
+                            <li><strong className="text-[#1A1A1A]">L’Agentic AI</strong> se projette sur un horizon plus long, orienté vers la transformation organisationnelle et la délégation partielle de la prise de décision aux systèmes autonomes.</li>
+                        </ul>
+
+                        {/* Figure 6: Table */}
+                        <div className="overflow-hidden rounded-xl border border-gray-200 mb-12 shadow-sm">
+                            <table className="w-full text-sm text-left">
+                                <thead className="bg-[#1A1A1A] text-white">
+                                    <tr>
+                                        <th className="px-6 py-4 font-bold uppercase tracking-wider">Aspect</th>
+                                        <th className="px-6 py-4 font-bold uppercase tracking-wider text-[#FFB600]">GenAI</th>
+                                        <th className="px-6 py-4 font-bold uppercase tracking-wider text-teal-300">Agentic AI</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-100">
+                                    <tr className="hover:bg-gray-50">
+                                        <td className="px-6 py-4 font-medium text-gray-900">Horizon de ROI</td>
+                                        <td className="px-6 py-4 text-gray-600">Court terme (≤ 1–3 ans)</td>
+                                        <td className="px-6 py-4 text-gray-600">Long terme (3–5 ans)</td>
+                                    </tr>
+                                    <tr className="hover:bg-gray-50">
+                                        <td className="px-6 py-4 font-medium text-gray-900">Type de gains</td>
+                                        <td className="px-6 py-4 text-gray-600">Efficience, productivité, coûts</td>
+                                        <td className="px-6 py-4 text-gray-600">Transformation, autonomie, décisions</td>
+                                    </tr>
+                                    <tr className="hover:bg-gray-50">
+                                        <td className="px-6 py-4 font-medium text-gray-900">KPIs utilisés</td>
+                                        <td className="px-6 py-4 text-gray-600">Temps gagné, contenus produits, satisfaction client</td>
+                                        <td className="px-6 py-4 text-gray-600">Automatisation, conformité, réduction des risques</td>
+                                    </tr>
+                                    <tr className="hover:bg-gray-50">
+                                        <td className="px-6 py-4 font-medium text-gray-900">Nature du ROI</td>
+                                        <td className="px-6 py-4 text-gray-600">Tactique et mesurable</td>
+                                        <td className="px-6 py-4 text-gray-600">Stratégique et structurel</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <div className="text-xs text-gray-400 space-y-1 font-mono">
+                            <p>Étude Deloitte 2025, menée auprès de 1854 dirigeants.</p>
+                        </div>
+                    </section>
+
+                    {/* CTA */}
+                    <div className="mt-20 bg-[#1A1A1A] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Besoin d'aide pour mesurer votre ROI ?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nos experts Strategy & AI vous accompagnent dans la définition de vos KPIs et le pilotage de vos investissements.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#FFB600] text-[#1A1A1A] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">
+                            Contacter l'équipe Strategy
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
     // -------- CONTENU ARTICLE 4 (ORCHESTRATION) --------
     if (id === '4') {
         return (

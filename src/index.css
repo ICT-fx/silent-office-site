@@ -6,7 +6,13 @@
   body {
     @apply bg-white text-dark font-sans antialiased overflow-x-hidden;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 }
@@ -17,4 +23,44 @@
 
 .text-gradient {
   @apply bg-gradient-to-br from-[#1A1A1A] to-[#4A4A4A] bg-clip-text text-transparent;
+}
+
+/* Logo spin-back animation: fast CCW spin that decelerates to rest */
+@keyframes logo-spin-back {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(-315deg);
+  }
+}
+
+.logo-spin-back {
+  animation: logo-spin-back 1.3s cubic-bezier(0.0, 0.0, 0.15, 1) forwards;
+}
+
+/* Easter egg shuriken animation */
+@keyframes shuriken-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(45deg) scale(0.3);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(var(--sx), var(--sy)) rotate(405deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--ex), var(--ey)) rotate(1125deg) scale(0.5);
+  }
+}
+
+.shuriken {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  animation: shuriken-fly 2s cubic-bezier(0.2, 0, 0.3, 1) forwards;
 }

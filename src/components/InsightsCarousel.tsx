@@ -15,28 +15,20 @@ const InsightsCarousel: React.FC = () => {
       readTime: "5 min"
     },
     {
-      id: '2',
-      title: "Optimiser les flux de données : L'art du désilotage moderne.",
-      category: "Expertise",
-      date: "05 Oct 2024",
-      image: "https://picsum.photos/600/400?abstract&seed=11",
-      readTime: "12 min"
-    },
-    {
-      id: '3',
-      title: "IA Financière : Pourquoi l'audit manuel devient un risque majeur.",
-      category: "Finance",
-      date: "28 Sep 2024",
-      image: "https://picsum.photos/600/400?business&seed=12",
-      readTime: "6 min"
-    },
-    {
       id: '4',
       title: "Orchestration d'agents IA : un levier stratégique de performance et de valeur",
       category: "Point de vue",
       date: "10 Déc 2025",
       image: "/images/articles/ai-orchestration-hero.png",
       readTime: "7 min"
+    },
+    {
+      id: '2',
+      title: "Intelligence artificielle : quel retour sur investissement ?",
+      category: "Point de vue",
+      date: "24 Nov 2025",
+      image: "/images/articles/roi-ia-hero.png",
+      readTime: "5 min"
     }
   ];
 
@@ -47,7 +39,7 @@ const InsightsCarousel: React.FC = () => {
           <Link
             key={post.id}
             to={`/insights/${post.id}`}
-            className="flex-shrink-0 w-full md:w-[450px] group/card cursor-pointer block"
+            className="flex-shrink-0 w-[85vw] md:w-[450px] group/card cursor-pointer block"
           >
             <div className="overflow-hidden mb-6 relative rounded-2xl">
               <img
@@ -81,12 +73,6 @@ const InsightsCarousel: React.FC = () => {
         ))}
       </div>
 
-      {/* Scroll Hint */}
-      <div className="hidden lg:flex justify-center mt-4">
-        <div className="w-64 h-1 bg-gray-100 rounded-full relative overflow-hidden">
-          <div className="absolute top-0 left-0 h-full w-1/4 bg-[#FFB600] animate-[shimmer_2s_infinite]"></div>
-        </div>
-      </div>
     </div>
   );
 };

@@ -12,10 +12,98 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu
   const [activeMenu, setActiveMenu] = useState<MenuSection>('none'); // Desktop hover menu
   const [isHidden, setIsHidden] = useState(false); // Visibility state based on sections
+  const [logoHovered, setLogoHovered] = useState(false); // Logo hover state
+  const [logoSpinning, setLogoSpinning] = useState(false); // Logo spin-back animation
+  const logoLocked = React.useRef(false); // Lock to prevent re-trigger during animation
   const location = useLocation();
   const navigate = useNavigate();
 
   const isHome = location.pathname === '/';
+
+  // Trigger the spin-back animation (locked until complete, force=true restarts it)
+  const logoTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const triggerLogoSpin = (force = false) => {
+    if (logoLocked.current && !force) return;
+    // Clear any existing timer if force-restarting
+    if (logoTimerRef.current) {
+      clearTimeout(logoTimerRef.current);
+    }
+    logoLocked.current = true;
+    setLogoHovered(false);
+    // Force a re-render cycle to restart the CSS animation
+    setLogoSpinning(false);
+    requestAnimationFrame(() => {
+      setLogoSpinning(true);
+      logoTimerRef.current = setTimeout(() => {
+        setLogoSpinning(false);
+        logoLocked.current = false;
+        logoTimerRef.current = null;
+      }, 1300);
+    });
+  };
+
+  // Easter egg: 10 rapid clicks triggers shuriken burst
+  const clickCountRef = React.useRef(0);
+  const clickTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const spawnShurikens = () => {
+    const container = document.createElement('div');
+    container.style.cssText = 'position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden;';
+    document.body.appendChild(container);
+
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      const shuriken = document.createElement('div');
+      const size = 12 + Math.random() * 24; // 12–36px
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * window.innerHeight;
+      // Random trajectory: scatter outward
+      const angle = Math.random() * Math.PI * 2;
+      const dist1 = 100 + Math.random() * 200;
+      const dist2 = 200 + Math.random() * 400;
+      const sx = Math.cos(angle) * dist1;
+      const sy = Math.sin(angle) * dist1;
+      const ex = Math.cos(angle) * dist2;
+      const ey = Math.sin(angle) * dist2;
+
+      shuriken.className = 'shuriken';
+      shuriken.style.cssText = `
+        left: ${startX}px;
+        top: ${startY}px;
+        width: ${size}px;
+        height: ${size}px;
+        background: #FFB600;
+        border-radius: 3px;
+        --sx: ${sx}px;
+        --sy: ${sy}px;
+        --ex: ${ex}px;
+        --ey: ${ey}px;
+        animation-delay: ${Math.random() * 0.3}s;
+      `;
+      // White dot inside
+      const dot = document.createElement('div');
+      dot.style.cssText = `width:${size * 0.35}px;height:${size * 0.35}px;background:white;border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);`;
+      shuriken.appendChild(dot);
+      container.appendChild(shuriken);
+    }
+
+    setTimeout(() => {
+      document.body.removeChild(container);
+    }, 2500);
+  };
+
+  const handleLogoClick = () => {
+    clickCountRef.current += 1;
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    clickTimerRef.current = setTimeout(() => {
+      clickCountRef.current = 0;
+    }, 3000); // Reset counter after 3s of no clicks
+
+    if (clickCountRef.current >= 10) {
+      clickCountRef.current = 0;
+      spawnShurikens();
+    }
+  };
 
   // Desktop Hover Handlers
   const handleMouseEnter = (section: MenuSection) => {
@@ -47,18 +135,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         const servicesRect = servicesSection.getBoundingClientRect();
         const methodologyRect = methodologySection.getBoundingClientRect();
 
-        // Logic:
-        // Hide when Services starts entering the top area (e.g. 100px from top)
-        // Show again when Methodology is almost done (bottom of methodology is passing up)
-
-        // If top of Services is near top of viewport (scrolled past hero)
         const isPastHero = servicesRect.top <= 100;
-
-        // If bottom of Methodology is still in viewport or below (haven't finished methodology)
-        // We want to reappear when methodology is DONE.
-        // So if methodologyRect.bottom > 0, we are inside or above methodology.
-        // Wait, user said "ré apparaisse sous la dernière carte de 'notre approche'".
-        // This implies when we scroll PAST the last card.
         const isBeforeEndOfMethodology = methodologyRect.bottom > 0;
 
         if (isPastHero && isBeforeEndOfMethodology) {
@@ -88,10 +165,32 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
       <div className="px-6 flex items-center justify-between relative z-50">
         {/* Logo */}
         <button
-          onClick={() => navigate('/')}
-          className="flex items-center space-x-2 outline-none group"
+          onClick={() => {
+            if (isHome) {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              navigate('/');
+            }
+            triggerLogoSpin(true);
+            handleLogoClick(); // Track rapid clicks for easter egg
+          }}
+          className="flex items-center space-x-2 outline-none"
+          onMouseEnter={() => {
+            if (!logoLocked.current) setLogoHovered(true);
+          }}
+          onMouseLeave={() => {
+            if (!logoLocked.current) triggerLogoSpin();
+          }}
         >
-          <div className="w-8 h-8 bg-[#FFB600] rounded-sm transform rotate-45 flex items-center justify-center transition-transform group-hover:rotate-90">
+          <div
+            className={`w-8 h-8 bg-[#FFB600] rounded-sm flex items-center justify-center ${logoSpinning
+              ? 'logo-spin-back'
+              : 'transition-transform duration-300'
+              }`}
+            style={{
+              transform: logoSpinning ? undefined : logoHovered ? 'rotate(90deg)' : 'rotate(45deg)',
+            }}
+          >
             <div className="w-3 h-3 bg-white rounded-full"></div>
           </div>
           <span className={`text-xl font-bold tracking-tight ${isScrolled || !isHome || activeMenu !== 'none' ? 'text-[#1A1A1A]' : 'text-white'

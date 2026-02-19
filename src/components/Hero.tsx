@@ -38,14 +38,14 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
       {/* Overlay Content */}
       <div
-        className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white"
+        className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white pt-20 md:pt-0"
         style={{
           opacity,
           transform: `translateY(${translateY}px)`
         }}
       >
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight mb-6 leading-[1.2]">
-          <span className="text-6xl md:text-7xl lg:text-[6rem] block mb-2">Architectes de votre</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight tracking-tight mb-6 leading-[1.2]">
+          <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[6rem] block mb-2">Architectes de votre</span>
           <span className="font-bold text-white relative inline-block pb-6">
             transformation digitale et robotique.
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-[#FFB600]"></span>

@@ -98,17 +98,16 @@ const MethodologySection: React.FC = () => {
                 </div>
 
                 {/* STACKING CARDS */}
-                <div className="pb-24">
+                <div className="pb-8 lg:pb-[40vh]">
                     {methodologyBlocks.map((block, index) => (
                         <div
                             key={index}
                             ref={el => cardsRef.current[index] = el}
-                            className="sticky bg-white shadow-2xl border border-gray-100 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start min-h-[65vh] transition-transform duration-100 ease-out will-change-transform"
+                            className="lg:sticky bg-white shadow-2xl border border-gray-100 flex flex-col lg:flex-row gap-4 lg:gap-16 items-start min-h-0 lg:min-h-[65vh] transition-transform duration-100 ease-out will-change-transform mb-8 lg:mb-[30vh]"
                             style={{
                                 top: 40,
                                 zIndex: index + 1,
                                 borderRadius: '4px',
-                                marginBottom: '65vh',
                             }}
                         >
                             {/* Left: Number (Outline Style similar to screenshot) */}
