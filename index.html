@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silent Office | Excellence Opérationnelle</title>
+    <title>Flowera | Automatisation, IA & solutions sur-mesure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@200;300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -31,7 +31,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%);
+            background: linear-gradient(135deg, #262626 0%, #025928 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -41,7 +41,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #F4F4F4;
+            background: #F2F1DF;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -50,9 +50,32 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #FFB600;
+            background: #027333;
+        }
+
+        /* Garde anti-flash : fond noir avant que le preloader React ne prenne le relais */
+        html.preloading,
+        html.preloading body {
+            background: #050505 !important;
         }
     </style>
+    <script>
+        // Pose le fond noir dès le parsing du HTML si le preloader va se jouer
+        // (accueil + pas de prefers-reduced-motion). Le preloader se rejoue à
+        // chaque rafraîchissement de l'accueil ; on fige aussi la restauration
+        // de scroll pour repartir du haut sans gâcher l'animation.
+        (function () {
+            try {
+                var home = location.pathname === '/';
+                var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (home && !reduced) {
+                    document.documentElement.classList.add('preloading');
+                    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+                    window.scrollTo(0, 0);
+                }
+            } catch (e) { /* no-op */ }
+        })();
+    </script>
     <script type="importmap">
 {
   "imports": {
@@ -66,7 +89,7 @@
 </script>
 </head>
 
-<body class="bg-white text-[#1A1A1A] antialiased overflow-x-hidden">
+<body class="bg-white text-[#262626] antialiased overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 </body>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import SolutionsSection from '../components/SolutionsSection';
 import MethodologySection from '../components/MethodologySection';
+import TechStackSection from '../components/TechStackSection';
 import InnovationShowcase from '../components/InnovationShowcase';
 import CorporateApproachSection from '../components/CorporateApproachSection';
 import InsightsCarousel from '../components/InsightsCarousel';
@@ -31,6 +32,7 @@ const Home: React.FC = () => {
             <SolutionsSection />
             <MethodologySection />
 
+            <TechStackSection />
 
             <InnovationShowcase onNavigate={(view) => navigate(`/${view}`)} />
 
@@ -38,12 +40,12 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
                         <div>
-                            <span className="text-[#FFB600] font-semibold tracking-wider uppercase text-sm mb-4 block">Expertise</span>
-                            <h2 className="text-4xl lg:text-5xl font-light text-[#1A1A1A]">Journal de l'IA Corporate</h2>
+                            <span className="text-[#027333] font-semibold tracking-wider uppercase text-sm mb-4 block">Expertise</span>
+                            <h2 className="text-4xl lg:text-5xl font-light text-[#262626]">Journal de l'IA Corporate</h2>
                         </div>
                         <button
                             onClick={() => navigate('/insights')}
-                            className="mt-8 md:mt-0 text-[#1A1A1A] border-b border-[#1A1A1A] pb-1 hover:text-[#FFB600] hover:border-[#FFB600] transition-all font-medium"
+                            className="mt-8 md:mt-0 text-[#262626] border-b border-[#262626] pb-1 hover:text-[#027333] hover:border-[#027333] transition-all font-medium"
                         >
                             Voir tous les articles
                         </button>

@@ -125,7 +125,7 @@ export const solutionsData: Record<string, SolutionData> = {
         },
         solution: {
             title: "L'Automatisation Intelligente par RPA",
-            description: "Silent Office déploie des robots logiciels qui interagissent avec vos applications comme le ferait un humain. Grâce à la reconnaissance visuelle et l'OCR, nos agents automatisent vos processus sans nécessiter d'intégration API ou de modification de vos systèmes."
+            description: "Flowera déploie des robots logiciels qui interagissent avec vos applications comme le ferait un humain. Grâce à la reconnaissance visuelle et l'OCR, nos agents automatisent vos processus sans nécessiter d'intégration API ou de modification de vos systèmes."
         },
         useCases: [
             {

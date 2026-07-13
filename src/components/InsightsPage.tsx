@@ -74,13 +74,13 @@ const InsightsPage: React.FC = () => {
     : allArticles.filter(art => art.category === activeCategory);
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-50">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white border-b border-gray-100 pb-16 pt-12 px-6">
         <div className="max-w-7xl mx-auto">
           <Link
             to="/"
-            className="flex items-center text-gray-500 hover:text-[#FFB600] transition-colors mb-8 group text-sm font-medium inline-flex"
+            className="flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-8 group text-sm font-medium inline-flex"
           >
             <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Retour à l'accueil
@@ -88,7 +88,7 @@ const InsightsPage: React.FC = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-end gap-8">
             <div>
-              <h1 className="text-4xl lg:text-5xl font-light text-[#1A1A1A] mb-4">
+              <h1 className="text-4xl lg:text-5xl font-light text-[#262626] mb-4">
                 Journal de <span className="font-bold">l'Expertise</span>
               </h1>
               <p className="text-gray-500 max-w-xl text-lg font-light">
@@ -101,7 +101,7 @@ const InsightsPage: React.FC = () => {
               <input
                 type="text"
                 placeholder="Rechercher un article..."
-                className="pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-full w-full md:w-80 focus:outline-none focus:border-[#FFB600] focus:bg-white transition-all"
+                className="pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-full w-full md:w-80 focus:outline-none focus:border-[#027333] focus:bg-white transition-all"
               />
               <Search className="absolute left-3.5 top-3.5 text-gray-400 w-5 h-5" />
             </div>
@@ -118,8 +118,8 @@ const InsightsPage: React.FC = () => {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`whitespace-nowrap text-sm font-bold tracking-wide transition-colors pb-1 border-b-2 ${activeCategory === cat
-                  ? 'text-[#1A1A1A] border-[#FFB600]'
-                  : 'text-gray-400 border-transparent hover:text-[#1A1A1A]'
+                  ? 'text-[#262626] border-[#027333]'
+                  : 'text-gray-400 border-transparent hover:text-[#262626]'
                   }`}
               >
                 {cat}
@@ -145,7 +145,7 @@ const InsightsPage: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-white/95 backdrop-blur px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A] rounded-sm">
+                  <span className="bg-white/95 backdrop-blur px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#262626] rounded-sm">
                     {post.category}
                   </span>
                 </div>
@@ -161,14 +161,14 @@ const InsightsPage: React.FC = () => {
                   <span>{post.date}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 group-hover:text-[#FFB600] transition-colors leading-tight">
+                <h3 className="text-xl font-bold text-[#262626] mb-4 group-hover:text-[#027333] transition-colors leading-tight">
                   {post.title}
                 </h3>
 
                 <div className="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center">
-                  <span className="text-sm font-semibold text-gray-500 group-hover:text-[#1A1A1A] transition-colors">Lire l'article</span>
-                  <div className="w-8 h-8 rounded-full bg-[#F4F4F4] flex items-center justify-center group-hover:bg-[#FFB600] transition-colors">
-                    <ArrowUpRight size={16} className="text-[#1A1A1A]" />
+                  <span className="text-sm font-semibold text-gray-500 group-hover:text-[#262626] transition-colors">Lire l'article</span>
+                  <div className="w-8 h-8 rounded-full bg-[#F2F1DF] flex items-center justify-center group-hover:bg-[#027333] transition-colors">
+                    <ArrowUpRight size={16} className="text-[#262626]" />
                   </div>
                 </div>
               </div>
@@ -178,18 +178,18 @@ const InsightsPage: React.FC = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="bg-[#1A1A1A] text-white py-20 px-6 mt-12">
+      <div className="bg-[#262626] text-white py-20 px-6 mt-12">
         <div className="max-w-4xl mx-auto text-center">
-          <Tag className="w-12 h-12 text-[#FFB600] mx-auto mb-6" />
+          <Tag className="w-12 h-12 text-[#027333] mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-light mb-6">Restez à la pointe de l'innovation</h2>
           <p className="text-gray-400 mb-8 text-lg">Recevez notre veille stratégique mensuelle. Pas de spam, uniquement de la valeur ajoutée pour votre Board.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
             <input
               type="email"
               placeholder="votre.email@societe.com"
-              className="px-6 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FFB600] flex-grow"
+              className="px-6 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#027333] flex-grow"
             />
-            <button className="px-8 py-4 bg-[#FFB600] text-[#1A1A1A] font-bold rounded-lg hover:bg-white transition-colors">
+            <button className="px-8 py-4 bg-[#027333] text-[#262626] font-bold rounded-lg hover:bg-white transition-colors">
               S'abonner
             </button>
           </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import SolutionsPage from './components/SolutionsPage';
 import InsightsPage from './components/InsightsPage';
@@ -28,7 +29,8 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-[#1A1A1A]">
+    <div className="flex flex-col min-h-screen font-sans text-[#262626]">
+      <Preloader />
       <Header isScrolled={scrolled} />
 
       <main className="flex-grow">

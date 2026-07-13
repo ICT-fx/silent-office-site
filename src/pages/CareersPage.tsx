@@ -16,7 +16,7 @@ const CareersPage: React.FC = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-light mb-6">Rejoignez Silent Office</h1>
+                    <h1 className="text-5xl font-light mb-6">Rejoignez Flowera</h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         Construisez votre carrière dans un environnement innovant où l'intelligence artificielle
                         et l'automatisation transforment les entreprises.
@@ -24,7 +24,7 @@ const CareersPage: React.FC = () => {
                 </div>
 
                 {/* Filtres de recherche */}
-                <div className="bg-[#F4F4F4] rounded-2xl p-8 mb-12">
+                <div className="bg-[#F2F1DF] rounded-2xl p-8 mb-12">
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {/* Recherche par mot-clé */}
                         <div className="lg:col-span-2">
@@ -38,7 +38,7 @@ const CareersPage: React.FC = () => {
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     placeholder="Titre du poste, compétences..."
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#FFB600] focus:outline-none transition-colors"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#027333] focus:outline-none transition-colors"
                                 />
                             </div>
                         </div>
@@ -53,7 +53,7 @@ const CareersPage: React.FC = () => {
                                 <select
                                     value={jobType}
                                     onChange={(e) => setJobType(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#FFB600] focus:outline-none transition-colors appearance-none bg-white"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#027333] focus:outline-none transition-colors appearance-none bg-white"
                                 >
                                     <option value="">Tous</option>
                                     {jobTypes.map((type) => (
@@ -73,7 +73,7 @@ const CareersPage: React.FC = () => {
                                 <select
                                     value={location}
                                     onChange={(e) => setLocation(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#FFB600] focus:outline-none transition-colors appearance-none bg-white"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#027333] focus:outline-none transition-colors appearance-none bg-white"
                                 >
                                     <option value="">Tous</option>
                                     {locations.map((loc) => (
@@ -93,7 +93,7 @@ const CareersPage: React.FC = () => {
                                 <select
                                     value={department}
                                     onChange={(e) => setDepartment(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#FFB600] focus:outline-none transition-colors appearance-none bg-white"
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-[#027333] focus:outline-none transition-colors appearance-none bg-white"
                                 >
                                     <option value="">Tous les départements</option>
                                     {departments.map((dept) => (
@@ -105,7 +105,7 @@ const CareersPage: React.FC = () => {
 
                         {/* Bouton de recherche */}
                         <div className="lg:col-span-2 flex items-end">
-                            <button className="w-full bg-[#FFB600] text-[#1A1A1A] py-3 px-6 rounded-lg font-bold hover:bg-[#1A1A1A] hover:text-white transition-all">
+                            <button className="w-full bg-[#027333] text-[#262626] py-3 px-6 rounded-lg font-bold hover:bg-[#262626] hover:text-white transition-all">
                                 Rechercher
                             </button>
                         </div>
@@ -114,7 +114,7 @@ const CareersPage: React.FC = () => {
 
                 {/* État vide - Aucune offre */}
                 <div className="text-center py-20">
-                    <div className="w-24 h-24 bg-[#F4F4F4] rounded-full flex items-center justify-center mx-auto mb-8">
+                    <div className="w-24 h-24 bg-[#F2F1DF] rounded-full flex items-center justify-center mx-auto mb-8">
                         <Briefcase size={48} className="text-gray-400" />
                     </div>
                     <h2 className="text-3xl font-light mb-4">Aucune offre disponible pour le moment</h2>
@@ -126,13 +126,13 @@ const CareersPage: React.FC = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a
                             href="/contact"
-                            className="bg-[#FFB600] text-[#1A1A1A] px-8 py-4 rounded-lg font-bold hover:bg-[#1A1A1A] hover:text-white transition-all"
+                            className="bg-[#027333] text-[#262626] px-8 py-4 rounded-lg font-bold hover:bg-[#262626] hover:text-white transition-all"
                         >
                             Candidature spontanée
                         </a>
                         <a
-                            href="mailto:careers@silentoffice.org"
-                            className="border-2 border-[#1A1A1A] text-[#1A1A1A] px-8 py-4 rounded-lg font-bold hover:bg-[#1A1A1A] hover:text-white transition-all"
+                            href="mailto:careers@flowera.fr"
+                            className="border-2 border-[#262626] text-[#262626] px-8 py-4 rounded-lg font-bold hover:bg-[#262626] hover:text-white transition-all"
                         >
                             Nous contacter
                         </a>
@@ -141,8 +141,8 @@ const CareersPage: React.FC = () => {
 
                 {/* Section Pourquoi nous rejoindre */}
                 <div className="mt-24 grid md:grid-cols-3 gap-8">
-                    <div className="bg-[#F4F4F4] rounded-2xl p-8">
-                        <div className="w-12 h-12 bg-[#FFB600] rounded-full flex items-center justify-center mb-6">
+                    <div className="bg-[#F2F1DF] rounded-2xl p-8">
+                        <div className="w-12 h-12 bg-[#027333] rounded-full flex items-center justify-center mb-6">
                             <Clock size={24} className="text-white" />
                         </div>
                         <h3 className="text-xl font-bold mb-4">Flexibilité</h3>
@@ -151,8 +151,8 @@ const CareersPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-[#F4F4F4] rounded-2xl p-8">
-                        <div className="w-12 h-12 bg-[#FFB600] rounded-full flex items-center justify-center mb-6">
+                    <div className="bg-[#F2F1DF] rounded-2xl p-8">
+                        <div className="w-12 h-12 bg-[#027333] rounded-full flex items-center justify-center mb-6">
                             <Briefcase size={24} className="text-white" />
                         </div>
                         <h3 className="text-xl font-bold mb-4">Projets innovants</h3>
@@ -161,8 +161,8 @@ const CareersPage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="bg-[#F4F4F4] rounded-2xl p-8">
-                        <div className="w-12 h-12 bg-[#FFB600] rounded-full flex items-center justify-center mb-6">
+                    <div className="bg-[#F2F1DF] rounded-2xl p-8">
+                        <div className="w-12 h-12 bg-[#027333] rounded-full flex items-center justify-center mb-6">
                             <Search size={24} className="text-white" />
                         </div>
                         <h3 className="text-xl font-bold mb-4">Formation continue</h3>

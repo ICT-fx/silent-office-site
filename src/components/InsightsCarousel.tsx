@@ -48,7 +48,7 @@ const InsightsCarousel: React.FC = () => {
                 className="w-full aspect-[16/10] object-cover group-hover/card:scale-105 transition-all duration-700"
               />
               <div className="absolute top-4 left-4">
-                <span className="bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]">
+                <span className="bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#262626]">
                   {post.category}
                 </span>
               </div>
@@ -61,12 +61,12 @@ const InsightsCarousel: React.FC = () => {
                   <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                   <span>{post.readTime} de lecture</span>
                 </div>
-                <h3 className="text-xl font-bold leading-tight group-hover/card:text-[#FFB600] transition-colors">
+                <h3 className="text-xl font-bold leading-tight group-hover/card:text-[#027333] transition-colors">
                   {post.title}
                 </h3>
               </div>
-              <div className="flex-shrink-0 bg-[#F4F4F4] group-hover/card:bg-[#FFB600] p-3 rounded-full transition-colors transform group-hover/card:rotate-12">
-                <ArrowUpRight size={20} className="text-[#1A1A1A]" />
+              <div className="flex-shrink-0 bg-[#F2F1DF] group-hover/card:bg-[#027333] p-3 rounded-full transition-colors transform group-hover/card:rotate-12">
+                <ArrowUpRight size={20} className="text-[#262626]" />
               </div>
             </div>
           </Link>

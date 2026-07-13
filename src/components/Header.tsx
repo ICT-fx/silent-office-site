@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 
@@ -6,12 +6,59 @@ interface HeaderProps {
   isScrolled: boolean;
 }
 
-type MenuSection = 'none' | 'who' | 'solutions' | 'insights' | 'careers';
+type MenuSection = 'none' | 'who' | 'expertise' | 'solutions' | 'insights' | 'careers';
+
+// Catégories d'expertises affichées dans le méga-menu "Expertises".
+// Les destinations pointent vers /solutions pour l'instant (placeholder),
+// en attendant les pages dédiées à chaque sous-section.
+const EXPERTISES: { title: string; items: string[] }[] = [
+  // Ligne 1 (haut de chaque colonne) : Conseil — Développement — IA
+  {
+    title: 'Conseil & Intégration',
+    items: [
+      'Audit de process métiers',
+      'Conseil en solutions adaptées',
+      "Intégration d'outils",
+      "Sélection et évaluation d'outils",
+    ],
+  },
+  {
+    title: 'Développement logiciel',
+    items: ['Création de SaaS', 'Logiciels métier (ERM)', 'Sites e-commerce'],
+  },
+  {
+    title: 'Intelligence artificielle',
+    items: [
+      'Solutions IA personnalisées',
+      'OCR et extraction de données',
+      'Modèles de prédiction',
+      'Assistants IA en Local',
+      'IA générative, agents vocaux & plus encore',
+    ],
+  },
+  // Ligne 2 (bas de chaque colonne) : Formation — Data — Automatisation
+  {
+    title: 'Formation & Transformation',
+    items: [
+      'Formation à l\'IA et bonnes pratiques',
+      'Acculturation digitale',
+      "Stratégie d'adoption",
+      'Change management et montée en compétence',
+    ],
+  },
+  {
+    title: 'Data & Business Intelligence',
+    items: ['Dashboards Power BI', 'Data hub et architecture data', 'Stratégie data'],
+  },
+  {
+    title: 'Automatisation & RPA',
+    items: ['Automatisations métier', 'RPA (Robotic Process Automation)', 'Power Automate'],
+  },
+];
 
 const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu
   const [activeMenu, setActiveMenu] = useState<MenuSection>('none'); // Desktop hover menu
-  const [isHidden, setIsHidden] = useState(false); // Visibility state based on sections
   const [logoHovered, setLogoHovered] = useState(false); // Logo hover state
   const [logoSpinning, setLogoSpinning] = useState(false); // Logo spin-back animation
   const logoLocked = React.useRef(false); // Lock to prevent re-trigger during animation
@@ -42,69 +89,6 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     });
   };
 
-  // Easter egg: 10 rapid clicks triggers shuriken burst
-  const clickCountRef = React.useRef(0);
-  const clickTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const spawnShurikens = () => {
-    const container = document.createElement('div');
-    container.style.cssText = 'position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden;';
-    document.body.appendChild(container);
-
-    const count = 40;
-    for (let i = 0; i < count; i++) {
-      const shuriken = document.createElement('div');
-      const size = 12 + Math.random() * 24; // 12–36px
-      const startX = Math.random() * window.innerWidth;
-      const startY = Math.random() * window.innerHeight;
-      // Random trajectory: scatter outward
-      const angle = Math.random() * Math.PI * 2;
-      const dist1 = 100 + Math.random() * 200;
-      const dist2 = 200 + Math.random() * 400;
-      const sx = Math.cos(angle) * dist1;
-      const sy = Math.sin(angle) * dist1;
-      const ex = Math.cos(angle) * dist2;
-      const ey = Math.sin(angle) * dist2;
-
-      shuriken.className = 'shuriken';
-      shuriken.style.cssText = `
-        left: ${startX}px;
-        top: ${startY}px;
-        width: ${size}px;
-        height: ${size}px;
-        background: #FFB600;
-        border-radius: 3px;
-        --sx: ${sx}px;
-        --sy: ${sy}px;
-        --ex: ${ex}px;
-        --ey: ${ey}px;
-        animation-delay: ${Math.random() * 0.3}s;
-      `;
-      // White dot inside
-      const dot = document.createElement('div');
-      dot.style.cssText = `width:${size * 0.35}px;height:${size * 0.35}px;background:white;border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);`;
-      shuriken.appendChild(dot);
-      container.appendChild(shuriken);
-    }
-
-    setTimeout(() => {
-      document.body.removeChild(container);
-    }, 2500);
-  };
-
-  const handleLogoClick = () => {
-    clickCountRef.current += 1;
-    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
-    clickTimerRef.current = setTimeout(() => {
-      clickCountRef.current = 0;
-    }, 3000); // Reset counter after 3s of no clicks
-
-    if (clickCountRef.current >= 10) {
-      clickCountRef.current = 0;
-      spawnShurikens();
-    }
-  };
-
   // Desktop Hover Handlers
   const handleMouseEnter = (section: MenuSection) => {
     setActiveMenu(section);
@@ -120,47 +104,12 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     setIsMenuOpen(false);
   };
 
-  // Scroll Logic to Hide/Show Header
-  useEffect(() => {
-    const handleScrollVisibility = () => {
-      if (!isHome) {
-        setIsHidden(false);
-        return;
-      }
-
-      const servicesSection = document.getElementById('services');
-      const methodologySection = document.getElementById('methodologie');
-
-      if (servicesSection && methodologySection) {
-        const servicesRect = servicesSection.getBoundingClientRect();
-        const methodologyRect = methodologySection.getBoundingClientRect();
-
-        const isPastHero = servicesRect.top <= 100;
-        const isBeforeEndOfMethodology = methodologyRect.bottom > 0;
-
-        if (isPastHero && isBeforeEndOfMethodology) {
-          setIsHidden(true);
-        } else {
-          setIsHidden(false);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollVisibility);
-    return () => window.removeEventListener('scroll', handleScrollVisibility);
-  }, [isHome]);
-
-  const navLinkClass = `text-sm font-medium transition-colors px-3 py-2 cursor-pointer ${(isScrolled || !isHome || activeMenu !== 'none') ? 'text-[#1A1A1A] hover:text-[#FFB600]' : 'text-gray-200 hover:text-white'
-    }`;
+  const navLinkClass = `text-sm font-medium transition-colors px-3 py-2 cursor-pointer text-[#262626] hover:text-[#027333]`;
 
   return (
     <header
       onMouseLeave={handleMouseLeave}
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-2xl border transition-all duration-500 transform ${isHidden ? '-translate-y-[200%] opacity-0' : 'translate-y-0 opacity-100'
-        } ${isScrolled || !isHome || activeMenu !== 'none'
-          ? 'bg-white/90 backdrop-blur-md border-white/20 shadow-lg py-3'
-          : 'bg-[#1A1A1A]/80 backdrop-blur-md border-white/10 shadow-2xl py-4'
-        }`}
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-2xl border transition-all duration-500 bg-white backdrop-blur-md border-white/20 shadow-lg py-3"
     >
       <div className="px-6 flex items-center justify-between relative z-50">
         {/* Logo */}
@@ -172,7 +121,6 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               navigate('/');
             }
             triggerLogoSpin(true);
-            handleLogoClick(); // Track rapid clicks for easter egg
           }}
           className="flex items-center space-x-2 outline-none"
           onMouseEnter={() => {
@@ -183,19 +131,24 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           }}
         >
           <div
-            className={`w-8 h-8 bg-[#FFB600] rounded-sm flex items-center justify-center ${logoSpinning
-              ? 'logo-spin-back'
+            className={`w-14 h-14 ${logoSpinning
+              ? 'logo-spin'
               : 'transition-transform duration-300'
               }`}
             style={{
-              transform: logoSpinning ? undefined : logoHovered ? 'rotate(90deg)' : 'rotate(45deg)',
+              transform: logoSpinning ? undefined : logoHovered ? 'rotate(90deg)' : 'rotate(0deg)',
             }}
           >
-            <div className="w-3 h-3 bg-white rounded-full"></div>
+            <img
+              id="brand-logo"
+              src="/flowera-logo.png"
+              alt="Flowera"
+              draggable={false}
+              className="w-full h-full object-contain select-none"
+            />
           </div>
-          <span className={`text-xl font-bold tracking-tight ${isScrolled || !isHome || activeMenu !== 'none' ? 'text-[#1A1A1A]' : 'text-white'
-            }`}>
-            SILENT<span className="font-light">OFFICE</span>
+          <span className="text-xl font-bold tracking-tight text-[#262626]">
+            FLOW<span className="font-light">ERA</span>
           </span>
         </button>
 
@@ -209,7 +162,15 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             Qui sommes-nous ?
           </div>
 
-          {/* Onglet 02: Solutions */}
+          {/* Onglet 02: Expertises (remplacera Solutions à terme) */}
+          <div
+            onMouseEnter={() => handleMouseEnter('expertise')}
+            className={navLinkClass}
+          >
+            Expertises
+          </div>
+
+          {/* Onglet 03: Solutions */}
           <div
             onMouseEnter={() => handleMouseEnter('solutions')}
             className={navLinkClass}
@@ -238,10 +199,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         <div className="hidden lg:block">
           <Link
             to="/contact"
-            className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${isScrolled || !isHome || activeMenu !== 'none'
-              ? 'bg-[#1A1A1A] text-white hover:bg-[#FFB600] hover:text-[#1A1A1A]'
-              : 'bg-[#FFB600] text-[#1A1A1A] hover:bg-white'
-              }`}
+            className="px-6 py-2.5 rounded-xl font-bold text-sm transition-all bg-[#262626] text-white hover:bg-[#027333] hover:text-[#262626]"
           >
             Contact
           </Link>
@@ -249,7 +207,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
         {/* Mobile Toggle */}
         <button
-          className={isScrolled || !isHome || activeMenu !== 'none' ? 'text-[#1A1A1A] lg:hidden' : 'text-white lg:hidden'}
+          className="text-[#262626] lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -270,17 +228,42 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             {activeMenu === 'who' && (
               <div className="grid grid-cols-3 gap-12 animate-fade-in">
                 <div>
-                  <h3 className="font-bold text-[#FFB600] uppercase tracking-widest text-sm mb-4">L'Agence</h3>
-                  <p className="text-gray-500 mb-4">Silent Office transforme les opérations des entreprises grâce à l'IA hybride.</p>
-                  <Link to="/about" className="text-[#1A1A1A] font-bold border-b border-[#1A1A1A] hover:text-[#FFB600] hover:border-[#FFB600] transition-colors">Notre Vision</Link>
+                  <h3 className="font-bold text-[#027333] uppercase tracking-widest text-sm mb-4">L'Agence</h3>
+                  <p className="text-gray-500 mb-4">Flowera transforme les opérations des entreprises grâce à l'IA hybride.</p>
+                  <Link to="/about" className="text-[#262626] font-bold border-b border-[#262626] hover:text-[#027333] hover:border-[#027333] transition-colors">Notre Vision</Link>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#FFB600] uppercase tracking-widest text-sm mb-4">Organisation</h3>
-                  <ul className="space-y-3 text-[#1A1A1A]">
-                    <li><Link to="/team" className="hover:text-[#FFB600] transition-colors">L'Équipe</Link></li>
-                    <li><Link to="/values" className="hover:text-[#FFB600] transition-colors">Nos Valeurs</Link></li>
+                  <h3 className="font-bold text-[#027333] uppercase tracking-widest text-sm mb-4">Organisation</h3>
+                  <ul className="space-y-3 text-[#262626]">
+                    <li><Link to="/team" className="hover:text-[#027333] transition-colors">L'Équipe</Link></li>
+                    <li><Link to="/values" className="hover:text-[#027333] transition-colors">Nos Valeurs</Link></li>
                   </ul>
                 </div>
+              </div>
+            )}
+
+            {/* SECTION: EXPERTISES */}
+            {activeMenu === 'expertise' && (
+              <div className="grid grid-cols-3 gap-x-12 gap-y-7 animate-fade-in">
+                {EXPERTISES.map((cat) => (
+                  <div key={cat.title} className="min-w-0">
+                    <h3 className="text-lg font-extrabold text-[#262626] pb-2.5 mb-3 border-b-2 border-[#027333]/20">
+                      {cat.title}
+                    </h3>
+                    <ul className="space-y-1.5">
+                      {cat.items.map((item) => (
+                        <li key={item}>
+                          <Link
+                            to="/solutions"
+                            className="block text-sm font-medium text-gray-600 hover:text-[#027333] transition-colors leading-snug"
+                          >
+                            {item}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             )}
 
@@ -288,24 +271,24 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             {activeMenu === 'solutions' && (
               <div className="grid grid-cols-4 gap-8 animate-fade-in">
                 <div className="col-span-1 border-r border-gray-100 pr-8">
-                  <h3 className="font-bold text-3xl mb-4 text-[#1A1A1A]">Notre savoir-faire</h3>
+                  <h3 className="font-bold text-3xl mb-4 text-[#262626]">Notre savoir-faire</h3>
                   <p className="text-gray-500 text-sm">Des solutions technologiques propriétaires pour chaque strate de votre entreprise.</p>
                 </div>
                 <div className="col-span-3 grid grid-cols-2 gap-x-12 gap-y-6">
                   <Link to="/solutions/audit-processus" className="group">
-                    <h4 className="font-bold text-[#1A1A1A] group-hover:text-[#FFB600] transition-colors mb-1">Audit de Processus & Performance</h4>
+                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Audit de Processus & Performance</h4>
                     <p className="text-sm text-gray-400">Détection des gisements de productivité.</p>
                   </Link>
                   <Link to="/solutions/optimisation" className="group">
-                    <h4 className="font-bold text-[#1A1A1A] group-hover:text-[#FFB600] transition-colors mb-1">Optimisation & Automatisation</h4>
+                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Optimisation & Automatisation</h4>
                     <p className="text-sm text-gray-400">Suppression des tâches répétitives.</p>
                   </Link>
                   <Link to="/solutions/finance" className="group">
-                    <h4 className="font-bold text-[#1A1A1A] group-hover:text-[#FFB600] transition-colors mb-1">RPA</h4>
+                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">RPA</h4>
                     <p className="text-sm text-gray-400">Automatisation de processus métier.</p>
                   </Link>
                   <Link to="/solutions/strategie" className="group">
-                    <h4 className="font-bold text-[#1A1A1A] group-hover:text-[#FFB600] transition-colors mb-1">Stratégie Board & Acculturation</h4>
+                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Stratégie Board & Acculturation</h4>
                     <p className="text-sm text-gray-400">Formation dirigeants & Vision.</p>
                   </Link>
                 </div>
@@ -316,20 +299,20 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             {activeMenu === 'insights' && (
               <div className="grid grid-cols-12 gap-8 animate-fade-in">
                 <div className="col-span-3 border-r border-gray-100">
-                  <h3 className="font-bold text-3xl mb-4 text-[#1A1A1A]">Explore</h3>
+                  <h3 className="font-bold text-3xl mb-4 text-[#262626]">Explore</h3>
                 </div>
                 <div className="col-span-9 grid grid-cols-3 gap-8">
-                  <Link to="/insights?cat=climat" className="block p-4 bg-gray-50 rounded hover:bg-[#FFB600]/10 transition-colors">
+                  <Link to="/insights?cat=climat" className="block p-4 bg-gray-50 rounded hover:bg-[#027333]/10 transition-colors">
                     <h4 className="font-bold mb-2">Climat & RSE</h4>
                     <p className="text-xs text-gray-500">L'IA au service de la durabilité.</p>
                   </Link>
-                  <Link to="/insights?cat=analysis" className="block p-4 bg-gray-50 rounded hover:bg-[#FFB600]/10 transition-colors">
+                  <Link to="/insights?cat=analysis" className="block p-4 bg-gray-50 rounded hover:bg-[#027333]/10 transition-colors">
                     <h4 className="font-bold mb-2">Analyses Sectorielles</h4>
                     <p className="text-xs text-gray-500">Tendances par industrie.</p>
                   </Link>
-                  <Link to="/insights" className="block p-4 bg-[#1A1A1A] rounded hover:bg-[#FFB600] group transition-colors">
-                    <h4 className="font-bold mb-2 text-white group-hover:text-[#1A1A1A]">Tous nos points de vue</h4>
-                    <p className="text-xs text-gray-400 group-hover:text-[#1A1A1A]/70">Accéder au journal.</p>
+                  <Link to="/insights" className="block p-4 bg-[#262626] rounded hover:bg-[#027333] group transition-colors">
+                    <h4 className="font-bold mb-2 text-white group-hover:text-[#262626]">Tous nos points de vue</h4>
+                    <p className="text-xs text-gray-400 group-hover:text-[#262626]/70">Accéder au journal.</p>
                   </Link>
                 </div>
               </div>
@@ -339,13 +322,13 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             {activeMenu === 'careers' && (
               <div className="grid grid-cols-3 gap-12 animate-fade-in">
                 <div>
-                  <h3 className="font-bold text-[#FFB600] uppercase tracking-widest text-sm mb-4">Rejoindre Silent Office</h3>
-                  <Link to="/careers" className="text-2xl font-light hover:text-[#FFB600] transition-colors">Pourquoi nous choisir ?</Link>
+                  <h3 className="font-bold text-[#027333] uppercase tracking-widest text-sm mb-4">Rejoindre Flowera</h3>
+                  <Link to="/careers" className="text-2xl font-light hover:text-[#027333] transition-colors">Pourquoi nous choisir ?</Link>
                 </div>
                 <div>
                   <ul className="space-y-4">
-                    <li><Link to="/careers" className="font-bold text-[#1A1A1A] hover:text-[#FFB600]">Consultez nos offres</Link></li>
-                    <li><Link to="/careers/culture" className="font-bold text-[#1A1A1A] hover:text-[#FFB600]">Notre culture</Link></li>
+                    <li><Link to="/careers" className="font-bold text-[#262626] hover:text-[#027333]">Consultez nos offres</Link></li>
+                    <li><Link to="/careers/culture" className="font-bold text-[#262626] hover:text-[#027333]">Notre culture</Link></li>
                   </ul>
                 </div>
               </div>
@@ -358,22 +341,40 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
       {isMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-xl p-6 flex flex-col space-y-4 h-screen mt-4 rounded-2xl mx-6">
           {/* Added MX and margin top to align better floating mobile menu */}
-          <button onClick={() => handleMobileNav('/about')} className="text-xl font-medium text-[#1A1A1A] text-left">Qui sommes-nous ?</button>
+          <button onClick={() => handleMobileNav('/about')} className="text-xl font-medium text-[#262626] text-left">Qui sommes-nous ?</button>
+
+          <div className="py-4 border-t border-gray-100">
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 block">Expertises</span>
+            {EXPERTISES.map((cat) => (
+              <div key={cat.title} className="mb-3">
+                <span className="block text-base font-extrabold text-[#262626] pb-1.5 mb-1.5 border-b-2 border-[#027333]/20">{cat.title}</span>
+                {cat.items.map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => handleMobileNav('/solutions')}
+                    className="block py-1 text-sm font-medium text-gray-600 text-left"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
 
           <div className="py-4 border-y border-gray-100">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 block">Solutions</span>
-            <button onClick={() => handleMobileNav('/solutions/audit-processus')} className="block py-2 text-lg text-[#1A1A1A]">Audit & Performance</button>
-            <button onClick={() => handleMobileNav('/solutions/optimisation')} className="block py-2 text-lg text-[#1A1A1A]">Optimisation</button>
-            <button onClick={() => handleMobileNav('/solutions/finance')} className="block py-2 text-lg text-[#1A1A1A]">RPA</button>
-            <button onClick={() => handleMobileNav('/solutions/strategie')} className="block py-2 text-lg text-[#1A1A1A]">Stratégie Board</button>
+            <button onClick={() => handleMobileNav('/solutions/audit-processus')} className="block py-2 text-lg text-[#262626]">Audit & Performance</button>
+            <button onClick={() => handleMobileNav('/solutions/optimisation')} className="block py-2 text-lg text-[#262626]">Optimisation</button>
+            <button onClick={() => handleMobileNav('/solutions/finance')} className="block py-2 text-lg text-[#262626]">RPA</button>
+            <button onClick={() => handleMobileNav('/solutions/strategie')} className="block py-2 text-lg text-[#262626]">Stratégie Board</button>
           </div>
 
-          <button onClick={() => handleMobileNav('/insights')} className="text-xl font-medium text-[#1A1A1A] text-left">Insights</button>
-          <button onClick={() => handleMobileNav('/careers')} className="text-xl font-medium text-[#1A1A1A] text-left">Carrière</button>
+          <button onClick={() => handleMobileNav('/insights')} className="text-xl font-medium text-[#262626] text-left">Insights</button>
+          <button onClick={() => handleMobileNav('/careers')} className="text-xl font-medium text-[#262626] text-left">Carrière</button>
 
           <button
             onClick={() => handleMobileNav('/contact')}
-            className="bg-[#FFB600] text-[#1A1A1A] w-full py-4 font-bold text-center mt-4 rounded-sm"
+            className="bg-[#027333] text-[#262626] w-full py-4 font-bold text-center mt-4 rounded-sm"
           >
             Demander un Audit
           </button>

@@ -42,7 +42,7 @@ const ContactPage: React.FC = () => {
         return (
             <div className="min-h-screen bg-white pt-32 pb-24 px-6">
                 <div className="max-w-2xl mx-auto text-center">
-                    <div className="w-20 h-20 bg-[#FFB600] rounded-full flex items-center justify-center mx-auto mb-8">
+                    <div className="w-20 h-20 bg-[#027333] rounded-full flex items-center justify-center mx-auto mb-8">
                         <CheckCircle2 size={40} className="text-white" />
                     </div>
                     <h1 className="text-4xl font-light mb-6">Merci pour votre demande !</h1>
@@ -54,7 +54,7 @@ const ContactPage: React.FC = () => {
                     </p>
                     <button
                         onClick={() => navigate('/')}
-                        className="bg-[#1A1A1A] text-white px-8 py-4 font-bold hover:bg-[#FFB600] hover:text-[#1A1A1A] transition-all"
+                        className="bg-[#262626] text-white px-8 py-4 font-bold hover:bg-[#027333] hover:text-[#262626] transition-all"
                     >
                         Retour à l'accueil
                     </button>
@@ -82,7 +82,7 @@ const ContactPage: React.FC = () => {
                                     name="name"
                                     placeholder="Nom*"
                                     required
-                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#FFB600] focus:outline-none transition-colors"
+                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#027333] focus:outline-none transition-colors"
                                 />
                                 <ValidationError prefix="Name" field="name" errors={state.errors} />
                             </div>
@@ -94,7 +94,7 @@ const ContactPage: React.FC = () => {
                                     name="company"
                                     placeholder="Entreprise*"
                                     required
-                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#FFB600] focus:outline-none transition-colors"
+                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#027333] focus:outline-none transition-colors"
                                 />
                                 <ValidationError prefix="Company" field="company" errors={state.errors} />
                             </div>
@@ -106,7 +106,7 @@ const ContactPage: React.FC = () => {
                                     name="email"
                                     placeholder="E-mail de l'entreprise*"
                                     required
-                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#FFB600] focus:outline-none transition-colors"
+                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#027333] focus:outline-none transition-colors"
                                 />
                                 <ValidationError prefix="Email" field="email" errors={state.errors} />
                             </div>
@@ -118,7 +118,7 @@ const ContactPage: React.FC = () => {
                                     name="phone"
                                     placeholder="Téléphone*"
                                     required
-                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#FFB600] focus:outline-none transition-colors"
+                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#027333] focus:outline-none transition-colors"
                                 />
                                 <ValidationError prefix="Phone" field="phone" errors={state.errors} />
                             </div>
@@ -129,7 +129,7 @@ const ContactPage: React.FC = () => {
                                     name="budget"
                                     required
                                     defaultValue=""
-                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#FFB600] focus:outline-none transition-colors bg-white text-gray-900"
+                                    className="w-full border-b border-gray-300 py-3 px-0 focus:border-[#027333] focus:outline-none transition-colors bg-white text-gray-900"
                                 >
                                     <option value="" disabled>Budget du projet*</option>
                                     {budgetOptions.map((option) => (
@@ -148,7 +148,7 @@ const ContactPage: React.FC = () => {
                                     placeholder="Décrivez vos besoins en détail*"
                                     required
                                     rows={5}
-                                    className="w-full border border-gray-300 py-3 px-4 focus:border-[#FFB600] focus:outline-none transition-colors resize-none"
+                                    className="w-full border border-gray-300 py-3 px-4 focus:border-[#027333] focus:outline-none transition-colors resize-none"
                                 />
                                 <ValidationError prefix="Message" field="message" errors={state.errors} />
                             </div>
@@ -157,14 +157,14 @@ const ContactPage: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={state.submitting}
-                                className="w-full bg-[#FFB600] text-[#1A1A1A] py-5 font-bold text-lg hover:bg-[#1A1A1A] hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full bg-[#027333] text-[#262626] py-5 font-bold text-lg hover:bg-[#262626] hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {state.submitting ? 'Envoi en cours...' : 'Envoyer'}
                             </button>
                         </form>
 
                         <p className="text-sm text-gray-500 mt-6">
-                            En cliquant sur Envoyer, vous consentez à ce que Silent Office traite vos données personnelles conformément à notre{' '}
+                            En cliquant sur Envoyer, vous consentez à ce que Flowera traite vos données personnelles conformément à notre{' '}
                             <a href="#" className="underline">politique de confidentialité</a>.
                             En communiquant votre numéro de téléphone, vous acceptez que nous puissions vous contacter par le biais
                             d'appels vocaux, de SMS et d'applications de messagerie.
@@ -172,19 +172,19 @@ const ContactPage: React.FC = () => {
 
                         <p className="text-sm text-gray-600 mt-6">
                             Vous pouvez également nous envoyer votre demande à{' '}
-                            <a href="mailto:contact@silentoffice.org" className="text-[#FFB600] font-bold underline">
-                                contact@silentoffice.org
+                            <a href="mailto:contact@flowera.fr" className="text-[#027333] font-bold underline">
+                                contact@flowera.fr
                             </a>
                         </p>
                     </div>
 
                     {/* Que se passe-t-il ensuite */}
-                    <div className="bg-[#F4F4F4] rounded-2xl p-12">
+                    <div className="bg-[#F2F1DF] rounded-2xl p-12">
                         <h2 className="text-3xl font-light mb-12">Que se passe-t-il ensuite ?</h2>
 
                         <div className="space-y-8">
                             <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center font-bold">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#262626] flex items-center justify-center font-bold">
                                     1
                                 </div>
                                 <div>
@@ -196,7 +196,7 @@ const ContactPage: React.FC = () => {
                             </div>
 
                             <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center font-bold">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#262626] flex items-center justify-center font-bold">
                                     2
                                 </div>
                                 <div>
@@ -208,7 +208,7 @@ const ContactPage: React.FC = () => {
                             </div>
 
                             <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center font-bold">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#262626] flex items-center justify-center font-bold">
                                     3
                                 </div>
                                 <div>
@@ -219,7 +219,7 @@ const ContactPage: React.FC = () => {
                             </div>
 
                             <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center font-bold">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-[#262626] flex items-center justify-center font-bold">
                                     4
                                 </div>
                                 <div>

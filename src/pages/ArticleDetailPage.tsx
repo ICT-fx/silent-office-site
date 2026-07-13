@@ -29,7 +29,7 @@ const ArticleDetailPage: React.FC = () => {
             <div className="min-h-screen bg-white">
                 {/* Scroll Progress Bar */}
                 <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
-                    <div className="h-full bg-[#FFB600] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
                 </div>
 
                 {/* Hero Section */}
@@ -39,7 +39,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
                         <div className="max-w-4xl mx-auto text-white">
-                            <span className="bg-[#FFB600] text-[#1A1A1A] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
                                 Point de vue
                             </span>
                             <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
@@ -51,15 +51,15 @@ const ArticleDetailPage: React.FC = () => {
 
                             <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
                                 <div className="flex items-center gap-2">
-                                    <Calendar size={16} className="text-[#FFB600]" />
+                                    <Calendar size={16} className="text-[#027333]" />
                                     <span>24 Nov 2025</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock size={16} className="text-[#FFB600]" />
+                                    <Clock size={16} className="text-[#027333]" />
                                     <span>5 min de lecture</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <User size={16} className="text-[#FFB600]" />
+                                    <User size={16} className="text-[#027333]" />
                                     <span>Co-rédigé avec Henri Lajarrige et Ouissam Taleb Bendiab</span>
                                 </div>
                             </div>
@@ -69,14 +69,14 @@ const ArticleDetailPage: React.FC = () => {
 
                 {/* Article Content */}
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#FFB600] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
 
                     {/* Intro */}
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
-                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#1A1A1A] mb-8 border-l-4 border-[#FFB600] pl-6">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
                             Les conseils d’administration multiplient les discussions sur la course à l’Intelligence artificielle, mais sous l’effervescence, la réalité est plus nuancée. Les organisations investissent massivement, cependant les retours tardent à se concrétiser et restent difficiles à mesurer.
                         </p>
                         <p>
@@ -97,14 +97,14 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 1: Investments */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">Des investissements en hausse, un ROI à concrétiser</h2>
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Des investissements en hausse, un ROI à concrétiser</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             Tous secteurs confondus, les investissements dans l’IA connaissent une croissance rapide. Selon notre enquête, 85 % des entreprises françaises (vs 98 % en Europe) ont augmenté leurs investissements au cours des 12 derniers mois, et 92 % prévoient de les accroître à nouveau cette année.
                         </p>
 
                         {/* Figure 1: Evolution des investissements */}
                         <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
-                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 1. Evolution des investissements en IA en France (12 derniers mois)</h4>
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Evolution des investissements en IA en France (12 derniers mois)</h4>
                             <p className="text-sm text-gray-500 mb-8 italic">Comment les investissements de votre organisation dans l’IA ont-ils évolué au cours des 12 derniers mois ?</p>
 
                             <div className="space-y-4">
@@ -113,7 +113,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation très forte (+40%+)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-200/50 rounded-full" style={{ width: '5%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">5%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">5%</span>
                                     </div>
                                 </div>
                                 {/* Bar 2 */}
@@ -121,7 +121,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation significative (+20% à +39%)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-300/50 rounded-full" style={{ width: '15%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">15%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">15%</span>
                                     </div>
                                 </div>
                                 {/* Bar 3 */}
@@ -129,7 +129,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Augmentation modérée (+11% à +19%)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-400/50 rounded-full" style={{ width: '37%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">37%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">37%</span>
                                     </div>
                                 </div>
                                 {/* Bar 4 */}
@@ -137,7 +137,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Légère augmentation (+6% à +10%)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-500/50 rounded-full" style={{ width: '28%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">28%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">28%</span>
                                     </div>
                                 </div>
                                 {/* Bar 5 */}
@@ -145,7 +145,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Stabilité (entre -5% et +5%)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-600/50 rounded-full" style={{ width: '12%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">12%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">12%</span>
                                     </div>
                                 </div>
                                 {/* Bar 6 */}
@@ -153,7 +153,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <div className="w-1/3 md:w-1/4 text-right text-gray-600 font-medium">Légère diminution (-6% à -10%)</div>
                                     <div className="flex-1 bg-white rounded-full h-8 flex items-center px-2 relative border border-gray-100">
                                         <div className="absolute left-0 top-0 bottom-0 bg-teal-800/50 rounded-full" style={{ width: '2%' }}></div>
-                                        <span className="relative z-10 font-bold text-[#1A1A1A]">2%</span>
+                                        <span className="relative z-10 font-bold text-[#262626]">2%</span>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ const ArticleDetailPage: React.FC = () => {
 
                         {/* Figure 2: Prévisions */}
                         <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
-                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 2. Prévisions des investissements (12 prochains mois)</h4>
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Prévisions des investissements (12 prochains mois)</h4>
                             <p className="text-sm text-gray-500 mb-8 italic">Au cours des 12 prochains mois, comment votre organisation prévoit-elle de faire évoluer ses investissements financiers dédiés à l’IA ?</p>
 
                             <div className="h-64 flex items-end justify-between gap-2 md:gap-4 px-2">
@@ -203,14 +203,14 @@ const ArticleDetailPage: React.FC = () => {
                         <p className="text-gray-700 leading-relaxed mb-8">
                             Pourtant, malgré cette dynamique, la plupart des répondants indiquent qu’il faut entre deux et quatre ans pour obtenir un retour sur investissement satisfaisant pour un cas d’usage type de l’IA. Ce délai est nettement plus long que la période de retour sur investissement habituellement attendue pour les technologies, qui se situe entre sept et douze mois.
                         </p>
-                        <blockquote className="border-l-4 border-[#FFB600] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
+                        <blockquote className="border-l-4 border-[#027333] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
                             "Le délai pour concrétiser les gains liés à l’IA varie selon les secteurs d’activités mais, en moyenne, les bénéfices significatifs mettent plusieurs années à se matérialiser."
                             <span className="block mt-2 text-xs font-bold uppercase not-italic text-gray-400">— Dirigeant d’une entreprise de biens de consommation</span>
                         </blockquote>
 
                         {/* Figure 3: Délai ROI Comparison */}
                         <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
-                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 3. Délai de retour sur investissement</h4>
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. Délai de retour sur investissement</h4>
                             <p className="text-sm text-gray-500 mb-8 italic">Pour le cas d’usage de l’IA au sein de votre organisation, quel est le délai moyen observé pour obtenir un retour sur investissement ?</p>
 
                             <div className="space-y-6">
@@ -313,7 +313,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 2: GenAI ROI */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">La GenAI, catalyseur d’un retour sur investissement rapide</h2>
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">La GenAI, catalyseur d’un retour sur investissement rapide</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             L’IA générative s’impose comme un levier de retour sur investissement (ROI) rapide, bien plus que les précédentes vagues d’IA. Les dirigeants y voient la promesse d’une efficacité immédiate : automatisation des tâches répétitives, génération de contenus, assistance à la décision.
                         </p>
@@ -323,7 +323,7 @@ const ArticleDetailPage: React.FC = () => {
 
                         {/* Figure 4: ROI Attendu GenAI */}
                         <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
-                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 4. ROI attendu de la GenAI</h4>
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 4. ROI attendu de la GenAI</h4>
 
                             <div className="space-y-6 mt-8">
                                 {/* Row */}
@@ -400,18 +400,18 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 3: Obstacles */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">Obstacles au ROI et le rôle de la GenAI pour les dépasser</h2>
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Obstacles au ROI et le rôle de la GenAI pour les dépasser</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             Les freins à l’adoption de l’IA et à la réalisation du ROI sont avant tout organisationnels et humains. En Europe, ils se traduisent par : un manque de compétences en IA (29 %), des infrastructures et des données insuffisantes (26 %), une gouvernance peu structurée (21 %) et des préoccupations en matière de sécurité et de souveraineté (25 %-28 %).
                         </p>
-                        <blockquote className="border-l-4 border-[#FFB600] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
+                        <blockquote className="border-l-4 border-[#027333] pl-6 italic text-gray-600 my-8 bg-gray-50 py-4 pr-4 rounded-r-lg">
                             "Tout le monde demande à son organisation d’adopter l’IA, même sans savoir exactement quels résultats en attendre. Il y a un tel engouement que je pense que les entreprises s’attendent à ce qu’elle résolve tout, comme par magie."
                             <span className="block mt-2 text-xs font-bold uppercase not-italic text-gray-400">— Dirigeant d’une entreprise de télécommunications</span>
                         </blockquote>
 
                         {/* Figure 5: Obstacles */}
                         <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
-                            <h4 className="font-bold text-[#1A1A1A] mb-2 text-lg">Figure 5. Les obstacles au ROI de l’IA</h4>
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 5. Les obstacles au ROI de l’IA</h4>
                             <p className="text-sm text-gray-500 mb-8 italic">Quels obstacles freinent votre organisation dans la réalisation du ROI de ses projets IA ?</p>
 
                             <div className="space-y-4">
@@ -461,22 +461,22 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 4: Comparison Table */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">GenAI vs Agentic AI : deux logiques de ROI</h2>
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">GenAI vs Agentic AI : deux logiques de ROI</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             Les entreprises distinguent désormais deux modèles économiques autour de l’IA :
                         </p>
                         <ul className="list-disc pl-6 space-y-4 text-gray-700 mb-8">
-                            <li><strong className="text-[#1A1A1A]">La GenAI</strong> se positionne comme un moteur de ROI express, immédiat et quantifiable, avec des impacts mesurables en termes de productivité, rapidité et économies.</li>
-                            <li><strong className="text-[#1A1A1A]">L’Agentic AI</strong> se projette sur un horizon plus long, orienté vers la transformation organisationnelle et la délégation partielle de la prise de décision aux systèmes autonomes.</li>
+                            <li><strong className="text-[#262626]">La GenAI</strong> se positionne comme un moteur de ROI express, immédiat et quantifiable, avec des impacts mesurables en termes de productivité, rapidité et économies.</li>
+                            <li><strong className="text-[#262626]">L’Agentic AI</strong> se projette sur un horizon plus long, orienté vers la transformation organisationnelle et la délégation partielle de la prise de décision aux systèmes autonomes.</li>
                         </ul>
 
                         {/* Figure 6: Table */}
                         <div className="overflow-hidden rounded-xl border border-gray-200 mb-12 shadow-sm">
                             <table className="w-full text-sm text-left">
-                                <thead className="bg-[#1A1A1A] text-white">
+                                <thead className="bg-[#262626] text-white">
                                     <tr>
                                         <th className="px-6 py-4 font-bold uppercase tracking-wider">Aspect</th>
-                                        <th className="px-6 py-4 font-bold uppercase tracking-wider text-[#FFB600]">GenAI</th>
+                                        <th className="px-6 py-4 font-bold uppercase tracking-wider text-[#027333]">GenAI</th>
                                         <th className="px-6 py-4 font-bold uppercase tracking-wider text-teal-300">Agentic AI</th>
                                     </tr>
                                 </thead>
@@ -514,12 +514,12 @@ const ArticleDetailPage: React.FC = () => {
                     </section>
 
                     {/* CTA */}
-                    <div className="mt-20 bg-[#1A1A1A] rounded-2xl p-12 text-center text-white">
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
                         <h3 className="text-2xl font-bold mb-4">Besoin d'aide pour mesurer votre ROI ?</h3>
                         <p className="text-gray-300 mb-8 max-w-xl mx-auto">
                             Nos experts Strategy & AI vous accompagnent dans la définition de vos KPIs et le pilotage de vos investissements.
                         </p>
-                        <Link to="/contact" className="inline-block bg-[#FFB600] text-[#1A1A1A] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">
+                        <Link to="/contact" className="inline-block bg-[#027333] text-[#262626] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">
                             Contacter l'équipe Strategy
                         </Link>
                     </div>
@@ -534,7 +534,7 @@ const ArticleDetailPage: React.FC = () => {
                 {/* Barre de progression */}
                 <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
                     <div
-                        className="h-full bg-[#FFB600] transition-all duration-150"
+                        className="h-full bg-[#027333] transition-all duration-150"
                         style={{ width: `${scrollProgress}%` }}
                     />
                 </div>
@@ -549,7 +549,7 @@ const ArticleDetailPage: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                         <div className="max-w-4xl mx-auto text-white">
-                            <span className="bg-[#FFB600] text-[#1A1A1A] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
                                 Point de vue
                             </span>
                             <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
@@ -557,11 +557,11 @@ const ArticleDetailPage: React.FC = () => {
                             </h1>
                             <div className="flex items-center gap-6 text-sm font-medium">
                                 <div className="flex items-center gap-2">
-                                    <Calendar size={16} className="text-[#FFB600]" />
+                                    <Calendar size={16} className="text-[#027333]" />
                                     <span>10 Déc 2025</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock size={16} className="text-[#FFB600]" />
+                                    <Clock size={16} className="text-[#027333]" />
                                     <span>7 min de lecture</span>
                                 </div>
                             </div>
@@ -573,7 +573,7 @@ const ArticleDetailPage: React.FC = () => {
                 <article className="max-w-4xl mx-auto px-6 py-16">
                     <Link
                         to="/insights"
-                        className="inline-flex items-center text-gray-500 hover:text-[#FFB600] transition-colors mb-12 group text-sm font-medium"
+                        className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium"
                     >
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
@@ -581,7 +581,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Introduction */}
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
-                        <p className="text-xl md:text-2xl leading-relaxed font-light text-[#1A1A1A] mb-8 border-l-4 border-[#FFB600] pl-6">
+                        <p className="text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
                             Les agents d’IA autonomes ont un potentiel réellement transformateur. Mais c'est leur orchestration, c'est à dire la manière de les coordonner, qui pourrait devenir le véritable moteur d’une automatisation intelligente.
                         </p>
                         <p>
@@ -661,7 +661,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 2 */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-light mb-8 text-[#1A1A1A]">Faire fonctionner les entreprises au service des systèmes multi-agents</h2>
+                        <h2 className="text-3xl font-light mb-8 text-[#262626]">Faire fonctionner les entreprises au service des systèmes multi-agents</h2>
                         <div className="pl-6 border-l-2 border-gray-200 mb-8">
                             <h3 className="text-xl font-bold mb-4">Des agents à usage unique aux systèmes multi-agents : les entreprises sont-elles prêtes ?</h3>
                             <p className="text-gray-600 mb-4">
@@ -677,7 +677,7 @@ const ArticleDetailPage: React.FC = () => {
                             <h4 className="font-bold text-center mb-8">Exemple de stratégie agentique selon la complexité et les processus</h4>
                             <div className="grid md:grid-cols-3 gap-6">
                                 {/* Card 1 */}
-                                <div className="bg-[#BACD32] p-6 rounded-xl text-[#1A1A1A] flex flex-col h-full shadow-lg transform hover:-translate-y-1 transition-transform">
+                                <div className="bg-[#BACD32] p-6 rounded-xl text-[#262626] flex flex-col h-full shadow-lg transform hover:-translate-y-1 transition-transform">
                                     <div className="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
                                         <Layers size={24} />
                                     </div>
@@ -699,7 +699,7 @@ const ArticleDetailPage: React.FC = () => {
                                     </p>
                                 </div>
                                 {/* Card 3 */}
-                                <div className="bg-[#86BC29] p-6 rounded-xl text-[#1A1A1A] flex flex-col h-full shadow-lg transform hover:-translate-y-1 transition-transform">
+                                <div className="bg-[#86BC29] p-6 rounded-xl text-[#262626] flex flex-col h-full shadow-lg transform hover:-translate-y-1 transition-transform">
                                     <div className="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
                                         <CheckCircle2 size={24} />
                                     </div>
@@ -718,7 +718,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 3 */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-light mb-8 text-[#1A1A1A]">La dimension humaine dans l’orchestration des agents</h2>
+                        <h2 className="text-3xl font-light mb-8 text-[#262626]">La dimension humaine dans l’orchestration des agents</h2>
                         <p className="text-gray-700 leading-relaxed mb-6">
                             En 2025, les entreprises mettent en œuvre des orchestrations d’agents relativement simples. À mesure que ces initiatives se développent, les entreprises devront de plus en plus équilibrer l’autonomie des agents et la supervision humaine.
                         </p>
@@ -731,7 +731,7 @@ const ArticleDetailPage: React.FC = () => {
                                 <div className="grid md:grid-cols-3 gap-8 relative z-10">
                                     <div className="flex flex-col items-center text-center">
                                         <div className="w-14 h-14 rounded-full bg-[#BACD32] border-4 border-white shadow-md flex items-center justify-center mb-6">
-                                            <span className="font-bold text-[#1A1A1A]">1</span>
+                                            <span className="font-bold text-[#262626]">1</span>
                                         </div>
                                         <h5 className="font-bold text-lg mb-3">Humains <span className="text-[#86BC29]">dans</span> la boucle</h5>
                                         <p className="text-sm text-gray-500">Modèle dominant en 2025. Les agents fournissent des recommandations.</p>
@@ -758,7 +758,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 4 */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-light mb-8 text-[#1A1A1A]">Maîtriser la dispersion des agents IA</h2>
+                        <h2 className="text-3xl font-light mb-8 text-[#262626]">Maîtriser la dispersion des agents IA</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             Ces évolutions rendent l’interopérabilité des systèmes multi-agents à la fois essentielle et complexe. Les entreprises peuvent s’inspirer des technologies qui ont façonné l’informatique moderne.
                         </p>
@@ -771,7 +771,7 @@ const ArticleDetailPage: React.FC = () => {
                                     <span className="font-bold tracking-wide text-sm uppercase">Utilisateurs de l'entreprise</span>
                                 </div>
                                 <div className="flex justify-center gap-8 text-white/30 py-1"><span>↑↓</span><span>↑↓</span><span>↑↓</span></div>
-                                <div className="bg-[#86BC29] text-[#1A1A1A] rounded-lg p-6 relative overflow-hidden">
+                                <div className="bg-[#86BC29] text-[#262626] rounded-lg p-6 relative overflow-hidden">
                                     <div className="relative z-10 flex gap-4 items-start">
                                         <div className="mt-1"><MessageSquare size={20} /></div>
                                         <div><h5 className="font-bold text-sm uppercase tracking-wider mb-1">Couche Expérience Utilisateur</h5></div>
@@ -801,7 +801,7 @@ const ArticleDetailPage: React.FC = () => {
 
                     {/* Section 5 & Conclusion */}
                     <section className="mb-20">
-                        <h2 className="text-3xl font-light mb-8 text-[#1A1A1A]">Faire fonctionner les systèmes multi-agents au service des entreprises</h2>
+                        <h2 className="text-3xl font-light mb-8 text-[#262626]">Faire fonctionner les systèmes multi-agents au service des entreprises</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             À mesure que les entreprises maîtrisent les bases techniques, trois repères stratégiques peuvent les aider à mieux aligner leurs initiatives avec leurs priorités business : protocoles de communication flexibles, plateformes d'orchestration et évolution des équipes.
                         </p>
@@ -816,10 +816,10 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
                     </section>
 
-                    <div className="mt-20 bg-[#1A1A1A] rounded-2xl p-12 text-center text-white">
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
                         <h3 className="text-2xl font-bold mb-4">Prêt à orchestrer votre transformation ?</h3>
-                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">Silent Office vous accompagne dans la conception et le déploiement de vos systèmes multi-agents.</p>
-                        <Link to="/contact" className="inline-block bg-[#FFB600] text-[#1A1A1A] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">Contactez nos experts</Link>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">Flowera vous accompagne dans la conception et le déploiement de vos systèmes multi-agents.</p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-[#262626] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">Contactez nos experts</Link>
                     </div>
                 </article>
             </div>
@@ -831,7 +831,7 @@ const ArticleDetailPage: React.FC = () => {
         return (
             <div className="min-h-screen bg-white">
                 <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
-                    <div className="h-full bg-[#FFB600] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
                 </div>
 
                 {/* Hero Osez l'IA */}
@@ -840,7 +840,7 @@ const ArticleDetailPage: React.FC = () => {
                     <div className="absolute inset-0 bg-black/30" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                         <div className="max-w-4xl mx-auto text-white">
-                            <span className="bg-[#FFB600] text-[#1A1A1A] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Stratégie Nationale</span>
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Stratégie Nationale</span>
                             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
                                 Osez l'IA
                             </h1>
@@ -848,15 +848,15 @@ const ArticleDetailPage: React.FC = () => {
                                 Un plan ambitieux pour transformer le tissu économique français et faire de l'IA le moteur de votre croissance.
                             </p>
                             <div className="flex items-center gap-6 text-sm font-medium">
-                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#FFB600]" /><span>21 Jan 2026</span></div>
-                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#FFB600]" /><span>5 min de lecture</span></div>
+                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#027333]" /><span>21 Jan 2026</span></div>
+                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#027333]" /><span>5 min de lecture</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#FFB600] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -881,7 +881,7 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
                         <div className="bg-[#1A3A8A] p-8 rounded-xl shadow-lg text-white transform hover:-translate-y-1 transition-transform">
                             <div className="flex items-start justify-between mb-4">
-                                <span className="text-4xl font-bold text-[#FFB600]">13%</span>
+                                <span className="text-4xl font-bold text-[#027333]">13%</span>
                             </div>
                             <h3 className="font-bold mb-2">seulement des PME utilisent l'IA</h3>
                             <p className="text-sm text-blue-100">Le taux d'équipement actuel reste faible, représentant une opportunité majeure pour les premiers adoptants.</p>
@@ -896,7 +896,7 @@ const ArticleDetailPage: React.FC = () => {
                     </div>
 
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
-                        <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">L’usage de l’IA : un impératif de compétitivité</h2>
+                        <h2 className="text-3xl font-bold text-[#262626] mb-6">L’usage de l’IA : un impératif de compétitivité</h2>
                         <p>
                             Beaucoup d'entreprises hésitent encore à utiliser l'intelligence artificielle (IA) alors qu'elle constitue un levier de compétitivité majeur. En permettant d'automatiser certaines tâches chronophages, d'accélérer l'analyse de données ou encore de concevoir des produits innovants, l'IA n'est plus une option mais une nécessité stratégique.
                         </p>
@@ -955,20 +955,20 @@ const ArticleDetailPage: React.FC = () => {
                     </div>
 
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
-                        <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">Comment bénéficier du plan ?</h2>
+                        <h2 className="text-2xl font-bold text-[#262626] mb-4">Comment bénéficier du plan ?</h2>
                         <p>
                             Pour atteindre ces objectifs ambitieux, l'État, via Bpifrance, a mis en place un continuum d'aides pour accompagner les entreprises à chaque étape de leur maturité digitale :
                         </p>
                         <div className="grid md:grid-cols-2 gap-6 not-prose mt-8">
-                            <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-[#FFB600] transition-colors">
-                                <h4 className="font-bold text-[#1A1A1A] mb-2 flex items-center gap-2">
-                                    <Target className="text-[#FFB600]" size={20} /> Diag IA
+                            <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-[#027333] transition-colors">
+                                <h4 className="font-bold text-[#262626] mb-2 flex items-center gap-2">
+                                    <Target className="text-[#027333]" size={20} /> Diag IA
                                 </h4>
                                 <p className="text-sm text-gray-600">Pour évaluer votre potentiel et identifier les premiers cas d'usage à forte valeur ajoutée.</p>
                             </div>
-                            <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-[#FFB600] transition-colors">
-                                <h4 className="font-bold text-[#1A1A1A] mb-2 flex items-center gap-2">
-                                    <ShieldCheck className="text-[#FFB600]" size={20} /> Aide au choix de solution
+                            <div className="bg-white p-6 rounded-lg border border-gray-200 hover:border-[#027333] transition-colors">
+                                <h4 className="font-bold text-[#262626] mb-2 flex items-center gap-2">
+                                    <ShieldCheck className="text-[#027333]" size={20} /> Aide au choix de solution
                                 </h4>
                                 <p className="text-sm text-gray-600">Un accompagnement pour sélectionner les prestataires et technologies adaptés à vos besoins.</p>
                             </div>
@@ -986,12 +986,12 @@ const ArticleDetailPage: React.FC = () => {
                     </div>
 
                     {/* CTA Commun */}
-                    <div className="mt-20 bg-[#1A1A1A] rounded-2xl p-12 text-center text-white">
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
                         <h3 className="text-2xl font-bold mb-4">Prêt à lancer votre projet IA ?</h3>
                         <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-                            Silent Office est référencé pour vous accompagner dans le cadre du dispositif Osez l'IA.
+                            Flowera est référencé pour vous accompagner dans le cadre du dispositif Osez l'IA.
                         </p>
-                        <Link to="/contact" className="inline-block bg-[#FFB600] text-[#1A1A1A] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">
+                        <Link to="/contact" className="inline-block bg-[#027333] text-[#262626] px-8 py-4 font-bold rounded-lg hover:bg-white transition-all transform hover:scale-105">
                             Vérifier mon éligibilité
                         </Link>
                     </div>
@@ -1004,7 +1004,7 @@ const ArticleDetailPage: React.FC = () => {
         <div className="min-h-screen bg-white pt-32 pb-24 px-6">
             <div className="max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl font-light mb-6">Article non trouvé</h1>
-                <Link to="/insights" className="text-[#FFB600] font-bold hover:underline">
+                <Link to="/insights" className="text-[#027333] font-bold hover:underline">
                     ← Retour aux articles
                 </Link>
             </div>

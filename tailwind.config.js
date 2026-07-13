@@ -11,9 +11,11 @@ export default {
                 display: ['Manrope', 'sans-serif'],
             },
             colors: {
-                primary: '#FFB600',
-                dark: '#1A1A1A',
-                light: '#F4F4F4',
+                primary: '#027333',
+                secondary: '#025928',
+                accent: '#93BF9E',
+                dark: '#262626',
+                light: '#F2F1DF',
             }
         },
     },

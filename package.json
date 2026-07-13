@@ -1,5 +1,5 @@
 {
-  "name": "nexus-ai-consulting---corporate-premium",
+  "name": "flowera",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,7 @@
     "@blotato/n8n-nodes-blotato": "^1.0.7",
     "@formspree/react": "^3.0.0",
     "@google/genai": "^1.35.0",
+    "framer-motion": "^12.38.0",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

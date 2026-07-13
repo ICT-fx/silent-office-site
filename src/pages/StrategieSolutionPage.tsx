@@ -203,27 +203,27 @@ const StrategieSolutionPage: React.FC = () => {
     ];
 
     return (
-        <div className="pt-20 min-h-screen bg-white font-sans text-[#1A1A1A]">
+        <div className="pt-20 min-h-screen bg-white font-sans text-[#262626]">
 
             {/* HERO SECTION */}
-            <section className="relative py-24 px-6 bg-[#1A1A1A] text-white overflow-hidden">
+            <section className="relative py-24 px-6 bg-[#262626] text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                     <img src="https://picsum.photos/1920/1080?meeting&blur=2" className="w-full h-full object-cover" alt="Strategy Board" />
                 </div>
                 <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left">
-                    <Link to="/" className="text-gray-400 hover:text-[#FFB600] text-sm font-bold uppercase tracking-widest mb-8 inline-block">
+                    <Link to="/" className="text-gray-400 hover:text-[#027333] text-sm font-bold uppercase tracking-widest mb-8 inline-block">
                         &larr; Retour Accueil
                     </Link>
                     <h1 className="text-4xl md:text-6xl font-light mb-6 leading-tight">
                         La concurrence automatise. <br />
-                        <span className="font-bold text-[#FFB600]">Et vous ?</span>
+                        <span className="font-bold text-[#027333]">Et vous ?</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-300 max-w-3xl font-light mb-12 leading-relaxed">
                         Les technologies évoluent en continu. L'absence de vision claire entraîne des risques, des pertes financières et une inefficacité opérationnelle. <span className="text-white font-medium">Prenez les devants.</span>
                     </p>
                     <button
                         onClick={() => document.getElementById('programme')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="bg-[#FFB600] text-[#1A1A1A] px-10 py-5 font-bold text-lg hover:bg-white transition-all inline-flex items-center shadow-lg"
+                        className="bg-[#027333] text-[#262626] px-10 py-5 font-bold text-lg hover:bg-white transition-all inline-flex items-center shadow-lg"
                     >
                         Découvrir le programme d'acculturation
                         <ArrowRight className="ml-2 w-5 h-5" />
@@ -232,18 +232,18 @@ const StrategieSolutionPage: React.FC = () => {
             </section>
 
             {/* NOTRE APPROCHE (4 Piliers) */}
-            <section className="py-24 px-6 bg-gray-50">
+            <section className="py-24 px-6 bg-white">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-[#FFB600] font-bold uppercase tracking-widest text-sm mb-4 block">Notre Approche</span>
+                        <span className="text-[#027333] font-bold uppercase tracking-widest text-sm mb-4 block">Notre Approche</span>
                         <h2 className="text-3xl md:text-4xl font-bold">Un accompagnement stratégique global</h2>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Pilier 1 */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
-                            <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFB600] transition-colors">
-                                <Brain className="w-7 h-7 text-[#1A1A1A]" />
+                            <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                <Brain className="w-7 h-7 text-[#262626]" />
                             </div>
                             <h3 className="font-bold text-xl mb-3">Comprendre les enjeux</h3>
                             <p className="text-gray-500 leading-relaxed">Démystifier l'IA et la Data pour sortir des fantasmes et saisir les opportunités réelles.</p>
@@ -251,8 +251,8 @@ const StrategieSolutionPage: React.FC = () => {
 
                         {/* Pilier 2 */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
-                            <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFB600] transition-colors">
-                                <Lightbulb className="w-7 h-7 text-[#1A1A1A]" />
+                            <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                <Lightbulb className="w-7 h-7 text-[#262626]" />
                             </div>
                             <h3 className="font-bold text-xl mb-3">Décider intelligemment</h3>
                             <p className="text-gray-500 leading-relaxed">Prioriser les investissements rentables et éviter les projets "gadgets" sans ROI.</p>
@@ -260,8 +260,8 @@ const StrategieSolutionPage: React.FC = () => {
 
                         {/* Pilier 3 */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
-                            <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFB600] transition-colors">
-                                <Cpu className="w-7 h-7 text-[#1A1A1A]" />
+                            <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                <Cpu className="w-7 h-7 text-[#262626]" />
                             </div>
                             <h3 className="font-bold text-xl mb-3">Automatiser efficacement</h3>
                             <p className="text-gray-500 leading-relaxed">Déployer les bonnes technologies (RPA, IA, Agents) au bon endroit dans votre chaîne de valeur.</p>
@@ -269,8 +269,8 @@ const StrategieSolutionPage: React.FC = () => {
 
                         {/* Pilier 4 */}
                         <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
-                            <div className="w-14 h-14 bg-[#F4F4F4] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#FFB600] transition-colors">
-                                <ShieldCheck className="w-7 h-7 text-[#1A1A1A]" />
+                            <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                <ShieldCheck className="w-7 h-7 text-[#262626]" />
                             </div>
                             <h3 className="font-bold text-xl mb-3">Sécuriser durablement</h3>
                             <p className="text-gray-500 leading-relaxed">Maîtriser la gouvernance des données, la conformité et les risques liés à l'IA.</p>
@@ -283,16 +283,16 @@ const StrategieSolutionPage: React.FC = () => {
             <section className="py-24 px-6 bg-white border-t border-gray-100">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-[#FFB600] font-bold uppercase tracking-widest text-sm mb-4 block">Pour Qui ?</span>
+                        <span className="text-[#027333] font-bold uppercase tracking-widest text-sm mb-4 block">Pour Qui ?</span>
                         <h2 className="text-3xl md:text-4xl font-bold">Un programme adapté à chaque niveau</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-10">
                         {/* Cible 1 */}
-                        <div className="p-8 bg-[#1A1A1A] text-white rounded-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFB600] opacity-10 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                        <div className="p-8 bg-[#262626] text-white rounded-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#027333] opacity-10 rounded-full blur-2xl -mr-10 -mt-10"></div>
                             <div className="relative z-10">
-                                <Users className="w-12 h-12 text-[#FFB600] mb-6" />
+                                <Users className="w-12 h-12 text-[#027333] mb-6" />
                                 <h3 className="text-2xl font-bold mb-4">Dirigeants & Comex</h3>
                                 <p className="text-gray-400 leading-relaxed">
                                     Pour aligner la vision stratégique, comprendre les impacts sur le business model et définir les KPIs de succès.
@@ -302,8 +302,8 @@ const StrategieSolutionPage: React.FC = () => {
 
                         {/* Cible 2 */}
                         <div className="p-8 bg-gray-50 rounded-2xl border border-gray-200">
-                            <BarChart3 className="w-12 h-12 text-[#1A1A1A] mb-6" />
-                            <h3 className="text-2xl font-bold mb-4 text-[#1A1A1A]">Équipes IT & Tech</h3>
+                            <BarChart3 className="w-12 h-12 text-[#262626] mb-6" />
+                            <h3 className="text-2xl font-bold mb-4 text-[#262626]">Équipes IT & Tech</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 Pour maîtriser l'architecture, le déploiement technique et l'intégration des nouvelles solutions IA dans l'écosystème existant.
                             </p>
@@ -311,8 +311,8 @@ const StrategieSolutionPage: React.FC = () => {
 
                         {/* Cible 3 */}
                         <div className="p-8 bg-gray-50 rounded-2xl border border-gray-200">
-                            <Zap className="w-12 h-12 text-[#1A1A1A] mb-6" />
-                            <h3 className="text-2xl font-bold mb-4 text-[#1A1A1A]">Transformation</h3>
+                            <Zap className="w-12 h-12 text-[#262626] mb-6" />
+                            <h3 className="text-2xl font-bold mb-4 text-[#262626]">Transformation</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 Pour les organisations en pleine mutation, afin de réussir l'adoption, gérer le changement culturel et vaincre les résistances.
                             </p>
@@ -325,8 +325,8 @@ const StrategieSolutionPage: React.FC = () => {
             <section id="programme" className="py-24 px-6 bg-[#F9F9F9]">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-[#FFB600] font-bold uppercase tracking-widest text-sm mb-4 block">Syllabus Complet</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">Programme de Formation Détaillé</h2>
+                        <span className="text-[#027333] font-bold uppercase tracking-widest text-sm mb-4 block">Syllabus Complet</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#262626]">Programme de Formation Détaillé</h2>
                         <p className="mt-4 text-gray-500">Un cursus intensif alliant théorie stratégique et mise en pratique technique.</p>
                     </div>
 
@@ -338,13 +338,13 @@ const StrategieSolutionPage: React.FC = () => {
                                     className="w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors"
                                 >
                                     <div>
-                                        <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] flex items-center gap-3">
+                                        <h3 className="text-xl md:text-2xl font-bold text-[#262626] flex items-center gap-3">
                                             {chapter.title}
-                                            {openChapter === chapter.id && <span className="text-xs font-normal text-[#FFB600] border border-[#FFB600] px-2 py-0.5 rounded-full uppercase tracking-wider">En cours</span>}
+                                            {openChapter === chapter.id && <span className="text-xs font-normal text-[#027333] border border-[#027333] px-2 py-0.5 rounded-full uppercase tracking-wider">En cours</span>}
                                         </h3>
                                         <p className="text-gray-400 mt-1 font-medium">{chapter.subtitle}</p>
                                     </div>
-                                    <div className={`p-2 rounded-full bg-gray-100 text-gray-600 transition-transform duration-300 ${openChapter === chapter.id ? 'rotate-180 bg-[#FFB600] text-[#1A1A1A]' : ''}`}>
+                                    <div className={`p-2 rounded-full bg-gray-100 text-gray-600 transition-transform duration-300 ${openChapter === chapter.id ? 'rotate-180 bg-[#027333] text-[#262626]' : ''}`}>
                                         <ChevronDown className="w-6 h-6" />
                                     </div>
                                 </button>
@@ -355,12 +355,12 @@ const StrategieSolutionPage: React.FC = () => {
                                     <div className="p-6 md:p-8 pt-0 border-t border-gray-100 bg-gray-50/50">
                                         <div className="grid md:grid-cols-1 gap-8 pt-6">
                                             {chapter.content.map((section, idx) => (
-                                                <div key={idx} className="relative pl-6 border-l-2 border-gray-200 hover:border-[#FFB600] transition-colors">
-                                                    <h4 className="font-bold text-lg text-[#1A1A1A] mb-3">{section.title}</h4>
+                                                <div key={idx} className="relative pl-6 border-l-2 border-gray-200 hover:border-[#027333] transition-colors">
+                                                    <h4 className="font-bold text-lg text-[#262626] mb-3">{section.title}</h4>
                                                     <ul className="space-y-2">
                                                         {section.items.map((item, itemIdx) => (
                                                             <li key={itemIdx} className="flex items-start text-gray-600">
-                                                                <span className="mr-2 text-[#FFB600]">•</span>
+                                                                <span className="mr-2 text-[#027333]">•</span>
                                                                 {item}
                                                             </li>
                                                         ))}
@@ -377,11 +377,11 @@ const StrategieSolutionPage: React.FC = () => {
             </section>
 
             {/* CTA FINAL */}
-            <section className="py-24 px-6 bg-[#1A1A1A] text-white">
-                <div className="max-w-5xl mx-auto text-center bg-[#1A1A1A] border border-white/10 rounded-3xl p-12 md:p-20 relative overflow-hidden">
+            <section className="py-24 px-6 bg-[#262626] text-white">
+                <div className="max-w-5xl mx-auto text-center bg-[#262626] border border-white/10 rounded-3xl p-12 md:p-20 relative overflow-hidden">
                     {/* Background glows */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB600] opacity-5 blur-[100px] rounded-full"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFB600] opacity-5 blur-[100px] rounded-full"></div>
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#027333] opacity-5 blur-[100px] rounded-full"></div>
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#027333] opacity-5 blur-[100px] rounded-full"></div>
 
                     <h2 className="text-3xl md:text-5xl font-light mb-8 relative z-10">Prêt à sécuriser votre avenir ?</h2>
                     <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto relative z-10">
@@ -390,7 +390,7 @@ const StrategieSolutionPage: React.FC = () => {
                     <div className="relative z-10">
                         <Link
                             to="/contact"
-                            className="bg-[#FFB600] text-[#1A1A1A] px-10 py-5 font-bold text-lg hover:bg-white transition-all inline-flex items-center rounded-lg"
+                            className="bg-[#027333] text-[#262626] px-10 py-5 font-bold text-lg hover:bg-white transition-all inline-flex items-center rounded-lg"
                         >
                             Réserver une session stratégique
                             <ArrowRight className="ml-2 w-5 h-5" />

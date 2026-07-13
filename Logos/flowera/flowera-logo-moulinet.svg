@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Flowera — fleur frangipanier en moulinet, 5 pétales en goutte, fond transparent -->
+  <!-- Pétales crème #F2F1DF, pétale bas-droite vert #569d57, contour vert foncé #2f5d34 -->
+  <!-- Empilement moulinet bas->haut : 288, 0, 72, 144 (vert), 216 -->
+  <g transform="rotate(-8 50 50)" stroke="#2f5d34" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M51 13 C60 13 66 20 65 31 C64 41 60 48 54 51 C49 48 41 44 39 33 C38 23 43 13 51 13 Z" fill="#F2F1DF" transform="rotate(288 50 50)"/>
+    <path d="M51 13 C60 13 66 20 65 31 C64 41 60 48 54 51 C49 48 41 44 39 33 C38 23 43 13 51 13 Z" fill="#F2F1DF" transform="rotate(0 50 50)"/>
+    <path d="M51 13 C60 13 66 20 65 31 C64 41 60 48 54 51 C49 48 41 44 39 33 C38 23 43 13 51 13 Z" fill="#F2F1DF" transform="rotate(72 50 50)"/>
+    <path d="M51 13 C60 13 66 20 65 31 C64 41 60 48 54 51 C49 48 41 44 39 33 C38 23 43 13 51 13 Z" fill="#569d57" transform="rotate(144 50 50)"/>
+    <path d="M51 13 C60 13 66 20 65 31 C64 41 60 48 54 51 C49 48 41 44 39 33 C38 23 43 13 51 13 Z" fill="#F2F1DF" transform="rotate(216 50 50)"/>
+  </g>
+</svg>
