@@ -22,7 +22,7 @@ export const developpementLogiciel: SolutionData = {
         },
         {
             scenario:
-                "Fini le fichier partagé qui plante ou se contredit entre deux versions la veille d'une échéance",
+                "Fini le fichier partagé qui plante ou se contredit entre deux versions la veille d’une échéance",
             label: 'Une donnée fiable, centralisée, accessible à tous',
         },
     ],
@@ -30,9 +30,9 @@ export const developpementLogiciel: SolutionData = {
         {
             title: 'Remplacer le tableur devenu ingérable',
             before:
-                "Toute l'activité repose sur un fichier partagé que plus personne n'ose modifier, avec des formules cassées et des versions qui se contredisent.",
+                "Toute l’activité repose sur un fichier partagé que plus personne n’ose modifier, avec des formules cassées et des versions qui se contredisent.",
             setup:
-                'Un outil simple, sur mesure, qui reprend vos données et vos règles métier telles qu\'elles fonctionnent réellement chez vous.',
+                'Un outil simple, sur mesure, qui reprend vos données et vos règles métier telles qu’elles fonctionnent réellement chez vous.',
             result:
                 'Plusieurs personnes travaillent en même temps, sans conflit ni perte de données, et le fichier fragile disparaît.',
         },
@@ -50,9 +50,9 @@ export const developpementLogiciel: SolutionData = {
             before:
                 "Le suivi des stocks, des plannings ou des dossiers repose sur la mémoire, des post-it et des messages épars : la moindre absence bloque tout.",
             setup:
-                "Un outil interne qui centralise les informations utiles et automatise les tâches répétitives, pensé pour l'usage réel de vos équipes.",
+                "Un outil interne qui centralise les informations utiles et automatise les tâches répétitives, pensé pour l’usage réel de vos équipes.",
             result:
-                "Toute l'équipe accède à la même information, à jour, et l'activité ne dépend plus d'une seule personne indisponible.",
+                "Toute l’équipe accède à la même information, à jour, et l’activité ne dépend plus d’une seule personne indisponible.",
         },
     ],
     steps: [
@@ -69,13 +69,13 @@ export const developpementLogiciel: SolutionData = {
         },
         {
             title: 'Itérations',
-            description: "Nous affinons l'outil au rythme de vos retours d'usage, sans repartir de zéro.",
+            description: "Nous affinons l’outil au rythme de vos retours d’usage, sans repartir de zéro.",
             duration: 'par cycles courts',
         },
         {
             title: 'Un outil qui vous appartient',
             description:
-                "L'outil reste le vôtre : pas d'abonnement obligatoire pour continuer à l'utiliser, et il évolue avec votre activité.",
+                "L’outil reste le vôtre : pas d’abonnement obligatoire pour continuer à l’utiliser, et il évolue avec votre activité.",
             duration: 'dans la durée',
         },
     ],

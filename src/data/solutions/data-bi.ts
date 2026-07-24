@@ -23,7 +23,7 @@ export const dataBi: SolutionData = {
         },
         {
             scenario:
-                "Une dérive de coûts ou une baisse d'activité repérée en quelques jours au lieu d'un trimestre, avant qu'elle ne pèse sur le résultat",
+                "Une dérive de coûts ou une baisse d’activité repérée en quelques jours au lieu d’un trimestre, avant qu’elle ne pèse sur le résultat",
             label: 'Les problèmes coûteux détectés tôt',
         },
     ],
@@ -33,14 +33,14 @@ export const dataBi: SolutionData = {
             before:
                 "Pour connaître sa marge réelle ou sa trésorerie du jour, il faut demander à trois personnes différentes et attendre leur retour.",
             setup:
-                "Un tableau de bord unique qui rassemble les indicateurs qui comptent vraiment pour piloter l'entreprise : marge, trésorerie, activité.",
+                "Un tableau de bord unique qui rassemble les indicateurs qui comptent vraiment pour piloter l’entreprise : marge, trésorerie, activité.",
             result:
                 "Les chiffres clés consultables à tout moment, sans solliciter personne.",
         },
         {
             title: 'Le reporting mensuel de direction',
             before:
-                "Deux jours par mois à copier des exports dans des tableurs, avec des écarts qu'on n'arrive jamais vraiment à expliquer.",
+                "Deux jours par mois à copier des exports dans des tableurs, avec des écarts qu’on n’arrive jamais vraiment à expliquer.",
             setup:
                 'Un tableau de bord alimenté automatiquement par vos outils existants (comptabilité, ventes, production).',
             result:
@@ -49,9 +49,9 @@ export const dataBi: SolutionData = {
         {
             title: 'La consolidation de données éparpillées',
             before:
-                "Les chiffres vivent dans des fichiers séparés, propres à chaque service, et se contredisent d'un tableau à l'autre.",
+                "Les chiffres vivent dans des fichiers séparés, propres à chaque service, et se contredisent d’un tableau à l’autre.",
             setup:
-                "Un espace central où toutes les données sont rassemblées et mises en cohérence, avec une seule version des chiffres pour toute l'entreprise.",
+                "Un espace central où toutes les données sont rassemblées et mises en cohérence, avec une seule version des chiffres pour toute l’entreprise.",
             result:
                 'Fini les débats sur quel fichier a raison : tout le monde regarde les mêmes chiffres.',
         },

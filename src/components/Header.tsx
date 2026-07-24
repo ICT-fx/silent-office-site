@@ -31,7 +31,7 @@ const EXPERTISES: { title: string; items: string[] }[] = [
     title: 'Intelligence artificielle',
     items: [
       'Solutions IA personnalisées',
-      'OCR et extraction de données',
+      'Extraction automatique de données documentaires',
       'Modèles de prédiction',
       'Assistants IA en Local',
       'IA générative, agents vocaux & plus encore',
@@ -52,8 +52,8 @@ const EXPERTISES: { title: string; items: string[] }[] = [
     items: ['Dashboards Power BI', 'Data hub et architecture data', 'Stratégie data'],
   },
   {
-    title: 'Automatisation & RPA',
-    items: ['Automatisations métier', 'RPA (Robotic Process Automation)', 'Power Automate'],
+    title: 'Automatisation & Optimisation',
+    items: ['Automatisations métier', 'Automatisation de processus métier', 'Power Automate'],
   },
 ];
 

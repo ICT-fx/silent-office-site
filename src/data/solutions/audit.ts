@@ -6,7 +6,7 @@ export const audit: SolutionData = {
     title: 'Audit',
     promise: 'Transformez vos contraintes en opportunités.',
     shortDescription:
-        "Un état des lieux mené avec vous, et un plan d'action clair, priorisé par impact.",
+        "Un état des lieux mené avec vous, et un plan d’action clair, priorisé par impact.",
     gains: [
         {
             scenario:
@@ -15,7 +15,7 @@ export const audit: SolutionData = {
         },
         {
             scenario:
-                'Les dépenses inutiles - outils sous-utilisés, tâches redondantes, doublons entre services - identifiées avant tout investissement.',
+                'Les dépenses inutiles — outils sous-utilisés, tâches redondantes, doublons entre services — identifiées avant tout investissement.',
             label: 'Des dépenses mieux maîtrisées',
         },
         {
@@ -28,7 +28,7 @@ export const audit: SolutionData = {
         {
             title: 'Une PME dont les équipes croulent sous les tâches administratives',
             before:
-                "Chacun compense à sa manière, personne n'a de vue d'ensemble sur le temps réellement perdu.",
+                "Chacun compense à sa manière, personne n’a de vue d’ensemble sur le temps réellement perdu.",
             setup:
                 "Des entretiens avec les équipes, une observation du quotidien, puis une restitution construite ensemble.",
             result:
@@ -44,13 +44,13 @@ export const audit: SolutionData = {
                 "Une décision prise sur des faits, et un budget engagé là où il rapporte le plus.",
         },
         {
-            title: 'Une équipe qui multiplie les outils sans vue d\'ensemble',
+            title: 'Une équipe qui multiplie les outils sans vue d’ensemble',
             before:
                 "Chaque service a ajouté ses propres outils au fil du temps ; plus personne ne sait ce qui sert vraiment.",
             setup:
-                "Un inventaire des outils et des flux d'information, croisé avec les besoins réels de chaque équipe.",
+                "Un inventaire des outils et des flux d’information, croisé avec les besoins réels de chaque équipe.",
             result:
-                "Un plan clair distinguant ce qui doit être gardé, simplifié ou automatisé - le premier pas vers les projets suivants.",
+                "Un plan clair distinguant ce qui doit être gardé, simplifié ou automatisé — le premier pas vers les projets suivants.",
         },
     ],
     steps: [
@@ -66,11 +66,11 @@ export const audit: SolutionData = {
         },
         {
             title: 'Restitution',
-            description: "Nous construisons avec vous un plan d'action clair et priorisé.",
+            description: "Nous construisons avec vous un plan d’action clair et priorisé.",
             duration: '1 atelier',
         },
         {
-            title: 'Passage à l\'action',
+            title: 'Passage à l’action',
             description:
                 "Si vous le souhaitez, nous vous accompagnons sur les premiers chantiers identifiés.",
             duration: 'à la carte',

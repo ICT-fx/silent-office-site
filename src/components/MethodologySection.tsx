@@ -7,7 +7,7 @@ const methodologyBlocks = [
     {
         category: "MÉTHODE & EXPERTISE",
         title: "Une expertise profonde, du code à la stratégie.",
-        text: "Chez Flowera, nous combinons une maîtrise avancée du développement, de l’automatisation et du RPA avec une vision stratégique orientée résultats. Nous ne nous contentons pas d’implémenter des outils : nous construisons des systèmes cohérents, gouvernés et alignés sur vos enjeux business.",
+        text: "Chez Flowera, nous combinons une maîtrise avancée du développement, de l’automatisation intelligente avec une vision stratégique orientée résultats. Nous ne nous contentons pas d’implémenter des outils : nous construisons des systèmes cohérents, gouvernés et alignés sur vos enjeux business.",
         number: "01",
         image: "/images/developer.png",
         tags: ["Stratégie", "Code", "Excellence"]

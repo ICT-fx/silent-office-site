@@ -9,7 +9,7 @@ const CareersPage: React.FC = () => {
 
     const jobTypes = ['CDI', 'CDD', 'Stage', 'Alternance', 'Freelance'];
     const locations = ['Paris', 'Lyon', 'Remote', 'Hybride'];
-    const departments = ['Consulting', 'Data Science', 'RPA', 'Stratégie'];
+    const departments = ['Consulting', 'Data Science', 'Automatisation', 'Stratégie'];
 
     return (
         <div className="min-h-screen bg-white pt-32 pb-24 px-6">
