@@ -9,10 +9,9 @@ export const developpementLogiciel: SolutionData = {
     promise: 'Le bon outil, rien de plus.',
     shortDescription:
         'Des outils métier sur mesure, construits autour de vos process, sans licences superflues.',
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     heroTagline:
-        "Les logiciels du commerce vous imposent leurs règles ; les tableurs finissent par craquer. Entre les deux, il y a l’outil construit pour vous.",
-    heroTaglineStrong: 'Exactement le vôtre.',
+        'Vous payez chaque mois des licences pour des logiciels dont vous n’utilisez que 10 % des fonctionnalités, pendant que le reste de votre activité continue de vivre dans des fichiers Excel fragiles, bricolés au fil des années. Entre l’usine à gaz surdimensionnée et le tableur qui menace de craquer, il existe une troisième voie.',
+    heroTaglineStrong: 'Un outil fait pour vous, qui vous appartient.',
     gains: [
         {
             scenario:
@@ -30,53 +29,51 @@ export const developpementLogiciel: SolutionData = {
             label: 'Une donnée fiable, centralisée, accessible à tous',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     pillars: [
         {
-            title: 'Partir de vos process réels',
+            title: 'Partir de vos processus',
             description:
-                "Nous concevons l’outil autour de votre façon de travailler, pas l’inverse.",
-            icon: 'Search',
-        },
-        {
-            title: 'Livrer vite, ajuster souvent',
-            description:
-                'Une première version utilisable en quelques semaines, affinée ensuite avec vos retours.',
-            icon: 'Rocket',
-        },
-        {
-            title: 'Un périmètre juste',
-            description:
-                'Uniquement les fonctionnalités qui servent au quotidien : rien de superflu à payer ni à maintenir.',
-            icon: 'Target',
-        },
-        {
-            title: 'Un outil qui vous appartient',
-            description:
-                "Pas d’abonnement obligatoire ni de dépendance : l’outil et les données restent les vôtres.",
-            icon: 'KeyRound',
-        },
-    ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
-    audiences: [
-        {
-            title: 'Entreprises prisonnières du tableur',
-            description:
-                "Pour remplacer le fichier fragile qui porte toute l’activité par un outil fiable et partagé.",
-            icon: 'Users',
-            highlighted: true,
-        },
-        {
-            title: 'Métiers aux besoins spécifiques',
-            description:
-                "Pour les activités qu’aucun logiciel standard ne couvre correctement, sans tordre vos process pour rentrer dans les cases.",
+                'Nous observons comment vos équipes travaillent réellement aujourd’hui, avant d’écrire la moindre ligne de code.',
             icon: 'Puzzle',
         },
         {
-            title: 'Structures multi-abonnements',
+            title: 'Livrer vite une première version',
             description:
-                'Pour regrouper dans un seul outil ce qui est aujourd’hui éparpillé entre plusieurs licences sous-utilisées.',
-            icon: 'Layers',
+                'Une version utilisable arrive entre les mains de vos équipes en quelques semaines, pas en fin d’année.',
+            icon: 'Rocket',
+        },
+        {
+            title: 'Itérer par cycles courts',
+            description:
+                'Chaque retour d’usage vient affiner l’outil, sans jamais repartir de zéro.',
+            icon: 'RefreshCw',
+        },
+        {
+            title: 'Vous rendre propriétaire',
+            description:
+                'Le code, les données et l’outil vous appartiennent — aucun abonnement obligatoire pour continuer à vous en servir.',
+            icon: 'KeyRound',
+        },
+    ],
+    audiences: [
+        {
+            title: 'PME qui a grandi plus vite que ses outils',
+            description:
+                'Vos effectifs et votre activité ont doublé, mais vos outils sont restés ceux du début — un logiciel générique ici, un tableur là, saturés de contournements.',
+            icon: 'TrendingUp',
+            highlighted: true,
+        },
+        {
+            title: 'Métiers aux processus spécifiques',
+            description:
+                'Votre façon de travailler ne rentre dans aucune case des logiciels standards, et vous passez plus de temps à les contourner qu’à vous en servir.',
+            icon: 'Puzzle',
+        },
+        {
+            title: 'Entreprises dépendantes d’un fichier critique',
+            description:
+                'Toute une partie de votre activité repose sur un fichier que personne n’ose modifier, et dont la disparition mettrait tout à l’arrêt.',
+            icon: 'Database',
         },
     ],
     useCases: [
@@ -108,51 +105,126 @@ export const developpementLogiciel: SolutionData = {
                 "Toute l’équipe accède à la même information, à jour, et l’activité ne dépend plus d’une seule personne indisponible.",
         },
     ],
-    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
     deepDive: {
-        eyebrow: 'La Méthode en Détail',
-        title: 'Comment votre outil prend forme',
+        eyebrow: 'Catalogue de projets',
+        title: 'Ce qu’on construit',
         intro:
-            "Un aperçu de la démarche, du cadrage initial jusqu’à un outil adopté par vos équipes.",
+            'Cinq familles de projets reviennent le plus souvent. Vous vous reconnaîtrez sans doute dans l’une d’elles — ou dans un mélange des deux.',
         chapters: [
             {
-                id: 'dev-etape1',
-                title: 'Étape 1 — Cadrer le juste périmètre',
-                subtitle: '(Ce qui sert, rien de plus)',
+                id: 'dev-chap1',
+                title: 'Chapitre 1 — Outils de gestion interne',
+                subtitle: '(Piloter votre activité avec vos propres règles)',
                 content: [
                     {
-                        title: '1.1 Comprendre votre quotidien',
+                        title: '1.1 Suivi et pilotage',
                         items: [
-                            'Observation des tâches réelles de vos équipes',
-                            'Les irritants et les contournements du moment',
+                            'Suivi de production avec vos règles à vous, pas celles d’un progiciel générique',
+                            'Tableaux de bord qui remontent l’information utile, sans ressaisie manuelle',
+                            'Gestion de stock ajustée à votre organisation réelle, entrepôt par entrepôt',
+                            'Suivi de dossiers ou de projets du premier contact jusqu’à la clôture',
                         ],
                     },
                     {
-                        title: '1.2 Définir la première version',
+                        title: '1.2 Organisation d’équipe',
                         items: [
-                            'Les fonctionnalités indispensables au démarrage',
-                            'Ce qui attendra une version suivante',
+                            'Planning et affectation des tâches visibles par tous, à jour en temps réel',
+                            'Historique et traçabilité des actions, consultables à tout moment',
+                            'Circuits de validation adaptés à votre hiérarchie réelle, pas à un standard',
                         ],
                     },
                 ],
             },
             {
-                id: 'dev-etape2',
-                title: 'Étape 2 — Construire avec vos équipes',
-                subtitle: '(Un outil adopté, pas imposé)',
+                id: 'dev-chap2',
+                title: 'Chapitre 2 — Portails clients & fournisseurs',
+                subtitle: '(Moins d’appels, plus d’autonomie)',
                 content: [
                     {
-                        title: '2.1 Livrer et tester',
+                        title: '2.1 Côté clients',
                         items: [
-                            'Une version utilisable mise rapidement entre les mains de vos équipes',
-                            "Des retours d’usage intégrés en continu",
+                            'Espace client : vos clients consultent leurs commandes sans vous appeler',
+                            'Suivi de dossier en autonomie, avec statut et documents toujours à jour',
+                            'Prise de rendez-vous ou de commande directement en ligne, sans échange de mails',
+                            'Historique des échanges et des documents accessible à toute heure',
                         ],
                     },
                     {
-                        title: '2.2 Installer dans la durée',
+                        title: '2.2 Côté fournisseurs',
                         items: [
-                            'Formation à la prise en main',
-                            'Un outil qui évolue avec votre activité',
+                            'Dépôt de documents et de factures centralisé, sans boîte mail qui déborde',
+                            'Suivi des commandes et des délais partagé avec vos partenaires',
+                            'Accès restreint à l’information qui les concerne, rien de plus',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'dev-chap3',
+                title: 'Chapitre 3 — Remplacement de fichiers Excel critiques',
+                subtitle: '(Le fichier que plus personne n’ose modifier)',
+                content: [
+                    {
+                        title: '3.1 Ce qu’on reprend',
+                        items: [
+                            'Vos formules et vos règles de calcul, telles qu’elles fonctionnent réellement chez vous',
+                            'L’historique de données existant, repris sans perte',
+                            'Les usages annexes construits autour du fichier au fil des années',
+                        ],
+                    },
+                    {
+                        title: '3.2 Ce que ça change',
+                        items: [
+                            'Plusieurs personnes travaillent en même temps, sans écraser le travail des autres',
+                            'Des droits d’accès par personne, au lieu d’un fichier ouvert à tout le monde',
+                            'Une sauvegarde automatique, sans dépendre d’un classeur sur un poste local',
+                            'Fini la version « finale_v3_vraiment_finale » envoyée par mail',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'dev-chap4',
+                title: 'Chapitre 4 — Applications métier spécifiques',
+                subtitle: '(Le logiciel qui n’existe pas sur étagère)',
+                content: [
+                    {
+                        title: '4.1 Pensé pour votre secteur',
+                        items: [
+                            'Un outil pensé pour un métier précis — BTP, santé, artisanat, services — que les logiciels génériques ne couvrent pas',
+                            'Des calculs ou des règles propres à votre secteur, intégrés nativement',
+                            'Une interface adaptée à l’usage réel : tablette sur le terrain, poste fixe au bureau',
+                        ],
+                    },
+                    {
+                        title: '4.2 Automatiser les livrables',
+                        items: [
+                            'Génération automatique de devis, contrats ou rapports à partir de vos données',
+                            'Contrôles et alertes construits sur vos propres seuils métier',
+                            'Un outil qui évolue au fil des nouveaux besoins, sans repartir de zéro',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'dev-chap5',
+                title: 'Chapitre 5 — Connexion entre vos outils existants',
+                subtitle: '(Faire parler vos logiciels entre eux)',
+                content: [
+                    {
+                        title: '5.1 Fin de la double saisie',
+                        items: [
+                            'Un logiciel de facturation qui alimente automatiquement votre comptabilité',
+                            'Une fiche client mise à jour à un seul endroit, répercutée partout ailleurs',
+                            'Synchronisation entre votre site, votre CRM et vos outils internes',
+                        ],
+                    },
+                    {
+                        title: '5.2 Une vue d’ensemble',
+                        items: [
+                            'Un tableau de bord unique qui rassemble des données venues de plusieurs logiciels',
+                            'Des alertes automatiques quand une information change quelque part',
+                            'Un point d’entrée commun, même si vos outils métier restent en place derrière',
                         ],
                     },
                 ],
@@ -183,10 +255,9 @@ export const developpementLogiciel: SolutionData = {
             duration: 'dans la durée',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
-    ctaTitle: 'Un outil à votre mesure, ça commence par une conversation.',
+    ctaTitle: 'Décrivez-nous l’outil qui vous manque.',
     ctaText:
-        "Racontez-nous ce qui coince dans vos outils actuels : nous vous dirons si le sur-mesure se justifie — et si ce n’est pas le cas, nous vous le dirons aussi.",
-    ctaLabel: 'Décrire votre besoin',
+        'Racontez-nous le processus qui vous ralentit ou le fichier qui vous fait peur : nous vous dirons ce qu’un outil sur mesure changerait concrètement — et si le sur-mesure ne se justifie pas, nous vous le dirons aussi.',
+    ctaLabel: 'Décrire mon besoin',
     ctaFootnote: 'Premier échange sans engagement.',
 };

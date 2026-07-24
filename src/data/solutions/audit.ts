@@ -7,10 +7,9 @@ export const audit: SolutionData = {
     promise: 'Transformez vos contraintes en opportunités.',
     shortDescription:
         "Un état des lieux mené avec vous, et un plan d’action clair, priorisé par impact.",
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     heroTagline:
-        "Vous sentez que du temps se perd, sans savoir précisément où ni combien. Un état des lieux structuré transforme cette intuition en plan chiffré.",
-    heroTaglineStrong: 'Commencez par y voir clair.',
+        "Vous sentez que du temps et de l’argent s’échappent quelque part dans votre organisation, sans pouvoir dire précisément où ni combien. Notre audit remonte le fil de vos processus pour transformer ce ressenti en constats mesurables.",
+    heroTaglineStrong: 'Passez des intuitions aux certitudes.',
     gains: [
         {
             scenario:
@@ -28,34 +27,32 @@ export const audit: SolutionData = {
             label: 'Une feuille de route claire, pas un rapport qui dort dans un tiroir',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     pillars: [
         {
-            title: 'Observer le terrain',
+            title: 'Écouter le terrain',
             description:
-                "Nous partons de la réalité de vos équipes, pas d’un modèle théorique plaqué sur votre activité.",
-            icon: 'Eye',
+                'Nous recueillons la parole de vos équipes avant toute conclusion, parce que ce sont elles qui connaissent vraiment le quotidien.',
+            icon: 'Ear',
         },
         {
-            title: 'Chiffrer les enjeux',
+            title: 'Mesurer objectivement',
             description:
-                'Chaque constat est traduit en temps perdu et en coût, pour comparer ce qui mérite vraiment un investissement.',
+                'Chaque constat est vérifié par des données concrètes — temps passé, coûts, fréquence — pas par des impressions.',
             icon: 'BarChart3',
         },
         {
             title: 'Prioriser par impact',
             description:
-                "Un plan resserré sur 3 à 5 chantiers à fort effet, plutôt qu’une liste interminable de recommandations.",
+                "Un plan resserré sur les chantiers qui rapportent le plus, plutôt qu’une liste de recommandations impossible à traiter.",
             icon: 'Target',
         },
         {
-            title: 'Préparer la suite',
+            title: 'Restituer en toute transparence',
             description:
-                'Une restitution pensée pour être actionnée dès le lendemain, avec ou sans nous.',
-            icon: 'Compass',
+                'Vous recevez une restitution claire et sans jargon, que vous pouvez porter vous-même en interne.',
+            icon: 'ShieldCheck',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     audiences: [
         {
             title: 'Dirigeants de PME',
@@ -65,15 +62,15 @@ export const audit: SolutionData = {
             highlighted: true,
         },
         {
-            title: 'Responsables opérationnels',
+            title: 'Directions opérationnelles',
             description:
-                'Pour objectiver le temps perdu dans les tâches quotidiennes et identifier les chantiers à défendre en interne.',
+                'Pour objectiver le temps perdu dans les tâches du quotidien et défendre les bons chantiers auprès de la direction.',
             icon: 'ClipboardList',
         },
         {
-            title: 'Équipes en croissance',
+            title: 'Entreprises en croissance',
             description:
-                "Pour structurer les process avant qu’ils ne craquent, et absorber la charge sans embaucher dans l’urgence.",
+                "Pour structurer vos processus avant qu’ils ne craquent, et absorber la charge sans embaucher dans l’urgence.",
             icon: 'TrendingUp',
         },
     ],
@@ -106,51 +103,117 @@ export const audit: SolutionData = {
                 "Un plan clair distinguant ce qui doit être gardé, simplifié ou automatisé — le premier pas vers les projets suivants.",
         },
     ],
-    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
     deepDive: {
         eyebrow: 'Le Déroulé Complet',
-        title: "Ce que couvre l’audit, étape par étape",
-        intro: "Un aperçu concret de ce que nous examinons avec vous pendant l’audit.",
+        title: 'Notre méthode d’audit, étape par étape',
+        intro:
+            'Semaine par semaine, voici précisément ce qui se passe pendant votre audit — ce que nous observons, ce que nous mesurons, et ce que vous recevez à chaque étape.',
         chapters: [
             {
-                id: 'audit-volet1',
-                title: 'Volet 1 — Cartographie de votre activité',
-                subtitle: '(Comprendre avant de recommander)',
+                id: 'audit-immersion',
+                title: 'Immersion & écoute terrain',
+                subtitle: 'Semaine 1 — avec les équipes concernées',
                 content: [
                     {
-                        title: '1.1 Vos processus au quotidien',
+                        title: 'Ce que nous écoutons',
                         items: [
-                            'Qui fait quoi, avec quels outils',
-                            'Où le temps se perd réellement',
-                            "Les tâches répétées qui n’apportent rien",
+                            'Des entretiens individuels avec les collaborateurs qui vivent les processus au quotidien',
+                            'Les irritants remontés sans filtre hiérarchique',
+                            "L’historique des solutions déjà tentées, et pourquoi elles n’ont pas tenu",
                         ],
                     },
                     {
-                        title: '1.2 Vos outils et vos coûts',
+                        title: 'Ce que nous observons',
                         items: [
-                            'Inventaire des abonnements et licences en place',
-                            'Ce qui est utilisé, sous-utilisé ou en doublon',
+                            'Une journée type suivie sur le terrain, poste par poste',
+                            'Les contournements informels que les équipes ont inventés pour tenir',
+                            'Les points de friction entre services',
                         ],
                     },
                 ],
             },
             {
-                id: 'audit-volet2',
-                title: "Volet 2 — Plan d’action priorisé",
-                subtitle: '(Décider où investir)',
+                id: 'audit-cartographie',
+                title: 'Cartographie de vos processus',
+                subtitle: 'Semaine 1-2 — vue d’ensemble de votre activité',
                 content: [
                     {
-                        title: '2.1 Classement des chantiers',
+                        title: 'Ce que nous cartographions',
                         items: [
-                            'Gain estimé pour chaque chantier identifié',
-                            'Effort et budget nécessaires pour le mener',
+                            'Le parcours complet de chaque processus clé, de bout en bout',
+                            'Les outils et systèmes mobilisés à chaque étape',
+                            'Les moments où l’information change de main, entre humains et outils',
                         ],
                     },
                     {
-                        title: '2.2 Restitution partagée',
+                        title: 'Ce que vous recevez',
                         items: [
-                            'Un atelier de restitution avec vos équipes',
-                            'Une feuille de route prête à être lancée',
+                            'Un schéma clair et partageable de vos processus actuels',
+                            'Un inventaire de vos outils, licences et coûts associés',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'audit-analyse',
+                title: 'Analyse & chiffrage des pertes',
+                subtitle: 'Semaine 2 — traduire les constats en chiffres',
+                content: [
+                    {
+                        title: 'Ce que nous mesurons',
+                        items: [
+                            'Le temps passé sur les tâches répétitives ou à faible valeur',
+                            'Le coût estimé de ces pertes, ramené à l’échelle de l’année',
+                            'L’écart entre la charge réelle et la charge perçue par chacun',
+                        ],
+                    },
+                    {
+                        title: 'Ce que nous croisons',
+                        items: [
+                            'Les constats terrain avec les données déjà disponibles chez vous',
+                            'Les priorités métier avec la faisabilité budgétaire et technique',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'audit-restitution',
+                title: 'Restitution partagée',
+                subtitle: '1 atelier — avec décideurs et équipes concernées',
+                content: [
+                    {
+                        title: 'Comment se déroule l’atelier',
+                        items: [
+                            'Une présentation des constats en langage clair, sans jargon technique',
+                            'Un temps d’échange pour challenger et affiner les priorités ensemble',
+                        ],
+                    },
+                    {
+                        title: 'Ce que vous recevez',
+                        items: [
+                            'Un support de restitution que vous pouvez rediffuser en interne',
+                            'Une synthèse chiffrée, chantier par chantier',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'audit-plan-action',
+                title: 'Plan d’action & suites',
+                subtitle: 'À l’issue de l’audit — à votre rythme',
+                content: [
+                    {
+                        title: 'Ce que contient le plan',
+                        items: [
+                            '3 à 5 chantiers classés par impact et par effort',
+                            'Pour chaque chantier : gain estimé, budget indicatif, délai de mise en œuvre',
+                        ],
+                    },
+                    {
+                        title: 'Les suites possibles',
+                        items: [
+                            'Un accompagnement à la carte sur les chantiers que vous choisissez',
+                            'Une totale liberté : le plan reste utilisable avec ou sans nous',
                         ],
                     },
                 ],
@@ -180,10 +243,9 @@ export const audit: SolutionData = {
             duration: 'à la carte',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
-    ctaTitle: 'Et si vous saviez exactement où vous perdez du temps ?',
+    ctaTitle: 'Et si on regardait ensemble ?',
     ctaText:
-        "Un premier échange suffit pour cadrer le périmètre de l’audit et vérifier qu’il vous sera utile.",
+        "Un premier échange suffit pour cadrer le périmètre de l’audit et vérifier qu’il vous sera vraiment utile.",
     ctaLabel: 'Planifier un échange',
     ctaFootnote: 'Premier échange sans engagement.',
 };

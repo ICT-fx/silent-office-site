@@ -11,9 +11,8 @@ export const formation: SolutionData = {
     promise: "L'IA qui fait vraiment gagner du temps.",
     shortDescription:
         "Vos équipes formées à utiliser l’IA sur leurs vraies tâches, pas sur des démonstrations.",
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     heroTagline:
-        "Les outils évoluent plus vite que les habitudes. Sans accompagnement, chacun bricole dans son coin — avec les risques qui vont avec.",
+        "Les technologies évoluent en continu. L’absence de vision claire entraîne des risques, des pertes financières et une inefficacité opérationnelle.",
     heroTaglineStrong: 'Prenez les devants.',
     gains: [
         {
@@ -32,53 +31,51 @@ export const formation: SolutionData = {
             label: 'Un savoir-faire qui reste dans l’entreprise',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     pillars: [
         {
-            title: 'Former sur vos vraies tâches',
+            title: 'Comprendre les enjeux',
             description:
-                "Vos mails, vos documents, vos dossiers : jamais d’exemples génériques déconnectés de votre quotidien.",
-            icon: 'Target',
+                "Démystifier l’intelligence artificielle et la donnée pour sortir des fantasmes et saisir les opportunités réelles.",
+            icon: 'Brain',
         },
         {
-            title: 'Un cadre clair et partagé',
+            title: 'Décider intelligemment',
             description:
-                "Ce qui peut être confié à l’IA, ce qui ne doit jamais l’être, et les réflexes appliqués par tous.",
+                'Prioriser les investissements rentables et éviter les projets « gadgets » sans retour sur investissement.',
+            icon: 'Lightbulb',
+        },
+        {
+            title: 'Automatiser efficacement',
+            description:
+                "Déployer les bonnes technologies — automatisation de processus, intelligence artificielle, agents intelligents — au bon endroit dans votre chaîne de valeur.",
+            icon: 'Cpu',
+        },
+        {
+            title: 'Sécuriser durablement',
+            description:
+                "Maîtriser la gouvernance des données, la conformité et les risques liés à l’intelligence artificielle.",
             icon: 'ShieldCheck',
         },
-        {
-            title: 'Des réflexes qui durent',
-            description:
-                'Une mise en pratique accompagnée sur plusieurs semaines, pour ancrer les usages au-delà de la session.',
-            icon: 'RefreshCw',
-        },
-        {
-            title: 'Chaque niveau servi',
-            description:
-                "Des formats adaptés aux équipes, à l’encadrement et à la direction, chacun sur ses propres enjeux.",
-            icon: 'Users',
-        },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     audiences: [
         {
-            title: 'Dirigeants & comités de direction',
+            title: 'Dirigeants & Comex',
             description:
-                "Pour distinguer ce qui mérite d’être déployé dans votre entreprise de ce qui relève de l’effet de mode.",
+                'Pour aligner la vision stratégique, comprendre les impacts sur le modèle économique et définir les indicateurs de succès.',
             icon: 'Users',
             highlighted: true,
         },
         {
-            title: 'Équipes opérationnelles',
+            title: 'Équipes IT & Tech',
             description:
-                "Pour gagner du temps dès la première semaine sur les tâches d’écriture, de synthèse et de recherche.",
-            icon: 'Zap',
+                "Pour maîtriser l’architecture, le déploiement technique et l’intégration des nouvelles solutions d’intelligence artificielle dans l’écosystème existant.",
+            icon: 'BarChart3',
         },
         {
-            title: 'Managers et encadrement',
+            title: 'Transformation',
             description:
-                "Pour accompagner l’adoption dans leurs équipes et faire vivre le cadre d’usage au quotidien.",
-            icon: 'Compass',
+                "Pour les organisations en pleine mutation, afin de réussir l’adoption, gérer le changement culturel et vaincre les résistances.",
+            icon: 'Zap',
         },
     ],
     useCases: [
@@ -110,51 +107,181 @@ export const formation: SolutionData = {
                 "Un plan d’usages priorisés, limité à ce qui fait vraiment gagner du temps ou de la fiabilité, le reste étant explicitement écarté.",
         },
     ],
-    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
     deepDive: {
-        eyebrow: 'Le Programme en Détail',
-        title: 'Ce que vos équipes apprendront',
+        eyebrow: 'Syllabus complet',
+        title: 'Programme de formation détaillé',
         intro:
-            'Un aperçu du parcours, ajusté à votre contexte lors du diagnostic initial.',
+            'Un cursus intensif alliant théorie stratégique et mise en pratique technique.',
         chapters: [
             {
-                id: 'formation-module1',
-                title: "Module 1 — Comprendre ce que l’IA change",
-                subtitle: '(Sans jargon ni promesses exagérées)',
+                id: 'formation-chap1',
+                title: 'Chapitre 1 — Acculturation aux enjeux de l’intelligence artificielle et de l’automatisation',
+                subtitle: '(Dirigeants & équipes)',
                 content: [
                     {
-                        title: '1.1 Ce que ces outils savent faire',
+                        title: '1.1 Introduction à l’intelligence artificielle',
                         items: [
-                            'Écrire, résumer, reformuler, organiser',
-                            "Ce qu’ils font bien et ce qu’ils font mal",
+                            'Intelligence artificielle, apprentissage automatique, modèles de langage : ce qui existe vraiment aujourd’hui',
+                            'Ce que l’IA fait vs ce qu’elle ne fait pas',
+                            'Différence entre IA, automatisation et digitalisation',
                         ],
                     },
                     {
-                        title: '1.2 Les limites à connaître',
+                        title: '1.2 Pourquoi l’IA change la concurrence',
                         items: [
-                            'Les erreurs plausibles et comment les repérer',
-                            'Les données à ne jamais partager',
+                            'Accélération continue (24/7)',
+                            'Avantage compétitif vs décrochage',
+                            'IA comme levier de coûts, temps, stabilité, qualité',
                         ],
                     },
                 ],
             },
             {
-                id: 'formation-module2',
-                title: 'Module 2 — Appliquer sur votre quotidien',
-                subtitle: '(Vos documents, vos cas réels)',
+                id: 'formation-chap2',
+                title: 'Chapitre 2 — Panorama des technologies actuelles',
+                subtitle: '(Ce qui est possible aujourd’hui, concrètement)',
                 content: [
                     {
-                        title: '2.1 Ateliers sur vos tâches',
+                        title: '2.1 Automatisation intelligente',
                         items: [
-                            'Comptes-rendus, courriers, synthèses de dossiers',
-                            'Chacun travaille sur ses propres exemples',
+                            'Automatisation de processus classique vs automatisation de processus augmentée par l’IA',
+                            'Automatisations déterministes vs adaptatives',
                         ],
                     },
                     {
-                        title: '2.2 Construire vos réflexes',
+                        title: '2.2 Agents IA',
                         items: [
-                            'Deux ou trois usages précis par personne',
-                            "Un cadre d’usage écrit et partagé",
+                            'Qu’est-ce qu’un agent IA',
+                            'Agents décisionnels vs agents exécutants',
+                            'Cas d’usage : lecture d’emails, déclenchement d’actions, orchestration',
+                        ],
+                    },
+                    {
+                        title: '2.3 Lecture automatique de documents nouvelle génération',
+                        items: [
+                            'Lecture automatique classique vs lecture automatique enrichie par l’IA',
+                            'Extraction de données fiables à grande échelle',
+                            'Cas d’usage documents, factures, contrats, emails',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'formation-chap3',
+                title: 'Chapitre 3 — De la vision stratégique à l’exécution',
+                subtitle: '(Strategy Board)',
+                content: [
+                    {
+                        title: '3.1 Alignement vision dirigeant / IT',
+                        items: [
+                            'Traduire la vision business en capacités techniques',
+                            'Priorisation des automatisations à fort impact',
+                        ],
+                    },
+                    {
+                        title: '3.2 Identifier ce qui doit (ou non) être automatisé',
+                        items: [
+                            'Tâches répétitives',
+                            'Process critiques',
+                            'Zones à risque ou à forte valeur humaine',
+                        ],
+                    },
+                    {
+                        title: '3.3 Feuille de route d’automatisation',
+                        items: [
+                            'Gains rapides vs transformation structurelle',
+                            'Retour sur investissement, coûts, gains de temps, stabilité',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'formation-chap4',
+                title: 'Chapitre 4 — Mise en œuvre opérationnelle',
+                subtitle: '(Formation équipes IT)',
+                content: [
+                    {
+                        title: '4.1 Comment fonctionne une automatisation concrètement',
+                        items: [
+                            'Architecture type',
+                            'Déclencheurs, règles, exceptions',
+                        ],
+                    },
+                    {
+                        title: '4.2 Déploiement des solutions',
+                        items: [
+                            'Installation technique',
+                            'Connexion aux systèmes existants',
+                            'Tests, supervision, maintenance',
+                        ],
+                    },
+                    {
+                        title: '4.3 Industrialisation',
+                        items: [
+                            'Passage du prototype à la production',
+                            'Scalabilité',
+                            'Documentation et transmission',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'formation-chap5',
+                title: 'Chapitre 5 — Gouvernance, risques et sécurité',
+                subtitle: '(Point clé pour les dirigeants)',
+                content: [
+                    {
+                        title: '5.1 Risques liés aux données',
+                        items: [
+                            'Données envoyées sur des serveurs externes',
+                            'Confidentialité et conformité',
+                            'Choix cloud vs sur site',
+                        ],
+                    },
+                    {
+                        title: '5.2 Risques liés aux IA autonomes',
+                        items: [
+                            'IA qui agit sans validation humaine',
+                            'Contrôles, garde-fous, permissions',
+                            'Niveaux d’autonomie acceptables',
+                        ],
+                    },
+                    {
+                        title: '5.3 Gouvernance IA & automatisation',
+                        items: [
+                            'Qui décide quoi',
+                            'Règles, audits, traçabilité',
+                            'Responsabilité humaine',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'formation-chap6',
+                title: 'Chapitre 6 — Transformation continue',
+                subtitle: '(Pourquoi ça ne s’arrête jamais)',
+                content: [
+                    {
+                        title: '6.1 Amélioration continue',
+                        items: [
+                            'Optimisation des automatisations existantes',
+                            'Adaptation aux nouvelles technologies',
+                        ],
+                    },
+                    {
+                        title: '6.2 Veille technologique & concurrentielle',
+                        items: [
+                            'Nouveaux usages IA',
+                            'Évolution des outils',
+                            'Anticipation plutôt que réaction',
+                        ],
+                    },
+                    {
+                        title: '6.3 Acculturation long terme',
+                        items: [
+                            'Formation continue des équipes',
+                            'Mise à niveau des dirigeants',
+                            'Culture IA dans l’entreprise',
                         ],
                     },
                 ],
@@ -187,10 +314,9 @@ export const formation: SolutionData = {
             duration: '1 mois après la formation',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
-    ctaTitle: 'Et si vos équipes gagnaient des heures dès la semaine prochaine ?',
+    ctaTitle: 'Prêt à sécuriser votre avenir ?',
     ctaText:
-        'Parlons de vos équipes et de leurs tâches : nous construirons un parcours qui leur ressemble.',
-    ctaLabel: 'Construire votre parcours',
+        "Ne laissez pas l’automatisation devenir une menace. Faites-en votre plus grand levier de croissance.",
+    ctaLabel: 'Réserver une session stratégique',
     ctaFootnote: 'Formation éligible aux budgets OPCO sous conditions.',
 };

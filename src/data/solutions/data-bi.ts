@@ -10,10 +10,9 @@ export const dataBi: SolutionData = {
     subPromise: 'Chaque décision mérite des données fiables.',
     shortDescription:
         'Des chiffres fiables et à jour, pour décider sans deviner.',
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     heroTagline:
-        'Les décisions importantes se prennent encore trop souvent sur des chiffres en retard, incomplets ou contradictoires.',
-    heroTaglineStrong: 'Décidez sur du solide.',
+        'Vos chiffres existent déjà — dans votre logiciel de comptabilité, votre CRM, vos tableurs de suivi, vos outils de production. Ils sont seulement éparpillés, jamais mis en regard les uns des autres.',
+    heroTaglineStrong: 'Il ne manque que le tableau de bord qui les fait parler.',
     gains: [
         {
             scenario:
@@ -31,52 +30,50 @@ export const dataBi: SolutionData = {
             label: 'Les problèmes coûteux détectés tôt',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     pillars: [
         {
-            title: 'Des indicateurs choisis, pas subis',
+            title: 'Connecter sans tout changer',
             description:
-                "Nous partons des décisions que vous avez à prendre, pas de tout ce qu’il est possible d’afficher.",
-            icon: 'Target',
-        },
-        {
-            title: 'Une seule version des chiffres',
-            description:
-                'Toutes vos sources rassemblées et mises en cohérence, pour que tout le monde regarde la même chose.',
+                'Nous branchons vos outils existants — comptabilité, CRM, ventes, production — sans migration ni remplacement de vos logiciels.',
             icon: 'Database',
         },
         {
-            title: 'Des mises à jour automatiques',
+            title: 'Fiabiliser la source',
             description:
-                "Vos tableaux de bord s’alimentent seuls depuis vos outils, sans export ni ressaisie.",
-            icon: 'RefreshCw',
+                'Chaque indicateur repose sur une définition unique et vérifiée, pour que deux personnes ne calculent jamais la même chose différemment.',
+            icon: 'ShieldCheck',
         },
         {
-            title: 'Une autonomie durable',
+            title: 'Visualiser l’essentiel',
             description:
-                'Vos équipes savent lire, adapter et faire évoluer leurs tableaux de bord sans dépendre de nous.',
+                "Des tableaux de bord qui montrent ce qui pilote vos décisions, pas tout ce qu’il est techniquement possible d’afficher.",
+            icon: 'Eye',
+        },
+        {
+            title: 'Rendre autonome',
+            description:
+                'Vos équipes apprennent à lire, filtrer et faire évoluer leurs tableaux de bord sans dépendre de nous au quotidien.',
             icon: 'GraduationCap',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
     audiences: [
         {
             title: 'Dirigeants',
             description:
-                'Pour piloter marge, trésorerie et activité au jour le jour, sans attendre la clôture du mois.',
+                'Une vue d’ensemble de la marge, de la trésorerie et de l’activité, actualisée chaque jour, sans attendre la clôture du mois.',
             icon: 'Users',
             highlighted: true,
         },
         {
             title: 'Directions financières',
             description:
-                'Pour remplacer les journées de consolidation manuelle par des chiffres fiables disponibles en permanence.',
+                'Des chiffres consolidés automatiquement, pour remplacer les journées de recoupement par des rapprochements déjà faits.',
             icon: 'BarChart3',
         },
         {
-            title: 'Responsables métier',
+            title: 'Responsables d’activité',
             description:
-                "Pour suivre leur périmètre avec des indicateurs à jour, et repérer les dérives avant qu’elles ne coûtent.",
+                'Un suivi de leur périmètre — ventes, production, projets — avec les écarts visibles avant qu’ils ne pèsent sur le résultat.',
             icon: 'TrendingUp',
         },
     ],
@@ -109,51 +106,122 @@ export const dataBi: SolutionData = {
                 'Fini les débats sur quel fichier a raison : tout le monde regarde les mêmes chiffres.',
         },
     ],
-    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
     deepDive: {
-        eyebrow: 'La Démarche en Détail',
-        title: 'Des données brutes aux décisions',
+        eyebrow: 'Le Catalogue en Détail',
+        title: 'Ce que vous verrez enfin clairement — indicateurs par fonction',
         intro:
-            "Un aperçu de la démarche, de la mise en cohérence de vos données jusqu’aux tableaux de bord utilisés chaque jour.",
+            "Un aperçu concret des vues et indicateurs que nous mettons en place, fonction par fonction. De quoi vous projeter dans votre futur tableau de bord.",
         chapters: [
             {
-                id: 'data-etape1',
-                title: 'Étape 1 — Poser des fondations fiables',
-                subtitle: '(Sans données propres, pas de bons chiffres)',
+                id: 'data-pilotage',
+                title: 'Pilotage dirigeant',
+                subtitle: '(La vue d’ensemble, en un coup d’œil)',
                 content: [
                     {
-                        title: '1.1 Rassembler vos sources',
+                        title: 'Vue d’ensemble de l’activité',
                         items: [
-                            'Comptabilité, ventes, production : vos outils existants comme point de départ',
-                            'Un espace central où les données sont réunies',
+                            'Chiffre d’affaires du mois comparé au même mois l’an dernier, mis à jour chaque jour',
+                            'Marge réelle par activité ou par client, recalculée automatiquement',
+                            'Carnet de commandes et projets en cours, avec leur valeur engagée',
                         ],
                     },
                     {
-                        title: '1.2 Fiabiliser les chiffres',
+                        title: 'Synthèse financière',
                         items: [
-                            'Détection des écarts et des doublons',
-                            'Une définition partagée pour chaque indicateur',
+                            'Trésorerie disponible et son évolution sur les 30 derniers jours',
+                            'Résultat d’exploitation estimé avant même la clôture comptable',
+                            'Comparaison budget prévu / réalisé, poste par poste',
                         ],
                     },
                 ],
             },
             {
-                id: 'data-etape2',
-                title: 'Étape 2 — Donner à voir ce qui compte',
-                subtitle: '(Des tableaux de bord qui servent vraiment)',
+                id: 'data-finance',
+                title: 'Finance & trésorerie',
+                subtitle: '(Anticiper plutôt que constater)',
                 content: [
                     {
-                        title: '2.1 Construire les vues',
+                        title: 'Trésorerie',
                         items: [
-                            'Une vue direction et des vues par métier',
-                            'Des alertes quand un indicateur dérive',
+                            'Trésorerie projetée à 90 jours à partir des encaissements et échéances connus',
+                            'Factures clients en retard, classées par ancienneté et par montant',
+                            'Échéances fournisseurs à venir, regroupées par semaine',
                         ],
                     },
                     {
-                        title: '2.2 Installer l’usage',
+                        title: 'Rentabilité',
                         items: [
-                            'Formation de vos équipes à la lecture et à l’adaptation',
-                            'Des rituels de pilotage appuyés sur les chiffres',
+                            'Marge réelle par client, mise à jour chaque nuit',
+                            'Coût de revient par produit ou par prestation, comparé au prix vendu',
+                            'Charges fixes et variables suivies mois après mois',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'data-ventes',
+                title: 'Ventes & clients',
+                subtitle: '(Ce qui se vend, à qui, et à quel prix)',
+                content: [
+                    {
+                        title: 'Pipeline commercial',
+                        items: [
+                            'Devis en attente, classés par montant et par ancienneté',
+                            'Taux de transformation des devis en commandes, par commercial ou par segment',
+                            'Chiffre d’affaires par client, avec les clients en baisse signalés automatiquement',
+                        ],
+                    },
+                    {
+                        title: 'Fidélité et panier',
+                        items: [
+                            'Clients n’ayant pas commandé depuis plusieurs mois, repérés automatiquement',
+                            'Panier moyen et son évolution par période',
+                            'Répartition du chiffre d’affaires par produit, gamme ou zone géographique',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'data-operations',
+                title: 'Opérations & production',
+                subtitle: '(Suivre le terrain sans y être)',
+                content: [
+                    {
+                        title: 'Activité et charge',
+                        items: [
+                            'Taux d’occupation des équipes ou des machines, par semaine',
+                            'Délai moyen de traitement d’une commande ou d’un projet, du début à la livraison',
+                            'Retards et dépassements de délai, signalés dès qu’ils apparaissent',
+                        ],
+                    },
+                    {
+                        title: 'Qualité et coûts',
+                        items: [
+                            'Taux de non-conformité ou de retour, suivi par produit ou par ligne',
+                            'Coût matière ou coût d’achat, comparé au budget prévisionnel',
+                            'Stock disponible et rotation, pour anticiper les ruptures',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'data-alertes',
+                title: 'Alertes & anticipation',
+                subtitle: '(Être prévenu avant que ça coûte cher)',
+                content: [
+                    {
+                        title: 'Seuils et signaux',
+                        items: [
+                            'Une alerte dès qu’un indicateur clé sort de sa fourchette habituelle',
+                            'Une notification quand une marge tombe sous un seuil défini avec vous',
+                            'Un résumé hebdomadaire des écarts à surveiller, envoyé automatiquement',
+                        ],
+                    },
+                    {
+                        title: 'Anticipation',
+                        items: [
+                            'Des tendances calculées sur plusieurs mois pour repérer un essoufflement avant qu’il ne soit visible dans les comptes',
+                            'Une comparaison automatique entre périodes, sans recalcul manuel',
                         ],
                     },
                 ],
@@ -186,10 +254,9 @@ export const dataBi: SolutionData = {
             duration: '2 à 3 jours',
         },
     ],
-    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
-    ctaTitle: 'Et si vos chiffres étaient toujours prêts ?',
+    ctaTitle: 'Quels chiffres vous manquent aujourd’hui ?',
     ctaText:
-        "Montrez-nous comment vous pilotez aujourd’hui : nous vous montrerons ce que des données fiables changeraient.",
-    ctaLabel: 'Échanger sur vos indicateurs',
+        "Décrivez-nous ce que vous aimeriez savoir en un coup d’œil — marge, trésorerie, activité, retards. Nous vous dirons quels indicateurs sont à votre portée, et lesquels ne le sont pas encore.",
+    ctaLabel: 'Discuter de vos indicateurs',
     ctaFootnote: 'Premier échange sans engagement.',
 };
