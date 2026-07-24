@@ -10,6 +10,10 @@ export const dataBi: SolutionData = {
     subPromise: 'Chaque décision mérite des données fiables.',
     shortDescription:
         'Des chiffres fiables et à jour, pour décider sans deviner.',
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    heroTagline:
+        'Les décisions importantes se prennent encore trop souvent sur des chiffres en retard, incomplets ou contradictoires.',
+    heroTaglineStrong: 'Décidez sur du solide.',
     gains: [
         {
             scenario:
@@ -25,6 +29,55 @@ export const dataBi: SolutionData = {
             scenario:
                 "Une dérive de coûts ou une baisse d’activité repérée en quelques jours au lieu d’un trimestre, avant qu’elle ne pèse sur le résultat",
             label: 'Les problèmes coûteux détectés tôt',
+        },
+    ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    pillars: [
+        {
+            title: 'Des indicateurs choisis, pas subis',
+            description:
+                "Nous partons des décisions que vous avez à prendre, pas de tout ce qu’il est possible d’afficher.",
+            icon: 'Target',
+        },
+        {
+            title: 'Une seule version des chiffres',
+            description:
+                'Toutes vos sources rassemblées et mises en cohérence, pour que tout le monde regarde la même chose.',
+            icon: 'Database',
+        },
+        {
+            title: 'Des mises à jour automatiques',
+            description:
+                "Vos tableaux de bord s’alimentent seuls depuis vos outils, sans export ni ressaisie.",
+            icon: 'RefreshCw',
+        },
+        {
+            title: 'Une autonomie durable',
+            description:
+                'Vos équipes savent lire, adapter et faire évoluer leurs tableaux de bord sans dépendre de nous.',
+            icon: 'GraduationCap',
+        },
+    ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    audiences: [
+        {
+            title: 'Dirigeants',
+            description:
+                'Pour piloter marge, trésorerie et activité au jour le jour, sans attendre la clôture du mois.',
+            icon: 'Users',
+            highlighted: true,
+        },
+        {
+            title: 'Directions financières',
+            description:
+                'Pour remplacer les journées de consolidation manuelle par des chiffres fiables disponibles en permanence.',
+            icon: 'BarChart3',
+        },
+        {
+            title: 'Responsables métier',
+            description:
+                "Pour suivre leur périmètre avec des indicateurs à jour, et repérer les dérives avant qu’elles ne coûtent.",
+            icon: 'TrendingUp',
         },
     ],
     useCases: [
@@ -56,6 +109,57 @@ export const dataBi: SolutionData = {
                 'Fini les débats sur quel fichier a raison : tout le monde regarde les mêmes chiffres.',
         },
     ],
+    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
+    deepDive: {
+        eyebrow: 'La Démarche en Détail',
+        title: 'Des données brutes aux décisions',
+        intro:
+            "Un aperçu de la démarche, de la mise en cohérence de vos données jusqu’aux tableaux de bord utilisés chaque jour.",
+        chapters: [
+            {
+                id: 'data-etape1',
+                title: 'Étape 1 — Poser des fondations fiables',
+                subtitle: '(Sans données propres, pas de bons chiffres)',
+                content: [
+                    {
+                        title: '1.1 Rassembler vos sources',
+                        items: [
+                            'Comptabilité, ventes, production : vos outils existants comme point de départ',
+                            'Un espace central où les données sont réunies',
+                        ],
+                    },
+                    {
+                        title: '1.2 Fiabiliser les chiffres',
+                        items: [
+                            'Détection des écarts et des doublons',
+                            'Une définition partagée pour chaque indicateur',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'data-etape2',
+                title: 'Étape 2 — Donner à voir ce qui compte',
+                subtitle: '(Des tableaux de bord qui servent vraiment)',
+                content: [
+                    {
+                        title: '2.1 Construire les vues',
+                        items: [
+                            'Une vue direction et des vues par métier',
+                            'Des alertes quand un indicateur dérive',
+                        ],
+                    },
+                    {
+                        title: '2.2 Installer l’usage',
+                        items: [
+                            'Formation de vos équipes à la lecture et à l’adaptation',
+                            'Des rituels de pilotage appuyés sur les chiffres',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
     steps: [
         {
             title: 'Cadrage',
@@ -82,4 +186,10 @@ export const dataBi: SolutionData = {
             duration: '2 à 3 jours',
         },
     ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    ctaTitle: 'Et si vos chiffres étaient toujours prêts ?',
+    ctaText:
+        "Montrez-nous comment vous pilotez aujourd’hui : nous vous montrerons ce que des données fiables changeraient.",
+    ctaLabel: 'Échanger sur vos indicateurs',
+    ctaFootnote: 'Premier échange sans engagement.',
 };

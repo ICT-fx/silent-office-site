@@ -1,260 +1,334 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { solutionsList, solutionsBySlug } from '../data/solutions/index';
+import {
+    ArrowRight,
+    BarChart3,
+    Brain,
+    ChevronDown,
+    ClipboardList,
+    Compass,
+    Cpu,
+    Database,
+    Eye,
+    GraduationCap,
+    KeyRound,
+    Layers,
+    Lightbulb,
+    Lock,
+    Puzzle,
+    RefreshCw,
+    Rocket,
+    Search,
+    ShieldCheck,
+    Target,
+    TrendingUp,
+    Users,
+    Workflow,
+    Zap,
+    type LucideIcon,
+} from 'lucide-react';
+import { solutionsBySlug } from '../data/solutions/index';
 
-// Tokens éditoriaux — cohérents avec la section solutions de la home
-const DISPLAY = "'Space Grotesk', sans-serif";
-const BODY = "'Manrope', sans-serif";
-const MONO = "'JetBrains Mono', monospace";
+/**
+ * Registre d'icônes : les fichiers de données référencent une icône lucide-react
+ * par son nom (string) — on la résout ici, avec un fallback sûr.
+ */
+const ICONS: Record<string, LucideIcon> = {
+    BarChart3,
+    Brain,
+    ClipboardList,
+    Compass,
+    Cpu,
+    Database,
+    Eye,
+    GraduationCap,
+    KeyRound,
+    Layers,
+    Lightbulb,
+    Puzzle,
+    RefreshCw,
+    Rocket,
+    Search,
+    ShieldCheck,
+    Target,
+    TrendingUp,
+    Users,
+    Workflow,
+    Zap,
+};
 
-const INK = '#16201B';
-const GREEN = '#027333';
-const GREEN_DEEP = '#025928';
-const PAPER = '#FCFBF8';
-const CREAM = '#F4F1E9';
-const GREY = '#5C645C';
-const HAIRLINE = '#E5E1D6';
+const resolveIcon = (name: string): LucideIcon => ICONS[name] ?? Target;
 
-const EASE = 'cubic-bezier(0.22,0.61,0.36,1)';
+/** Icônes fixes pour les 3 gains (les données n'en portent pas). */
+const GAIN_ICONS: LucideIcon[] = [Zap, ShieldCheck, TrendingUp];
 
-const Eyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <div className="flex items-center gap-3">
-        <span className="block w-8 h-px" style={{ background: GREEN }} />
-        <span
-            style={{
-                fontFamily: BODY,
-                color: GREY,
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.22em',
-            }}
-        >
-            {children}
+const SectionHeading: React.FC<{ eyebrow: string; title: string; intro?: string }> = ({
+    eyebrow,
+    title,
+    intro,
+}) => (
+    <div className="text-center mb-16">
+        <span className="text-[#027333] font-bold uppercase tracking-widest text-sm mb-4 block">
+            {eyebrow}
         </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#262626]">{title}</h2>
+        {intro && <p className="mt-4 text-gray-500 max-w-2xl mx-auto">{intro}</p>}
     </div>
 );
+
+const DEEP_DIVE_ID = 'deep-dive';
 
 const SolutionPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const data = slug ? solutionsBySlug[slug] : undefined;
 
+    const [openChapter, setOpenChapter] = useState<string | null>(null);
+
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [slug]);
+        // Premier chapitre ouvert par défaut
+        setOpenChapter(data?.deepDive.chapters[0]?.id ?? null);
+    }, [slug, data]);
 
     if (!data) {
         return (
-            <div
-                className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
-                style={{ background: PAPER }}
-            >
-                <span style={{ fontFamily: MONO, color: GREEN, fontSize: '0.85rem' }}>404</span>
-                <h1
-                    className="mt-4 text-3xl md:text-4xl"
-                    style={{ fontFamily: DISPLAY, fontWeight: 500, color: INK }}
-                >
+            <div className="pt-20 min-h-screen bg-white flex flex-col items-center justify-center px-6 text-center">
+                <span className="text-[#027333] font-bold uppercase tracking-widest text-sm">
+                    404
+                </span>
+                <h1 className="mt-4 text-3xl md:text-4xl font-bold text-[#262626]">
                     Cette solution n'existe pas.
                 </h1>
-                <p className="mt-4 max-w-md" style={{ fontFamily: BODY, color: GREY }}>
+                <p className="mt-4 max-w-md text-gray-500">
                     La page que vous cherchez a peut-être changé d'adresse.
                 </p>
                 <Link
                     to="/solutions"
-                    className="mt-8 inline-flex items-center gap-2"
-                    style={{
-                        fontFamily: BODY,
-                        fontWeight: 600,
-                        color: INK,
-                        border: `1px solid ${INK}`,
-                        borderRadius: '9999px',
-                        padding: '12px 24px',
-                    }}
+                    className="mt-8 inline-flex items-center bg-[#027333] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#262626] transition-all"
                 >
                     Voir toutes nos solutions
-                    <ArrowRight className="w-4 h-4" strokeWidth={2} />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
             </div>
         );
     }
 
-    const index = solutionsList.findIndex((s) => s.slug === data.slug);
-    const number = String(index + 1).padStart(2, '0');
+    const toggleChapter = (id: string) => {
+        setOpenChapter(openChapter === id ? null : id);
+    };
+
+    // Promesse : dernier mot/segment en vert gras, le reste en font-light
+    const promiseWords = data.promise.trim().split(' ');
+    const promiseEnd = promiseWords.pop();
+    const promiseLead = promiseWords.join(' ');
+
+    const pillarGridCols =
+        data.pillars.length >= 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3';
 
     return (
-        <div className="pt-20 min-h-screen" style={{ background: PAPER, color: INK }}>
-            {/* ============ HERO — promesse ============ */}
-            <header className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex items-center justify-between gap-6 flex-wrap">
-                        <Eyebrow>
-                            Solution {number} — {data.title}
-                        </Eyebrow>
-                        <Link
-                            to="/solutions"
-                            className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
-                            style={{ fontFamily: MONO, color: GREY, fontSize: '0.78rem' }}
-                        >
-                            Toutes les solutions
-                            <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-                        </Link>
-                    </div>
+        <div className="pt-20 min-h-screen bg-white font-sans text-[#262626]">
+            {/* ============ HERO SOMBRE ============ */}
+            <section className="relative py-24 md:py-32 px-6 bg-[#262626] text-white overflow-hidden">
+                {/* Fond graphique : dégradé sobre + halos verts flous */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#262626] via-[#262626] to-[#1c2b21]" />
+                <div className="absolute -top-24 -right-24 w-[28rem] h-[28rem] bg-[#027333] opacity-20 blur-[130px] rounded-full" />
+                <div className="absolute -bottom-32 left-1/4 w-96 h-96 bg-[#025928] opacity-20 blur-[110px] rounded-full" />
+                <div className="absolute top-1/3 left-0 w-64 h-64 bg-[#93BF9E] opacity-10 blur-[100px] rounded-full" />
 
-                    <h1
-                        className="mt-10 md:mt-14"
-                        style={{
-                            fontFamily: DISPLAY,
-                            fontWeight: 700,
-                            color: INK,
-                            lineHeight: 1.02,
-                            letterSpacing: '-0.03em',
-                            fontSize: 'clamp(2.4rem, 6.5vw, 5rem)',
-                            maxWidth: '18ch',
-                        }}
+                <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left">
+                    <Link
+                        to="/"
+                        className="text-gray-400 hover:text-[#027333] text-sm font-bold uppercase tracking-widest mb-8 inline-block transition-colors"
                     >
-                        {data.promise}
+                        &larr; Retour Accueil
+                    </Link>
+                    <h1 className="text-4xl md:text-6xl font-light mb-6 leading-tight">
+                        {promiseLead}{' '}
+                        <span className="font-bold text-[#027333]">{promiseEnd}</span>
                     </h1>
-
                     {data.subPromise && (
-                        <p
-                            className="mt-6"
-                            style={{
-                                fontFamily: DISPLAY,
-                                fontWeight: 500,
-                                color: GREEN,
-                                fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
-                                letterSpacing: '-0.01em',
-                            }}
-                        >
+                        <p className="text-2xl md:text-3xl font-light text-gray-200 mb-6">
                             {data.subPromise}
                         </p>
                     )}
-
-                    <p
-                        className="mt-8 max-w-xl"
-                        style={{ fontFamily: BODY, color: GREY, fontSize: '1.15rem', lineHeight: 1.6 }}
-                    >
-                        {data.shortDescription}
-                    </p>
-
-                    <div className="mt-10">
-                        <Link
-                            to="/contact"
-                            className="inline-flex items-center gap-2 rounded-full"
-                            style={{
-                                fontFamily: BODY,
-                                fontWeight: 600,
-                                fontSize: '0.95rem',
-                                color: PAPER,
-                                background: INK,
-                                padding: '14px 28px',
-                                transition: `background 0.25s ${EASE}`,
-                            }}
-                            onMouseEnter={(e) => (e.currentTarget.style.background = GREEN)}
-                            onMouseLeave={(e) => (e.currentTarget.style.background = INK)}
-                        >
-                            Parler de votre projet
-                            <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                        </Link>
-                    </div>
-                </div>
-            </header>
-
-            {/* ============ GAINS — « Ce que ça change pour vous » ============ */}
-            <section className="px-6 py-20 md:py-24" style={{ background: CREAM }}>
-                <div className="max-w-6xl mx-auto">
-                    <Eyebrow>Ce que ça change pour vous</Eyebrow>
-                    <div
-                        className="mt-12 grid md:grid-cols-3 gap-y-10"
-                        style={{ borderTop: `1px solid ${HAIRLINE}` }}
-                    >
-                        {data.gains.map((gain, i) => (
-                            <div key={i} className="pt-8 md:pr-10">
-                                <span style={{ fontFamily: MONO, color: GREEN, fontSize: '0.8rem' }}>
-                                    {String(i + 1).padStart(2, '0')}
+                    <p className="text-xl md:text-2xl text-gray-300 max-w-3xl font-light mb-12 leading-relaxed mx-auto md:mx-0">
+                        {data.heroTagline}
+                        {data.heroTaglineStrong && (
+                            <>
+                                {' '}
+                                <span className="text-white font-medium">
+                                    {data.heroTaglineStrong}
                                 </span>
-                                <p
-                                    className="mt-4"
-                                    style={{
-                                        fontFamily: DISPLAY,
-                                        fontWeight: 500,
-                                        color: INK,
-                                        fontSize: '1.35rem',
-                                        lineHeight: 1.25,
-                                        letterSpacing: '-0.01em',
-                                    }}
+                            </>
+                        )}
+                    </p>
+                    <button
+                        onClick={() =>
+                            document
+                                .getElementById(DEEP_DIVE_ID)
+                                ?.scrollIntoView({ behavior: 'smooth' })
+                        }
+                        className="bg-[#027333] text-white px-10 py-5 font-bold text-lg rounded-lg hover:bg-white hover:text-[#262626] transition-all inline-flex items-center shadow-lg"
+                    >
+                        Découvrir
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                    </button>
+                </div>
+            </section>
+
+            {/* ============ CE QUE ÇA CHANGE POUR VOUS ============ */}
+            <section className="py-24 px-6 bg-white">
+                <div className="max-w-7xl mx-auto">
+                    <SectionHeading
+                        eyebrow="Les bénéfices"
+                        title="Ce que ça change pour vous"
+                    />
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {data.gains.map((gain, i) => {
+                            const GainIcon = GAIN_ICONS[i % GAIN_ICONS.length];
+                            return (
+                                <div
+                                    key={i}
+                                    className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group"
                                 >
-                                    {gain.scenario}
-                                </p>
-                                <p
-                                    className="mt-3"
-                                    style={{ fontFamily: BODY, color: GREY, fontSize: '0.95rem' }}
-                                >
-                                    {gain.label}
-                                </p>
-                            </div>
-                        ))}
+                                    <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                        <GainIcon className="w-7 h-7 text-[#262626] group-hover:text-white transition-colors" />
+                                    </div>
+                                    <h3 className="font-bold text-xl mb-3">{gain.label}</h3>
+                                    <p className="text-gray-500 leading-relaxed">
+                                        {gain.scenario}
+                                    </p>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
+            {/* ============ NOTRE APPROCHE ============ */}
+            <section className="py-24 px-6 bg-[#F9F9F9]">
+                <div className="max-w-7xl mx-auto">
+                    <SectionHeading eyebrow="Notre Approche" title="Comment nous travaillons" />
+                    <div className={`grid ${pillarGridCols} gap-8`}>
+                        {data.pillars.map((pillar, i) => {
+                            const PillarIcon = resolveIcon(pillar.icon);
+                            return (
+                                <div
+                                    key={i}
+                                    className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group"
+                                >
+                                    <div className="w-14 h-14 bg-[#F2F1DF] rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#027333] transition-colors">
+                                        <PillarIcon className="w-7 h-7 text-[#262626] group-hover:text-white transition-colors" />
+                                    </div>
+                                    <h3 className="font-bold text-xl mb-3">{pillar.title}</h3>
+                                    <p className="text-gray-500 leading-relaxed">
+                                        {pillar.description}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* ============ POUR QUI ? ============ */}
+            {data.audiences && data.audiences.length > 0 && (
+                <section className="py-24 px-6 bg-white border-t border-gray-100">
+                    <div className="max-w-7xl mx-auto">
+                        <SectionHeading
+                            eyebrow="Pour Qui ?"
+                            title="Un accompagnement adapté à chaque profil"
+                        />
+                        <div className="grid md:grid-cols-3 gap-10">
+                            {data.audiences.map((audience, i) => {
+                                const AudienceIcon = resolveIcon(audience.icon);
+                                if (audience.highlighted) {
+                                    return (
+                                        <div
+                                            key={i}
+                                            className="p-8 bg-[#262626] text-white rounded-2xl relative overflow-hidden"
+                                        >
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#027333] opacity-10 rounded-full blur-2xl -mr-10 -mt-10" />
+                                            <div className="relative z-10">
+                                                <AudienceIcon className="w-12 h-12 text-[#027333] mb-6" />
+                                                <h3 className="text-2xl font-bold mb-4">
+                                                    {audience.title}
+                                                </h3>
+                                                <p className="text-gray-400 leading-relaxed">
+                                                    {audience.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                                return (
+                                    <div
+                                        key={i}
+                                        className="p-8 bg-gray-50 rounded-2xl border border-gray-200"
+                                    >
+                                        <AudienceIcon className="w-12 h-12 text-[#262626] mb-6" />
+                                        <h3 className="text-2xl font-bold mb-4 text-[#262626]">
+                                            {audience.title}
+                                        </h3>
+                                        <p className="text-gray-600 leading-relaxed">
+                                            {audience.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+            )}
+
             {/* ============ CAS CONCRETS ============ */}
-            <section className="px-6 py-20 md:py-28">
-                <div className="max-w-6xl mx-auto">
-                    <Eyebrow>Cas concrets</Eyebrow>
-                    <div className="mt-12 space-y-10">
+            <section className="py-24 px-6 bg-white border-t border-gray-100">
+                <div className="max-w-7xl mx-auto">
+                    <SectionHeading
+                        eyebrow="Cas Concrets"
+                        title="Des situations réelles, avant / après"
+                    />
+                    <div className="space-y-8">
                         {data.useCases.map((useCase, i) => (
                             <article
                                 key={i}
-                                className="rounded-2xl p-8 md:p-12"
-                                style={{ background: '#ffffff', border: `1px solid ${HAIRLINE}` }}
+                                className="bg-white rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-all border border-gray-200"
                             >
-                                <h3
-                                    style={{
-                                        fontFamily: DISPLAY,
-                                        fontWeight: 500,
-                                        color: INK,
-                                        fontSize: '1.5rem',
-                                        letterSpacing: '-0.01em',
-                                        lineHeight: 1.2,
-                                    }}
-                                >
+                                <h3 className="text-xl md:text-2xl font-bold text-[#262626] mb-8">
                                     {useCase.title}
                                 </h3>
-                                <div className="mt-8 grid md:grid-cols-3 gap-8">
+                                <div className="grid md:grid-cols-3 gap-8">
                                     {[
                                         { label: 'Avant', text: useCase.before },
-                                        { label: 'Ce que nous mettons en place', text: useCase.setup },
+                                        {
+                                            label: 'Ce que nous mettons en place',
+                                            text: useCase.setup,
+                                        },
                                         { label: 'Résultat', text: useCase.result },
                                     ].map((step, j) => (
                                         <div
                                             key={j}
-                                            className="pt-5"
-                                            style={{
-                                                borderTop: `2px solid ${j === 2 ? GREEN : HAIRLINE}`,
-                                            }}
+                                            className={`pt-5 border-t-2 ${
+                                                j === 2
+                                                    ? 'border-[#027333]'
+                                                    : 'border-gray-200'
+                                            }`}
                                         >
                                             <span
-                                                style={{
-                                                    fontFamily: BODY,
-                                                    fontWeight: 700,
-                                                    fontSize: '0.72rem',
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '0.18em',
-                                                    color: j === 2 ? GREEN : GREY,
-                                                }}
+                                                className={`text-xs font-bold uppercase tracking-widest ${
+                                                    j === 2
+                                                        ? 'text-[#027333]'
+                                                        : 'text-gray-400'
+                                                }`}
                                             >
                                                 {step.label}
                                             </span>
                                             <p
-                                                className="mt-3"
-                                                style={{
-                                                    fontFamily: BODY,
-                                                    color: j === 2 ? INK : GREY,
-                                                    fontSize: '0.98rem',
-                                                    lineHeight: 1.6,
-                                                }}
+                                                className={`mt-3 leading-relaxed ${
+                                                    j === 2
+                                                        ? 'text-[#262626]'
+                                                        : 'text-gray-500'
+                                                }`}
                                             >
                                                 {step.text}
                                             </p>
@@ -267,54 +341,120 @@ const SolutionPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* ============ MISE EN PLACE ============ */}
-            <section className="px-6 py-20 md:py-24" style={{ background: CREAM }}>
-                <div className="max-w-6xl mx-auto">
-                    <Eyebrow>La mise en place</Eyebrow>
-                    <div className="mt-12">
-                        {data.steps.map((step, i) => (
+            {/* ============ DEEP DIVE (ACCORDÉON) ============ */}
+            <section id={DEEP_DIVE_ID} className="py-24 px-6 bg-[#F9F9F9] scroll-mt-24">
+                <div className="max-w-4xl mx-auto">
+                    <SectionHeading
+                        eyebrow={data.deepDive.eyebrow}
+                        title={data.deepDive.title}
+                        intro={data.deepDive.intro}
+                    />
+                    <div className="space-y-4">
+                        {data.deepDive.chapters.map((chapter) => (
                             <div
-                                key={i}
-                                className="grid gap-4 md:gap-8 py-8 items-baseline solution-step"
-                                style={{ borderTop: `1px solid ${HAIRLINE}` }}
+                                key={chapter.id}
+                                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md"
                             >
-                                <span style={{ fontFamily: MONO, color: GREEN, fontSize: '0.85rem' }}>
+                                <button
+                                    onClick={() => toggleChapter(chapter.id)}
+                                    className="w-full flex items-center justify-between gap-4 p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors"
+                                >
+                                    <div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-[#262626] flex items-center flex-wrap gap-3">
+                                            {chapter.title}
+                                            {openChapter === chapter.id && (
+                                                <span className="text-xs font-normal text-[#027333] border border-[#027333] px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                                    En cours
+                                                </span>
+                                            )}
+                                        </h3>
+                                        {chapter.subtitle && (
+                                            <p className="text-gray-400 mt-1 font-medium">
+                                                {chapter.subtitle}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <div
+                                        className={`p-2 rounded-full shrink-0 transition-transform duration-300 ${
+                                            openChapter === chapter.id
+                                                ? 'rotate-180 bg-[#027333] text-white'
+                                                : 'bg-gray-100 text-gray-600'
+                                        }`}
+                                    >
+                                        <ChevronDown className="w-6 h-6" />
+                                    </div>
+                                </button>
+
+                                <div
+                                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                                        openChapter === chapter.id
+                                            ? 'max-h-[1200px] opacity-100'
+                                            : 'max-h-0 opacity-0'
+                                    }`}
+                                >
+                                    <div className="p-6 md:p-8 pt-0 border-t border-gray-100 bg-gray-50/50">
+                                        <div className="grid md:grid-cols-1 gap-8 pt-6">
+                                            {chapter.content.map((section, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    className="relative pl-6 border-l-2 border-gray-200 hover:border-[#027333] transition-colors"
+                                                >
+                                                    <h4 className="font-bold text-lg text-[#262626] mb-3">
+                                                        {section.title}
+                                                    </h4>
+                                                    <ul className="space-y-2">
+                                                        {section.items.map((item, itemIdx) => (
+                                                            <li
+                                                                key={itemIdx}
+                                                                className="flex items-start text-gray-600"
+                                                            >
+                                                                <span className="mr-2 text-[#027333]">
+                                                                    •
+                                                                </span>
+                                                                {item}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ============ MISE EN PLACE (TIMELINE) ============ */}
+            <section className="py-24 px-6 bg-white">
+                <div className="max-w-4xl mx-auto">
+                    <SectionHeading
+                        eyebrow="La Mise en Place"
+                        title="Un déroulé clair, étape par étape"
+                    />
+                    <div>
+                        {data.steps.map((step, i) => (
+                            <div key={i} className="relative flex gap-6 pb-12 last:pb-0">
+                                {i < data.steps.length - 1 && (
+                                    <div className="absolute left-6 top-12 bottom-0 w-px bg-gray-200" />
+                                )}
+                                <div className="w-12 h-12 shrink-0 rounded-full bg-[#027333] text-white flex items-center justify-center font-bold shadow-md">
                                     {String(i + 1).padStart(2, '0')}
-                                </span>
-                                <div>
-                                    <h3
-                                        style={{
-                                            fontFamily: DISPLAY,
-                                            fontWeight: 500,
-                                            color: INK,
-                                            fontSize: '1.35rem',
-                                            letterSpacing: '-0.01em',
-                                        }}
-                                    >
-                                        {step.title}
-                                    </h3>
-                                    <p
-                                        className="mt-2 max-w-xl"
-                                        style={{ fontFamily: BODY, color: GREY, fontSize: '0.98rem', lineHeight: 1.6 }}
-                                    >
+                                </div>
+                                <div className="pt-2">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <h3 className="text-xl font-bold text-[#262626]">
+                                            {step.title}
+                                        </h3>
+                                        <span className="text-sm font-medium bg-[#F2F1DF] text-[#262626] px-3 py-1 rounded-full whitespace-nowrap">
+                                            {step.duration}
+                                        </span>
+                                    </div>
+                                    <p className="mt-2 text-gray-500 leading-relaxed max-w-2xl">
                                         {step.description}
                                     </p>
                                 </div>
-                                <span
-                                    className="md:justify-self-end"
-                                    style={{
-                                        fontFamily: MONO,
-                                        color: INK,
-                                        fontSize: '0.82rem',
-                                        background: PAPER,
-                                        border: `1px solid ${HAIRLINE}`,
-                                        borderRadius: '9999px',
-                                        padding: '6px 14px',
-                                        whiteSpace: 'nowrap',
-                                    }}
-                                >
-                                    {step.duration}
-                                </span>
                             </div>
                         ))}
                     </div>
@@ -322,63 +462,34 @@ const SolutionPage: React.FC = () => {
             </section>
 
             {/* ============ CTA FINAL ============ */}
-            <section className="px-6 py-20 md:py-28">
-                <div
-                    className="max-w-6xl mx-auto rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center"
-                    style={{
-                        background: `linear-gradient(135deg, ${INK} 0%, ${GREEN_DEEP} 130%)`,
-                    }}
-                >
-                    <h2
-                        style={{
-                            fontFamily: DISPLAY,
-                            fontWeight: 700,
-                            color: PAPER,
-                            letterSpacing: '-0.02em',
-                            lineHeight: 1.1,
-                            fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
-                        }}
-                    >
-                        Et si on regardait votre situation ensemble ?
+            <section className="py-24 px-6 bg-[#262626] text-white">
+                <div className="max-w-5xl mx-auto text-center bg-[#262626] border border-white/10 rounded-3xl p-12 md:p-20 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#027333] opacity-5 blur-[100px] rounded-full" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#027333] opacity-5 blur-[100px] rounded-full" />
+
+                    <h2 className="text-3xl md:text-5xl font-light mb-8 relative z-10">
+                        {data.ctaTitle}
                     </h2>
-                    <p
-                        className="mt-5 max-w-xl mx-auto"
-                        style={{ fontFamily: BODY, color: '#C9CFC9', fontSize: '1.05rem', lineHeight: 1.6 }}
-                    >
-                        Un premier échange, sans engagement, pour identifier ce que vous pourriez gagner.
+                    <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto relative z-10">
+                        {data.ctaText}
                     </p>
-                    <Link
-                        to="/contact"
-                        className="mt-10 inline-flex items-center gap-2 rounded-full"
-                        style={{
-                            fontFamily: BODY,
-                            fontWeight: 600,
-                            fontSize: '0.95rem',
-                            color: INK,
-                            background: PAPER,
-                            padding: '14px 28px',
-                            transition: `all 0.25s ${EASE}`,
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#93BF9E';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.background = PAPER;
-                        }}
-                    >
-                        Prendre contact
-                        <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                    </Link>
+                    <div className="relative z-10">
+                        <Link
+                            to="/contact"
+                            className="bg-[#027333] text-white px-10 py-5 font-bold text-lg hover:bg-white hover:text-[#262626] transition-all inline-flex items-center rounded-lg"
+                        >
+                            {data.ctaLabel}
+                            <ArrowRight className="ml-2 w-5 h-5" />
+                        </Link>
+                    </div>
+                    {data.ctaFootnote && (
+                        <p className="mt-8 text-sm text-gray-500 flex items-center justify-center relative z-10">
+                            <Lock className="w-4 h-4 mr-2" />
+                            {data.ctaFootnote}
+                        </p>
+                    )}
                 </div>
             </section>
-
-            <style>{`
-                .solution-step { grid-template-columns: 56px 1fr auto; }
-                @media (max-width: 767px) {
-                    .solution-step { grid-template-columns: 40px 1fr; }
-                    .solution-step > span:last-child { grid-column: 2; justify-self: start; }
-                }
-            `}</style>
         </div>
     );
 };

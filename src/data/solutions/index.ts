@@ -5,7 +5,17 @@ import { dataBi } from './data-bi';
 import { developpementLogiciel } from './developpement-logiciel';
 import { formation } from './formation';
 
-export type { SolutionData, SolutionGain, SolutionUseCase, SolutionStep } from './types';
+export type {
+    SolutionData,
+    SolutionGain,
+    SolutionUseCase,
+    SolutionStep,
+    SolutionPillar,
+    SolutionAudience,
+    SolutionDeepDive,
+    SolutionDeepDiveChapter,
+    SolutionDeepDiveSection,
+} from './types';
 
 /** Ordre officiel des 5 offres (01 → 05). */
 export const solutionsList: SolutionData[] = [

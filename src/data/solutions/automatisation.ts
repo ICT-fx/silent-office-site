@@ -9,6 +9,10 @@ export const automatisation: SolutionData = {
     promise: 'Faites plus, avec les mêmes équipes.',
     shortDescription:
         "N’importe quel processus lent ou répétitif, simplifié puis pris en charge, pour que vos équipes se recentrent sur ce qui compte.",
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    heroTagline:
+        "Vos équipes passent des heures sur des tâches qui n’exigent ni jugement ni savoir-faire. Ces heures peuvent être rendues à ce qui compte vraiment.",
+    heroTaglineStrong: 'Libérez ce temps.',
     gains: [
         {
             scenario: 'Une facture traitée en 30 secondes au lieu de 5 minutes',
@@ -21,6 +25,55 @@ export const automatisation: SolutionData = {
         {
             scenario: 'Des relances qui partent toutes seules, au bon moment',
             label: 'Une trésorerie mieux tenue',
+        },
+    ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    pillars: [
+        {
+            title: "Simplifier avant d’automatiser",
+            description:
+                'Un processus compliqué automatisé reste compliqué. Nous commençons toujours par le simplifier.',
+            icon: 'Workflow',
+        },
+        {
+            title: "S’appuyer sur vos outils",
+            description:
+                'Nous construisons avec ce que vous utilisez déjà, sans imposer de nouvelle plateforme à apprendre.',
+            icon: 'Puzzle',
+        },
+        {
+            title: "Garder l’humain aux commandes",
+            description:
+                'Les cas particuliers restent validés par vos équipes ; la machine ne décide jamais seule.',
+            icon: 'ShieldCheck',
+        },
+        {
+            title: 'Mesurer les gains',
+            description:
+                'Chaque circuit mis en place est suivi et chiffré, pour prouver ce qu’il rapporte réellement.',
+            icon: 'BarChart3',
+        },
+    ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    audiences: [
+        {
+            title: 'Dirigeants et directions',
+            description:
+                "Pour absorber plus d’activité sans alourdir la structure, et fiabiliser les opérations qui pèsent sur le résultat.",
+            icon: 'Users',
+            highlighted: true,
+        },
+        {
+            title: 'Équipes administratives',
+            description:
+                'Pour se libérer des saisies, des ressaisies et des relances manuelles qui remplissent leurs journées.',
+            icon: 'ClipboardList',
+        },
+        {
+            title: 'Opérations et logistique',
+            description:
+                "Pour faire circuler l’information entre les outils sans intervention manuelle à chaque étape.",
+            icon: 'Layers',
         },
     ],
     useCases: [
@@ -52,6 +105,58 @@ export const automatisation: SolutionData = {
                 "Des paiements encaissés plus tôt, sans y consacrer une minute de plus. Le même principe s’applique à n’importe quelle tâche répétitive de votre activité.",
         },
     ],
+    // --- PLACEHOLDER Phase A — chapitres minimaux, à réécrire en Phase B ---
+    deepDive: {
+        eyebrow: 'La Méthode en Détail',
+        title: 'Comment nous automatisons un processus',
+        intro:
+            "Un aperçu de la démarche, du choix du processus jusqu’à un circuit qui tourne seul.",
+        chapters: [
+            {
+                id: 'auto-phase1',
+                title: 'Phase 1 — Choisir le bon processus',
+                subtitle: '(Là où le gain est le plus net)',
+                content: [
+                    {
+                        title: '1.1 Repérer les candidats',
+                        items: [
+                            'Les tâches répétées chaque jour ou chaque semaine',
+                            'Les ressaisies entre deux outils',
+                            'Les contrôles systématiques sans valeur ajoutée',
+                        ],
+                    },
+                    {
+                        title: '1.2 Évaluer le gain',
+                        items: [
+                            'Temps récupéré par semaine, chiffré avec vos équipes',
+                            'Erreurs évitées et reprises supprimées',
+                        ],
+                    },
+                ],
+            },
+            {
+                id: 'auto-phase2',
+                title: 'Phase 2 — Construire et fiabiliser',
+                subtitle: '(Un circuit qui tient dans la durée)',
+                content: [
+                    {
+                        title: '2.1 Mettre en place le circuit',
+                        items: [
+                            'Connexion à vos outils existants',
+                            'Tests avec vos équipes sur de vrais cas',
+                        ],
+                    },
+                    {
+                        title: '2.2 Prévoir les cas particuliers',
+                        items: [
+                            'Les exceptions renvoyées vers un contrôle humain',
+                            'Un suivi des gains pour ajuster dans le temps',
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
     steps: [
         {
             title: 'Diagnostic',
@@ -77,4 +182,10 @@ export const automatisation: SolutionData = {
             duration: 'en continu',
         },
     ],
+    // --- PLACEHOLDER Phase A — à réécrire en Phase B ---
+    ctaTitle: 'Quel processus vous coûte le plus cher ?',
+    ctaText:
+        'Décrivez-nous une tâche répétitive de votre quotidien : nous vous dirons ce qu’elle pourrait devenir.',
+    ctaLabel: 'Parler de votre processus',
+    ctaFootnote: 'Premier échange sans engagement.',
 };
