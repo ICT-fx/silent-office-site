@@ -1,168 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { solutionsList } from '../data/solutions/index';
 
-// Tokens éditoriaux (inspiration Flowera, palette adaptée Nexus)
-const SERIF = "'Newsreader', Georgia, serif";
+// Tokens éditoriaux (ambiance papier conservée)
+const DISPLAY = "'Space Grotesk', sans-serif";
+const BODY = "'Manrope', sans-serif";
 const MONO = "'JetBrains Mono', monospace";
 
-// Couleurs locales à la section
 const INK = '#16201B';      // encre — titres
-const GREEN = '#0B7A41';    // vert accent — numéros, hover
+const GREEN = '#027333';    // vert primary — hover, accents
 const PAPER = '#FCFBF8';    // fond papier
-const CREAM = '#F4F1E9';    // crème — hover item
-const GOLD = '#C49A4A';     // doré — badge "Nouveau"
-const GREY = '#5C645C';     // gris texte — descriptions
+const CREAM = '#F4F1E9';    // crème — panneau
+const GREY = '#5C645C';     // gris texte
 const HAIRLINE = '#E5E1D6'; // fines lignes
 
-// transition douce commune
 const EASE = 'cubic-bezier(0.22,0.61,0.36,1)';
-
-interface Levier {
-    n: string;
-    title: string;
-    description: string;
-    link: string;
-    badge?: string;
-}
-
-// 6 leviers Nexus — point 5 (Conseil & Intégration) placé en premier
-const leviers: Levier[] = [
-    {
-        n: '01',
-        title: 'Conseil & Intégration',
-        description: "Audit, diagnostic et mise en œuvre pour identifier les bonnes solutions et les intégrer dans votre écosystème.",
-        link: '/solutions/audit-processus',
-    },
-    {
-        n: '02',
-        title: 'Développement logiciel',
-        description: "Applications et plateformes web sur mesure pour les besoins métier de votre organisation.",
-        link: '/solutions',
-    },
-    {
-        n: '03',
-        title: 'Intelligence artificielle',
-        description: "Solutions IA sur mesure et agents intelligents pour automatiser vos processus et augmenter vos capacités.",
-        link: '/solutions',
-        badge: 'Nouveau',
-    },
-    {
-        n: '04',
-        title: 'Automatisation & RPA',
-        description: "Workflows et processus optimisés pour réduire les tâches manuelles et améliorer l'efficacité opérationnelle.",
-        link: '/solutions/finance',
-    },
-    {
-        n: '05',
-        title: 'Data & Business Intelligence',
-        description: "Visualisation des données et stratégie data pour transformer vos données en insights actionnables.",
-        link: '/solutions',
-    },
-    {
-        n: '06',
-        title: 'Formation & Transformation',
-        description: "Acculturation et change management pour que vos équipes adoptent vraiment l'IA et la transformation digitale.",
-        link: '/solutions/strategie',
-    },
-];
-
-const SolutionItem: React.FC<{ item: Levier }> = ({ item }) => {
-    const [hover, setHover] = useState(false);
-
-    return (
-        <Link
-            to={item.link}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            className="grid items-center border-b group"
-            style={{
-                gridTemplateColumns: 'var(--exp-cols)',
-                borderColor: HAIRLINE,
-                padding: '28px 8px',
-                paddingLeft: hover ? '18px' : '8px',
-                paddingRight: hover ? '18px' : '8px',
-                background: hover ? CREAM : 'transparent',
-                transition: `all 0.25s ${EASE}`,
-            }}
-        >
-            {/* Numéro */}
-            <span
-                style={{
-                    fontFamily: MONO,
-                    color: GREEN,
-                    fontSize: '0.85rem',
-                    letterSpacing: '0.04em',
-                }}
-            >
-                {item.n}
-            </span>
-
-            {/* Bloc texte */}
-            <div className="min-w-0">
-                <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
-                    <h3
-                        className="exp-title"
-                        style={{
-                            fontFamily: SERIF,
-                            fontWeight: 500,
-                            color: hover ? GREEN : INK,
-                            lineHeight: 1.15,
-                            transition: `color 0.25s ${EASE}`,
-                        }}
-                    >
-                        {item.title}
-                    </h3>
-                    {item.badge && (
-                        <span
-                            style={{
-                                fontFamily: "'Manrope', sans-serif",
-                                color: GOLD,
-                                border: `1px solid ${GOLD}`,
-                                borderRadius: '9999px',
-                                fontSize: '0.62rem',
-                                fontWeight: 600,
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.12em',
-                                padding: '2px 9px',
-                            }}
-                        >
-                            {item.badge}
-                        </span>
-                    )}
-                </div>
-                <p
-                    style={{
-                        fontFamily: "'Manrope', sans-serif",
-                        color: GREY,
-                        fontSize: '0.98rem',
-                        lineHeight: 1.5,
-                        maxWidth: '54ch',
-                        marginTop: '0.4rem',
-                    }}
-                >
-                    {item.description}
-                </p>
-            </div>
-
-            {/* Flèche (masquée < lg) */}
-            <span
-                className="hidden lg:flex justify-end"
-                style={{
-                    color: hover ? GREEN : GREY,
-                    transform: hover ? 'translateX(4px)' : 'translateX(0)',
-                    transition: `transform 0.25s ${EASE}, color 0.25s ${EASE}`,
-                }}
-            >
-                <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
-            </span>
-        </Link>
-    );
-};
 
 const SolutionsSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const [isVisible, setIsVisible] = useState(false);
+    // Première solution active par défaut — le panneau n'est jamais vide.
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const active = solutionsList[activeIndex];
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -194,16 +55,15 @@ const SolutionsSection: React.FC = () => {
 
             <div className="px-6 pt-32 pb-36 md:pt-40 md:pb-44">
                 <div
-                    className={`max-w-6xl mx-auto exp-layout transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    className={`max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 >
-                    {/* Colonne gauche — aside sticky */}
-                    <aside className="exp-aside">
-                        {/* Eyebrow */}
+                    {/* ===== En-tête de section ===== */}
+                    <div className="mb-14 md:mb-20 max-w-3xl">
                         <div className="flex items-center gap-3 mb-8">
                             <span className="block w-8 h-px" style={{ background: GREEN }} />
                             <span
                                 style={{
-                                    fontFamily: "'Manrope', sans-serif",
+                                    fontFamily: BODY,
                                     color: GREY,
                                     fontSize: '0.72rem',
                                     fontWeight: 600,
@@ -215,65 +75,194 @@ const SolutionsSection: React.FC = () => {
                             </span>
                         </div>
 
-                        {/* Titre H2 serif */}
                         <h2
                             style={{
-                                fontFamily: SERIF,
-                                fontWeight: 500,
+                                fontFamily: DISPLAY,
+                                fontWeight: 700,
                                 color: INK,
-                                lineHeight: 1.08,
-                                letterSpacing: '-0.01em',
+                                lineHeight: 1.05,
+                                letterSpacing: '-0.02em',
                             }}
-                            className="text-4xl md:text-5xl mb-6"
+                            className="text-4xl md:text-6xl mb-6"
                         >
-                            Six leviers pour industrialiser l'IA.
+                            Du temps, de la clarté, des résultats.
                         </h2>
 
-                        {/* Chapô */}
                         <p
                             style={{
-                                fontFamily: "'Manrope', sans-serif",
+                                fontFamily: BODY,
                                 color: GREY,
-                                fontSize: '1.24rem',
+                                fontSize: '1.2rem',
                                 lineHeight: 1.55,
                             }}
-                            className="mb-10 max-w-md"
+                            className="max-w-xl"
                         >
-                            Du diagnostic à l'exploitation, des solutions propriétaires pensées pour s'intégrer à vos systèmes existants — sans rupture.
+                            Cinq solutions concrètes pour libérer du temps, réduire vos coûts
+                            et fiabiliser vos opérations — au service de votre métier, pas de
+                            la technologie.
                         </p>
+                    </div>
 
-                        {/* Bouton fantôme */}
-                        <Link
-                            to="/contact"
-                            className="inline-flex items-center gap-2 rounded-full group"
-                            style={{
-                                fontFamily: "'Manrope', sans-serif",
-                                fontWeight: 600,
-                                fontSize: '0.95rem',
-                                color: INK,
-                                border: `1px solid ${INK}`,
-                                padding: '12px 24px',
-                                transition: `all 0.25s ${EASE}`,
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.background = INK;
-                                e.currentTarget.style.color = PAPER;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.background = 'transparent';
-                                e.currentTarget.style.color = INK;
-                            }}
-                        >
-                            Parler à un expert
-                            <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                        </Link>
-                    </aside>
+                    {/* ===== Liste + panneau ===== */}
+                    <div className="sol-layout">
+                        {/* Colonne gauche — 5 grands titres */}
+                        {/* Au mouseleave, la dernière solution survolée reste active (jamais de panneau vide) */}
+                        <div className="sol-list" style={{ borderTop: `1px solid ${HAIRLINE}` }}>
+                            {solutionsList.map((solution, i) => {
+                                const isActive = i === activeIndex;
+                                return (
+                                    <Link
+                                        key={solution.slug}
+                                        to={`/solutions/${solution.slug}`}
+                                        className="sol-row group"
+                                        style={{ borderBottom: `1px solid ${HAIRLINE}` }}
+                                        onMouseEnter={() => setActiveIndex(i)}
+                                        onFocus={() => setActiveIndex(i)}
+                                    >
+                                        <span
+                                            className="sol-num"
+                                            style={{
+                                                fontFamily: MONO,
+                                                color: isActive ? GREEN : GREY,
+                                                fontSize: '0.8rem',
+                                                letterSpacing: '0.04em',
+                                                transition: `color 0.3s ${EASE}`,
+                                            }}
+                                        >
+                                            {String(i + 1).padStart(2, '0')}
+                                        </span>
+                                        <span className="min-w-0">
+                                            <span
+                                                className="sol-title block"
+                                                style={{
+                                                    fontFamily: DISPLAY,
+                                                    fontWeight: 500,
+                                                    letterSpacing: '-0.02em',
+                                                    lineHeight: 1.08,
+                                                    color: isActive ? GREEN : INK,
+                                                    transform: isActive ? 'translateX(8px)' : 'translateX(0)',
+                                                    transition: `color 0.3s ${EASE}, transform 0.35s ${EASE}`,
+                                                }}
+                                            >
+                                                {solution.title}
+                                            </span>
+                                            {/* Sous-titre visible uniquement en mobile */}
+                                            <span
+                                                className="sol-short block lg:hidden"
+                                                style={{
+                                                    fontFamily: BODY,
+                                                    color: GREY,
+                                                    fontSize: '0.92rem',
+                                                    lineHeight: 1.5,
+                                                    marginTop: '0.45rem',
+                                                    maxWidth: '46ch',
+                                                }}
+                                            >
+                                                {solution.shortDescription}
+                                            </span>
+                                        </span>
+                                        <span
+                                            className="justify-self-end"
+                                            style={{
+                                                color: isActive ? GREEN : HAIRLINE,
+                                                transform: isActive ? 'translate(2px, -2px)' : 'translate(0, 0)',
+                                                transition: `color 0.3s ${EASE}, transform 0.3s ${EASE}`,
+                                            }}
+                                        >
+                                            <ArrowUpRight className="w-5 h-5" strokeWidth={1.5} />
+                                        </span>
+                                    </Link>
+                                );
+                            })}
+                        </div>
 
-                    {/* Colonne droite — liste */}
-                    <div className="exp-list border-t" style={{ borderColor: HAIRLINE }}>
-                        {leviers.map((item) => (
-                            <SolutionItem key={item.n} item={item} />
-                        ))}
+                        {/* Colonne droite — panneau fixe (desktop uniquement) */}
+                        <aside className="sol-panel hidden lg:block">
+                            <div
+                                className="sticky top-28 rounded-2xl overflow-hidden"
+                                style={{
+                                    background: CREAM,
+                                    border: `1px solid ${HAIRLINE}`,
+                                }}
+                            >
+                                {/* key = slug → relance le fondu à chaque changement */}
+                                <div key={active.slug} className="sol-panel-inner p-9">
+                                    <span
+                                        style={{
+                                            fontFamily: DISPLAY,
+                                            fontWeight: 700,
+                                            fontSize: '4.2rem',
+                                            lineHeight: 1,
+                                            letterSpacing: '-0.04em',
+                                            color: 'transparent',
+                                            WebkitTextStroke: `1px ${GREEN}`,
+                                            display: 'block',
+                                            opacity: 0.55,
+                                        }}
+                                        aria-hidden="true"
+                                    >
+                                        {String(activeIndex + 1).padStart(2, '0')}
+                                    </span>
+
+                                    <p
+                                        className="mt-6"
+                                        style={{
+                                            fontFamily: DISPLAY,
+                                            fontWeight: 500,
+                                            color: INK,
+                                            fontSize: '1.2rem',
+                                            lineHeight: 1.35,
+                                            letterSpacing: '-0.01em',
+                                        }}
+                                    >
+                                        {active.shortDescription}
+                                    </p>
+
+                                    <ul
+                                        className="mt-7 pt-7 space-y-4"
+                                        style={{ borderTop: `1px solid ${HAIRLINE}` }}
+                                    >
+                                        {active.gains.slice(0, 3).map((gain, i) => (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <span
+                                                    className="mt-[0.55em] block w-1.5 h-1.5 rounded-full shrink-0"
+                                                    style={{ background: GREEN }}
+                                                />
+                                                <span
+                                                    style={{
+                                                        fontFamily: BODY,
+                                                        color: GREY,
+                                                        fontSize: '0.95rem',
+                                                        lineHeight: 1.5,
+                                                    }}
+                                                >
+                                                    {gain.scenario}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <Link
+                                        to={`/solutions/${active.slug}`}
+                                        className="mt-9 inline-flex items-center gap-2 group/link"
+                                        style={{
+                                            fontFamily: BODY,
+                                            fontWeight: 700,
+                                            fontSize: '0.9rem',
+                                            color: GREEN,
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '0.14em',
+                                        }}
+                                    >
+                                        Découvrir
+                                        <ArrowRight
+                                            className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
+                                            strokeWidth={2}
+                                        />
+                                    </Link>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
                 </div>
             </div>
@@ -287,23 +276,37 @@ const SolutionsSection: React.FC = () => {
 
             {/* Styles responsive de la section */}
             <style>{`
-                .exp-layout {
+                .sol-layout {
                     display: grid;
-                    grid-template-columns: 40% 60%;
-                    gap: 4rem;
+                    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+                    gap: 4.5rem;
                     align-items: start;
                 }
-                .exp-aside { position: sticky; top: 7rem; align-self: start; }
-                .exp-list { --exp-cols: 56px 1fr auto; }
-                .exp-title { font-size: 1.7rem; }
+                .sol-row {
+                    display: grid;
+                    grid-template-columns: 52px 1fr auto;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 34px 4px;
+                }
+                .sol-title { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
+                .sol-panel-inner { animation: solPanelIn 0.45s ${EASE} both; }
+                @keyframes solPanelIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
                 @media (max-width: 1023px) {
-                    .exp-layout {
-                        grid-template-columns: 1fr;
-                        gap: 3rem;
+                    .sol-layout { grid-template-columns: 1fr; gap: 0; }
+                    .sol-row {
+                        grid-template-columns: 40px 1fr auto;
+                        align-items: start;
+                        padding: 26px 2px;
                     }
-                    .exp-aside { position: static; top: auto; }
-                    .exp-list { --exp-cols: 40px 1fr; }
-                    .exp-title { font-size: 1.35rem; }
+                    .sol-row .sol-num { padding-top: 0.35rem; }
+                    .sol-title { font-size: 1.45rem; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .sol-panel-inner { animation: none; }
                 }
             `}</style>
         </section>
