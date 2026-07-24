@@ -2,6 +2,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { solutionsList } from '../data/solutions';
 
 const Footer: React.FC = () => {
   return (
@@ -53,11 +54,13 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-3">
             <h4 className="font-bold text-sm mb-4 text-[#027333] uppercase tracking-wider">Expertises</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/solutions/audit-processus" className="hover:text-[#027333] transition-colors">Audit de Processus</Link></li>
-              <li><Link to="/solutions/optimisation" className="hover:text-[#027333] transition-colors">Optimisation & Automatisation</Link></li>
-              <li><Link to="/solutions/finance" className="hover:text-[#027333] transition-colors">RPA & Legacy</Link></li>
-              <li><Link to="/solutions/data-hub" className="hover:text-[#027333] transition-colors">Data Hub & BI</Link></li>
-              <li><Link to="/solutions/strategie" className="hover:text-[#027333] transition-colors">Stratégie & Acculturation</Link></li>
+              {solutionsList.map((solution) => (
+                <li key={solution.slug}>
+                  <Link to={`/solutions/${solution.slug}`} className="hover:text-[#027333] transition-colors">
+                    {solution.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

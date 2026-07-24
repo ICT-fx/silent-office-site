@@ -1,16 +1,20 @@
 
 import React from 'react';
-import InnovationShowcase from './InnovationShowcase';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { solutionsList } from '../data/solutions';
+
+const PAPER = '#FCFBF8';
+const CREAM = '#F4F1E9';
+const INK = '#262626';
+const GREEN = '#027333';
 
 const SolutionsPage: React.FC = () => {
   return (
-    <div className="pt-24 min-h-screen bg-white">
+    <div className="pt-24 min-h-screen" style={{ background: PAPER }}>
       {/* Page Header */}
-      <div className="bg-[#262626] text-white py-20 px-6 relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#027333]/10 skew-x-12 transform origin-bottom"></div>
+      <div className="py-20 px-6 relative overflow-hidden text-white" style={{ background: INK }}>
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 skew-x-12 transform origin-bottom" style={{ background: GREEN }}></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <Link
@@ -22,50 +26,51 @@ const SolutionsPage: React.FC = () => {
           </Link>
 
           <h1 className="text-5xl lg:text-6xl font-light mb-6">
-            Nos Solutions <span className="font-bold text-[#027333]">Propriétaires</span>
+            Nos <span className="font-bold text-[#027333]">Solutions</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl font-light leading-relaxed">
-            Découvrez comment nos outils technologiques s'intègrent dans votre écosystème pour automatiser vos tâches critiques et sécuriser vos données.
+            Cinq façons concrètes de faire gagner du temps, de l'argent et de la clarté à vos équipes.
           </p>
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Solutions Grid */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-
-        {/* Intro Features */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <div className="bg-[#F2F1DF]/50 p-6 rounded-xl border border-transparent hover:border-[#027333]/20 transition-all">
-            <CheckCircle2 className="text-[#027333] w-8 h-8 mb-4" />
-            <h3 className="font-bold text-lg mb-2">Déploiement Rapide</h3>
-            <p className="text-sm text-gray-600">Intégration plug-and-play avec vos outils existants (SAP, Salesforce, Microsoft 365).</p>
-          </div>
-          <div className="bg-[#F2F1DF]/50 p-6 rounded-xl border border-transparent hover:border-[#027333]/20 transition-all">
-            <CheckCircle2 className="text-[#027333] w-8 h-8 mb-4" />
-            <h3 className="font-bold text-lg mb-2">Sécurité Maximale</h3>
-            <p className="text-sm text-gray-600">Architecture chiffrée de bout en bout et hébergement souverain (SecNumCloud).</p>
-          </div>
-          <div className="bg-[#F2F1DF]/50 p-6 rounded-xl border border-transparent hover:border-[#027333]/20 transition-all">
-            <CheckCircle2 className="text-[#027333] w-8 h-8 mb-4" />
-            <h3 className="font-bold text-lg mb-2">Formation Incluse</h3>
-            <p className="text-sm text-gray-600">Onboarding complet de vos équipes pour une adoption immédiate des outils.</p>
-          </div>
-        </div>
-
-        {/* The Bento Grid reused */}
-        <div className="mb-16">
-          <InnovationShowcase />
+        <div className="grid md:grid-cols-2 gap-6">
+          {solutionsList.map((solution) => (
+            <Link
+              key={solution.slug}
+              to={`/solutions/${solution.slug}`}
+              className="group flex flex-col justify-between p-8 rounded-2xl border transition-all hover:shadow-xl"
+              style={{ background: CREAM, borderColor: 'transparent' }}
+            >
+              <div>
+                <h3 className="text-2xl font-bold mb-3 transition-colors" style={{ color: INK }}>
+                  <span className="group-hover:text-[#027333] transition-colors">{solution.title}</span>
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{solution.shortDescription}</p>
+              </div>
+              <div className="mt-8 flex items-center font-bold text-sm" style={{ color: GREEN }}>
+                Découvrir
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* CTA Bottom */}
-        <div className="bg-gray-50 rounded-3xl p-12 text-center border border-gray-100">
-          <h2 className="text-3xl font-light text-[#262626] mb-6">Une solution sur-mesure ?</h2>
+        <div className="mt-16 rounded-3xl p-12 text-center border border-gray-100" style={{ background: '#FAFAF7' }}>
+          <h2 className="text-3xl font-light mb-6" style={{ color: INK }}>Un besoin qui ne rentre pas dans une case ?</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Nos outils sont modulables. Discutons de vos besoins spécifiques pour adapter nos algorithmes à votre secteur.
+            Parlons de votre situation. Nous vous proposons l'accompagnement le plus adapté, sans détour.
           </p>
-          <button className="bg-[#262626] text-white px-8 py-4 font-bold hover:bg-[#027333] hover:text-[#262626] transition-all">
-            Contacter l'équipe technique
-          </button>
+          <Link
+            to="/contact"
+            className="inline-flex items-center px-8 py-4 font-bold text-white transition-all hover:opacity-90"
+            style={{ background: INK }}
+          >
+            Contacter l'équipe
+          </Link>
         </div>
       </div>
     </div>

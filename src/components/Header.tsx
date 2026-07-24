@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { solutionsList } from '../data/solutions';
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -271,26 +272,16 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             {activeMenu === 'solutions' && (
               <div className="grid grid-cols-4 gap-8 animate-fade-in">
                 <div className="col-span-1 border-r border-gray-100 pr-8">
-                  <h3 className="font-bold text-3xl mb-4 text-[#262626]">Notre savoir-faire</h3>
-                  <p className="text-gray-500 text-sm">Des solutions technologiques propriétaires pour chaque strate de votre entreprise.</p>
+                  <h3 className="font-bold text-3xl mb-4 text-[#262626]">Des gains concrets</h3>
+                  <p className="text-gray-500 text-sm">Du temps, de l'argent et de la clarté rendus à votre entreprise, à chaque strate de votre organisation.</p>
                 </div>
                 <div className="col-span-3 grid grid-cols-2 gap-x-12 gap-y-6">
-                  <Link to="/solutions/audit-processus" className="group">
-                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Audit de Processus & Performance</h4>
-                    <p className="text-sm text-gray-400">Détection des gisements de productivité.</p>
-                  </Link>
-                  <Link to="/solutions/optimisation" className="group">
-                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Optimisation & Automatisation</h4>
-                    <p className="text-sm text-gray-400">Suppression des tâches répétitives.</p>
-                  </Link>
-                  <Link to="/solutions/finance" className="group">
-                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">RPA</h4>
-                    <p className="text-sm text-gray-400">Automatisation de processus métier.</p>
-                  </Link>
-                  <Link to="/solutions/strategie" className="group">
-                    <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">Stratégie Board & Acculturation</h4>
-                    <p className="text-sm text-gray-400">Formation dirigeants & Vision.</p>
-                  </Link>
+                  {solutionsList.map((solution) => (
+                    <Link key={solution.slug} to={`/solutions/${solution.slug}`} className="group">
+                      <h4 className="font-bold text-[#262626] group-hover:text-[#027333] transition-colors mb-1">{solution.title}</h4>
+                      <p className="text-sm text-gray-400">{solution.shortDescription}</p>
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
@@ -363,10 +354,15 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
           <div className="py-4 border-y border-gray-100">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 block">Solutions</span>
-            <button onClick={() => handleMobileNav('/solutions/audit-processus')} className="block py-2 text-lg text-[#262626]">Audit & Performance</button>
-            <button onClick={() => handleMobileNav('/solutions/optimisation')} className="block py-2 text-lg text-[#262626]">Optimisation</button>
-            <button onClick={() => handleMobileNav('/solutions/finance')} className="block py-2 text-lg text-[#262626]">RPA</button>
-            <button onClick={() => handleMobileNav('/solutions/strategie')} className="block py-2 text-lg text-[#262626]">Stratégie Board</button>
+            {solutionsList.map((solution) => (
+              <button
+                key={solution.slug}
+                onClick={() => handleMobileNav(`/solutions/${solution.slug}`)}
+                className="block py-2 text-lg text-[#262626] text-left"
+              >
+                {solution.title}
+              </button>
+            ))}
           </div>
 
           <button onClick={() => handleMobileNav('/insights')} className="text-xl font-medium text-[#262626] text-left">Insights</button>

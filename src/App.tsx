@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import SolutionsPage from './components/SolutionsPage';
 import InsightsPage from './components/InsightsPage';
-import SolutionDetail from './pages/SolutionDetail';
+import SolutionPage from './pages/SolutionPage';
 import ContactPage from './pages/ContactPage';
 import CareersPage from './pages/CareersPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
@@ -37,7 +37,11 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/solutions" element={<SolutionsPage />} />
-          <Route path="/solutions/:slug" element={<SolutionDetail />} />
+          <Route path="/solutions/audit-processus" element={<Navigate to="/solutions/audit" replace />} />
+          <Route path="/solutions/optimisation" element={<Navigate to="/solutions/automatisation" replace />} />
+          <Route path="/solutions/finance" element={<Navigate to="/solutions/automatisation" replace />} />
+          <Route path="/solutions/strategie" element={<Navigate to="/solutions/formation" replace />} />
+          <Route path="/solutions/:slug" element={<SolutionPage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/insights/:id" element={<ArticleDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
