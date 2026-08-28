@@ -4,12 +4,10 @@ import { motion, useAnimationControls } from 'framer-motion';
 /**
  * Preloader « terminal → marque ».
  *
- * Séquence (≈3,7 s) :
+ * Séquence :
  *  1. Fond noir, curseur clignotant, frappe de FLOWERA en JetBrains Mono (terminal).
- *  2. Effacement (backspace) puis réécriture caractère par caractère en typo Hero
- *     (Inter 800, letter-spacing -0.05em) — bascule terminal → identité de marque.
- *  3. Le logo Flowera entre, gigantesque, du coin inférieur droit jusqu'au centre.
- *  4. Dézoom + rotation : le logo se pose exactement sur le logo réel du Header
+ *  2. Le logo Flowera entre, gigantesque, du coin inférieur droit jusqu'au centre.
+ *  3. Dézoom + rotation : le logo se pose exactement sur le logo réel du Header
  *     (cible mesurée au runtime), le fond noir se dissout et révèle la Hero.
  *
  * Ne se joue qu'une fois par session, uniquement sur l'accueil, et jamais en
@@ -108,25 +106,6 @@ const Preloader: React.FC = () => {
         if (cancelled) return;
       }
       await sleep(TIMING.holdAfterType);
-      if (cancelled) return;
-
-      // Étape 2a — effacement.
-      for (let i = BRAND.length - 1; i >= 0; i--) {
-        setText(BRAND.slice(0, i));
-        await sleep(TIMING.backspacePerChar);
-        if (cancelled) return;
-      }
-      await sleep(TIMING.pauseEmpty);
-      if (cancelled) return;
-
-      // Étape 2b — réécriture en typo de marque.
-      setMode('brand');
-      for (let i = 1; i <= BRAND.length; i++) {
-        setText(BRAND.slice(0, i));
-        await sleep(TIMING.retypePerChar);
-        if (cancelled) return;
-      }
-      await sleep(TIMING.holdAfterRetype);
       if (cancelled) return;
 
       // Mesure de la cible (logo réel du Header) — responsive / pixel-perfect.

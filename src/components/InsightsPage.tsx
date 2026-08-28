@@ -2,72 +2,14 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Search, Clock, ArrowUpRight, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { InsightPost } from '../types';
+import { insightPosts, insightCategories } from '../data/insights';
 
 const InsightsPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Tous');
 
-  const categories = ['Tous', 'Stratégie', 'Finance', 'Expertise', 'Futur du Travail', 'Point de vue'];
+  const categories = insightCategories;
 
-  // Expanded dummy data
-  const allArticles: InsightPost[] = [
-    {
-      id: '5',
-      title: "Osez l'IA : Une stratégie nationale pour la compétitivité",
-      category: "Stratégie",
-      date: "21 Jan 2026",
-      image: "/images/articles/osez-ia-hero.png",
-      readTime: "5 min"
-    },
-    {
-      id: '4',
-      title: "Orchestration d'agents IA : un levier stratégique de performance et de valeur",
-      category: "Point de vue",
-      date: "10 Déc 2025",
-      image: "/images/articles/ai-orchestration-hero.png",
-      readTime: "7 min"
-    },
-    {
-      id: '2',
-      title: "Intelligence artificielle : quel retour sur investissement ?",
-      category: "Point de vue",
-      date: "24 Nov 2025",
-      image: "/images/articles/roi-ia-hero.png",
-      readTime: "5 min"
-    },
-    {
-      id: '1',
-      title: "Le plan 'Osez l'IA' : Transformer la peur en levier de croissance.",
-      category: "Stratégie",
-      date: "12 Oct 2024",
-      image: "https://picsum.photos/600/400?tech&seed=10",
-      readTime: "8 min"
-    },
-    {
-      id: '3',
-      title: "IA Financière : Pourquoi l'audit manuel devient un risque majeur.",
-      category: "Finance",
-      date: "28 Sep 2024",
-      image: "https://picsum.photos/600/400?business&seed=12",
-      readTime: "6 min"
-    },
-    {
-      id: '99',
-      title: "Cybersécurité et IA Générative : Les nouvelles frontières.",
-      category: "Expertise",
-      date: "15 Sep 2024",
-      image: "https://picsum.photos/600/400?security&seed=14",
-      readTime: "9 min"
-    },
-    {
-      id: '6',
-      title: "Automatiser le Reporting Board : Guide Pratique.",
-      category: "Finance",
-      date: "10 Sep 2024",
-      image: "https://picsum.photos/600/400?chart&seed=15",
-      readTime: "7 min"
-    }
-  ];
+  const allArticles = insightPosts;
 
   const filteredArticles = activeCategory === 'Tous'
     ? allArticles
@@ -109,8 +51,8 @@ const InsightsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="bg-white border-b border-gray-100 sticky top-[80px] z-30 shadow-sm">
+      {/* Filter Bar — collé sous le header flottant (top-6 = 24px + hauteur 80px = 104px) */}
+      <div className="bg-white border-b border-gray-100 sticky top-[112px] z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 overflow-x-auto no-scrollbar">
           <div className="flex space-x-8 py-4">
             {categories.map(cat => (

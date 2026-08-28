@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { TrendingUp, Layers, ShieldCheck } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
 import { ViewState } from '../types';
+import TeamSection from './TeamSection';
 
 interface InnovationShowcaseProps {
   onNavigate?: (view: ViewState, sectionId?: string) => void;
@@ -96,54 +97,112 @@ const InnovationShowcase: React.FC<InnovationShowcaseProps> = ({ onNavigate }) =
         </div>
       </section>
 
-      {/* SECTION 2: ROI & SÉCURITÉ (Style "Dark Mode") */}
-      <section className="py-24 px-6 bg-[#93BF9E]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#262626] mb-6">
+      {/* SECTION 2: ROI & SÉCURITÉ (fond sombre tranché, cartes compactes, icônes animées) */}
+      <section className="py-16 px-6 bg-[#262626]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-[#93BF9E] font-bold uppercase tracking-widest text-xs mb-4 block">
+              Performance & Gouvernance
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               Des résultats mesurables, dans un cadre sécurisé.
             </h2>
-            <p className="text-xl text-[#262626]/70 max-w-3xl mx-auto">
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
               La performance n'a de sens que si elle s'inscrit dans un cadre gouverné et conforme.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Point 1: ROI */}
-            <div className="bg-white/40 border border-[#027333]/20 p-8 rounded-lg hover:border-[#027333]/60 transition-colors">
-              <div className="w-14 h-14 bg-[#027333]/10 rounded-xl flex items-center justify-center mb-6 border border-[#027333]/20">
-                <TrendingUp className="text-[#027333] w-7 h-7" />
+          <div className="grid md:grid-cols-3 gap-5">
+            {/* Point 1: ROI — courbe qui se trace */}
+            <div
+              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
+              style={{ '--showcase-delay': '0s' } as React.CSSProperties}
+            >
+              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline className="showcase-trend-line" points="2 17 8.5 10.5 13.5 15.5 22 7" />
+                  <polyline className="showcase-trend-arrow" points="16 7 22 7 22 13" />
+                </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#262626] mb-3">ROI & Création de Valeur</h3>
-              <p className="text-[#262626]/70 leading-relaxed">
+              <h3 className="text-lg font-bold text-white mb-2">ROI & Création de Valeur</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
                 Réduction des coûts opérationnels et gains de temps significatifs dès les premiers mois.
               </p>
             </div>
 
-            {/* Point 2: KPIs */}
-            <div className="bg-white/40 border border-[#027333]/20 p-8 rounded-lg hover:border-[#027333]/60 transition-colors">
-              <div className="w-14 h-14 bg-[#027333]/10 rounded-xl flex items-center justify-center mb-6 border border-[#027333]/20">
-                <Layers className="text-[#027333] w-7 h-7" />
+            {/* Point 2: KPIs — couches qui s'empilent */}
+            <div
+              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
+              style={{ '--showcase-delay': '0.6s' } as React.CSSProperties}
+            >
+              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    className="showcase-layer-top"
+                    d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
+                  />
+                  <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+                  <path className="showcase-layer-bottom" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+                </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#262626] mb-3">KPIs & Pilotage</h3>
-              <p className="text-[#262626]/70 leading-relaxed">
+              <h3 className="text-lg font-bold text-white mb-2">KPIs & Pilotage</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
                 Nous transformons des processus flous en données monitorées pour un pilotage par la preuve.
               </p>
             </div>
 
-            {/* Point 3: Conformité */}
-            <div className="bg-white/40 border border-[#027333]/20 p-8 rounded-lg hover:border-[#027333]/60 transition-colors">
-              <div className="w-14 h-14 bg-[#027333]/10 rounded-xl flex items-center justify-center mb-6 border border-[#027333]/20">
-                <ShieldCheck className="text-[#027333] w-7 h-7" />
+            {/* Point 3: Conformité — coche qui se dessine */}
+            <div
+              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
+              style={{ '--showcase-delay': '1.2s' } as React.CSSProperties}
+            >
+              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
+                <svg
+                  className="w-6 h-6 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    className="showcase-shield-pulse"
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"
+                  />
+                  <path className="showcase-shield-check" d="m9 12 2 2 4-4" />
+                </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#262626] mb-3">Conformité & Maîtrise</h3>
-              <p className="text-[#262626]/70 leading-relaxed">
+              <h3 className="text-lg font-bold text-white mb-2">Conformité & Maîtrise</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
                 Maîtrise totale des risques liés aux données. Vos automatisations respectent vos exigences de gouvernance.
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* SECTION 2 bis: ÉQUIPE (portraits + tooltips animés) */}
+      <TeamSection />
 
       {/* SECTION 3: PARTENARIAT (Style "Image + Citation") */}
       <section className="py-24 px-6 bg-white">

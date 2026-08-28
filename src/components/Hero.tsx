@@ -3,6 +3,7 @@ import React from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { ViewState } from '../types';
 import HeroVideo from './ui/hero-video';
+import { GradientButton } from './ui/gradient-button';
 
 interface HeroProps {
   onNavigate: (view: ViewState, sectionId?: string) => void;
@@ -27,8 +28,9 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 color: '#262626',
               }}
             >
-              Votre partenaire <span style={{ color: '#027333' }}>tech &amp; IA</span>,<br />
-              de l'idée à la mise en production.
+              Réduisez vos coûts.<br />
+              Gagnez en visibilité.<br />
+              <span style={{ color: '#027333' }}>Débloquez de nouveaux usages.</span>
             </h1>
 
             <div className="mb-8" style={{ maxWidth: '560px' }}>
@@ -41,26 +43,27 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   color: 'rgba(38,38,38,0.6)',
                 }}
               >
-                <strong style={{ color: '#262626', fontWeight: 600 }}>Création d'applications, automatisation des processus et formation à l'IA</strong> : un seul partenaire pour transformer votre façon de travailler.
+                <strong style={{ color: '#262626', fontWeight: 600 }}>Applications sur mesure, automatisation des processus et intelligence artificielle</strong> : nous concevons les outils qui simplifient vos opérations et accélèrent votre croissance.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 mt-10">
-              <button
+              <GradientButton
+                variant="green"
                 onClick={() => onNavigate('contact')}
                 style={{ fontFamily: '"DM Sans", sans-serif', letterSpacing: '-0.03em' }}
-                className="min-w-[240px] px-8 py-4 bg-[#027333] text-white font-bold text-lg hover:bg-[#025928] transition-all duration-300 flex items-center justify-center group"
+                className="group min-w-[240px] text-lg"
               >
-                Demander un audit
+                Réserver un appel
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
+              </GradientButton>
+              <GradientButton
                 onClick={() => onNavigate('home', 'services')}
                 style={{ fontFamily: '"DM Sans", sans-serif', letterSpacing: '-0.03em' }}
-                className="min-w-[240px] px-8 py-4 bg-transparent text-[#262626] border border-[#262626]/20 font-bold text-lg hover:bg-[#262626]/5 transition-all flex items-center justify-center"
+                className="min-w-[240px] text-lg"
               >
                 Découvrir nos expertises
-              </button>
+              </GradientButton>
             </div>
           </div>
 
@@ -70,7 +73,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       {/* Floating Indicators */}
-      <div className="absolute bottom-10 left-0 right-0 z-10 text-[#262626]/40 animate-bounce flex justify-center">
+      {/* Remonté pour rester au-dessus du bandeau photo qui dépasse en bas d'écran */}
+      <div className="absolute bottom-24 left-0 right-0 z-10 text-[#262626]/40 animate-bounce flex justify-center">
         <ChevronDown size={32} />
       </div>
     </div>

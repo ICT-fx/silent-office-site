@@ -1,44 +1,54 @@
 
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { InsightPost } from '../types';
+import { homeCarouselPosts } from '../data/insights';
 
 const InsightsCarousel: React.FC = () => {
-  const articles: InsightPost[] = [
-    {
-      id: '5',
-      title: "Osez l'IA : Une stratégie nationale pour la compétitivité",
-      category: "Stratégie",
-      date: "21 Jan 2026",
-      image: "/images/articles/osez-ia-hero.png",
-      readTime: "5 min"
-    },
-    {
-      id: '4',
-      title: "Orchestration d'agents IA : un levier stratégique de performance et de valeur",
-      category: "Point de vue",
-      date: "10 Déc 2025",
-      image: "/images/articles/ai-orchestration-hero.png",
-      readTime: "7 min"
-    },
-    {
-      id: '2',
-      title: "Intelligence artificielle : quel retour sur investissement ?",
-      category: "Point de vue",
-      date: "24 Nov 2025",
-      image: "/images/articles/roi-ia-hero.png",
-      readTime: "5 min"
-    }
-  ];
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const syncScrollState = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    // Marge de 8px pour absorber les arrondis de sous-pixel en fin de course
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 8);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    syncScrollState();
+    el.addEventListener('scroll', syncScrollState, { passive: true });
+    window.addEventListener('resize', syncScrollState);
+    return () => {
+      el.removeEventListener('scroll', syncScrollState);
+      window.removeEventListener('resize', syncScrollState);
+    };
+  }, [syncScrollState]);
+
+  const scrollByCard = (direction: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>('[data-carousel-card]');
+    // 32px = gap-8 entre les cartes
+    const step = card ? card.offsetWidth + 32 : el.clientWidth * 0.8;
+    el.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
 
   return (
-    <div className="relative group">
-      <div className="flex overflow-x-auto pb-8 gap-8 no-scrollbar scroll-smooth">
-        {articles.map((post) => (
+    <div className="relative">
+      <div
+        ref={scrollerRef}
+        className="flex overflow-x-auto pb-8 gap-8 no-scrollbar scroll-smooth"
+      >
+        {homeCarouselPosts.map((post) => (
           <Link
             key={post.id}
             to={`/insights/${post.id}`}
+            data-carousel-card
             className="flex-shrink-0 w-[85vw] md:w-[450px] group/card cursor-pointer block"
           >
             <div className="overflow-hidden mb-6 relative rounded-2xl">
@@ -73,6 +83,34 @@ const InsightsCarousel: React.FC = () => {
         ))}
       </div>
 
+      {/* Dégradé de bord : signale qu'il reste des articles à droite */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute top-0 right-0 bottom-8 w-24 bg-gradient-to-l from-white to-transparent transition-opacity duration-300 ${canScrollRight ? 'opacity-100' : 'opacity-0'
+          }`}
+      />
+
+      {/* Flèches de navigation (desktop) — le tactile utilise le balayage natif */}
+      <button
+        type="button"
+        onClick={() => scrollByCard(-1)}
+        disabled={!canScrollLeft}
+        aria-label="Articles précédents"
+        className={`hidden md:flex absolute -left-5 top-[125px] w-11 h-11 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center text-[#262626] transition-all hover:bg-[#027333] hover:text-white hover:border-[#027333] ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        onClick={() => scrollByCard(1)}
+        disabled={!canScrollRight}
+        aria-label="Articles suivants"
+        className={`hidden md:flex absolute -right-5 top-[125px] w-11 h-11 rounded-full bg-white border border-gray-200 shadow-lg items-center justify-center text-[#262626] transition-all hover:bg-[#027333] hover:text-white hover:border-[#027333] ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
 };

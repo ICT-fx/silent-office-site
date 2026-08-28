@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
+import HeroScrollStrip from '../components/HeroScrollStrip';
 import SolutionsSection from '../components/SolutionsSection';
 import MethodologySection from '../components/MethodologySection';
 import TechStackSection from '../components/TechStackSection';
@@ -27,6 +28,8 @@ const Home: React.FC = () => {
                     }
                 }} />
             </section>
+
+            <HeroScrollStrip />
 
             <CorporateApproachSection />
             <SolutionsSection />

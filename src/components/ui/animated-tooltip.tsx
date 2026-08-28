@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import {
+  motion,
+  useTransform,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from 'framer-motion';
+
+import { cn } from '../../lib/utils';
+
+export interface AnimatedTooltipItem {
+  id: number;
+  name: string;
+  designation: string;
+  image: string;
+}
+
+export const AnimatedTooltip = ({
+  items,
+  className,
+}: {
+  items: AnimatedTooltipItem[];
+  className?: string;
+}) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const springConfig = { stiffness: 100, damping: 5 };
+  const x = useMotionValue(0);
+  const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
+  const translateX = useSpring(useTransform(x, [-100, 100], [-50, 50]), springConfig);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLImageElement>) => {
+    const halfWidth = event.currentTarget.offsetWidth / 2;
+    x.set(event.nativeEvent.offsetX - halfWidth);
+  };
+
+  return (
+    <div className={cn('flex items-center gap-2', className)}>
+      {items.map((item) => (
+        <div
+          className="-mr-6 relative group"
+          key={item.id}
+          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          <AnimatePresence mode="popLayout">
+            {hoveredIndex === item.id && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    type: 'spring',
+                    stiffness: 260,
+                    damping: 10,
+                  },
+                }}
+                exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                style={{
+                  translateX: translateX,
+                  rotate: rotate,
+                  whiteSpace: 'nowrap',
+                }}
+                transformTemplate={(_, generated) => `translateX(-50%) ${generated}`}
+                className="absolute -top-16 left-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-[#262626] z-50 shadow-xl px-4 py-2"
+              >
+                <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-[#027333] to-transparent h-px" />
+                <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-[#93BF9E] to-transparent h-px" />
+                <div className="font-bold text-white relative z-30 text-base">{item.name}</div>
+                <div className="text-white/60 text-xs">{item.designation}</div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <img
+            onMouseMove={handleMouseMove}
+            height={100}
+            width={100}
+            src={item.image}
+            alt={item.name}
+            loading="lazy"
+            className="object-cover !m-0 !p-0 object-top rounded-full shrink-0 h-20 w-20 sm:h-28 sm:w-28 md:h-40 md:w-40 lg:h-48 lg:w-48 border-4 group-hover:scale-105 group-hover:z-30 border-white relative transition duration-500"
+          />
+        </div>
+      ))}
+    </div>
+  );
+};

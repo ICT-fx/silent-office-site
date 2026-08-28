@@ -25,6 +25,596 @@
   @apply bg-gradient-to-br from-[#262626] to-[#025928] bg-clip-text text-transparent;
 }
 
+/* Gradient buttons (hero) : dégradé radial animé via @property.
+   Les transitions de custom properties ne sont pas supportées partout :
+   les navigateurs sans @property affichent le dégradé de base sans animation. */
+@property --pos-x {
+  syntax: '<percentage>';
+  initial-value: 11.14%;
+  inherits: false;
+}
+
+@property --pos-y {
+  syntax: '<percentage>';
+  initial-value: 140%;
+  inherits: false;
+}
+
+@property --spread-x {
+  syntax: '<percentage>';
+  initial-value: 150%;
+  inherits: false;
+}
+
+@property --spread-y {
+  syntax: '<percentage>';
+  initial-value: 180.06%;
+  inherits: false;
+}
+
+@property --color-1 {
+  syntax: '<color>';
+  initial-value: #000;
+  inherits: false;
+}
+
+@property --color-2 {
+  syntax: '<color>';
+  initial-value: #08012c;
+  inherits: false;
+}
+
+@property --color-3 {
+  syntax: '<color>';
+  initial-value: #4e1e40;
+  inherits: false;
+}
+
+@property --color-4 {
+  syntax: '<color>';
+  initial-value: #70464e;
+  inherits: false;
+}
+
+@property --color-5 {
+  syntax: '<color>';
+  initial-value: #88394c;
+  inherits: false;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 20deg;
+  inherits: true;
+}
+
+@property --border-color-1 {
+  syntax: '<color>';
+  initial-value: hsla(340, 75%, 60%, 0.2);
+  inherits: true;
+}
+
+@property --border-color-2 {
+  syntax: '<color>';
+  initial-value: hsla(340, 75%, 40%, 0.75);
+  inherits: true;
+}
+
+@property --stop-1 {
+  syntax: '<percentage>';
+  initial-value: 37.35%;
+  inherits: false;
+}
+
+@property --stop-2 {
+  syntax: '<percentage>';
+  initial-value: 61.36%;
+  inherits: false;
+}
+
+@property --stop-3 {
+  syntax: '<percentage>';
+  initial-value: 78.42%;
+  inherits: false;
+}
+
+@property --stop-4 {
+  syntax: '<percentage>';
+  initial-value: 89.52%;
+  inherits: false;
+}
+
+@property --stop-5 {
+  syntax: '<percentage>';
+  initial-value: 100%;
+  inherits: false;
+}
+
+.gradient-button {
+  @apply relative appearance-none cursor-pointer;
+  background: radial-gradient(
+    var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+    var(--color-1) var(--stop-1),
+    var(--color-2) var(--stop-2),
+    var(--color-3) var(--stop-3),
+    var(--color-4) var(--stop-4),
+    var(--color-5) var(--stop-5)
+  );
+  transition:
+    --pos-x 0.5s,
+    --pos-y 0.5s,
+    --spread-x 0.5s,
+    --spread-y 0.5s,
+    --color-1 0.5s,
+    --color-2 0.5s,
+    --color-3 0.5s,
+    --color-4 0.5s,
+    --color-5 0.5s,
+    --border-angle 0.5s,
+    --border-color-1 0.5s,
+    --border-color-2 0.5s,
+    --stop-1 0.5s,
+    --stop-2 0.5s,
+    --stop-3 0.5s,
+    --stop-4 0.5s,
+    --stop-5 0.5s;
+}
+
+.gradient-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--border-angle),
+    var(--border-color-1),
+    var(--border-color-2)
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.gradient-button:hover {
+  --pos-x: 0%;
+  --pos-y: 91.51%;
+  --spread-x: 120.24%;
+  --spread-y: 103.18%;
+  --color-1: #c96287;
+  --color-2: #c66c64;
+  --color-3: #cc7d23;
+  --color-4: #37140a;
+  --color-5: #000;
+  --border-angle: 190deg;
+  --border-color-1: hsla(340, 78%, 90%, 0.1);
+  --border-color-2: hsla(340, 75%, 90%, 0.6);
+  --stop-1: 0%;
+  --stop-2: 8.8%;
+  --stop-3: 21.44%;
+  --stop-4: 71.34%;
+  --stop-5: 85.76%;
+}
+
+/* Variante verte : mêmes mécaniques, palette du site (#027333 / #025928 / #93BF9E) */
+.gradient-button-green {
+  --color-1: #011b0e;
+  --color-2: #013a1e;
+  --color-3: #025928;
+  --color-4: #027333;
+  --color-5: #93bf9e;
+  --border-color-1: hsla(150, 75%, 60%, 0.2);
+  --border-color-2: hsla(150, 75%, 40%, 0.75);
+}
+
+.gradient-button-green:hover {
+  --pos-x: 0%;
+  --pos-y: 91.51%;
+  --spread-x: 120.24%;
+  --spread-y: 103.18%;
+  --color-1: #93bf9e;
+  --color-2: #4caf72;
+  --color-3: #027333;
+  --color-4: #013a1e;
+  --color-5: #000;
+  --border-angle: 190deg;
+  --border-color-1: hsla(150, 78%, 90%, 0.1);
+  --border-color-2: hsla(150, 75%, 90%, 0.6);
+  --stop-1: 0%;
+  --stop-2: 8.8%;
+  --stop-3: 21.44%;
+  --stop-4: 71.34%;
+  --stop-5: 85.76%;
+}
+
+/* ===== Section "expertises" : pilules au format des boutons hero =====
+   Même mécanique @property que .gradient-button, mais autonome : la palette
+   se déplace d'une pilule à l'autre, du vert de "Réserver un appel" (01) au
+   bordeaux de "Découvrir nos expertises" (05). */
+.sol-btn {
+  @apply relative appearance-none cursor-pointer;
+  width: 100%;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.4rem 1.6rem;
+  text-align: left;
+  background: radial-gradient(
+    var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+    var(--color-1) var(--stop-1),
+    var(--color-2) var(--stop-2),
+    var(--color-3) var(--stop-3),
+    var(--color-4) var(--stop-4),
+    var(--color-5) var(--stop-5)
+  );
+  transition:
+    --pos-x 0.5s,
+    --pos-y 0.5s,
+    --spread-x 0.5s,
+    --spread-y 0.5s,
+    --color-1 0.5s,
+    --color-2 0.5s,
+    --color-3 0.5s,
+    --color-4 0.5s,
+    --color-5 0.5s,
+    --border-angle 0.5s,
+    --border-color-1 0.5s,
+    --border-color-2 0.5s,
+    --stop-1 0.5s,
+    --stop-2 0.5s,
+    --stop-3 0.5s,
+    --stop-4 0.5s,
+    --stop-5 0.5s;
+}
+
+.sol-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--border-angle),
+    var(--border-color-1),
+    var(--border-color-2)
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Géométrie du survol : commune aux 5, seules les couleurs varient */
+.sol-btn:hover {
+  --pos-x: 0%;
+  --pos-y: 91.51%;
+  --spread-x: 120.24%;
+  --spread-y: 103.18%;
+  --border-angle: 190deg;
+  --stop-1: 0%;
+  --stop-2: 8.8%;
+  --stop-3: 21.44%;
+  --stop-4: 71.34%;
+  --stop-5: 85.76%;
+}
+
+.sol-btn .sol-num,
+.sol-btn .sol-arrow {
+  transition:
+    color 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.sol-btn:hover .sol-num {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.sol-btn:hover .sol-arrow {
+  color: #fff;
+  transform: translate(2px, -2px);
+}
+
+/* 01 — palette verte (identique à .gradient-button-green) */
+.sol-btn-1 {
+  --color-1: #011b0e;
+  --color-2: #013a1e;
+  --color-3: #025928;
+  --color-4: #027333;
+  --color-5: #93bf9e;
+  --border-color-1: hsla(150, 75%, 60%, 0.2);
+  --border-color-2: hsla(150, 75%, 40%, 0.75);
+}
+
+.sol-btn-1:hover {
+  --color-1: #93bf9e;
+  --color-2: #4caf72;
+  --color-3: #027333;
+  --color-4: #013a1e;
+  --color-5: #000;
+  --border-color-1: hsla(150, 78%, 90%, 0.1);
+  --border-color-2: hsla(150, 75%, 90%, 0.6);
+}
+
+/* 02 */
+.sol-btn-2 {
+  --color-1: #01140b;
+  --color-2: #032c22;
+  --color-3: #154a2e;
+  --color-4: #1e683a;
+  --color-5: #909e8a;
+  --border-color-1: hsla(198, 75%, 60%, 0.2);
+  --border-color-2: hsla(198, 75%, 40%, 0.75);
+}
+
+.sol-btn-2:hover {
+  --color-1: #a1a898;
+  --color-2: #6b9e6f;
+  --color-3: #35762f;
+  --color-4: #0f3119;
+  --color-5: #000;
+  --border-color-1: hsla(198, 78%, 90%, 0.1);
+  --border-color-2: hsla(198, 75%, 90%, 0.6);
+}
+
+/* 03 */
+.sol-btn-3 {
+  --color-1: #010e07;
+  --color-2: #051e25;
+  --color-3: #283c34;
+  --color-4: #395d41;
+  --color-5: #8e7c75;
+  --border-color-1: hsla(245, 75%, 60%, 0.2);
+  --border-color-2: hsla(245, 75%, 40%, 0.75);
+}
+
+.sol-btn-3:hover {
+  --color-1: #ae9193;
+  --color-2: #898e6b;
+  --color-3: #67782b;
+  --color-4: #1c2714;
+  --color-5: #000;
+  --border-color-1: hsla(245, 78%, 90%, 0.1);
+  --border-color-2: hsla(245, 75%, 90%, 0.6);
+}
+
+/* 04 */
+.sol-btn-4 {
+  --color-1: #000704;
+  --color-2: #060f29;
+  --color-3: #3b2d3a;
+  --color-4: #555147;
+  --color-5: #8b5b61;
+  --border-color-1: hsla(293, 75%, 60%, 0.2);
+  --border-color-2: hsla(293, 75%, 40%, 0.75);
+}
+
+.sol-btn-4:hover {
+  --color-1: #bc798d;
+  --color-2: #a87d68;
+  --color-3: #9a7b27;
+  --color-4: #2a1e0f;
+  --color-5: #000;
+  --border-color-1: hsla(293, 78%, 90%, 0.1);
+  --border-color-2: hsla(293, 75%, 90%, 0.6);
+}
+
+/* 05 — palette du bouton "Découvrir nos expertises" */
+.sol-btn-5 {
+  --color-1: #000;
+  --color-2: #08012c;
+  --color-3: #4e1e40;
+  --color-4: #70464e;
+  --color-5: #88394c;
+  --border-color-1: hsla(340, 75%, 60%, 0.2);
+  --border-color-2: hsla(340, 75%, 40%, 0.75);
+}
+
+.sol-btn-5:hover {
+  --color-1: #c96287;
+  --color-2: #c66c64;
+  --color-3: #cc7d23;
+  --color-4: #37140a;
+  --color-5: #000;
+  --border-color-1: hsla(340, 78%, 90%, 0.1);
+  --border-color-2: hsla(340, 75%, 90%, 0.6);
+}
+
+/* Nuances de la bordure du panneau : suivent la pilule survolée.
+   inherits: true → le ::before hérite de la valeur animée. */
+@property --card-b-1 {
+  syntax: '<color>';
+  initial-value: #93bf9e;
+  inherits: true;
+}
+
+@property --card-b-2 {
+  syntax: '<color>';
+  initial-value: #4caf72;
+  inherits: true;
+}
+
+@property --card-b-3 {
+  syntax: '<color>';
+  initial-value: #027333;
+  inherits: true;
+}
+
+@property --card-b-4 {
+  syntax: '<color>';
+  initial-value: #013a1e;
+  inherits: true;
+}
+
+/* ===== Encart de détail — clair, neutre, format constant =====
+   Les 5 contenus sont empilés dans la même cellule de grille : la carte
+   se dimensionne sur le plus long et ne bouge plus jamais. */
+.sol-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 2.25rem;
+  background: #ffffff;
+  box-shadow:
+    0 1px 2px rgba(22, 32, 27, 0.04),
+    0 18px 40px -28px rgba(22, 32, 27, 0.35);
+  transition:
+    --card-b-1 0.5s,
+    --card-b-2 0.5s,
+    --card-b-3 0.5s,
+    --card-b-4 0.5s;
+}
+
+/* Liseré dégradé multi-nuances, accordé à la pilule survolée */
+.sol-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2.5px;
+  background: linear-gradient(
+    140deg,
+    var(--card-b-1) 0%,
+    var(--card-b-2) 34%,
+    var(--card-b-3) 67%,
+    var(--card-b-4) 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Reflet : balayage diagonal coin haut-gauche → coin bas-droit, rejoué à
+   chaque changement de solution (remontage par `key`). La teinte suit la
+   palette active. */
+.sol-card-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Bande de lumière */
+.sol-card-sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    115deg,
+    transparent 41%,
+    color-mix(in srgb, var(--card-b-3) 7%, transparent) 47%,
+    color-mix(in srgb, var(--card-b-3) 15%, transparent) 50%,
+    color-mix(in srgb, var(--card-b-3) 7%, transparent) 53%,
+    transparent 59%
+  );
+  background-size: 300% 300%;
+  animation: solSheenSweep 1.1s ease-out forwards;
+}
+
+@keyframes solSheenSweep {
+  from {
+    background-position: 130% 130%;
+  }
+
+  to {
+    background-position: -30% -30%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol-card-sheen {
+    display: none;
+  }
+}
+
+/* Une nuance par pilule — reprise de leurs palettes de survol respectives */
+.sol-card-b-1 {
+  --card-b-1: #93bf9e;
+  --card-b-2: #4caf72;
+  --card-b-3: #027333;
+  --card-b-4: #013a1e;
+}
+
+.sol-card-b-2 {
+  --card-b-1: #a1a898;
+  --card-b-2: #6b9e6f;
+  --card-b-3: #35762f;
+  --card-b-4: #0f3119;
+}
+
+.sol-card-b-3 {
+  --card-b-1: #ae9193;
+  --card-b-2: #898e6b;
+  --card-b-3: #67782b;
+  --card-b-4: #1c2714;
+}
+
+.sol-card-b-4 {
+  --card-b-1: #bc798d;
+  --card-b-2: #a87d68;
+  --card-b-3: #9a7b27;
+  --card-b-4: #2a1e0f;
+}
+
+.sol-card-b-5 {
+  --card-b-1: #c96287;
+  --card-b-2: #c66c64;
+  --card-b-3: #cc7d23;
+  --card-b-4: #37140a;
+}
+
+.sol-card-stack {
+  display: grid;
+  flex: 1;
+}
+
+.sol-card-item {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease,
+    visibility 0.32s;
+}
+
+.sol-card-item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.sol-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  margin-top: auto;
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  background: #16201b;
+  color: #ffffff;
+  transition: background 0.25s ease;
+}
+
+.sol-card-cta:hover {
+  background: #027333;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol-card-item {
+    transition: none;
+  }
+}
+
 /* Preloader : curseur de terminal clignotant */
 @keyframes preloader-cursor-blink {
   0%,
@@ -120,4 +710,139 @@
   .hero-dash-dot {
     opacity: 1;
   }
+}
+
+/* Icônes animées section "Résultats mesurables" : mouvement bref (~0.8s) sur un cycle de 5s.
+   Chaque carte décale son cycle via la variable --showcase-delay. */
+@keyframes showcase-trend-draw {
+  0% {
+    stroke-dashoffset: 32;
+  }
+
+  14%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.showcase-trend-line {
+  stroke-dasharray: 32;
+  stroke-dashoffset: 32;
+  animation: showcase-trend-draw 5s cubic-bezier(0.16, 1, 0.3, 1) var(--showcase-delay, 0s) infinite;
+}
+
+@keyframes showcase-trend-arrow {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translate(-2px, 2px);
+  }
+
+  16%,
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.showcase-trend-arrow {
+  animation: showcase-trend-arrow 5s ease-out var(--showcase-delay, 0s) infinite;
+}
+
+@keyframes showcase-layer-top {
+  0%,
+  16%,
+  100% {
+    transform: translateY(0);
+  }
+
+  8% {
+    transform: translateY(-1.6px);
+  }
+}
+
+.showcase-layer-top {
+  animation: showcase-layer-top 5s ease-in-out var(--showcase-delay, 0s) infinite;
+}
+
+@keyframes showcase-layer-bottom {
+  0%,
+  16%,
+  100% {
+    transform: translateY(0);
+  }
+
+  8% {
+    transform: translateY(1.6px);
+  }
+}
+
+.showcase-layer-bottom {
+  animation: showcase-layer-bottom 5s ease-in-out var(--showcase-delay, 0s) infinite;
+}
+
+@keyframes showcase-shield-check {
+  0% {
+    stroke-dashoffset: 10;
+  }
+
+  12%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.showcase-shield-check {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 10;
+  animation: showcase-shield-check 5s cubic-bezier(0.16, 1, 0.3, 1) var(--showcase-delay, 0s) infinite;
+}
+
+@keyframes showcase-shield-pulse {
+  0%,
+  16%,
+  100% {
+    transform: scale(1);
+  }
+
+  8% {
+    transform: scale(1.06);
+  }
+}
+
+.showcase-shield-pulse {
+  transform-origin: center;
+  animation: showcase-shield-pulse 5s ease-in-out var(--showcase-delay, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .showcase-trend-line,
+  .showcase-trend-arrow,
+  .showcase-layer-top,
+  .showcase-layer-bottom,
+  .showcase-shield-check,
+  .showcase-shield-pulse {
+    animation: none;
+  }
+
+  .showcase-trend-line,
+  .showcase-shield-check {
+    stroke-dashoffset: 0;
+  }
+
+  .showcase-trend-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Masque la scrollbar native des carrousels horizontaux (les flèches et le
+   dégradé de bord servent d'affordance à la place). */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
