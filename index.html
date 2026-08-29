@@ -36,6 +36,15 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* La scrollbar custom occupe 8px de largeur (elle n'est pas en overlay).
+           On réserve sa gouttière en permanence : sans ça, le verrou
+           `body { overflow: hidden }` du preloader la fait disparaître puis
+           réapparaître, et tout le contenu centré saute de 4px vers la gauche
+           à la fin de l'animation. */
+        html {
+            scrollbar-gutter: stable;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }

@@ -26,3 +26,5 @@ dist-ssr
 # Tooling artifacts (agents / MCP)
 .playwright-mcp/
 .superpowers/
+.vercel
+.env*
