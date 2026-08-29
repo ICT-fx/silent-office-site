@@ -15,126 +15,6 @@ const GREY = '#5C645C';     // gris texte
 const HAIRLINE = '#E8E4DA'; // fines lignes
 
 const TITLE = 'Du temps, de la clarté, des résultats.';
-// Caractères de brouillage façon "texte chiffré"
-// Glyphes volontairement étroits : centrés dans la cellule de la lettre finale,
-// ils ne débordent pas sur leurs voisins.
-const SCRAMBLE_CHARS = '#$1234567<>/*+=?!:;';
-const SCRAMBLE_HOLD = 700;    // brouillage pur avant révélation (ms)
-const SCRAMBLE_REVEAL = 1800; // durée de la révélation complète (ms)
-const SCRAMBLE_TICK = 45;     // cadence de rafraîchissement du brouillage (ms)
-
-const randomChar = () =>
-    SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-
-// Découpage en mots, chaque caractère gardant son index absolu dans TITLE.
-// Permet de rendre chaque lettre dans sa propre cellule de largeur fixe :
-// la mise en page (largeur, césures, nombre de lignes) reste celle du titre final
-// pendant toute l'animation — seul le glyphe change.
-const WORDS: { char: string; index: number }[][] = (() => {
-    const words: { char: string; index: number }[][] = [];
-    let current: { char: string; index: number }[] = [];
-    TITLE.split('').forEach((char, index) => {
-        if (char === ' ') {
-            words.push(current);
-            current = [];
-            return;
-        }
-        current.push({ char, index });
-    });
-    words.push(current);
-    return words;
-})();
-
-// Titre "déchiffré" : caractères aléatoires qui se figent un à un, dans l'ordre.
-// Typographie alignée sur le H1 de la hero (Inter 800, tracking serré).
-const ScrambleTitle: React.FC<{ start: boolean }> = ({ start }) => {
-    const [display, setDisplay] = useState<string>(() =>
-        TITLE.replace(/\S/g, () => randomChar())
-    );
-    const [done, setDone] = useState(false);
-
-    useEffect(() => {
-        if (!start || done) return;
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            setDisplay(TITLE);
-            setDone(true);
-            return;
-        }
-
-        const startTime = performance.now();
-        const interval = window.setInterval(() => {
-            const elapsed = performance.now() - startTime;
-            const revealed =
-                elapsed <= SCRAMBLE_HOLD
-                    ? 0
-                    : Math.floor(((elapsed - SCRAMBLE_HOLD) / SCRAMBLE_REVEAL) * TITLE.length);
-
-            if (revealed >= TITLE.length) {
-                setDisplay(TITLE);
-                setDone(true);
-                window.clearInterval(interval);
-                return;
-            }
-
-            setDisplay(
-                TITLE.split('')
-                    .map((char, i) => {
-                        if (i < revealed || char === ' ') return char;
-                        return randomChar();
-                    })
-                    .join('')
-            );
-        }, SCRAMBLE_TICK);
-
-        return () => window.clearInterval(interval);
-    }, [start, done]);
-
-    return (
-        <h2
-            aria-label={TITLE}
-            style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 800,
-                fontSize: 'clamp(2.2rem, 3.6vw, 3.4rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.05em',
-                color: '#262626',
-            }}
-        >
-            <span aria-hidden="true">
-                {WORDS.map((word, wordIndex) => (
-                    <React.Fragment key={wordIndex}>
-                        {/* Le mot ne peut pas se couper : les césures restent celles du texte final. */}
-                        <span style={{ whiteSpace: 'nowrap' }}>
-                            {word.map(({ char, index }) => (
-                                <span
-                                    key={index}
-                                    style={{ position: 'relative', display: 'inline-block' }}
-                                >
-                                    {/* Gabarit invisible : impose la largeur de la lettre finale. */}
-                                    <span style={{ visibility: 'hidden' }}>{char}</span>
-                                    {/* Glyphe visible, centré dans la cellule — n'affecte pas la mise en page. */}
-                                    <span
-                                        style={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: '50%',
-                                            transform: 'translateX(-50%)',
-                                        }}
-                                    >
-                                        {display[index] ?? char}
-                                    </span>
-                                </span>
-                            ))}
-                        </span>
-                        {wordIndex < WORDS.length - 1 ? ' ' : null}
-                    </React.Fragment>
-                ))}
-            </span>
-        </h2>
-    );
-};
 
 const SolutionsSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -195,7 +75,18 @@ const SolutionsSection: React.FC = () => {
                                         Nos expertises
                                     </span>
                                 </div>
-                                <ScrambleTitle start={isVisible} />
+                                <h2
+                                    style={{
+                                        fontFamily: 'Inter, sans-serif',
+                                        fontWeight: 800,
+                                        fontSize: 'clamp(2.2rem, 3.6vw, 3.4rem)',
+                                        lineHeight: 1.04,
+                                        letterSpacing: '-0.05em',
+                                        color: '#262626',
+                                    }}
+                                >
+                                    {TITLE}
+                                </h2>
                             </div>
 
                             {/* 5 pilules, palette dégradée du vert (01) au bordeaux (05) */}
