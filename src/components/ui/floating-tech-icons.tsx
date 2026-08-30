@@ -62,7 +62,7 @@ const FloatingIcon = ({
       className={`absolute ${iconData.className}`}
     >
       <motion.div
-        className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 p-3.5 rounded-2xl bg-white shadow-lg shadow-gray-300/40 border border-gray-100"
+        className="flex items-center justify-center w-[4.8rem] h-[4.8rem] md:w-24 md:h-24 p-[1.05rem] rounded-2xl bg-white shadow-lg shadow-gray-300/40 border border-gray-100"
         animate={{
           y: [0, -8, 0, 8, 0],
           x: [0, 6, 0, -6, 0],
@@ -162,7 +162,7 @@ const FloatingTechIcons = React.forwardRef<HTMLElement, FloatingTechIconsProps>(
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.04, duration: 0.4 }}
-              className="flex items-center justify-center w-16 h-16 p-3 rounded-2xl bg-white shadow-md shadow-gray-300/40 border border-gray-100"
+              className="flex items-center justify-center w-[4.8rem] h-[4.8rem] p-[0.9rem] rounded-2xl bg-white shadow-md shadow-gray-300/40 border border-gray-100"
             >
               <img
                 src={iconData.src}

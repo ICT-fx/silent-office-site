@@ -74,6 +74,10 @@ export interface SolutionData {
     subPromise?: string;
     /** Une ligne orientée gain, pour la home et la navigation */
     shortDescription: string;
+    /** Illustration de l'expertise — cadrage 3:2, servie depuis /public/images/expertises */
+    heroImage: string;
+    /** Texte alternatif de `heroImage` */
+    heroImageAlt: string;
     /** Paragraphe hero sous la promesse, ton « Les technologies évoluent en continu… » */
     heroTagline: string;
     /** Segment fort accolé en fin de tagline, ex. « Prenez les devants. » */

@@ -119,7 +119,16 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             Expertises
           </div>
 
-          {/* Onglet 02: Insights — lien direct vers le journal, sans méga-menu */}
+          {/* Onglet 02: Portfolio — lien direct vers les réalisations */}
+          <Link
+            to="/portfolio"
+            onMouseEnter={handleMouseLeave}
+            className={navLinkClass}
+          >
+            Portfolio
+          </Link>
+
+          {/* Onglet 03: Insights — lien direct vers le journal, sans méga-menu */}
           <Link
             to="/insights"
             onMouseEnter={handleMouseLeave}
@@ -220,6 +229,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             ))}
           </div>
 
+          <button onClick={() => handleMobileNav('/portfolio')} className="text-xl font-medium text-[#262626] text-left">Portfolio</button>
           <button onClick={() => handleMobileNav('/insights')} className="text-xl font-medium text-[#262626] text-left">Insights</button>
           <button onClick={() => handleMobileNav('/careers')} className="text-xl font-medium text-[#262626] text-left">Carrière</button>
 

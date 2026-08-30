@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { solutionsList } from '../data/solutions/index';
 
@@ -8,18 +8,16 @@ const DISPLAY = "'Space Grotesk', sans-serif";
 const BODY = "'Manrope', sans-serif";
 const MONO = "'JetBrains Mono', monospace";
 
-const INK = '#16201B';      // encre — titres
 const GREEN = '#027333';    // vert primary — accents
 const PAPER = '#FCFBF8';    // fond papier
 const GREY = '#5C645C';     // gris texte
-const HAIRLINE = '#E8E4DA'; // fines lignes
 
 const TITLE = 'Du temps, de la clarté, des résultats.';
 
 const SolutionsSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const [isVisible, setIsVisible] = useState(false);
-    // Première solution affichée par défaut — le panneau n'est jamais vide.
+    // Première solution affichée par défaut — la colonne image n'est jamais vide.
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
@@ -50,13 +48,13 @@ const SolutionsSection: React.FC = () => {
                 </svg>
             </div>
 
-            <div className="px-6 pt-24 pb-24 md:pt-28 md:pb-28">
+            <div className="px-6 pt-14 pb-24 md:pt-16 md:pb-28">
                 <div
-                    className={`max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    className={`max-w-[1380px] mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 >
-                    {/* ===== En-tête + liste (gauche) / panneau (droite) =====
-                        L'en-tête est dans la colonne de gauche : le panneau court
-                        du haut du titre jusqu'au bas de la dernière pilule. */}
+                    {/* ===== En-tête + liste (gauche) / illustration (droite) =====
+                        L'en-tête est dans la colonne de gauche : l'illustration
+                        court du haut du titre jusqu'au bas de la dernière pilule. */}
                     <div className="sol-layout">
                         <div className="sol-col">
                             {/* En-tête de section */}
@@ -123,7 +121,7 @@ const SolutionsSection: React.FC = () => {
                                             >
                                                 {solution.title}
                                             </span>
-                                            {/* Sous-titre visible uniquement en mobile (pas de panneau) */}
+                                            {/* Sous-titre visible uniquement en mobile (pas d'illustration) */}
                                             <span
                                                 className="sol-short block lg:hidden"
                                                 style={{
@@ -146,113 +144,55 @@ const SolutionsSection: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Colonne droite — panneau clair, calé du titre au dernier bouton */}
-                        <aside className="sol-panel hidden lg:block">
-                            <div className={`sol-card sol-card-b-${activeIndex + 1}`}>
-                                <div className="sol-card-stack">
-                                    {solutionsList.map((solution, i) => {
-                                        const isActive = i === activeIndex;
-                                        return (
-                                            <div
-                                                key={solution.slug}
-                                                className={`sol-card-item ${isActive ? 'is-active' : ''}`}
-                                                aria-hidden={!isActive}
-                                                inert={!isActive || undefined}
+                        {/* Colonne droite — promesse puis illustration de l'expertise survolée */}
+                        <div className={`sol-media sol-pal-${activeIndex + 1}`}>
+                            <div className="sol-media-stack">
+                                {solutionsList.map((solution, i) => {
+                                    const isActive = i === activeIndex;
+                                    return (
+                                        <Link
+                                            key={solution.slug}
+                                            to={`/solutions/${solution.slug}`}
+                                            className={`sol-media-item ${isActive ? 'is-active' : ''}`}
+                                            aria-hidden={!isActive}
+                                            inert={!isActive || undefined}
+                                            tabIndex={isActive ? undefined : -1}
+                                        >
+                                            <span
+                                                className="sol-media-promise"
+                                                style={{
+                                                    fontFamily: DISPLAY,
+                                                    fontWeight: 600,
+                                                    color: GREEN,
+                                                    letterSpacing: '-0.02em',
+                                                }}
                                             >
-                                                <h3
-                                                    style={{
-                                                        fontFamily: DISPLAY,
-                                                        fontWeight: 600,
-                                                        color: INK,
-                                                        fontSize: '1.95rem',
-                                                        lineHeight: 1.15,
-                                                        letterSpacing: '-0.025em',
-                                                    }}
-                                                >
-                                                    {solution.title}
-                                                </h3>
-
-                                                <p
-                                                    className="mt-4"
-                                                    style={{
-                                                        fontFamily: DISPLAY,
-                                                        fontWeight: 500,
-                                                        color: GREEN,
-                                                        fontSize: '1.15rem',
-                                                        lineHeight: 1.35,
-                                                        letterSpacing: '-0.01em',
-                                                    }}
-                                                >
-                                                    {solution.promise}
-                                                </p>
-
-                                                <p
-                                                    className="mt-4"
-                                                    style={{
-                                                        fontFamily: BODY,
-                                                        color: GREY,
-                                                        fontSize: '1.04rem',
-                                                        lineHeight: 1.6,
-                                                    }}
-                                                >
-                                                    {solution.shortDescription}
-                                                </p>
-
-                                                <ul
-                                                    className="mt-7 pt-7 space-y-4"
-                                                    style={{ borderTop: `1px solid ${HAIRLINE}` }}
-                                                >
-                                                    {solution.gains.slice(0, 3).map((gain, g) => (
-                                                        <li key={g} className="flex items-start gap-3">
-                                                            <span
-                                                                className="mt-[2px] inline-flex items-center justify-center w-5 h-5 rounded-md shrink-0"
-                                                                style={{
-                                                                    background: '#F0F5F1',
-                                                                    border: `1px solid ${HAIRLINE}`,
-                                                                }}
-                                                            >
-                                                                <Check className="w-3 h-3" strokeWidth={2.5} style={{ color: GREEN }} />
-                                                            </span>
-                                                            <span
-                                                                style={{
-                                                                    fontFamily: BODY,
-                                                                    color: INK,
-                                                                    fontSize: '1rem',
-                                                                    lineHeight: 1.55,
-                                                                }}
-                                                            >
-                                                                {gain.scenario}
-                                                            </span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                <Link
-                                                    to={`/solutions/${solution.slug}`}
-                                                    className="sol-card-cta group/link"
-                                                    style={{
-                                                        fontFamily: BODY,
-                                                        fontWeight: 700,
-                                                        fontSize: '0.82rem',
-                                                        textTransform: 'uppercase',
-                                                        letterSpacing: '0.14em',
-                                                    }}
-                                                >
-                                                    Découvrir
-                                                    <ArrowRight
-                                                        className="w-4 h-4 transition-transform group-hover/link:translate-x-1"
-                                                        strokeWidth={2}
-                                                    />
-                                                </Link>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-
-                                {/* Reflet rejoué à chaque changement (le `key` remonte l'élément) */}
-                                <span key={activeIndex} className="sol-card-sheen" aria-hidden="true" />
+                                                {solution.promise}
+                                            </span>
+                                            <span
+                                                className="sol-media-lede"
+                                                style={{
+                                                    fontFamily: BODY,
+                                                    color: GREY,
+                                                }}
+                                            >
+                                                {solution.shortDescription}
+                                            </span>
+                                            <span className="sol-media-frame">
+                                                <img
+                                                    src={solution.heroImage}
+                                                    alt={solution.heroImageAlt}
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    width={1536}
+                                                    height={1024}
+                                                />
+                                            </span>
+                                        </Link>
+                                    );
+                                })}
                             </div>
-                        </aside>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,8 +208,8 @@ const SolutionsSection: React.FC = () => {
             <style>{`
                 .sol-layout {
                     display: grid;
-                    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-                    gap: 3rem;
+                    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+                    gap: 3.5rem;
                     align-items: stretch;
                 }
                 .sol-col {
@@ -283,13 +223,107 @@ const SolutionsSection: React.FC = () => {
                     flex: 1;
                 }
                 /* Les pilules absorbent la hauteur restante : le bas de la
-                   dernière reste toujours aligné sur le bas du panneau. */
+                   dernière reste toujours aligné sur le bas de l'illustration. */
                 .sol-list > .sol-btn { flex: 1 0 auto; }
                 .sol-title { font-size: clamp(1.25rem, 1.9vw, 1.65rem); }
+
+                /* L'illustration garde le même cadrage 3:2 pour les 5 expertises
+                   et se centre verticalement en regard des pilules. */
+                .sol-media {
+                    /* étirée sur toute la hauteur : promesse en haut, image en bas */
+                    align-self: stretch;
+                    display: flex;
+                    /* le liseré glisse d'une palette à l'autre plutôt que de sauter */
+                    transition:
+                        --card-b-1 0.5s,
+                        --card-b-2 0.5s,
+                        --card-b-3 0.5s,
+                        --card-b-4 0.5s;
+                }
+                .sol-media-stack { display: grid; flex: 1; }
+                .sol-media-item {
+                    grid-area: 1 / 1;
+                    display: flex;
+                    flex-direction: column;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: scale(1.012);
+                    transition:
+                        opacity 0.42s ease,
+                        transform 0.42s ease,
+                        visibility 0.42s;
+                }
+                .sol-media-item.is-active {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: none;
+                }
+                /* Promesse de l'expertise — hauteur réservée sur deux lignes pour
+                   qu'elle occupe toujours la même place d'une expertise à l'autre. */
+                .sol-media-promise {
+                    display: flex;
+                    align-items: flex-end;
+                    min-height: 2.6em;
+                    font-size: clamp(1.25rem, 1.65vw, 1.6rem);
+                    line-height: 1.3;
+                }
+                /* Résumé de l'expertise — occupe l'espace entre la promesse (fixe,
+                   en haut) et l'image (poussée en bas par sa marge automatique). */
+                .sol-media-lede {
+                    display: block;
+                    margin-top: 0.9rem;
+                    margin-bottom: 1.5rem;
+                    max-width: 62ch;
+                    font-size: 1.02rem;
+                    line-height: 1.6;
+                }
+                .sol-media-frame {
+                    margin-top: auto;
+                    position: relative;
+                    display: block;
+                    border-radius: 20px;
+                    overflow: hidden;
+                    background: #EFEBE1;
+                    box-shadow:
+                        0 1px 2px rgba(22, 32, 27, 0.04),
+                        0 26px 56px -32px rgba(22, 32, 27, 0.45);
+                }
+                .sol-media-item img {
+                    display: block;
+                    width: 100%;
+                    aspect-ratio: 3 / 2;
+                    object-fit: cover;
+                    object-position: center;
+                }
+                /* Liseré dégradé accordé à la palette de la pilule active */
+                .sol-media-frame::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    border-radius: inherit;
+                    padding: 2.5px;
+                    background: linear-gradient(
+                        140deg,
+                        var(--card-b-1) 0%,
+                        var(--card-b-2) 34%,
+                        var(--card-b-3) 67%,
+                        var(--card-b-4) 100%
+                    );
+                    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                    mask-composite: exclude;
+                    pointer-events: none;
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .sol-media-item { transition: none; }
+                }
+
+                /* Sous 1024px : une seule colonne, les pilules portent leur
+                   sous-titre et l'illustration s'efface (pas de survol tactile). */
                 @media (max-width: 1023px) {
                     .sol-layout { grid-template-columns: 1fr; gap: 0; }
                     .sol-list { flex: none; }
                     .sol-list > .sol-btn { flex: none; }
+                    .sol-media { display: none; }
                     .sol-btn {
                         align-items: start;
                         gap: 0.9rem;

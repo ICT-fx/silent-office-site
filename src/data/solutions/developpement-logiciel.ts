@@ -9,6 +9,9 @@ export const developpementLogiciel: SolutionData = {
     promise: 'Le bon outil, rien de plus.',
     shortDescription:
         'Des outils métier sur mesure, construits autour de vos process, sans licences superflues.',
+    heroImage: '/images/expertises/developpement-logiciel.jpg',
+    heroImageAlt:
+        "Un développeur conçoit une application métier sur mesure, interface et code côte à côte.",
     heroTagline:
         'Vous payez chaque mois des licences pour des logiciels dont vous n’utilisez que 10 % des fonctionnalités, pendant que le reste de votre activité continue de vivre dans des fichiers Excel fragiles, bricolés au fil des années. Entre l’usine à gaz surdimensionnée et le tableur qui menace de craquer, il existe une troisième voie.',
     heroTaglineStrong: 'Un outil fait pour vous, qui vous appartient.',

@@ -420,8 +420,8 @@
   --border-color-2: hsla(340, 75%, 90%, 0.6);
 }
 
-/* Nuances de la bordure du panneau : suivent la pilule survolée.
-   inherits: true → le ::before hérite de la valeur animée. */
+/* Nuances du liseré de l'illustration : suivent la pilule survolée.
+   inherits: true → le ::after hérite de la valeur animée. */
 @property --card-b-1 {
   syntax: '<color>';
   initial-value: #93bf9e;
@@ -446,173 +446,41 @@
   inherits: true;
 }
 
-/* ===== Encart de détail — clair, neutre, format constant =====
-   Les 5 contenus sont empilés dans la même cellule de grille : la carte
-   se dimensionne sur le plus long et ne bouge plus jamais. */
-.sol-card {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  padding: 2.25rem;
-  background: #ffffff;
-  box-shadow:
-    0 1px 2px rgba(22, 32, 27, 0.04),
-    0 18px 40px -28px rgba(22, 32, 27, 0.35);
-  transition:
-    --card-b-1 0.5s,
-    --card-b-2 0.5s,
-    --card-b-3 0.5s,
-    --card-b-4 0.5s;
-}
-
-/* Liseré dégradé multi-nuances, accordé à la pilule survolée */
-.sol-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 2.5px;
-  background: linear-gradient(
-    140deg,
-    var(--card-b-1) 0%,
-    var(--card-b-2) 34%,
-    var(--card-b-3) 67%,
-    var(--card-b-4) 100%
-  );
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* Reflet : balayage diagonal coin haut-gauche → coin bas-droit, rejoué à
-   chaque changement de solution (remontage par `key`). La teinte suit la
-   palette active. */
-.sol-card-sheen {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Bande de lumière */
-.sol-card-sheen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(
-    115deg,
-    transparent 41%,
-    color-mix(in srgb, var(--card-b-3) 7%, transparent) 47%,
-    color-mix(in srgb, var(--card-b-3) 15%, transparent) 50%,
-    color-mix(in srgb, var(--card-b-3) 7%, transparent) 53%,
-    transparent 59%
-  );
-  background-size: 300% 300%;
-  animation: solSheenSweep 1.1s ease-out forwards;
-}
-
-@keyframes solSheenSweep {
-  from {
-    background-position: 130% 130%;
-  }
-
-  to {
-    background-position: -30% -30%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sol-card-sheen {
-    display: none;
-  }
-}
-
-/* Une nuance par pilule — reprise de leurs palettes de survol respectives */
-.sol-card-b-1 {
+/* Une nuance par pilule — reprise de leurs palettes de survol respectives.
+   Appliquée à la colonne illustration de la section « Nos expertises ». */
+.sol-pal-1 {
   --card-b-1: #93bf9e;
   --card-b-2: #4caf72;
   --card-b-3: #027333;
   --card-b-4: #013a1e;
 }
 
-.sol-card-b-2 {
+.sol-pal-2 {
   --card-b-1: #a1a898;
   --card-b-2: #6b9e6f;
   --card-b-3: #35762f;
   --card-b-4: #0f3119;
 }
 
-.sol-card-b-3 {
+.sol-pal-3 {
   --card-b-1: #ae9193;
   --card-b-2: #898e6b;
   --card-b-3: #67782b;
   --card-b-4: #1c2714;
 }
 
-.sol-card-b-4 {
+.sol-pal-4 {
   --card-b-1: #bc798d;
   --card-b-2: #a87d68;
   --card-b-3: #9a7b27;
   --card-b-4: #2a1e0f;
 }
 
-.sol-card-b-5 {
+.sol-pal-5 {
   --card-b-1: #c96287;
   --card-b-2: #c66c64;
   --card-b-3: #cc7d23;
   --card-b-4: #37140a;
-}
-
-.sol-card-stack {
-  display: grid;
-  flex: 1;
-}
-
-.sol-card-item {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition:
-    opacity 0.32s ease,
-    transform 0.32s ease,
-    visibility 0.32s;
-}
-
-.sol-card-item.is-active {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-
-.sol-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  align-self: flex-start;
-  margin-top: auto;
-  border-radius: 999px;
-  padding: 0.8rem 1.4rem;
-  background: #16201b;
-  color: #ffffff;
-  transition: background 0.25s ease;
-}
-
-.sol-card-cta:hover {
-  background: #027333;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sol-card-item {
-    transition: none;
-  }
 }
 
 /* Preloader : curseur de terminal clignotant */

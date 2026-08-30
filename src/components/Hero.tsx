@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* Overlay Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 md:pt-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 md:pt-0 -translate-y-4 md:-translate-y-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Colonne gauche : texte */}
           <div className="text-left">

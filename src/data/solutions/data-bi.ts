@@ -10,6 +10,9 @@ export const dataBi: SolutionData = {
     subPromise: 'Chaque décision mérite des données fiables.',
     shortDescription:
         'Des chiffres fiables et à jour, pour décider sans deviner.',
+    heroImage: '/images/expertises/data-bi.jpg',
+    heroImageAlt:
+        "Une équipe lit sur grand écran un tableau de bord unifié qui rassemble ventes, logistique, clients et qualité.",
     heroTagline:
         'Vos chiffres existent déjà — dans votre logiciel de comptabilité, votre CRM, vos tableurs de suivi, vos outils de production. Ils sont seulement éparpillés, jamais mis en regard les uns des autres.',
     heroTaglineStrong: 'Il ne manque que le tableau de bord qui les fait parler.',

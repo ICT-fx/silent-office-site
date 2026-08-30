@@ -108,7 +108,7 @@ const HeroScrollStrip: React.FC = () => {
       style={{
         height: STRIP_HEIGHT,
         // Remonte le bandeau sous le Hero pour qu'on en aperçoive le haut dès l'accueil.
-        marginTop: 'calc(-1 * clamp(40px, 4.5vw, 64px))',
+        marginTop: 'calc(-1 * clamp(64px, 7vw, 100px))',
       }}
     >
       <div

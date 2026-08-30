@@ -7,6 +7,9 @@ export const audit: SolutionData = {
     promise: 'Transformez vos contraintes en opportunités.',
     shortDescription:
         "Un état des lieux mené avec vous, et un plan d’action clair, priorisé par impact.",
+    heroImage: '/images/expertises/audit.jpg',
+    heroImageAlt:
+        "Un dirigeant présente les résultats d'un audit à son comité de direction, tableaux de bord et rapports à l'appui.",
     heroTagline:
         "Vous sentez que du temps et de l’argent s’échappent quelque part dans votre organisation, sans pouvoir dire précisément où ni combien. Notre audit remonte le fil de vos processus pour transformer ce ressenti en constats mesurables.",
     heroTaglineStrong: 'Passez des intuitions aux certitudes.',

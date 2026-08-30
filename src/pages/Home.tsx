@@ -3,11 +3,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import HeroScrollStrip from '../components/HeroScrollStrip';
+import ClientsBand from '../components/ClientsBand';
 import SolutionsSection from '../components/SolutionsSection';
-import MethodologySection from '../components/MethodologySection';
 import TechStackSection from '../components/TechStackSection';
 import InnovationShowcase from '../components/InnovationShowcase';
-import CorporateApproachSection from '../components/CorporateApproachSection';
 import InsightsCarousel from '../components/InsightsCarousel';
 
 const Home: React.FC = () => {
@@ -31,9 +30,9 @@ const Home: React.FC = () => {
 
             <HeroScrollStrip />
 
-            <CorporateApproachSection />
+            <ClientsBand />
+
             <SolutionsSection />
-            <MethodologySection />
 
             <TechStackSection />
 

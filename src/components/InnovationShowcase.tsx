@@ -1,6 +1,5 @@
 
-import React from 'react';
-import { TrendingUp } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ViewState } from '../types';
 import TeamSection from './TeamSection';
 
@@ -8,200 +7,216 @@ interface InnovationShowcaseProps {
   onNavigate?: (view: ViewState, sectionId?: string) => void;
 }
 
-const InnovationShowcase: React.FC<InnovationShowcaseProps> = ({ onNavigate }) => {
+// Tokens éditoriaux — Space Grotesk pour les chiffres, Manrope pour le texte
+const DISPLAY = "'Space Grotesk', sans-serif";
+
+/* ------------------------------------------------------------------ *
+ *  Compteur — les chiffres se posent quand la section entre à l'écran
+ * ------------------------------------------------------------------ */
+const useCountUp = (target: number, active: boolean, duration = 1400) => {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || target === 0) {
+      setValue(target);
+      return;
+    }
+    let frame = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      // easeOutExpo : démarrage franc, arrivée douce sur la valeur finale
+      const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      setValue(Math.round(target * eased));
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [active, target, duration]);
+
+  return value;
+};
+
+/* ------------------------------------------------------------------ *
+ *  Pictogrammes — animations pilotées par index.css (--showcase-delay)
+ * ------------------------------------------------------------------ */
+const iconBase = {
+  className: 'w-full h-full',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.6,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  'aria-hidden': true,
+};
+
+const IconROI = () => (
+  <svg {...iconBase}>
+    <polyline className="showcase-trend-line" points="2 17 8.5 10.5 13.5 15.5 22 7" />
+    <polyline className="showcase-trend-arrow" points="16 7 22 7 22 13" />
+  </svg>
+);
+
+const IconKPI = () => (
+  <svg {...iconBase}>
+    <path
+      className="showcase-layer-top"
+      d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
+    />
+    <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+    <path className="showcase-layer-bottom" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+  </svg>
+);
+
+const IconConformite = () => (
+  <svg {...iconBase}>
+    <path
+      className="showcase-shield-pulse"
+      d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"
+    />
+    <path className="showcase-shield-check" d="m9 12 2 2 4-4" />
+  </svg>
+);
+
+/* ------------------------------------------------------------------ *
+ *  Les trois engagements — un chiffre, une preuve
+ * ------------------------------------------------------------------ */
+const ENGAGEMENTS = [
+  {
+    key: 'roi',
+    prefix: 'J+',
+    value: 90,
+    suffix: '',
+    title: 'ROI & création de valeur',
+    body: 'Un périmètre cadré, livré vite : vos premiers gains sont chiffrés dès le premier trimestre.',
+    Icon: IconROI,
+    delay: '0s',
+  },
+  {
+    key: 'kpi',
+    prefix: '',
+    value: 100,
+    suffix: ' %',
+    title: 'KPIs & pilotage',
+    body: 'Volumes, délais, anomalies : chaque processus est instrumenté pour un pilotage par la preuve.',
+    Icon: IconKPI,
+    delay: '0.6s',
+  },
+  {
+    key: 'conformite',
+    prefix: '',
+    value: 0,
+    suffix: '',
+    title: 'Conformité & maîtrise',
+    body: 'Aucune donnée hors de votre périmètre. Hébergement, accès et RGPD traités dès la conception.',
+    Icon: IconConformite,
+    delay: '1.2s',
+  },
+];
+
+const EngagementColumn: React.FC<{
+  item: typeof ENGAGEMENTS[number];
+  active: boolean;
+}> = ({ item, active }) => {
+  const count = useCountUp(item.value, active);
+
+  return (
+    <div
+      className="group relative rounded-[26px] px-7 py-8 lg:px-9 lg:py-9 transition-colors duration-500 hover:bg-white/[0.04]"
+      style={{ '--showcase-delay': item.delay } as React.CSSProperties}
+    >
+      <div className="flex items-center gap-4">
+        {/* Pastille ronde — l'icône respire au lieu d'être enfermée dans un carré */}
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.07] ring-1 ring-inset ring-white/10 text-[#93BF9E] transition-colors duration-500 group-hover:bg-[#027333]/25 group-hover:text-white">
+          <span className="h-[19px] w-[19px]">
+            <item.Icon />
+          </span>
+        </span>
+
+        <span
+          className="text-[2.6rem] lg:text-[3rem] leading-none tracking-[-0.045em] tabular-nums text-white"
+          style={{ fontFamily: DISPLAY, fontWeight: 500 }}
+        >
+          {item.prefix}
+          {count}
+          {item.suffix}
+        </span>
+      </div>
+
+      <h3 className="mt-6 text-[1.05rem] font-semibold tracking-[-0.01em] text-white">
+        {item.title}
+      </h3>
+      <p className="mt-2 text-[0.925rem] leading-relaxed text-white/50">{item.body}</p>
+    </div>
+  );
+};
+
+const InnovationShowcase: React.FC<InnovationShowcaseProps> = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="space-y-0 relative z-10">
-      {/* SECTION 1: CONTEXTE & ENJEUX (Style "Split Blanc" avec gros numéro) */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Government illustration "Osez l'IA" */}
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-100 p-8 relative group">
-                {/* Decoration */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#027333]/10 rounded-full blur-3xl -mr-16 -mt-16 transition-all duration-700 group-hover:bg-[#027333]/20"></div>
+      {/* SECTION 1: RÉSULTATS — bandeau sombre, panneau arrondi, rien de superflu */}
+      <section className="relative overflow-hidden bg-[#262626] px-6 py-14 lg:py-16">
+        {/* Deux halos très diffus : de la profondeur, aucune trame */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 left-[8%] h-[30rem] w-[30rem] rounded-full bg-[#027333]/25 blur-[130px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-40 right-[4%] h-[26rem] w-[26rem] rounded-full bg-[#93BF9E]/10 blur-[140px]"
+        />
 
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-[#262626] mb-8 flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-[#027333]/10 flex items-center justify-center text-[#027333]">
-                      <TrendingUp size={18} />
-                    </span>
-                    Objectifs d'adoption IA 2030
-                  </h3>
-
-                  <div className="space-y-6">
-                    {/* Item 1 */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <span className="text-gray-500 font-medium text-sm">Grands Groupes</span>
-                        <span className="text-2xl font-bold text-[#262626]">100%</span>
-                      </div>
-                      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#262626] w-full rounded-full transform origin-left transition-transform duration-1000 ease-out hover:scale-x-105" />
-                      </div>
-                    </div>
-
-                    {/* Item 2 */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <span className="text-gray-500 font-medium text-sm">PME / ETI</span>
-                        <span className="text-2xl font-bold text-[#262626]">80%</span>
-                      </div>
-                      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#262626] w-[80%] rounded-full transform origin-left transition-transform duration-1000 ease-out hover:scale-x-105" />
-                      </div>
-                    </div>
-
-                    {/* Item 3 */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-end">
-                        <span className="text-gray-500 font-medium text-sm">TPE</span>
-                        <span className="text-2xl font-bold text-[#262626]">50%</span>
-                      </div>
-                      <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#262626] w-[50%] rounded-full transform origin-left transition-transform duration-1000 ease-out hover:scale-x-105" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-gray-100">
-                    <p className="text-sm text-gray-400 italic">
-                      Aligné avec la stratégie nationale pour l'IA
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <p className="text-xs text-gray-400 mt-3 italic">
-                Source : Plan "Osez l'IA" - Gouvernement français
-              </p>
-            </div>
-
-            {/* Right: Content */}
-            <div>
-              <span className="text-[#027333] font-bold uppercase tracking-widest text-xs mb-4 block">
-                Contexte & Enjeux
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-bold text-[#262626] mb-8 leading-tight">
-                Un levier devenu incontournable pour rester compétitif.
-              </h2>
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
-                <p>
-                  Aujourd'hui, toutes les entreprises font face à la même équation : pression sur les marges, complexité croissante des systèmes et accélération de la concurrence.
-                </p>
-                <p>
-                  L'automatisation intelligente et l'IA ne sont plus des options futuristes. Elles sont devenues des leviers structurants immédiats pour gagner en efficacité, assurer la stabilité opérationnelle et redonner de la capacité d'innovation à vos équipes.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: ROI & SÉCURITÉ (fond sombre tranché, cartes compactes, icônes animées) */}
-      <section className="py-16 px-6 bg-[#262626]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="text-[#93BF9E] font-bold uppercase tracking-widest text-xs mb-4 block">
-              Performance & Gouvernance
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              Des résultats mesurables, dans un cadre sécurisé.
+        <div ref={sectionRef} className="relative mx-auto max-w-5xl">
+          {/* En-tête centré, court */}
+          <div className="mx-auto max-w-3xl text-center">
+            <h2
+              className="text-[2.1rem] lg:text-[2.9rem] leading-[1.08] tracking-[-0.03em] text-white"
+              style={{ fontFamily: DISPLAY, fontWeight: 500 }}
+            >
+              Des résultats mesurables,
+              <br className="hidden sm:block" />{' '}
+              <span className="text-[#93BF9E]">dans un cadre sécurisé.</span>
             </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              La performance n'a de sens que si elle s'inscrit dans un cadre gouverné et conforme.
+            <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed text-white/50">
+              Trois engagements posés dès le cadrage, revus à chaque étape.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
-            {/* Point 1: ROI — courbe qui se trace */}
-            <div
-              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
-              style={{ '--showcase-delay': '0s' } as React.CSSProperties}
-            >
-              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <polyline className="showcase-trend-line" points="2 17 8.5 10.5 13.5 15.5 22 7" />
-                  <polyline className="showcase-trend-arrow" points="16 7 22 7 22 13" />
-                </svg>
+          {/* Panneau unique, très arrondi — les trois engagements vivent dedans */}
+          <div className="mt-11 rounded-[34px] border border-white/10 bg-white/[0.045] p-1.5 shadow-[0_40px_80px_-50px_rgba(0,0,0,0.9)] backdrop-blur-sm">
+            <div className="rounded-[28px] bg-gradient-to-b from-white/[0.05] to-transparent">
+              <div className="grid divide-y divide-white/[0.07] md:grid-cols-3 md:divide-y-0 md:divide-x">
+                {ENGAGEMENTS.map((item) => (
+                  <EngagementColumn key={item.key} item={item} active={visible} />
+                ))}
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">ROI & Création de Valeur</h3>
-              <p className="text-white/60 text-sm leading-relaxed">
-                Réduction des coûts opérationnels et gains de temps significatifs dès les premiers mois.
-              </p>
-            </div>
-
-            {/* Point 2: KPIs — couches qui s'empilent */}
-            <div
-              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
-              style={{ '--showcase-delay': '0.6s' } as React.CSSProperties}
-            >
-              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    className="showcase-layer-top"
-                    d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
-                  />
-                  <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
-                  <path className="showcase-layer-bottom" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">KPIs & Pilotage</h3>
-              <p className="text-white/60 text-sm leading-relaxed">
-                Nous transformons des processus flous en données monitorées pour un pilotage par la preuve.
-              </p>
-            </div>
-
-            {/* Point 3: Conformité — coche qui se dessine */}
-            <div
-              className="bg-white/[0.04] border border-white/10 p-6 rounded-xl hover:border-[#027333] hover:bg-white/[0.07] transition-colors"
-              style={{ '--showcase-delay': '1.2s' } as React.CSSProperties}
-            >
-              <div className="w-12 h-12 bg-[#027333] rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    className="showcase-shield-pulse"
-                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"
-                  />
-                  <path className="showcase-shield-check" d="m9 12 2 2 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">Conformité & Maîtrise</h3>
-              <p className="text-white/60 text-sm leading-relaxed">
-                Maîtrise totale des risques liés aux données. Vos automatisations respectent vos exigences de gouvernance.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 bis: ÉQUIPE (portraits + tooltips animés) */}
+      {/* SECTION 2: ÉQUIPE (portraits + tooltips animés) */}
       <TeamSection />
 
       {/* SECTION 3: PARTENARIAT (Style "Image + Citation") */}

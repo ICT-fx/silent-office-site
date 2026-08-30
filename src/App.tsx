@@ -10,6 +10,7 @@ import InsightsPage from './components/InsightsPage';
 import SolutionPage from './pages/SolutionPage';
 import ContactPage from './pages/ContactPage';
 import CareersPage from './pages/CareersPage';
+import PortfolioPage from './pages/PortfolioPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
 
 const App: React.FC = () => {
@@ -42,6 +43,7 @@ const App: React.FC = () => {
           <Route path="/solutions/finance" element={<Navigate to="/solutions/automatisation" replace />} />
           <Route path="/solutions/strategie" element={<Navigate to="/solutions/formation" replace />} />
           <Route path="/solutions/:slug" element={<SolutionPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/insights/:id" element={<ArticleDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />

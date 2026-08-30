@@ -135,7 +135,8 @@ const SolutionPage: React.FC = () => {
                 <div className="absolute -bottom-32 left-1/4 w-96 h-96 bg-[#025928] opacity-20 blur-[110px] rounded-full" />
                 <div className="absolute top-1/3 left-0 w-64 h-64 bg-[#93BF9E] opacity-10 blur-[100px] rounded-full" />
 
-                <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left">
+                <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left grid lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] gap-12 xl:gap-16 items-center">
+                    <div>
                     <Link
                         to="/"
                         className="text-gray-400 hover:text-[#027333] text-sm font-bold uppercase tracking-widest mb-8 inline-block transition-colors"
@@ -173,12 +174,43 @@ const SolutionPage: React.FC = () => {
                         Découvrir
                         <ArrowRight className="ml-2 w-5 h-5" />
                     </button>
+                    </div>
+
+                    {/* Illustration de l'expertise — cadrage 3:2, identique sur les 5 pages */}
+                    <div className="relative">
+                        <div
+                            className="absolute -inset-3 rounded-[26px] opacity-40 blur-2xl"
+                            style={{
+                                background:
+                                    'linear-gradient(140deg, #93BF9E 0%, #027333 55%, #013a1e 100%)',
+                            }}
+                            aria-hidden="true"
+                        />
+                        <img
+                            src={data.heroImage}
+                            alt={data.heroImageAlt}
+                            width={1536}
+                            height={1024}
+                            decoding="async"
+                            className="relative w-full aspect-[3/2] object-cover object-center rounded-[20px] ring-1 ring-white/15 shadow-2xl"
+                        />
+                    </div>
                 </div>
             </section>
 
-            {/* ============ CE QUE ÇA CHANGE POUR VOUS ============ */}
+            {/* ============ INTRODUCTION + CE QUE ÇA CHANGE POUR VOUS ============
+                Reprend, sous l'image, le contenu que portait la carte de la home. */}
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-7xl mx-auto">
+                    <div className="max-w-3xl mb-16">
+                        <span className="text-[#027333] font-bold uppercase tracking-widest text-sm mb-4 block">
+                            En deux mots
+                        </span>
+                        <p className="text-2xl md:text-3xl font-light leading-snug text-[#262626]">
+                            {data.shortDescription}
+                        </p>
+                    </div>
+
                     <SectionHeading
                         eyebrow="Les bénéfices"
                         title="Ce que ça change pour vous"

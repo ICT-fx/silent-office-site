@@ -11,6 +11,9 @@ export const formation: SolutionData = {
     promise: "L'IA qui fait vraiment gagner du temps.",
     shortDescription:
         "Vos équipes formées à utiliser l’IA sur leurs vraies tâches, pas sur des démonstrations.",
+    heroImage: '/images/expertises/formation.jpg',
+    heroImageAlt:
+        "Un formateur anime une session d'acculturation à l'IA devant une salle de collaborateurs équipés de leurs ordinateurs.",
     heroTagline:
         "Les technologies évoluent en continu. L’absence de vision claire entraîne des risques, des pertes financières et une inefficacité opérationnelle.",
     heroTaglineStrong: 'Prenez les devants.',

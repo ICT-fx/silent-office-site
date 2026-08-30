@@ -9,6 +9,9 @@ export const automatisation: SolutionData = {
     promise: 'Faites plus, avec les mêmes équipes.',
     shortDescription:
         "N’importe quel processus lent ou répétitif, simplifié puis pris en charge, pour que vos équipes se recentrent sur ce qui compte.",
+    heroImage: '/images/expertises/automatisation.jpg',
+    heroImageAlt:
+        "Un collaborateur tape dans la main d'un assistant automatisé qui a pris en charge une tâche répétitive à sa place.",
     heroTagline:
         "Vos équipes passent des heures, chaque semaine, sur des tâches que personne n’a vraiment choisies — ressaisir, copier-coller, relancer, vérifier. Ce temps peut être rendu à ce qui compte vraiment.",
     heroTaglineStrong: 'Chaque heure répétitive est une heure récupérable.',
