@@ -1,0 +1,62 @@
+import {
+    BarChart3,
+    Brain,
+    ClipboardList,
+    Clock,
+    Compass,
+    Cpu,
+    Database,
+    Ear,
+    Eye,
+    GraduationCap,
+    KeyRound,
+    Layers,
+    Lightbulb,
+    ListChecks,
+    Puzzle,
+    RefreshCw,
+    Rocket,
+    Search,
+    ShieldCheck,
+    Target,
+    TrendingUp,
+    Unlock,
+    Users,
+    Workflow,
+    Zap,
+    type LucideIcon,
+} from 'lucide-react';
+
+/**
+ * Registre d'icônes : les fichiers de données référencent une icône lucide-react
+ * par son nom (string) — on la résout ici, avec un fallback sûr.
+ */
+const ICONS: Record<string, LucideIcon> = {
+    BarChart3,
+    Brain,
+    ClipboardList,
+    Clock,
+    Compass,
+    Cpu,
+    Database,
+    Ear,
+    Eye,
+    GraduationCap,
+    KeyRound,
+    Layers,
+    Lightbulb,
+    ListChecks,
+    Puzzle,
+    RefreshCw,
+    Rocket,
+    Search,
+    ShieldCheck,
+    Target,
+    TrendingUp,
+    Unlock,
+    Users,
+    Workflow,
+    Zap,
+};
+
+export const resolveIcon = (name: string): LucideIcon => ICONS[name] ?? Target;

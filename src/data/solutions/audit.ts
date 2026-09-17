@@ -4,6 +4,7 @@ export const audit: SolutionData = {
     id: 'audit',
     slug: 'audit',
     title: 'Audit',
+    layout: 'compact',
     promise: 'Transformez vos contraintes en opportunités.',
     shortDescription:
         "Un état des lieux mené avec vous, et un plan d’action clair, priorisé par impact.",
@@ -13,6 +14,12 @@ export const audit: SolutionData = {
     heroTagline:
         "Vous sentez que du temps et de l’argent s’échappent quelque part dans votre organisation, sans pouvoir dire précisément où ni combien. Notre audit remonte le fil de vos processus pour transformer ce ressenti en constats mesurables.",
     heroTaglineStrong: 'Passez des intuitions aux certitudes.',
+    keyFacts: [
+        { icon: 'Clock', label: 'Durée', value: '2 semaines' },
+        { icon: 'Users', label: 'Format', value: 'Terrain + 1 atelier de restitution' },
+        { icon: 'ListChecks', label: 'Livrable', value: '3 à 5 chantiers classés par impact' },
+        { icon: 'Unlock', label: 'Liberté', value: 'Un plan utilisable avec ou sans nous' },
+    ],
     gains: [
         {
             scenario:
@@ -21,7 +28,7 @@ export const audit: SolutionData = {
         },
         {
             scenario:
-                'Les dépenses inutiles — outils sous-utilisés, tâches redondantes, doublons entre services — identifiées avant tout investissement.',
+                'Outils sous-utilisés, tâches redondantes, doublons entre services : les dépenses inutiles sont identifiées avant tout investissement.',
             label: 'Des dépenses mieux maîtrisées',
         },
         {
@@ -40,7 +47,7 @@ export const audit: SolutionData = {
         {
             title: 'Mesurer objectivement',
             description:
-                'Chaque constat est vérifié par des données concrètes — temps passé, coûts, fréquence — pas par des impressions.',
+                'Chaque constat est vérifié par des données concrètes : temps passé, coûts, fréquence.',
             icon: 'BarChart3',
         },
         {
@@ -52,7 +59,7 @@ export const audit: SolutionData = {
         {
             title: 'Restituer en toute transparence',
             description:
-                'Vous recevez une restitution claire et sans jargon, que vous pouvez porter vous-même en interne.',
+                'Vous recevez une restitution claire et sans jargon, que vous pouvez porter vous‑même en interne.',
             icon: 'ShieldCheck',
         },
     ],
@@ -103,19 +110,21 @@ export const audit: SolutionData = {
             setup:
                 "Un inventaire des outils et des flux d’information, croisé avec les besoins réels de chaque équipe.",
             result:
-                "Un plan clair distinguant ce qui doit être gardé, simplifié ou automatisé — le premier pas vers les projets suivants.",
+                "Un plan clair distinguant ce qui doit être gardé, simplifié ou automatisé, le premier pas vers les projets suivants.",
         },
     ],
     deepDive: {
         eyebrow: 'Le Déroulé Complet',
         title: 'Notre méthode d’audit, étape par étape',
         intro:
-            'Semaine par semaine, voici précisément ce qui se passe pendant votre audit — ce que nous observons, ce que nous mesurons, et ce que vous recevez à chaque étape.',
+            'Voici précisément ce qui se passe pendant votre audit : ce que nous observons, ce que nous mesurons, et ce que vous recevez à chaque étape.',
         chapters: [
             {
                 id: 'audit-immersion',
+                glyph: 'listening',
                 title: 'Immersion & écoute terrain',
-                subtitle: 'Semaine 1 — avec les équipes concernées',
+                subtitle: 'Chez vous, avec les équipes concernées',
+                summary: 'Nous découvrons votre activité et vos équipes, sur le terrain.',
                 content: [
                     {
                         title: 'Ce que nous écoutons',
@@ -137,8 +146,10 @@ export const audit: SolutionData = {
             },
             {
                 id: 'audit-cartographie',
+                glyph: 'map',
                 title: 'Cartographie de vos processus',
-                subtitle: 'Semaine 1-2 — vue d’ensemble de votre activité',
+                subtitle: 'Une vue d’ensemble de votre activité',
+                summary: 'Nous mettons à plat vos processus clés et les outils qui les portent.',
                 content: [
                     {
                         title: 'Ce que nous cartographions',
@@ -159,8 +170,10 @@ export const audit: SolutionData = {
             },
             {
                 id: 'audit-analyse',
+                glyph: 'measure',
                 title: 'Analyse & chiffrage des pertes',
-                subtitle: 'Semaine 2 — traduire les constats en chiffres',
+                subtitle: 'Les constats traduits en chiffres',
+                summary: 'Nous identifions les principaux problèmes à résoudre et les chiffrons.',
                 content: [
                     {
                         title: 'Ce que nous mesurons',
@@ -181,8 +194,10 @@ export const audit: SolutionData = {
             },
             {
                 id: 'audit-restitution',
+                glyph: 'workshop',
                 title: 'Restitution partagée',
-                subtitle: '1 atelier — avec décideurs et équipes concernées',
+                subtitle: 'Un atelier avec les décideurs et les équipes concernées',
+                summary: 'Nous construisons avec vous un plan d’action clair et priorisé.',
                 content: [
                     {
                         title: 'Comment se déroule l’atelier',
@@ -202,8 +217,10 @@ export const audit: SolutionData = {
             },
             {
                 id: 'audit-plan-action',
+                glyph: 'plan',
                 title: 'Plan d’action & suites',
-                subtitle: 'À l’issue de l’audit — à votre rythme',
+                subtitle: 'À l’issue de l’audit, à votre rythme',
+                summary: 'Si vous le souhaitez, nous vous accompagnons sur les premiers chantiers identifiés, à la carte.',
                 content: [
                     {
                         title: 'Ce que contient le plan',
@@ -250,5 +267,4 @@ export const audit: SolutionData = {
     ctaText:
         "Un premier échange suffit pour cadrer le périmètre de l’audit et vérifier qu’il vous sera vraiment utile.",
     ctaLabel: 'Planifier un échange',
-    ctaFootnote: 'Premier échange sans engagement.',
 };

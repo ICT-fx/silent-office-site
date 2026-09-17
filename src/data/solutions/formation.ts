@@ -1,6 +1,6 @@
 import type { SolutionData } from './types';
 
-// Contenu réécrit (phase 2) — angle anti-gadget : l'IA formée sur les vrais
+// Contenu réécrit (phase 2), angle anti-gadget : l'IA formée sur les vrais
 // process quotidiens des équipes, jamais sur des démonstrations ou des usages superflus.
 // `id`, `slug`, `title` et `promise` restent verbatim (spec validée).
 
@@ -8,6 +8,13 @@ export const formation: SolutionData = {
     id: 'formation',
     slug: 'formation',
     title: 'Formation & Transformation',
+    layout: 'compact',
+    variant: {
+        hero: 'banner',
+        catalogue: 'syllabus',
+        cases: 'cells',
+        labels: { gains: 'Ce que vos équipes savent faire ensuite' },
+    },
     promise: "L'IA qui fait vraiment gagner du temps.",
     shortDescription:
         "Vos équipes formées à utiliser l’IA sur leurs vraies tâches, pas sur des démonstrations.",
@@ -17,6 +24,12 @@ export const formation: SolutionData = {
     heroTagline:
         "Les technologies évoluent en continu. L’absence de vision claire entraîne des risques, des pertes financières et une inefficacité opérationnelle.",
     heroTaglineStrong: 'Prenez les devants.',
+    keyFacts: [
+        { icon: 'Users', label: 'Public', value: 'Dirigeants, équipes métier et IT' },
+        { icon: 'Workflow', label: 'Format', value: 'Des ateliers sur vos vrais documents et vos cas' },
+        { icon: 'ShieldCheck', label: 'Cadre', value: 'Ce qui peut être confié à l’IA, et ce qui ne doit pas l’être' },
+        { icon: 'RefreshCw', label: 'Ancrage', value: 'Un bilan un mois après la formation' },
+    ],
     gains: [
         {
             scenario:
@@ -50,7 +63,7 @@ export const formation: SolutionData = {
         {
             title: 'Automatiser efficacement',
             description:
-                "Déployer les bonnes technologies — automatisation de processus, intelligence artificielle, agents intelligents — au bon endroit dans votre chaîne de valeur.",
+                "Déployer les bonnes technologies (automatisation de processus, intelligence artificielle, agents intelligents) au bon endroit dans votre chaîne de valeur.",
             icon: 'Cpu',
         },
         {
@@ -75,9 +88,9 @@ export const formation: SolutionData = {
             icon: 'BarChart3',
         },
         {
-            title: 'Transformation',
+            title: 'Organisations en pleine mutation',
             description:
-                "Pour les organisations en pleine mutation, afin de réussir l’adoption, gérer le changement culturel et vaincre les résistances.",
+                "Pour réussir l’adoption, gérer le changement culturel et vaincre les résistances.",
             icon: 'Zap',
         },
     ],
@@ -87,7 +100,7 @@ export const formation: SolutionData = {
             before:
                 "Chacun a entendu parler de l’IA, personne ne sait par où commencer ni ce qu’elle peut vraiment changer à son poste.",
             setup:
-                'Un atelier construit uniquement sur les tâches réelles de l’équipe — leurs mails, leurs comptes-rendus, leurs documents types — sans passer par des exemples génériques.',
+                'Un atelier construit uniquement sur les tâches réelles de l’équipe (leurs mails, leurs comptes‑rendus, leurs documents types), sans passer par des exemples génériques.',
             result:
                 'Chaque participant repart avec deux ou trois usages précis, déjà testés sur ses propres dossiers, prêts à réutiliser dès le lendemain.',
         },
@@ -105,12 +118,13 @@ export const formation: SolutionData = {
             before:
                 "Les dirigeants entendent parler d’IA partout mais ne savent pas ce qui, concrètement, mérite d’être mis en place dans leur entreprise.",
             setup:
-                "Une session dédiée sur les décisions et process propres à la direction : préparation de comités, reporting, veille sectorielle — rien d’autre.",
+                "Une session dédiée sur les décisions et process propres à la direction : préparation de comités, reporting, veille sectorielle, rien d’autre.",
             result:
                 "Un plan d’usages priorisés, limité à ce qui fait vraiment gagner du temps ou de la fiabilité, le reste étant explicitement écarté.",
         },
     ],
     deepDive: {
+        kind: 'catalogue',
         eyebrow: 'Syllabus complet',
         title: 'Programme de formation détaillé',
         intro:
@@ -118,11 +132,12 @@ export const formation: SolutionData = {
         chapters: [
             {
                 id: 'formation-chap1',
-                title: 'Chapitre 1 — Acculturation aux enjeux de l’intelligence artificielle et de l’automatisation',
-                subtitle: '(Dirigeants & équipes)',
+                glyph: 'bulb',
+                title: 'Acculturation aux enjeux de l’intelligence artificielle et de l’automatisation',
+                subtitle: 'Pour les dirigeants comme pour les équipes : les bases, sans jargon ni fantasmes',
                 content: [
                     {
-                        title: '1.1 Introduction à l’intelligence artificielle',
+                        title: 'Introduction à l’intelligence artificielle',
                         items: [
                             'Intelligence artificielle, apprentissage automatique, modèles de langage : ce qui existe vraiment aujourd’hui',
                             'Ce que l’IA fait vs ce qu’elle ne fait pas',
@@ -130,7 +145,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '1.2 Pourquoi l’IA change la concurrence',
+                        title: 'Pourquoi l’IA change la concurrence',
                         items: [
                             'Accélération continue (24/7)',
                             'Avantage compétitif vs décrochage',
@@ -141,18 +156,19 @@ export const formation: SolutionData = {
             },
             {
                 id: 'formation-chap2',
-                title: 'Chapitre 2 — Panorama des technologies actuelles',
-                subtitle: '(Ce qui est possible aujourd’hui, concrètement)',
+                glyph: 'layers',
+                title: 'Panorama des technologies actuelles',
+                subtitle: 'Ce qui est possible aujourd’hui, concrètement',
                 content: [
                     {
-                        title: '2.1 Automatisation intelligente',
+                        title: 'Automatisation intelligente',
                         items: [
                             'Automatisation de processus classique vs automatisation de processus augmentée par l’IA',
                             'Automatisations déterministes vs adaptatives',
                         ],
                     },
                     {
-                        title: '2.2 Agents IA',
+                        title: 'Agents IA',
                         items: [
                             'Qu’est-ce qu’un agent IA',
                             'Agents décisionnels vs agents exécutants',
@@ -160,7 +176,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '2.3 Lecture automatique de documents nouvelle génération',
+                        title: 'Lecture automatique de documents nouvelle génération',
                         items: [
                             'Lecture automatique classique vs lecture automatique enrichie par l’IA',
                             'Extraction de données fiables à grande échelle',
@@ -171,18 +187,19 @@ export const formation: SolutionData = {
             },
             {
                 id: 'formation-chap3',
-                title: 'Chapitre 3 — De la vision stratégique à l’exécution',
-                subtitle: '(Strategy Board)',
+                glyph: 'target',
+                title: 'De la vision stratégique à l’exécution',
+                subtitle: 'Strategy Board : aligner la vision du dirigeant et les moyens de l’IT, puis prioriser',
                 content: [
                     {
-                        title: '3.1 Alignement vision dirigeant / IT',
+                        title: 'Alignement vision dirigeant / IT',
                         items: [
                             'Traduire la vision business en capacités techniques',
                             'Priorisation des automatisations à fort impact',
                         ],
                     },
                     {
-                        title: '3.2 Identifier ce qui doit (ou non) être automatisé',
+                        title: 'Identifier ce qui doit (ou non) être automatisé',
                         items: [
                             'Tâches répétitives',
                             'Process critiques',
@@ -190,7 +207,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '3.3 Feuille de route d’automatisation',
+                        title: 'Feuille de route d’automatisation',
                         items: [
                             'Gains rapides vs transformation structurelle',
                             'Retour sur investissement, coûts, gains de temps, stabilité',
@@ -200,18 +217,19 @@ export const formation: SolutionData = {
             },
             {
                 id: 'formation-chap4',
-                title: 'Chapitre 4 — Mise en œuvre opérationnelle',
-                subtitle: '(Formation équipes IT)',
+                glyph: 'terminal',
+                title: 'Mise en œuvre opérationnelle',
+                subtitle: 'Pour les équipes IT : déployer, connecter, industrialiser',
                 content: [
                     {
-                        title: '4.1 Comment fonctionne une automatisation concrètement',
+                        title: 'Comment fonctionne une automatisation concrètement',
                         items: [
                             'Architecture type',
                             'Déclencheurs, règles, exceptions',
                         ],
                     },
                     {
-                        title: '4.2 Déploiement des solutions',
+                        title: 'Déploiement des solutions',
                         items: [
                             'Installation technique',
                             'Connexion aux systèmes existants',
@@ -219,7 +237,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '4.3 Industrialisation',
+                        title: 'Industrialisation',
                         items: [
                             'Passage du prototype à la production',
                             'Scalabilité',
@@ -230,11 +248,12 @@ export const formation: SolutionData = {
             },
             {
                 id: 'formation-chap5',
-                title: 'Chapitre 5 — Gouvernance, risques et sécurité',
-                subtitle: '(Point clé pour les dirigeants)',
+                glyph: 'shield',
+                title: 'Gouvernance, risques et sécurité',
+                subtitle: 'Le point clé pour les dirigeants : données, autonomie des IA, responsabilités',
                 content: [
                     {
-                        title: '5.1 Risques liés aux données',
+                        title: 'Risques liés aux données',
                         items: [
                             'Données envoyées sur des serveurs externes',
                             'Confidentialité et conformité',
@@ -242,7 +261,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '5.2 Risques liés aux IA autonomes',
+                        title: 'Risques liés aux IA autonomes',
                         items: [
                             'IA qui agit sans validation humaine',
                             'Contrôles, garde-fous, permissions',
@@ -250,7 +269,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '5.3 Gouvernance IA & automatisation',
+                        title: 'Gouvernance IA & automatisation',
                         items: [
                             'Qui décide quoi',
                             'Règles, audits, traçabilité',
@@ -261,18 +280,19 @@ export const formation: SolutionData = {
             },
             {
                 id: 'formation-chap6',
-                title: 'Chapitre 6 — Transformation continue',
-                subtitle: '(Pourquoi ça ne s’arrête jamais)',
+                glyph: 'sprout',
+                title: 'Transformation continue',
+                subtitle: 'Pourquoi ça ne s’arrête jamais',
                 content: [
                     {
-                        title: '6.1 Amélioration continue',
+                        title: 'Amélioration continue',
                         items: [
                             'Optimisation des automatisations existantes',
                             'Adaptation aux nouvelles technologies',
                         ],
                     },
                     {
-                        title: '6.2 Veille technologique & concurrentielle',
+                        title: 'Veille technologique & concurrentielle',
                         items: [
                             'Nouveaux usages IA',
                             'Évolution des outils',
@@ -280,7 +300,7 @@ export const formation: SolutionData = {
                         ],
                     },
                     {
-                        title: '6.3 Acculturation long terme',
+                        title: 'Acculturation long terme',
                         items: [
                             'Formation continue des équipes',
                             'Mise à niveau des dirigeants',
@@ -295,7 +315,7 @@ export const formation: SolutionData = {
         {
             title: 'Diagnostic des usages',
             description:
-                "Nous observons les tâches réelles de vos équipes et repérons où l’IA fera vraiment gagner du temps — et où elle n’a rien à faire.",
+                "Nous observons les tâches réelles de vos équipes et repérons où l’IA fera vraiment gagner du temps, et où elle n’a rien à faire.",
             duration: '1 semaine',
         },
         {
@@ -317,9 +337,8 @@ export const formation: SolutionData = {
             duration: '1 mois après la formation',
         },
     ],
-    ctaTitle: 'Prêt à sécuriser votre avenir ?',
+    ctaTitle: 'Par où commencer avec vos équipes ?',
     ctaText:
-        "Ne laissez pas l’automatisation devenir une menace. Faites-en votre plus grand levier de croissance.",
+        'Décrivez-nous le quotidien de vos équipes et les outils qu’elles utilisent déjà. Nous vous dirons où l’IA fera vraiment gagner du temps, et où elle n’a rien à faire.',
     ctaLabel: 'Réserver une session stratégique',
-    ctaFootnote: 'Formation éligible aux budgets OPCO sous conditions.',
 };

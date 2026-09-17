@@ -2,62 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
     ArrowRight,
-    BarChart3,
-    Brain,
     ChevronDown,
-    ClipboardList,
-    Compass,
-    Cpu,
-    Database,
-    Eye,
-    GraduationCap,
-    KeyRound,
-    Layers,
-    Lightbulb,
-    Lock,
-    Puzzle,
-    RefreshCw,
-    Rocket,
-    Search,
     ShieldCheck,
-    Target,
     TrendingUp,
-    Users,
-    Workflow,
     Zap,
     type LucideIcon,
 } from 'lucide-react';
 import { solutionsBySlug } from '../data/solutions/index';
-
-/**
- * Registre d'icônes : les fichiers de données référencent une icône lucide-react
- * par son nom (string) — on la résout ici, avec un fallback sûr.
- */
-const ICONS: Record<string, LucideIcon> = {
-    BarChart3,
-    Brain,
-    ClipboardList,
-    Compass,
-    Cpu,
-    Database,
-    Eye,
-    GraduationCap,
-    KeyRound,
-    Layers,
-    Lightbulb,
-    Puzzle,
-    RefreshCw,
-    Rocket,
-    Search,
-    ShieldCheck,
-    Target,
-    TrendingUp,
-    Users,
-    Workflow,
-    Zap,
-};
-
-const resolveIcon = (name: string): LucideIcon => ICONS[name] ?? Target;
+import { resolveIcon } from './solutionIcons';
+import CompactSolutionPage from './CompactSolutionPage';
 
 /** Icônes fixes pour les 3 gains (les données n'en portent pas). */
 const GAIN_ICONS: LucideIcon[] = [Zap, ShieldCheck, TrendingUp];
@@ -111,6 +64,10 @@ const SolutionPage: React.FC = () => {
                 </Link>
             </div>
         );
+    }
+
+    if (data.layout === 'compact') {
+        return <CompactSolutionPage key={data.slug} data={data} />;
     }
 
     const toggleChapter = (id: string) => {
@@ -514,12 +471,6 @@ const SolutionPage: React.FC = () => {
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </Link>
                     </div>
-                    {data.ctaFootnote && (
-                        <p className="mt-8 text-sm text-gray-500 flex items-center justify-center relative z-10">
-                            <Lock className="w-4 h-4 mr-2" />
-                            {data.ctaFootnote}
-                        </p>
-                    )}
                 </div>
             </section>
         </div>

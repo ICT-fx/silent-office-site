@@ -7,6 +7,8 @@ import { formation } from './formation';
 
 export type {
     SolutionData,
+    SolutionKeyFact,
+    SolutionVariant,
     SolutionGain,
     SolutionUseCase,
     SolutionStep,

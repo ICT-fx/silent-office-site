@@ -53,21 +53,70 @@ export interface SolutionDeepDiveChapter {
     id: string;
     title: string;
     subtitle?: string;
+    /** Résumé en une phrase, affiché en tête d'étape par la mise en page compacte */
+    summary?: string;
+    /** Pictogramme tracé de l'étape (voir `StepGlyph`) — mise en page compacte */
+    glyph?: string;
     content: SolutionDeepDiveSection[];
 }
 
 /** Section profonde en accordéon — syllabus, catalogue ou phases selon la solution */
 export interface SolutionDeepDive {
+    /**
+     * Nature du contenu, pour la mise en page compacte :
+     * `sequence` (défaut) = des étapes dans l'ordre, rendues en frise numérotée ;
+     * `catalogue` = des familles sans ordre, rendues en sélecteur, la vraie
+     * séquence étant alors portée par `steps`.
+     */
+    kind?: 'sequence' | 'catalogue';
     eyebrow: string;
     title: string;
     intro: string;
     chapters: SolutionDeepDiveChapter[];
 }
 
+/**
+ * Composition propre à une page (mise en page compacte). Les cinq pages partagent
+ * le même système ; ce qui varie, c'est la forme de chaque bloc, choisie d'après
+ * la nature du contenu. Tout est optionnel : sans valeur, la page prend la forme
+ * de référence (celle de l'Audit).
+ */
+export interface SolutionVariant {
+    /** Hero : texte | image (`split`), image | texte (`split-left`), texte puis image pleine largeur (`banner`), texte centré (`centered`) */
+    hero?: 'split' | 'split-left' | 'banner' | 'centered';
+    /** Forme du catalogue en bureau : liste latérale, filtres, tuiles, accordéon pleine largeur, ou syllabus lu à la suite */
+    catalogue?: 'selector' | 'chips' | 'tiles' | 'accordion' | 'syllabus';
+    /** Présentation des cas concrets en bureau */
+    cases?: 'cells' | 'flow' | 'beforeAfter' | 'rows';
+    /** Titres de section propres à l'offre */
+    labels?: {
+        gains?: string;
+        cases?: string;
+    };
+}
+
+/** Repère lisible d'un coup d'œil, affiché sous le hero de la mise en page compacte */
+export interface SolutionKeyFact {
+    /** Nom d'icône lucide-react, résolu via le registre d'icônes du template */
+    icon: string;
+    label: string;
+    value: string;
+}
+
 export interface SolutionData {
     id: string;
     slug: string;
     title: string;
+    /**
+     * Mise en page de la route `/solutions/:slug`.
+     * `compact` : page claire et resserrée (méthode en frise cliquable) — pilotée sur l'Audit.
+     * Absent : gabarit historique.
+     */
+    layout?: 'compact';
+    /** Composition propre à la page (voir `SolutionVariant`) */
+    variant?: SolutionVariant;
+    /** 3-4 repères clés (durée, format, livrable…) — utilisés par la mise en page compacte */
+    keyFacts?: SolutionKeyFact[];
     /** Promesse hero — verbatim validé, ne pas reformuler */
     promise: string;
     /** Sous-titre optionnel (utilisé par Data & BI) */
@@ -94,6 +143,4 @@ export interface SolutionData {
     ctaTitle: string;
     ctaText: string;
     ctaLabel: string;
-    /** Mention sous le CTA, affichée avec une icône cadenas, ex. éligibilité OPCO */
-    ctaFootnote?: string;
 }

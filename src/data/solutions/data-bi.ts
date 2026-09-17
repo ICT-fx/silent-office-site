@@ -6,6 +6,13 @@ export const dataBi: SolutionData = {
     id: 'data-bi',
     slug: 'data-bi',
     title: 'Data & Business Intelligence',
+    layout: 'compact',
+    variant: {
+        hero: 'centered',
+        catalogue: 'tiles',
+        cases: 'rows',
+        labels: { gains: 'Décider avec les bons chiffres' },
+    },
     promise: 'Les IA se trompent. Les chiffres non.',
     subPromise: 'Chaque décision mérite des données fiables.',
     shortDescription:
@@ -14,8 +21,14 @@ export const dataBi: SolutionData = {
     heroImageAlt:
         "Une équipe lit sur grand écran un tableau de bord unifié qui rassemble ventes, logistique, clients et qualité.",
     heroTagline:
-        'Vos chiffres existent déjà — dans votre logiciel de comptabilité, votre CRM, vos tableurs de suivi, vos outils de production. Ils sont seulement éparpillés, jamais mis en regard les uns des autres.',
+        'Vos chiffres existent déjà : dans votre logiciel de comptabilité, votre CRM, vos tableurs de suivi, vos outils de production. Ils sont seulement éparpillés, jamais mis en regard les uns des autres.',
     heroTaglineStrong: 'Il ne manque que le tableau de bord qui les fait parler.',
+    keyFacts: [
+        { icon: 'Database', label: 'Sources', value: 'Vos outils existants, sans migration' },
+        { icon: 'RefreshCw', label: 'Mise à jour', value: 'Automatique, sans ressaisie' },
+        { icon: 'Eye', label: 'Indicateurs', value: 'Ceux qui pilotent vos décisions, pas plus' },
+        { icon: 'GraduationCap', label: 'Autonomie', value: 'Vos équipes font évoluer leurs tableaux de bord' },
+    ],
     gains: [
         {
             scenario:
@@ -37,7 +50,7 @@ export const dataBi: SolutionData = {
         {
             title: 'Connecter sans tout changer',
             description:
-                'Nous branchons vos outils existants — comptabilité, CRM, ventes, production — sans migration ni remplacement de vos logiciels.',
+                'Nous branchons vos outils existants (comptabilité, CRM, ventes, production) sans migration ni remplacement de vos logiciels.',
             icon: 'Database',
         },
         {
@@ -76,7 +89,7 @@ export const dataBi: SolutionData = {
         {
             title: 'Responsables d’activité',
             description:
-                'Un suivi de leur périmètre — ventes, production, projets — avec les écarts visibles avant qu’ils ne pèsent sur le résultat.',
+                'Un suivi de leur périmètre (ventes, production, projets), avec les écarts visibles avant qu’ils ne pèsent sur le résultat.',
             icon: 'TrendingUp',
         },
     ],
@@ -110,15 +123,17 @@ export const dataBi: SolutionData = {
         },
     ],
     deepDive: {
+        kind: 'catalogue',
         eyebrow: 'Le Catalogue en Détail',
-        title: 'Ce que vous verrez enfin clairement — indicateurs par fonction',
+        title: 'Ce que vous verrez enfin clairement, fonction par fonction',
         intro:
             "Un aperçu concret des vues et indicateurs que nous mettons en place, fonction par fonction. De quoi vous projeter dans votre futur tableau de bord.",
         chapters: [
             {
                 id: 'data-pilotage',
+                glyph: 'gauge',
                 title: 'Pilotage dirigeant',
-                subtitle: '(La vue d’ensemble, en un coup d’œil)',
+                subtitle: 'La vue d’ensemble, en un coup d’œil',
                 content: [
                     {
                         title: 'Vue d’ensemble de l’activité',
@@ -140,8 +155,9 @@ export const dataBi: SolutionData = {
             },
             {
                 id: 'data-finance',
+                glyph: 'note',
                 title: 'Finance & trésorerie',
-                subtitle: '(Anticiper plutôt que constater)',
+                subtitle: 'Anticiper plutôt que constater',
                 content: [
                     {
                         title: 'Trésorerie',
@@ -163,8 +179,9 @@ export const dataBi: SolutionData = {
             },
             {
                 id: 'data-ventes',
+                glyph: 'pie',
                 title: 'Ventes & clients',
-                subtitle: '(Ce qui se vend, à qui, et à quel prix)',
+                subtitle: 'Ce qui se vend, à qui, et à quel prix',
                 content: [
                     {
                         title: 'Pipeline commercial',
@@ -186,8 +203,9 @@ export const dataBi: SolutionData = {
             },
             {
                 id: 'data-operations',
+                glyph: 'cog',
                 title: 'Opérations & production',
-                subtitle: '(Suivre le terrain sans y être)',
+                subtitle: 'Suivre le terrain sans y être',
                 content: [
                     {
                         title: 'Activité et charge',
@@ -209,8 +227,9 @@ export const dataBi: SolutionData = {
             },
             {
                 id: 'data-alertes',
+                glyph: 'bell',
                 title: 'Alertes & anticipation',
-                subtitle: '(Être prévenu avant que ça coûte cher)',
+                subtitle: 'Être prévenu avant que ça coûte cher',
                 content: [
                     {
                         title: 'Seuils et signaux',
@@ -253,13 +272,12 @@ export const dataBi: SolutionData = {
         {
             title: 'Formation et autonomie',
             description:
-                "Nous formons vos équipes à lire et faire évoluer les tableaux de bord elles-mêmes, sans dépendre de nous au quotidien.",
+                "Nous formons vos équipes à lire et faire évoluer les tableaux de bord elles‑mêmes, sans dépendre de nous au quotidien.",
             duration: '2 à 3 jours',
         },
     ],
     ctaTitle: 'Quels chiffres vous manquent aujourd’hui ?',
     ctaText:
-        "Décrivez-nous ce que vous aimeriez savoir en un coup d’œil — marge, trésorerie, activité, retards. Nous vous dirons quels indicateurs sont à votre portée, et lesquels ne le sont pas encore.",
+        "Décrivez-nous ce que vous aimeriez savoir en un coup d’œil : marge, trésorerie, activité, retards. Nous vous dirons quels indicateurs sont à votre portée, et lesquels ne le sont pas encore.",
     ctaLabel: 'Discuter de vos indicateurs',
-    ctaFootnote: 'Premier échange sans engagement.',
 };

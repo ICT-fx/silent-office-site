@@ -6,6 +6,13 @@ export const developpementLogiciel: SolutionData = {
     id: 'developpement-logiciel',
     slug: 'developpement-logiciel',
     title: 'Développement logiciel',
+    layout: 'compact',
+    variant: {
+        hero: 'split-left',
+        catalogue: 'accordion',
+        cases: 'beforeAfter',
+        labels: { gains: 'Ce que l’outil change au quotidien', cases: 'Avant, après' },
+    },
     promise: 'Le bon outil, rien de plus.',
     shortDescription:
         'Des outils métier sur mesure, construits autour de vos process, sans licences superflues.',
@@ -15,6 +22,12 @@ export const developpementLogiciel: SolutionData = {
     heroTagline:
         'Vous payez chaque mois des licences pour des logiciels dont vous n’utilisez que 10 % des fonctionnalités, pendant que le reste de votre activité continue de vivre dans des fichiers Excel fragiles, bricolés au fil des années. Entre l’usine à gaz surdimensionnée et le tableur qui menace de craquer, il existe une troisième voie.',
     heroTaglineStrong: 'Un outil fait pour vous, qui vous appartient.',
+    keyFacts: [
+        { icon: 'Rocket', label: 'Première version', value: 'Utilisable en quelques semaines' },
+        { icon: 'KeyRound', label: 'Propriété', value: 'Le code et les données vous appartiennent' },
+        { icon: 'Unlock', label: 'Abonnement', value: 'Aucun abonnement obligatoire' },
+        { icon: 'RefreshCw', label: 'Évolution', value: 'Par cycles courts, sans repartir de zéro' },
+    ],
     gains: [
         {
             scenario:
@@ -54,7 +67,7 @@ export const developpementLogiciel: SolutionData = {
         {
             title: 'Vous rendre propriétaire',
             description:
-                'Le code, les données et l’outil vous appartiennent — aucun abonnement obligatoire pour continuer à vous en servir.',
+                'Le code, les données et l’outil vous appartiennent : aucun abonnement obligatoire pour continuer à vous en servir.',
             icon: 'KeyRound',
         },
     ],
@@ -62,7 +75,7 @@ export const developpementLogiciel: SolutionData = {
         {
             title: 'PME qui a grandi plus vite que ses outils',
             description:
-                'Vos effectifs et votre activité ont doublé, mais vos outils sont restés ceux du début — un logiciel générique ici, un tableur là, saturés de contournements.',
+                'Vos effectifs et votre activité ont doublé, mais vos outils sont restés ceux du début : un logiciel générique ici, un tableur là, saturés de contournements.',
             icon: 'TrendingUp',
             highlighted: true,
         },
@@ -92,7 +105,7 @@ export const developpementLogiciel: SolutionData = {
         {
             title: 'Un portail pour vos clients',
             before:
-                'Les demandes arrivent par e-mail et téléphone, les équipes passent leur temps à répondre aux mêmes questions sur un dossier ou un statut.',
+                'Les demandes arrivent par e‑mail et téléphone, les équipes passent leur temps à répondre aux mêmes questions sur un dossier ou un statut.',
             setup:
                 'Un espace en ligne où vos clients suivent leurs dossiers, documents et échéances en autonomie, à toute heure.',
             result:
@@ -109,18 +122,20 @@ export const developpementLogiciel: SolutionData = {
         },
     ],
     deepDive: {
+        kind: 'catalogue',
         eyebrow: 'Catalogue de projets',
         title: 'Ce qu’on construit',
         intro:
-            'Cinq familles de projets reviennent le plus souvent. Vous vous reconnaîtrez sans doute dans l’une d’elles — ou dans un mélange des deux.',
+            'Cinq familles de projets reviennent le plus souvent. Vous vous reconnaîtrez sans doute dans l’une d’elles, ou dans un mélange de plusieurs.',
         chapters: [
             {
                 id: 'dev-chap1',
-                title: 'Chapitre 1 — Outils de gestion interne',
-                subtitle: '(Piloter votre activité avec vos propres règles)',
+                glyph: 'dashboard',
+                title: 'Outils de gestion interne',
+                subtitle: 'Piloter votre activité avec vos propres règles',
                 content: [
                     {
-                        title: '1.1 Suivi et pilotage',
+                        title: 'Suivi et pilotage',
                         items: [
                             'Suivi de production avec vos règles à vous, pas celles d’un progiciel générique',
                             'Tableaux de bord qui remontent l’information utile, sans ressaisie manuelle',
@@ -129,7 +144,7 @@ export const developpementLogiciel: SolutionData = {
                         ],
                     },
                     {
-                        title: '1.2 Organisation d’équipe',
+                        title: 'Organisation d’équipe',
                         items: [
                             'Planning et affectation des tâches visibles par tous, à jour en temps réel',
                             'Historique et traçabilité des actions, consultables à tout moment',
@@ -140,11 +155,12 @@ export const developpementLogiciel: SolutionData = {
             },
             {
                 id: 'dev-chap2',
-                title: 'Chapitre 2 — Portails clients & fournisseurs',
-                subtitle: '(Moins d’appels, plus d’autonomie)',
+                glyph: 'globe',
+                title: 'Portails clients & fournisseurs',
+                subtitle: 'Moins d’appels, plus d’autonomie',
                 content: [
                     {
-                        title: '2.1 Côté clients',
+                        title: 'Côté clients',
                         items: [
                             'Espace client : vos clients consultent leurs commandes sans vous appeler',
                             'Suivi de dossier en autonomie, avec statut et documents toujours à jour',
@@ -153,7 +169,7 @@ export const developpementLogiciel: SolutionData = {
                         ],
                     },
                     {
-                        title: '2.2 Côté fournisseurs',
+                        title: 'Côté fournisseurs',
                         items: [
                             'Dépôt de documents et de factures centralisé, sans boîte mail qui déborde',
                             'Suivi des commandes et des délais partagé avec vos partenaires',
@@ -164,11 +180,12 @@ export const developpementLogiciel: SolutionData = {
             },
             {
                 id: 'dev-chap3',
-                title: 'Chapitre 3 — Remplacement de fichiers Excel critiques',
-                subtitle: '(Le fichier que plus personne n’ose modifier)',
+                glyph: 'grid',
+                title: 'Remplacement de fichiers Excel critiques',
+                subtitle: 'Le fichier que plus personne n’ose modifier',
                 content: [
                     {
-                        title: '3.1 Ce qu’on reprend',
+                        title: 'Ce qu’on reprend',
                         items: [
                             'Vos formules et vos règles de calcul, telles qu’elles fonctionnent réellement chez vous',
                             'L’historique de données existant, repris sans perte',
@@ -176,7 +193,7 @@ export const developpementLogiciel: SolutionData = {
                         ],
                     },
                     {
-                        title: '3.2 Ce que ça change',
+                        title: 'Ce que vous y gagnez',
                         items: [
                             'Plusieurs personnes travaillent en même temps, sans écraser le travail des autres',
                             'Des droits d’accès par personne, au lieu d’un fichier ouvert à tout le monde',
@@ -188,19 +205,20 @@ export const developpementLogiciel: SolutionData = {
             },
             {
                 id: 'dev-chap4',
-                title: 'Chapitre 4 — Applications métier spécifiques',
-                subtitle: '(Le logiciel qui n’existe pas sur étagère)',
+                glyph: 'tablet',
+                title: 'Applications métier spécifiques',
+                subtitle: 'Le logiciel qui n’existe pas sur étagère',
                 content: [
                     {
-                        title: '4.1 Pensé pour votre secteur',
+                        title: 'Pensé pour votre secteur',
                         items: [
-                            'Un outil pensé pour un métier précis — BTP, santé, artisanat, services — que les logiciels génériques ne couvrent pas',
+                            'Un outil pensé pour un métier précis (BTP, santé, artisanat, services) que les logiciels génériques ne couvrent pas',
                             'Des calculs ou des règles propres à votre secteur, intégrés nativement',
                             'Une interface adaptée à l’usage réel : tablette sur le terrain, poste fixe au bureau',
                         ],
                     },
                     {
-                        title: '4.2 Automatiser les livrables',
+                        title: 'Automatiser les livrables',
                         items: [
                             'Génération automatique de devis, contrats ou rapports à partir de vos données',
                             'Contrôles et alertes construits sur vos propres seuils métier',
@@ -211,11 +229,12 @@ export const developpementLogiciel: SolutionData = {
             },
             {
                 id: 'dev-chap5',
-                title: 'Chapitre 5 — Connexion entre vos outils existants',
-                subtitle: '(Faire parler vos logiciels entre eux)',
+                glyph: 'nodes',
+                title: 'Connexion entre vos outils existants',
+                subtitle: 'Faire parler vos logiciels entre eux',
                 content: [
                     {
-                        title: '5.1 Fin de la double saisie',
+                        title: 'Fin de la double saisie',
                         items: [
                             'Un logiciel de facturation qui alimente automatiquement votre comptabilité',
                             'Une fiche client mise à jour à un seul endroit, répercutée partout ailleurs',
@@ -223,7 +242,7 @@ export const developpementLogiciel: SolutionData = {
                         ],
                     },
                     {
-                        title: '5.2 Une vue d’ensemble',
+                        title: 'Une vue d’ensemble',
                         items: [
                             'Un tableau de bord unique qui rassemble des données venues de plusieurs logiciels',
                             'Des alertes automatiques quand une information change quelque part',
@@ -260,7 +279,6 @@ export const developpementLogiciel: SolutionData = {
     ],
     ctaTitle: 'Décrivez-nous l’outil qui vous manque.',
     ctaText:
-        'Racontez-nous le processus qui vous ralentit ou le fichier qui vous fait peur : nous vous dirons ce qu’un outil sur mesure changerait concrètement — et si le sur-mesure ne se justifie pas, nous vous le dirons aussi.',
+        'Racontez-nous le processus qui vous ralentit ou le fichier qui vous fait peur : nous vous dirons ce qu’un outil sur mesure changerait concrètement. Et si le sur‑mesure ne se justifie pas, nous vous le dirons aussi.',
     ctaLabel: 'Décrire mon besoin',
-    ctaFootnote: 'Premier échange sans engagement.',
 };

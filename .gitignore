@@ -28,3 +28,6 @@ dist-ssr
 .superpowers/
 .vercel
 .env*
+
+# Impeccable (captures de revue, cache du hook)
+.impeccable/

@@ -6,6 +6,13 @@ export const automatisation: SolutionData = {
     id: 'automatisation',
     slug: 'automatisation',
     title: 'Automatisation & Optimisation',
+    layout: 'compact',
+    variant: {
+        hero: 'banner',
+        catalogue: 'chips',
+        cases: 'flow',
+        labels: { gains: 'Ce que vos équipes récupèrent' },
+    },
     promise: 'Faites plus, avec les mêmes équipes.',
     shortDescription:
         "N’importe quel processus lent ou répétitif, simplifié puis pris en charge, pour que vos équipes se recentrent sur ce qui compte.",
@@ -13,8 +20,14 @@ export const automatisation: SolutionData = {
     heroImageAlt:
         "Un collaborateur tape dans la main d'un assistant automatisé qui a pris en charge une tâche répétitive à sa place.",
     heroTagline:
-        "Vos équipes passent des heures, chaque semaine, sur des tâches que personne n’a vraiment choisies — ressaisir, copier-coller, relancer, vérifier. Ce temps peut être rendu à ce qui compte vraiment.",
+        "Vos équipes passent des heures, chaque semaine, sur des tâches que personne n’a vraiment choisies : ressaisir, copier-coller, relancer, vérifier. Ce temps peut être rendu à ce qui compte vraiment.",
     heroTaglineStrong: 'Chaque heure répétitive est une heure récupérable.',
+    keyFacts: [
+        { icon: 'Clock', label: 'Mise en place', value: '2 à 3 semaines, après diagnostic' },
+        { icon: 'Workflow', label: 'Périmètre', value: 'Tout processus répétitif, quel que soit le métier' },
+        { icon: 'Layers', label: 'Outils', value: 'Les vôtres, sans les remplacer' },
+        { icon: 'ShieldCheck', label: 'Contrôle', value: 'La machine exécute, vos équipes décident' },
+    ],
     gains: [
         {
             scenario: 'Une facture traitée en 30 secondes au lieu de 5 minutes',
@@ -80,7 +93,7 @@ export const automatisation: SolutionData = {
         {
             title: 'La saisie des factures fournisseurs',
             before:
-                'Chaque facture reçue par e-mail est ressaisie à la main dans la comptabilité, une par une.',
+                'Chaque facture reçue par e‑mail est ressaisie à la main dans la comptabilité, une par une.',
             setup:
                 'Un circuit qui capte les factures dès leur réception et les enregistre directement dans votre outil, avec un contrôle humain sur les cas particuliers.',
             result:
@@ -98,7 +111,7 @@ export const automatisation: SolutionData = {
         {
             title: 'Les relances clients',
             before:
-                "Les relances partent en retard, quand quelqu’un a le temps d’y penser — ou pas du tout.",
+                "Les relances partent en retard, quand quelqu’un a le temps d’y penser, ou pas du tout.",
             setup:
                 'Des relances automatiques, personnalisées et espacées selon vos règles, déclenchées au bon moment.',
             result:
@@ -106,13 +119,15 @@ export const automatisation: SolutionData = {
         },
     ],
     deepDive: {
+        kind: 'catalogue',
         eyebrow: 'Le Catalogue',
-        title: 'Catalogue — ce qu’on automatise, service par service',
+        title: 'Ce que nous automatisons, service par service',
         intro:
-            "Un aperçu, service par service, de ce qui peut être pris en charge chez vous. Cette liste n’a rien d’exhaustif : elle illustre l’étendue du possible, quel que soit votre métier. Le seul critère qui compte, c’est la répétition — pas le nom du service.",
+            "Un aperçu, service par service, de ce qui peut être pris en charge chez vous. Cette liste n’a rien d’exhaustif : elle illustre l’étendue du possible, quel que soit votre métier. Le seul critère qui compte, c’est la répétition, pas le nom du service.",
         chapters: [
             {
                 id: 'auto-finance',
+                glyph: 'invoice',
                 title: 'Finance & comptabilité',
                 subtitle: 'De la facture reçue à l’écriture comptée, sans ressaisie',
                 content: [
@@ -146,6 +161,7 @@ export const automatisation: SolutionData = {
             },
             {
                 id: 'auto-ventes',
+                glyph: 'cart',
                 title: 'Ventes & administration des ventes',
                 subtitle: 'Du premier contact à la commande livrée, sans perdre le fil',
                 content: [
@@ -179,6 +195,7 @@ export const automatisation: SolutionData = {
             },
             {
                 id: 'auto-rh',
+                glyph: 'people',
                 title: 'Ressources humaines & administratif',
                 subtitle: 'Des dossiers qui avancent seuls, du recrutement à la paie',
                 content: [
@@ -186,7 +203,7 @@ export const automatisation: SolutionData = {
                         title: 'Recrutement & intégration',
                         items: [
                             'Tri et pré-qualification automatique des candidatures reçues, selon vos critères',
-                            'Planification des entretiens sans échanges d’e-mails à rallonge',
+                            'Planification des entretiens sans échanges d’e‑mails à rallonge',
                             'Parcours d’intégration déclenché dès la signature du contrat : accès, matériel, documents',
                             'Réponses automatiques et personnalisées aux candidats non retenus',
                         ],
@@ -211,6 +228,7 @@ export const automatisation: SolutionData = {
             },
             {
                 id: 'auto-logistique',
+                glyph: 'box',
                 title: 'Logistique & opérations',
                 subtitle: 'L’information qui circule d’un outil à l’autre, sans ressaisie ni oubli',
                 content: [
@@ -242,13 +260,14 @@ export const automatisation: SolutionData = {
             },
             {
                 id: 'auto-relation-client',
+                glyph: 'headset',
                 title: 'Relation client & support',
                 subtitle: 'Des demandes traitées vite, sans que personne ne les laisse filer',
                 content: [
                     {
                         title: 'Traitement des demandes',
                         items: [
-                            'Tri et répartition automatique des messages entrants (e-mail, formulaire, chat) selon leur sujet et leur urgence',
+                            'Tri et répartition automatique des messages entrants (e‑mail, formulaire, chat) selon leur sujet et leur urgence',
                             'Réponses automatiques aux questions les plus fréquentes, avec bascule vers un humain pour le reste',
                             'Relances automatiques des demandes restées sans réponse au-delà d’un délai défini',
                             'Historique client centralisé et à jour, sans reconstitution manuelle avant chaque échange',
@@ -266,6 +285,7 @@ export const automatisation: SolutionData = {
             },
             {
                 id: 'auto-et-tout-le-reste',
+                glyph: 'loop',
                 title: 'Et tout le reste',
                 subtitle: 'Si c’est répétitif, c’est un candidat',
                 content: [
@@ -292,7 +312,7 @@ export const automatisation: SolutionData = {
         {
             title: 'Simplification',
             description:
-                "Avant d’automatiser, nous simplifions le processus lui-même : moins d’étapes, moins d’outils, moins de points de blocage.",
+                "Avant d’automatiser, nous simplifions le processus lui‑même : moins d’étapes, moins d’outils, moins de points de blocage.",
             duration: '1 semaine',
         },
         {
@@ -311,5 +331,4 @@ export const automatisation: SolutionData = {
     ctaText:
         'Décrivez-nous le processus qui vous fait perdre le plus de temps ou d’argent chaque semaine. Nous vous dirons, en toute franchise, ce qu’il est possible d’en faire.',
     ctaLabel: 'Parler de mon processus',
-    ctaFootnote: 'Premier échange sans engagement, pour évaluer ensemble si ça vaut le coup.',
 };
