@@ -1,27 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import { CLIENTS } from '../data/portfolio';
+import { NAMED_CLIENTS } from '../data/portfolio';
 
 /**
  * Bandeau de collaborations, juste sous le bandeau photo du Hero.
  *
  * Volontairement nu : les logos des clients, et un bouton vers le portfolio.
  * Aucun titre, aucune accroche — les marques se présentent seules. Les visuels
- * de projet vivent sur /portfolio, pas ici.
+ * de projet vivent sur /portfolio, pas ici. Les clients anonymes n'y figurent
+ * pas du tout : leurs projets ne sont visibles que sur /portfolio.
  *
- * Rythme vertical : le bloc est calé au milieu du blanc qui sépare le bandeau
- * photo de la section Solutions. Cette dernière ouvre sur une vague blanche de
- * 64/80px qui prolonge le blanc — d'où un padding bas plus court que le haut.
+ * Rythme vertical : le bloc occupe tout le bandeau papier, ouvert au-dessus des
+ * logos par une vague et refermé sous le bouton par une seconde (64/80px chacune,
+ * portées par `Home`). Ces vagues apportent déjà l'air en haut et en bas : les
+ * paddings du bloc ne font que compléter l'écart jusqu'aux logos et au bouton.
  */
 const ClientsBand: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <section id="clients" className="bg-white pt-24 pb-8 md:pt-32 md:pb-10 px-6">
+        <section id="clients" className="pt-10 pb-8 md:pt-12 md:pb-10 px-6">
             <div className="max-w-5xl mx-auto flex flex-col items-center">
                 <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-10 md:gap-x-24">
-                    {CLIENTS.map((client) => (
+                    {NAMED_CLIENTS.map((client) => (
                         <li key={client.id}>
                             <img
                                 src={client.logo}

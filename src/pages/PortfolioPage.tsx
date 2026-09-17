@@ -244,13 +244,25 @@ const Entry: React.FC<{ project: PortfolioProject; index: number }> = ({ project
             {/* Le texte passe à droite une ligne sur deux ; en colonne unique il
                 repasse toujours au-dessus du visuel. */}
             <div className={`${bare ? 'lg:col-span-12' : 'lg:col-span-4'} order-1 ${mirrored && !bare ? 'lg:order-2' : ''}`}>
-                <img
-                    src={client.logo}
-                    alt={client.name}
-                    className={`${client.id === 'trb' ? 'h-14' : 'h-10'} w-auto`}
-                    loading="lazy"
-                    decoding="async"
-                />
+                {client.anonymous === true ? (
+                    /* Client qui ne souhaite pas être cité : une étiquette à la
+                       place du logo, à la même hauteur pour garder le rythme
+                       des lignes. Le secteur, en dessous, suffit à le situer. */
+                    <p
+                        className="h-10 inline-flex items-center px-3.5 rounded-full border border-[#E5E1D6] bg-[#FCFBF8] text-[#262626]/60 text-xs font-bold tracking-[0.1em] uppercase"
+                        style={{ fontFamily: BODY }}
+                    >
+                        {client.name}
+                    </p>
+                ) : (
+                    <img
+                        src={client.logo}
+                        alt={client.name}
+                        className="h-10 w-auto"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                )}
 
                 <h2
                     className="mt-7"

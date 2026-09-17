@@ -20,13 +20,20 @@ export type ProjectMedia =
     /** Projet livré dont on n'a pas encore de visuel publiable. */
     | { kind: 'none' };
 
-export type Client = {
-    id: string;
-    name: string;
-    logo: string;
-    /** Hauteur du logo dans le bandeau : les marques n'ont pas le même rapport. */
-    logoClass: string;
-};
+export type Client =
+    | {
+          id: string;
+          name: string;
+          anonymous?: false;
+          logo: string;
+          /** Hauteur du logo dans le bandeau : les marques n'ont pas le même rapport. */
+          logoClass: string;
+      }
+    /**
+     * Client qui ne souhaite pas apparaître nommément : ni logo ni nom, nulle
+     * part. Seul le secteur du projet (sa `category`) le situe.
+     */
+    | { id: string; name: string; anonymous: true };
 
 export type PortfolioProject = {
     id: string;
@@ -40,10 +47,9 @@ export type PortfolioProject = {
 
 export const CLIENTS: Client[] = [
     {
-        id: 'trb',
-        name: 'TRB Chemedica',
-        logo: '/images/portfolio/trb-logo.png',
-        logoClass: 'h-20 md:h-28',
+        id: 'pharma',
+        name: 'Client confidentiel',
+        anonymous: true,
     },
     {
         id: 'telcash',
@@ -54,19 +60,23 @@ export const CLIENTS: Client[] = [
     },
 ];
 
+/** Les clients qui acceptent d'être cités : seuls eux figurent dans le bandeau d'accueil. */
+export type NamedClient = Extract<Client, { anonymous?: false }>;
+export const NAMED_CLIENTS: NamedClient[] = CLIENTS.filter((c): c is NamedClient => !c.anonymous);
+
 export const PROJECTS: PortfolioProject[] = [
     {
         id: 'supply-chain-dashboard',
         title: 'Supply Chain Dashboard',
         category: 'Pharmaceutical industry',
-        clientId: 'trb',
+        clientId: 'pharma',
         media: {
             kind: 'stack',
             shots: [
-                '/images/portfolio/trb-01.jpg',
-                '/images/portfolio/trb-02.jpg',
-                '/images/portfolio/trb-03.jpg',
-                '/images/portfolio/trb-04.jpg',
+                '/images/portfolio/supply-chain-01.jpg',
+                '/images/portfolio/supply-chain-02.jpg',
+                '/images/portfolio/supply-chain-03.jpg',
+                '/images/portfolio/supply-chain-04.jpg',
             ],
         },
     },
@@ -85,7 +95,7 @@ export const PROJECTS: PortfolioProject[] = [
         id: 'order-entry-automation',
         title: 'Order Entry Automation',
         category: 'Pharmaceutical industry',
-        clientId: 'trb',
+        clientId: 'pharma',
         media: {
             kind: 'diagram',
             src: '/images/portfolio/order-entry-flow.webp',

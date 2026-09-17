@@ -9,6 +9,11 @@ import TechStackSection from '../components/TechStackSection';
 import InnovationShowcase from '../components/InnovationShowcase';
 import InsightsCarousel from '../components/InsightsCarousel';
 
+/** Fond papier : la seule couleur de fond de l'accueil, entre deux vagues. */
+const PAPER = '#FCFBF8';
+/** Hauteur des deux vagues qui bornent le bandeau papier. */
+const WAVE_HEIGHT = 'clamp(64px, 5vw, 80px)';
+
 const Home: React.FC = () => {
     const navigate = useNavigate();
 
@@ -30,7 +35,34 @@ const Home: React.FC = () => {
 
             <HeroScrollStrip />
 
-            <ClientsBand />
+            {/* Bandeau papier : la couleur s'ouvre sur une vague juste au-dessus
+                des logos clients et se referme sur une seconde vague sous le
+                bouton « Ouvrir le portfolio ». Les deux vagues occupent les
+                paddings du bandeau : elles ne mordent jamais sur le contenu. */}
+            <div
+                className="relative"
+                style={{
+                    background: PAPER,
+                    paddingTop: WAVE_HEIGHT,
+                    paddingBottom: WAVE_HEIGHT,
+                }}
+            >
+                {/* Vague haut — blanc (bandeau photo) → papier */}
+                <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 pointer-events-none">
+                    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full" style={{ height: WAVE_HEIGHT }}>
+                        <path d="M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,50 C1260,90 1380,20 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
+                    </svg>
+                </div>
+
+                <ClientsBand />
+
+                {/* Vague bas — papier → blanc (Solutions) */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+                    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full" style={{ height: WAVE_HEIGHT }}>
+                        <path d="M0,20 C240,70 480,0 720,35 C960,70 1200,5 1440,30 L1440,80 L0,80 Z" fill="#FFFFFF" />
+                    </svg>
+                </div>
+            </div>
 
             <SolutionsSection />
 

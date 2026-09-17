@@ -50,9 +50,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Expertises links (3 cols) */}
+          {/* Column 2: Solutions links (3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-sm mb-4 text-[#027333] uppercase tracking-wider">Expertises</h4>
+            <h4 className="font-bold text-sm mb-4 text-[#027333] uppercase tracking-wider">Solutions</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               {solutionsList.map((solution) => (
                 <li key={solution.slug}>

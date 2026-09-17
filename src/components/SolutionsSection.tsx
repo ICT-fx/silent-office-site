@@ -9,10 +9,10 @@ const BODY = "'Manrope', sans-serif";
 const MONO = "'JetBrains Mono', monospace";
 
 const GREEN = '#027333';    // vert primary — accents
-const PAPER = '#FCFBF8';    // fond papier
 const GREY = '#5C645C';     // gris texte
 
-const TITLE = 'Du temps, de la clarté, des résultats.';
+const TITLE = 'Nos solutions';
+const SUBTITLE = 'Du temps, de la clarté, des résultats.';
 
 const SolutionsSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -38,16 +38,8 @@ const SolutionsSection: React.FC = () => {
         <section
             ref={sectionRef}
             id="services"
-            className="relative"
-            style={{ background: PAPER }}
+            className="relative bg-white"
         >
-            {/* Vague haut — blanc → papier */}
-            <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 pointer-events-none">
-                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
-                    <path d="M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,50 C1260,90 1380,20 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
-                </svg>
-            </div>
-
             <div className="px-6 pt-14 pb-24 md:pt-16 md:pb-28">
                 <div
                     className={`max-w-[1380px] mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -59,32 +51,33 @@ const SolutionsSection: React.FC = () => {
                         <div className="sol-col">
                             {/* En-tête de section */}
                             <div className="mb-10 md:mb-12">
-                                <div className="flex items-center gap-3 mb-5">
-                                    <span className="block h-px w-8" style={{ background: GREEN }} />
-                                    <span
-                                        style={{
-                                            fontFamily: MONO,
-                                            fontSize: '0.7rem',
-                                            letterSpacing: '0.2em',
-                                            textTransform: 'uppercase',
-                                            color: GREY,
-                                        }}
-                                    >
-                                        Nos expertises
-                                    </span>
-                                </div>
+                                {/* Titre : « Nos solutions » porte l'information de la section ;
+                                    la promesse passe en sous-titre, même police (Inter). */}
                                 <h2
                                     style={{
                                         fontFamily: 'Inter, sans-serif',
                                         fontWeight: 800,
-                                        fontSize: 'clamp(2.2rem, 3.6vw, 3.4rem)',
-                                        lineHeight: 1.04,
+                                        fontSize: 'clamp(2.8rem, 5vw, 4.6rem)',
+                                        lineHeight: 1.0,
                                         letterSpacing: '-0.05em',
                                         color: '#262626',
                                     }}
                                 >
                                     {TITLE}
                                 </h2>
+                                <p
+                                    className="mt-4"
+                                    style={{
+                                        fontFamily: 'Inter, sans-serif',
+                                        fontWeight: 600,
+                                        fontSize: 'clamp(1.15rem, 1.7vw, 1.5rem)',
+                                        lineHeight: 1.25,
+                                        letterSpacing: '-0.03em',
+                                        color: GREY,
+                                    }}
+                                >
+                                    {SUBTITLE}
+                                </p>
                             </div>
 
                             {/* 5 pilules, palette dégradée du vert (01) au bordeaux (05) */}
@@ -197,13 +190,6 @@ const SolutionsSection: React.FC = () => {
                 </div>
             </div>
 
-            {/* Vague bas — papier → section suivante */}
-            <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-16 md:h-20">
-                    <path d="M0,20 C240,70 480,0 720,35 C960,70 1200,5 1440,30 L1440,80 L0,80 Z" fill="#FFFFFF" />
-                </svg>
-            </div>
-
             {/* Styles responsive de la section */}
             <style>{`
                 .sol-layout {
@@ -259,26 +245,27 @@ const SolutionsSection: React.FC = () => {
                     transform: none;
                 }
                 /* Promesse de l'expertise — hauteur réservée sur deux lignes pour
-                   qu'elle occupe toujours la même place d'une expertise à l'autre. */
+                   qu'elle occupe toujours la même place d'une expertise à l'autre.
+                   La marge automatique pousse le bloc texte contre l'image. */
                 .sol-media-promise {
                     display: flex;
                     align-items: flex-end;
+                    margin-top: auto;
                     min-height: 2.6em;
                     font-size: clamp(1.25rem, 1.65vw, 1.6rem);
                     line-height: 1.3;
                 }
-                /* Résumé de l'expertise — occupe l'espace entre la promesse (fixe,
-                   en haut) et l'image (poussée en bas par sa marge automatique). */
+                /* Résumé de l'expertise — collé sous la promesse, juste au-dessus
+                   de l'image. */
                 .sol-media-lede {
                     display: block;
-                    margin-top: 0.9rem;
-                    margin-bottom: 1.5rem;
+                    margin-top: 0.75rem;
+                    margin-bottom: 1rem;
                     max-width: 62ch;
                     font-size: 1.02rem;
                     line-height: 1.6;
                 }
                 .sol-media-frame {
-                    margin-top: auto;
                     position: relative;
                     display: block;
                     border-radius: 20px;

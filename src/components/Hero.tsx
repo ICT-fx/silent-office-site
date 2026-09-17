@@ -62,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 style={{ fontFamily: '"DM Sans", sans-serif', letterSpacing: '-0.03em' }}
                 className="min-w-[240px] text-lg"
               >
-                Découvrir nos expertises
+                Découvrir nos solutions
               </GradientButton>
             </div>
           </div>

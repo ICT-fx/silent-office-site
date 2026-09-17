@@ -81,6 +81,40 @@ const IconConformite = () => (
 );
 
 /* ------------------------------------------------------------------ *
+ *  Nappe de bulles — l'arrière-plan vivant de la section
+ *
+ *  Chaque bulle est un dégradé radial (chute douce vers le transparent)
+ *  adouci au flou : on obtient une tache gaussienne sans coût de repeint,
+ *  puisque seule la `transform` est animée. Les positions sont exprimées
+ *  en % du viewport : la nappe est fixe, pas solidaire de la section.
+ * ------------------------------------------------------------------ */
+const bubble = (color: string, alpha: number) =>
+  `radial-gradient(circle at 50% 50%, rgba(${color}, ${alpha}), rgba(${color}, 0) 64%)`;
+
+const BUBBLES = [
+  { cls: 'results-bubble-a', top: '-14%', left: '-8%', size: 'clamp(300px, 38vw, 620px)', background: bubble('2, 115, 51', 0.72) },
+  { cls: 'results-bubble-b', top: '4%', left: '58%', size: 'clamp(240px, 32vw, 520px)', background: bubble('147, 191, 158', 0.26) },
+  { cls: 'results-bubble-c', top: '38%', left: '2%', size: 'clamp(230px, 30vw, 470px)', background: bubble('2, 89, 40', 0.85) },
+  { cls: 'results-bubble-d', top: '56%', left: '50%', size: 'clamp(280px, 36vw, 580px)', background: bubble('2, 115, 51', 0.6) },
+  { cls: 'results-bubble-e', top: '20%', left: '28%', size: 'clamp(180px, 22vw, 360px)', background: bubble('147, 191, 158', 0.18) },
+];
+
+/* `fixed` à partir de md seulement : sur mobile le défilement inertiel iOS
+   fait saccader les couches fixes, et la section occupe presque tout l'écran
+   — la nappe y est donc simplement ancrée à la section. */
+const BubbleField: React.FC = () => (
+  <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden md:fixed">
+    {BUBBLES.map((b) => (
+      <span
+        key={b.cls}
+        className={`results-bubble ${b.cls}`}
+        style={{ top: b.top, left: b.left, width: b.size, height: b.size, background: b.background }}
+      />
+    ))}
+  </div>
+);
+
+/* ------------------------------------------------------------------ *
  *  Les trois engagements — un chiffre, une preuve
  * ------------------------------------------------------------------ */
 const ENGAGEMENTS = [
@@ -98,7 +132,7 @@ const ENGAGEMENTS = [
     key: 'kpi',
     prefix: '',
     value: 100,
-    suffix: ' %',
+    suffix: '%',
     title: 'KPIs & pilotage',
     body: 'Volumes, délais, anomalies : chaque processus est instrumenté pour un pilotage par la preuve.',
     Icon: IconKPI,
@@ -116,40 +150,70 @@ const ENGAGEMENTS = [
   },
 ];
 
-const EngagementColumn: React.FC<{
+/**
+ * Un engagement = un panneau translucide : la nappe de bulles se devine au
+ * travers, le chiffre reste la seule chose « forte » de la carte. Un filet
+ * sépare la promesse (le chiffre) de sa preuve (le texte).
+ */
+const EngagementCard: React.FC<{
   item: typeof ENGAGEMENTS[number];
   active: boolean;
-}> = ({ item, active }) => {
+  index: number;
+}> = ({ item, active, index }) => {
   const count = useCountUp(item.value, active);
 
   return (
-    <div
-      className="group relative rounded-[26px] px-7 py-8 lg:px-9 lg:py-9 transition-colors duration-500 hover:bg-white/[0.04]"
-      style={{ '--showcase-delay': item.delay } as React.CSSProperties}
+    <article
+      className={`h-full transition-[opacity,transform] duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+        active ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'
+      }`}
+      style={{ transitionDelay: active ? `${index * 110}ms` : '0ms' }}
     >
-      <div className="flex items-center gap-4">
-        {/* Pastille ronde — l'icône respire au lieu d'être enfermée dans un carré */}
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.07] ring-1 ring-inset ring-white/10 text-[#93BF9E] transition-colors duration-500 group-hover:bg-[#027333]/25 group-hover:text-white">
-          <span className="h-[19px] w-[19px]">
+      <div
+        className="flex h-full flex-col rounded-[24px] bg-[#1C1C1C]/55 px-6 pb-7 pt-6 ring-1 ring-inset ring-white/[0.09] lg:px-7"
+        style={{ '--showcase-delay': item.delay } as React.CSSProperties}
+      >
+        <div className="flex items-start justify-between gap-4">
+          {/* Le chiffre est le seul élément fort de la carte */}
+          <span
+            className="leading-[0.8] tabular-nums text-[#F2F1DF]"
+            style={{
+              fontFamily: DISPLAY,
+              fontWeight: 500,
+              fontSize: 'clamp(3.35rem, 5.4vw, 4.5rem)',
+              letterSpacing: '-0.055em',
+            }}
+          >
+            {item.prefix && (
+              <span
+                className="text-[#93BF9E]"
+                style={{ fontSize: '0.5em', letterSpacing: '-0.03em' }}
+              >
+                {item.prefix}
+              </span>
+            )}
+            {count}
+            {item.suffix && (
+              <span className="ml-[0.1em] text-[#93BF9E]" style={{ fontSize: '0.44em' }}>
+                {item.suffix}
+              </span>
+            )}
+          </span>
+
+          {/* Sceau : le picto animé, posé dans l'angle comme un tampon */}
+          <span className="mt-1 h-[26px] w-[26px] shrink-0 text-[#93BF9E]">
             <item.Icon />
           </span>
-        </span>
+        </div>
 
-        <span
-          className="text-[2.6rem] lg:text-[3rem] leading-none tracking-[-0.045em] tabular-nums text-white"
-          style={{ fontFamily: DISPLAY, fontWeight: 500 }}
-        >
-          {item.prefix}
-          {count}
-          {item.suffix}
-        </span>
+        <div className="mt-6 border-t border-white/[0.09] pt-5">
+          <h3 className="text-[1.05rem] font-semibold tracking-[-0.01em] text-white">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-[0.925rem] leading-relaxed text-white/60">{item.body}</p>
+        </div>
       </div>
-
-      <h3 className="mt-6 text-[1.05rem] font-semibold tracking-[-0.01em] text-white">
-        {item.title}
-      </h3>
-      <p className="mt-2 text-[0.925rem] leading-relaxed text-white/50">{item.body}</p>
-    </div>
+    </article>
   );
 };
 
@@ -175,43 +239,41 @@ const InnovationShowcase: React.FC<InnovationShowcaseProps> = () => {
 
   return (
     <div className="space-y-0 relative z-10">
-      {/* SECTION 1: RÉSULTATS — bandeau sombre, panneau arrondi, rien de superflu */}
-      <section className="relative overflow-hidden bg-[#262626] px-6 py-14 lg:py-16">
-        {/* Deux halos très diffus : de la profondeur, aucune trame */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-32 left-[8%] h-[30rem] w-[30rem] rounded-full bg-[#027333]/25 blur-[130px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 right-[4%] h-[26rem] w-[26rem] rounded-full bg-[#93BF9E]/10 blur-[140px]"
-        />
+      {/* SECTION 1: RÉSULTATS — le `clip-path` découpe la nappe fixe aux bords
+          de la section : le fond reste immobile, la section défile devant. */}
+      <section
+        className="relative bg-[#262626] px-6 py-16 lg:py-20"
+        style={{ clipPath: 'inset(0)' }}
+      >
+        <BubbleField />
 
-        <div ref={sectionRef} className="relative mx-auto max-w-5xl">
-          {/* En-tête centré, court */}
-          <div className="mx-auto max-w-3xl text-center">
+        <div ref={sectionRef} className="relative z-10 mx-auto max-w-6xl">
+          {/* En-tête en bandeau : titre à gauche, la promesse tenue par un filet vert */}
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
             <h2
-              className="text-[2.1rem] lg:text-[2.9rem] leading-[1.08] tracking-[-0.03em] text-white"
-              style={{ fontFamily: DISPLAY, fontWeight: 500 }}
+              className="lg:col-span-7"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(2.15rem, 4.2vw, 3.4rem)',
+                lineHeight: 1.03,
+                letterSpacing: '-0.045em',
+              }}
             >
-              Des résultats mesurables,
-              <br className="hidden sm:block" />{' '}
+              <span className="text-white">Des résultats mesurables,</span>
+              <br />
               <span className="text-[#93BF9E]">dans un cadre sécurisé.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[0.98rem] leading-relaxed text-white/50">
+
+            <p className="border-l-2 border-[#93BF9E] pl-4 text-[0.98rem] leading-relaxed text-white/60 lg:col-span-5 lg:pb-2">
               Trois engagements posés dès le cadrage, revus à chaque étape.
             </p>
           </div>
 
-          {/* Panneau unique, très arrondi — les trois engagements vivent dedans */}
-          <div className="mt-11 rounded-[34px] border border-white/10 bg-white/[0.045] p-1.5 shadow-[0_40px_80px_-50px_rgba(0,0,0,0.9)] backdrop-blur-sm">
-            <div className="rounded-[28px] bg-gradient-to-b from-white/[0.05] to-transparent">
-              <div className="grid divide-y divide-white/[0.07] md:grid-cols-3 md:divide-y-0 md:divide-x">
-                {ENGAGEMENTS.map((item) => (
-                  <EngagementColumn key={item.key} item={item} active={visible} />
-                ))}
-              </div>
-            </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
+            {ENGAGEMENTS.map((item, i) => (
+              <EngagementCard key={item.key} item={item} active={visible} index={i} />
+            ))}
           </div>
         </div>
       </section>
