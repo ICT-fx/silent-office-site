@@ -10,27 +10,25 @@ const team: AnimatedTooltipItem[] = [
   {
     id: 1,
     name: 'Fantin Schellekens',
-    designation: 'Président',
+    designation: 'President',
     image: '/images/team/fantin-schellekens.jpg',
   },
   {
     id: 2,
     name: 'Yanis Wamou',
-    designation: 'Head of Development',
+    designation: 'Tech Lead',
     image: '/images/team/yanis-wamou.jpg',
   },
   {
     id: 3,
     name: 'Lola Bembekoff',
-    // TODO — confirmer l'intitulé de poste
-    designation: 'Automatisation & Intégration',
+    designation: 'Head of Communications',
     image: '/images/team/lola-bembekoff.jpg',
   },
   {
     id: 4,
     name: 'Valentin Lefèvre',
-    // TODO — confirmer l'intitulé de poste
-    designation: 'Design & Expérience',
+    designation: 'Innovation & AI Enablement Lead',
     image: '/images/team/valentin-lefevre.jpg',
   },
 ];
