@@ -280,4 +280,26 @@ export const dataBi: SolutionData = {
     ctaText:
         "Décrivez-nous ce que vous aimeriez savoir en un coup d’œil : marge, trésorerie, activité, retards. Nous vous dirons quels indicateurs sont à votre portée, et lesquels ne le sont pas encore.",
     ctaLabel: 'Discuter de vos indicateurs',
+    faq: [
+        {
+            question: 'Faut-il un entrepôt de données pour commencer ?',
+            answer:
+                'Non. Les tableaux de bord se connectent à vos outils existants, sans migration préalable. Un entrepôt de données devient utile quand les volumes ou le nombre de sources l’exigent, pas au démarrage.',
+        },
+        {
+            question: 'Nos données sont incomplètes, est-ce bloquant ?',
+            answer:
+                'Non, c’est la situation habituelle. Le travail commence par distinguer ce qui est fiable de ce qui ne l’est pas, puis par afficher cette distinction dans le tableau de bord. Un indicateur incertain signalé comme tel vaut mieux qu’un chiffre faux présenté comme sûr.',
+        },
+        {
+            question: 'Qui met à jour les tableaux de bord ?',
+            answer:
+                'Personne. Les données remontent automatiquement depuis vos outils, sans ressaisie. Vos équipes peuvent en revanche faire évoluer les indicateurs affichés sans avoir à nous solliciter.',
+        },
+        {
+            question: 'Où sont hébergées nos données ?',
+            answer:
+                'Le choix vous revient et il se pose au cadrage, avant toute mise en œuvre. Hébergement en Suisse, dans l’Union européenne ou sur votre propre infrastructure : c’est la contrainte réglementaire de votre activité qui détermine l’option, jamais l’inverse.',
+        },
+    ],
 };

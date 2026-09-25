@@ -28,6 +28,19 @@ export interface SolutionStep {
     duration: string;
 }
 
+export interface SolutionFaqItem {
+    /** Formulée comme le visiteur la poserait, pas comme l'offre la nomme. */
+    question: string;
+    /**
+     * 40 à 60 mots, autonome : la réponse doit rester juste si elle est citée
+     * seule, hors de la page. C'est le format que les moteurs génératifs
+     * extraient, et il alimente le JSON-LD `FAQPage` émis par `RouteSeo`.
+     * Toute réponse doit s'appuyer sur du copy déjà validé (`keyFacts`,
+     * `gains`, `useCases`) : jamais de fait nouveau inventé ici.
+     */
+    answer: string;
+}
+
 export interface SolutionPillar {
     title: string;
     description: string;
@@ -104,6 +117,13 @@ export interface SolutionKeyFact {
 }
 
 export interface SolutionData {
+    /**
+     * Questions fréquentes, rendues visiblement en bas de page et reprises en
+     * `FAQPage`. Google exige que le schema corresponde à du contenu visible :
+     * ne jamais émettre l'un sans l'autre.
+     */
+    faq?: SolutionFaqItem[];
+
     id: string;
     slug: string;
     title: string;

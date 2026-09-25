@@ -79,7 +79,7 @@ const Home: React.FC = () => {
                         </div>
                         <button
                             onClick={() => navigate('/insights')}
-                            className="mt-8 md:mt-0 text-[#262626] border-b border-[#262626] pb-1 hover:text-[#027333] hover:border-[#027333] transition-all font-medium"
+                            className="self-start mt-6 md:mt-0 min-h-[44px] flex items-center text-[#262626] border-b border-[#262626] hover:text-[#027333] hover:border-[#027333] transition-all font-medium"
                         >
                             Voir tous les articles
                         </button>

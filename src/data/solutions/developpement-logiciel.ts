@@ -281,4 +281,26 @@ export const developpementLogiciel: SolutionData = {
     ctaText:
         'Racontez-nous le processus qui vous ralentit ou le fichier qui vous fait peur : nous vous dirons ce qu’un outil sur mesure changerait concrètement. Et si le sur‑mesure ne se justifie pas, nous vous le dirons aussi.',
     ctaLabel: 'Décrire mon besoin',
+    faq: [
+        {
+            question: 'Développer sur mesure ou acheter une solution du marché ?',
+            answer:
+                'Acheter, chaque fois qu’un outil existant couvre le besoin. Le sur-mesure se justifie quand votre processus constitue votre avantage et qu’aucun logiciel ne l’épouse sans contorsion, ou quand l’addition des licences dépasse le coût de construction.',
+        },
+        {
+            question: 'Que devient le code si nous arrêtons de travailler ensemble ?',
+            answer:
+                'Il vous appartient, les données aussi. Aucun abonnement obligatoire, aucune clé technique retenue de notre côté. L’application peut être reprise par votre équipe ou confiée à un autre prestataire.',
+        },
+        {
+            question: 'Combien de temps pour une première version utilisable ?',
+            answer:
+                'Quelques semaines. Cette première version couvre volontairement un périmètre étroit, mais réellement utilisable en production. Les cycles suivants l’élargissent sans repartir de zéro.',
+        },
+        {
+            question: 'Qui maintient l’application ensuite ?',
+            answer:
+                'Au choix : nous, votre équipe, ou un tiers. Le code est documenté et construit avec des technologies courantes, précisément pour que la reprise soit possible sans nous.',
+        },
+    ],
 };

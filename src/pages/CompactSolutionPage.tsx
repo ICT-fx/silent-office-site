@@ -1338,6 +1338,7 @@ const CompactSolutionPage: React.FC<{ data: SolutionData }> = ({ data }) => {
         cases: variant.labels?.cases ?? 'Des situations concrètes',
     };
     const audiences = data.audiences ?? [];
+    const faq = data.faq ?? [];
     const chapters = data.deepDive.chapters;
 
     // Le bloc central en bureau, et ce qui le remplace sur mobile.
@@ -1518,6 +1519,48 @@ const CompactSolutionPage: React.FC<{ data: SolutionData }> = ({ data }) => {
                     </div>
                 </div>
             </section>
+
+            {/* ============ QUESTIONS FRÉQUENTES ============
+                 Deux colonnes sur grand écran pour tenir la contrainte de
+                 hauteur du gabarit compact. Réponses visibles et non repliées :
+                 c'est ce texte qui alimente le `FAQPage` de `RouteSeo`, et
+                 Google exige que le schema corresponde à du contenu affiché. */}
+            {faq.length > 0 && (
+                <section className="px-6 py-14 md:py-24">
+                    <div className="max-w-[1200px] mx-auto">
+                        <h2 style={h2Style}>Questions fréquentes</h2>
+
+                        <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-0">
+                            {faq.map((item) => (
+                                <div
+                                    key={item.question}
+                                    className="py-6 md:py-7"
+                                    style={{ borderTop: `1px solid ${LINE}` }}
+                                >
+                                    <h3
+                                        style={{
+                                            fontFamily: TITLE,
+                                            fontWeight: 700,
+                                            fontSize: '1.05rem',
+                                            letterSpacing: '-0.025em',
+                                            color: INK,
+                                            lineHeight: 1.35,
+                                        }}
+                                    >
+                                        {item.question}
+                                    </h3>
+                                    <p
+                                        className="mt-2.5"
+                                        style={{ ...bodyStyle, fontSize: '0.98rem', lineHeight: 1.65, maxWidth: '58ch' }}
+                                    >
+                                        {item.answer}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* ============ CONTACT (CLAIR) ============ */}
             <section className="px-6 pb-16 md:pb-32">

@@ -267,4 +267,26 @@ export const audit: SolutionData = {
     ctaText:
         "Un premier échange suffit pour cadrer le périmètre de l’audit et vérifier qu’il vous sera vraiment utile.",
     ctaLabel: 'Planifier un échange',
+    faq: [
+        {
+            question: 'Combien de temps prend un audit de processus ?',
+            answer:
+                'Deux semaines. Une phase de terrain auprès des équipes qui exécutent les processus, puis un atelier de restitution avec la direction. Votre activité n’est pas mise en pause : les entretiens s’intercalent dans le quotidien au lieu de le remplacer.',
+        },
+        {
+            question: 'Que contient exactement le livrable ?',
+            answer:
+                'Trois à cinq chantiers classés par impact, chacun chiffré en temps et en coût. Pour chaque chantier : ce qui coince aujourd’hui, ce qui changerait, et l’effort estimé. Le document est écrit pour être lu en comité de direction, pas par des techniciens.',
+        },
+        {
+            question: 'Faut-il déjà savoir quoi automatiser avant de commencer ?',
+            answer:
+                'Non, c’est précisément l’objet de l’audit. La plupart des dirigeants sentent que du temps et de l’argent s’échappent sans pouvoir dire où ni combien. Le travail consiste à transformer ce ressenti en constats mesurés, poste par poste.',
+        },
+        {
+            question: 'Sommes-nous engagés à poursuivre avec vous ensuite ?',
+            answer:
+                'Non. Le plan d’action est rédigé pour être utilisable avec ou sans nous, y compris par un autre prestataire. Vous repartez avec un document exploitable, pas avec une dépendance.',
+        },
+    ],
 };

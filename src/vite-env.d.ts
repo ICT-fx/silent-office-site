@@ -1,9 +1,11 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-    readonly VITE_EMAILJS_SERVICE_ID: string
-    readonly VITE_EMAILJS_TEMPLATE_ID: string
-    readonly VITE_EMAILJS_PUBLIC_KEY: string
+    /** Identifiant Cal.com utilisé pour les liens de réservation (cal.com/<handle>). */
+    readonly VITE_CAL_USERNAME: string
+    /** Slugs des deux créneaux, si vous les renommez côté Cal.com. */
+    readonly VITE_CAL_SLUG_30: string
+    readonly VITE_CAL_SLUG_60: string
 }
 
 interface ImportMeta {

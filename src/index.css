@@ -3,8 +3,54 @@
 @tailwind utilities;
 
 @layer base {
+  /* ------------------------------------------------------------------ *
+   *  Géométrie du Header flottant — source unique
+   * ------------------------------------------------------------------ *
+   *  Le Header est `fixed` : tout ce qui doit passer dessous (padding haut
+   *  des pages, barres `sticky`, ancres de scroll) se cale sur ces tokens
+   *  plutôt que sur des valeurs recopiées à la main. Changer la taille du
+   *  logo ou le retrait du Header ici suffit : la barre de filtres des
+   *  Insights, le Hero et les pages internes suivent.
+   *
+   *  Sur mobile le Header est volontairement plus compact : à 56px de logo
+   *  il mangeait 106px, soit 1/8 de l'écran d'un iPhone, et recouvrait la
+   *  première ligne du titre d'accueil.
+   * ------------------------------------------------------------------ */
+  :root {
+    --header-gap: 0.625rem; /* retrait depuis le haut de l'écran */
+    --header-pad-y: 0.5rem; /* padding vertical interne */
+    --header-logo: 2.5rem; /* côté du logo (carré) */
+    --header-h: calc(var(--header-logo) + 2 * var(--header-pad-y));
+    /* Bas du Header dans le viewport : la hauteur à dégager sous lui. */
+    --header-bottom: calc(var(--header-gap) + var(--header-h) + env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-gap: 1.5rem;
+      --header-pad-y: 0.75rem;
+      --header-logo: 3.5rem;
+    }
+  }
+
+  /* Les ancres internes (#services, #insights…) ne doivent pas atterrir
+     sous le Header flottant. */
+  [id] {
+    scroll-margin-top: calc(var(--header-bottom) + 1rem);
+  }
+
   body {
     @apply bg-white text-dark font-sans antialiased overflow-x-hidden;
+  }
+
+  /* Empêche le zoom automatique d'iOS à la mise au point d'un champ :
+     Safari zoome dès qu'une police de saisie passe sous 16px. */
+  @media (max-width: 1023px) {
+    input,
+    select,
+    textarea {
+      font-size: max(16px, 1rem);
+    }
   }
 
   h1,
@@ -19,6 +65,21 @@
 
 .glass-header {
   @apply bg-white/70 backdrop-blur-md border-b border-black/5;
+}
+
+/* Bandeau photo sous le Hero (HeroScrollStrip).
+   Sur mobile : aucun chevauchement — le Hero s'y termine sur la vidéo, que la
+   bande recouvrait. À partir de 768px la vidéo passe en colonne droite, le bas
+   du Hero est vide, et la bande peut y remonter pour qu'on l'aperçoive dès
+   l'accueil. */
+.hero-strip {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-strip {
+    margin-top: calc(-1 * clamp(64px, 7vw, 100px));
+  }
 }
 
 .text-gradient {
@@ -1186,5 +1247,37 @@
   .results-bubble {
     animation: none;
     will-change: auto;
+  }
+}
+
+/* Page contact : la flèche du raccourci « envoyer un message » fait un
+   mouvement lent vers le bas, pour signaler que la cible est plus bas sans
+   happer le regard — le calendrier reste l'action principale. */
+@keyframes contact-nudge {
+  0%,
+  72%,
+  100% {
+    transform: translateY(0);
+  }
+  82% {
+    transform: translateY(2.5px);
+  }
+}
+
+.contact-nudge {
+  animation: contact-nudge 3.2s ease-in-out infinite;
+}
+
+.group:hover .contact-nudge {
+  animation: none;
+  transform: translateY(2px);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-nudge,
+  .group:hover .contact-nudge {
+    animation: none;
+    transform: none;
   }
 }

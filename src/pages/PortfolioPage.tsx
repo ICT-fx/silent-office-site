@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { PROJECTS, clientOf, type PortfolioProject } from '../data/portfolio';
 
 /* ------------------------------------------------------------------ *
@@ -177,6 +178,14 @@ const Diagram: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
             className="block w-auto max-w-full transition-transform duration-500 group-hover:scale-[1.015]"
             style={{ maxHeight: '78vh' }}
         />
+        {/* Réduit à la largeur d'un téléphone, le schéma ne se lit plus : ses
+            libellés tombent sous 4px. Au bureau le survol suffit à signaler
+            qu'il s'ouvre ; au doigt, rien ne l'indiquait. Cette barre rend
+            l'agrandissement visible là où il est nécessaire. */}
+        <span className="md:hidden flex items-center justify-center gap-1.5 border-t border-[#E5E1D8] px-4 py-3 text-sm font-medium text-[#027333]">
+            Agrandir le schéma
+            <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
+        </span>
     </a>
 );
 

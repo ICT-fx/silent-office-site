@@ -11,10 +11,15 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
-    <div className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    /* Sur mobile la colonne unique (titre + texte + boutons + vidéo) est plus
+       haute qu'un écran : centrer verticalement poussait le titre sous le
+       Header. On aligne donc en haut et on dégage explicitement la hauteur du
+       Header ; à partir de `md` la mise en page deux colonnes tient dans
+       l'écran et retrouve son centrage. */
+    <div className="relative md:min-h-screen flex items-start md:items-center overflow-hidden bg-white">
       {/* Overlay Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-20 md:pt-0 -translate-y-4 md:-translate-y-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-[calc(var(--header-bottom)_+_1.75rem)] md:pt-0 pb-16 md:pb-0 md:-translate-y-10">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* Colonne gauche : texte */}
           <div className="text-left">
             <h1
@@ -73,8 +78,10 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       {/* Floating Indicators */}
-      {/* Remonté pour rester au-dessus du bandeau photo qui dépasse en bas d'écran */}
-      <div className="absolute bottom-24 left-0 right-0 z-10 text-[#262626]/40 animate-bounce flex justify-center">
+      {/* Remonté pour rester au-dessus du bandeau photo qui dépasse en bas d'écran.
+          Masqué sur mobile : la colonne y est plus haute qu'un écran, la flèche
+          se serait posée par-dessus la vidéo au lieu d'indiquer un bas de page. */}
+      <div className="hidden md:flex absolute bottom-24 left-0 right-0 z-10 text-[#262626]/40 animate-bounce justify-center">
         <ChevronDown size={32} />
       </div>
     </div>

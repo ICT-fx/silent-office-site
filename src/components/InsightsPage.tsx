@@ -22,7 +22,7 @@ const InsightsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <Link
             to="/"
-            className="flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-8 group text-sm font-medium inline-flex"
+            className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-6 group text-sm font-medium"
           >
             <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Retour à l'accueil
@@ -51,15 +51,18 @@ const InsightsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter Bar — collé sous le header flottant (top-6 = 24px + hauteur 80px = 104px) */}
-      <div className="bg-white border-b border-gray-100 sticky top-[112px] z-30 shadow-sm">
+      {/* Filter Bar — collée juste sous le Header flottant. L'offset suit les
+          tokens `--header-*` (src/index.css) au lieu d'une valeur recopiée :
+          le Header étant plus compact sur mobile, un `top` figé à 112px y
+          laissait un vide, et tout changement de sa hauteur décalait la barre. */}
+      <div className="bg-white border-b border-gray-100 sticky top-[calc(var(--header-bottom)_+_0.5rem)] z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 overflow-x-auto no-scrollbar">
-          <div className="flex space-x-8 py-4">
+          <div className="flex space-x-6 sm:space-x-8 py-2">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`whitespace-nowrap text-sm font-bold tracking-wide transition-colors pb-1 border-b-2 ${activeCategory === cat
+                className={`whitespace-nowrap min-h-[44px] text-sm font-bold tracking-wide transition-colors pb-1 border-b-2 ${activeCategory === cat
                   ? 'text-[#262626] border-[#027333]'
                   : 'text-gray-400 border-transparent hover:text-[#262626]'
                   }`}

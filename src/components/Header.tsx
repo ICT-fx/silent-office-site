@@ -81,6 +81,33 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     setIsMenuOpen(false);
   };
 
+  // Le menu mobile se referme sur tout changement de route — y compris celles
+  // déclenchées ailleurs (retour navigateur, lien dans la page).
+  React.useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Menu mobile ouvert : la page derrière ne défile plus. Sans cela, un doigt
+  // posé hors du panneau fait glisser le contenu et le menu part avec.
+  React.useEffect(() => {
+    if (!isMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isMenuOpen]);
+
+  // Échap referme aussi le menu mobile.
+  React.useEffect(() => {
+    if (!isMenuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
+
   const navLinkClass = `[font-family:'Space_Grotesk',sans-serif] inline-block text-lg font-bold tracking-[-0.02em] transition-colors px-3 py-2 cursor-pointer text-[#262626] hover:text-[#027333]`;
 
   /** Onglet à méga-menu : reste vert tant que son panneau est déployé,
@@ -91,9 +118,10 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   return (
     <header
       onMouseLeave={handleMouseLeave}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-2xl border transition-all duration-500 bg-white backdrop-blur-md border-white/20 shadow-lg py-3"
+      style={{ top: 'calc(var(--header-gap) + env(safe-area-inset-top, 0px))' }}
+      className="fixed left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-2xl border transition-all duration-500 bg-white backdrop-blur-md border-white/20 shadow-lg py-[var(--header-pad-y)]"
     >
-      <div className="px-6 flex items-center justify-between relative z-50">
+      <div className="px-4 lg:px-6 flex items-center justify-between relative z-50">
         {/* Logo */}
         <button
           onClick={() => {
@@ -113,11 +141,13 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           }}
         >
           <div
-            className={`w-14 h-14 ${logoSpinning
+            className={`shrink-0 ${logoSpinning
               ? 'logo-spin'
               : 'transition-transform duration-300'
               }`}
             style={{
+              width: 'var(--header-logo)',
+              height: 'var(--header-logo)',
               transform: logoSpinning ? undefined : logoHovered ? 'rotate(90deg)' : 'rotate(0deg)',
             }}
           >
@@ -129,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               className="w-full h-full object-contain select-none"
             />
           </div>
-          <span className="text-xl font-bold tracking-tight text-[#262626]">
+          <span className="text-lg lg:text-xl font-bold tracking-tight text-[#262626]">
             FLOW<span className="font-light">ERA</span>
           </span>
         </button>
@@ -290,39 +320,55 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle — le padding porte la cible tactile à 44px, sans
+            agrandir le pictogramme ; le retrait négatif garde l'alignement
+            optique sur le bord droit du Header. */}
         <button
-          className="text-[#262626] lg:hidden"
+          type="button"
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          className="-mr-2.5 p-2.5 text-[#262626] lg:hidden rounded-xl transition-colors hover:text-[#027333] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#027333]/40"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay
+          Le panneau était en `h-screen` : ouvert, il dépassait sous le bas de
+          l'écran et le bouton d'appel devenait inatteignable. Il est désormais
+          plafonné à la place réellement disponible sous le Header et défile
+          de lui-même quand le contenu est plus haut. */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-xl p-6 flex flex-col space-y-4 h-screen mt-4 rounded-2xl mx-6">
-          {/* Added MX and margin top to align better floating mobile menu */}
-          <div className="py-4 border-b border-gray-100">
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 block">Solutions</span>
+        <div
+          id="mobile-menu"
+          className="lg:hidden absolute top-full left-0 right-0 mt-3 mx-3 rounded-2xl bg-white border border-black/5 shadow-xl overflow-y-auto overscroll-contain p-5"
+          style={{
+            maxHeight:
+              'calc(100dvh - var(--header-bottom) - 1.5rem - env(safe-area-inset-bottom, 0px))',
+          }}
+        >
+          <div className="pb-3 mb-2 border-b border-gray-100">
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Solutions</span>
             {solutionsList.map((solution) => (
               <button
                 key={solution.slug}
                 onClick={() => handleMobileNav(`/solutions/${solution.slug}`)}
-                className="block py-2 text-lg text-[#262626] text-left"
+                className="block w-full min-h-[44px] py-2.5 text-base text-[#262626] text-left active:text-[#027333]"
               >
                 {solution.title}
               </button>
             ))}
           </div>
 
-          <button onClick={() => handleMobileNav('/portfolio')} className="text-xl font-medium text-[#262626] text-left">Portfolio</button>
-          <button onClick={() => handleMobileNav('/insights')} className="text-xl font-medium text-[#262626] text-left">Insights</button>
-          <button onClick={() => handleMobileNav('/careers')} className="text-xl font-medium text-[#262626] text-left">Carrière</button>
+          <button onClick={() => handleMobileNav('/portfolio')} className="block w-full min-h-[44px] py-2.5 text-lg font-medium text-[#262626] text-left active:text-[#027333]">Portfolio</button>
+          <button onClick={() => handleMobileNav('/insights')} className="block w-full min-h-[44px] py-2.5 text-lg font-medium text-[#262626] text-left active:text-[#027333]">Insights</button>
+          <button onClick={() => handleMobileNav('/careers')} className="block w-full min-h-[44px] py-2.5 text-lg font-medium text-[#262626] text-left active:text-[#027333]">Carrière</button>
 
           <button
             onClick={() => handleMobileNav('/contact')}
-            className="bg-[#027333] text-[#262626] w-full py-4 font-bold text-center mt-4 rounded-sm"
+            className="bg-[#027333] text-white w-full min-h-[52px] py-4 font-bold text-center mt-4 rounded-xl active:bg-[#025928] transition-colors"
           >
             Demander un Audit
           </button>

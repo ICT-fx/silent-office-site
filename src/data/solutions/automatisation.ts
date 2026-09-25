@@ -331,4 +331,26 @@ export const automatisation: SolutionData = {
     ctaText:
         'Décrivez-nous le processus qui vous fait perdre le plus de temps ou d’argent chaque semaine. Nous vous dirons, en toute franchise, ce qu’il est possible d’en faire.',
     ctaLabel: 'Parler de mon processus',
+    faq: [
+        {
+            question: 'Quels processus automatiser en premier ?',
+            answer:
+                'Ceux qui sont répétitifs, fréquents et suivent des règles stables : saisie de factures, création de devis, traitement de commandes, production de rapports. Le critère de choix n’est pas la complexité technique mais le volume de temps consommé chaque mois.',
+        },
+        {
+            question: 'Faut-il remplacer nos outils actuels ?',
+            answer:
+                'Non. L’automatisation se branche sur les logiciels que vos équipes utilisent déjà. Remplacer un outil en place ajoute un chantier de migration et une phase de réapprentissage, pour un gain qui n’a rien à voir avec l’automatisation elle‑même.',
+        },
+        {
+            question: 'Combien de temps avant les premiers effets ?',
+            answer:
+                'Deux à trois semaines après le diagnostic pour un premier processus en production. Le périmètre est volontairement resserré au départ : un processus qui tourne vraiment vaut mieux que cinq à moitié faits.',
+        },
+        {
+            question: 'Que deviennent les équipes dont les tâches sont automatisées ?',
+            answer:
+                'Elles gardent les décisions et récupèrent le temps passé en saisie. La machine exécute, vos équipes arbitrent. Les exceptions, les cas particuliers et la relation client restent humains : ce sont eux qui demandent du jugement.',
+        },
+    ],
 };

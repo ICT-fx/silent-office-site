@@ -8,7 +8,7 @@ const CareersPage: React.FC = () => {
     const [department, setDepartment] = useState('');
 
     const jobTypes = ['CDI', 'CDD', 'Stage', 'Alternance', 'Freelance'];
-    const locations = ['Paris', 'Lyon', 'Remote', 'Hybride'];
+    const locations = ['Genève', 'Lausanne', 'Suisse romande', 'Remote', 'Hybride'];
     const departments = ['Consulting', 'Data Science', 'Automatisation', 'Stratégie'];
 
     return (

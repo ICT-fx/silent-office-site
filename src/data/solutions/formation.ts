@@ -341,4 +341,26 @@ export const formation: SolutionData = {
     ctaText:
         'Décrivez-nous le quotidien de vos équipes et les outils qu’elles utilisent déjà. Nous vous dirons où l’IA fera vraiment gagner du temps, et où elle n’a rien à faire.',
     ctaLabel: 'Réserver une session stratégique',
+    faq: [
+        {
+            question: 'Faut-il des compétences techniques pour suivre ?',
+            answer:
+                'Non. Les ateliers s’adressent aux dirigeants et aux équipes métier autant qu’aux profils IT. Le support de travail, ce sont vos propres documents et vos propres tâches, pas des exemples génériques.',
+        },
+        {
+            question: 'Comment éviter que tout retombe après la formation ?',
+            answer:
+                'Un bilan est prévu un mois après la session, sur ce qui est réellement utilisé et ce qui a été abandonné. C’est ce rendez-vous qui distingue une montée en compétence d’une journée de sensibilisation sans suite.',
+        },
+        {
+            question: 'Peut-on utiliser l’IA sans exposer nos données ?',
+            answer:
+                'Oui, à condition de poser le cadre avant de choisir les outils. Une partie de la formation porte précisément sur ce qui peut être confié à un service externe et ce qui ne doit pas l’être, au regard de la nLPD et de vos engagements contractuels.',
+        },
+        {
+            question: 'Sur quoi travaille-t-on pendant les ateliers ?',
+            answer:
+                'Sur vos vrais dossiers : un contrat à résumer, un tableau à analyser, un courrier à produire. Travailler sur des cas réels évite la phase de transposition, celle où la plupart des formations perdent leurs participants.',
+        },
+    ],
 };

@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "redirects": [
+    { "source": "/solutions/audit-processus", "destination": "/solutions/audit", "permanent": true },
+    { "source": "/solutions/optimisation", "destination": "/solutions/automatisation", "permanent": true },
+    { "source": "/solutions/finance", "destination": "/solutions/automatisation", "permanent": true },
+    { "source": "/solutions/strategie", "destination": "/solutions/formation", "permanent": true }
   ]
 }

@@ -69,7 +69,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 {/* Article Content */}
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -577,7 +577,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 {/* Contenu */}
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -1180,7 +1180,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 {/* Contenu */}
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -1808,7 +1808,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 {/* Contenu */}
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -2361,7 +2361,7 @@ const ArticleDetailPage: React.FC = () => {
                 <article className="max-w-4xl mx-auto px-6 py-16">
                     <Link
                         to="/insights"
-                        className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium"
+                        className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium"
                     >
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
@@ -2644,7 +2644,7 @@ const ArticleDetailPage: React.FC = () => {
                 </div>
 
                 <article className="max-w-4xl mx-auto px-6 py-16">
-                    <Link to="/insights" className="inline-flex items-center text-gray-500 hover:text-[#027333] transition-colors mb-12 group text-sm font-medium">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
                         <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Retour aux articles
                     </Link>
@@ -2792,7 +2792,7 @@ const ArticleDetailPage: React.FC = () => {
         <div className="min-h-screen bg-white pt-32 pb-24 px-6">
             <div className="max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl font-light mb-6">Article non trouvé</h1>
-                <Link to="/insights" className="text-[#027333] font-bold hover:underline">
+                <Link to="/insights" className="inline-flex items-center min-h-[44px] text-[#027333] font-bold hover:underline">
                     ← Retour aux articles
                 </Link>
             </div>

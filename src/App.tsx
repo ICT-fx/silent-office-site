@@ -12,6 +12,8 @@ import ContactPage from './pages/ContactPage';
 import CareersPage from './pages/CareersPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RouteSeo from './seo/RouteSeo';
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,6 +33,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-[#262626]">
+      <RouteSeo />
       <Preloader />
       <Header isScrolled={scrolled} />
 
@@ -48,6 +51,7 @@ const App: React.FC = () => {
           <Route path="/insights/:id" element={<ArticleDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 

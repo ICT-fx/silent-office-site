@@ -13,6 +13,7 @@ export type {
     SolutionUseCase,
     SolutionStep,
     SolutionPillar,
+    SolutionFaqItem,
     SolutionAudience,
     SolutionDeepDive,
     SolutionDeepDiveChapter,

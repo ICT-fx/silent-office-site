@@ -18,6 +18,13 @@ const STRIP_IMAGES = [
 
 /** Hauteur du bandeau : fine, plafonnée, indépendante de la largeur d'écran. */
 const STRIP_HEIGHT = 'clamp(140px, 19vw, 260px)';
+/**
+ * Le chevauchement avec le Hero vit dans `.hero-strip` (src/index.css), pas ici :
+ * il doit être nul sur mobile. En une colonne, le Hero se termine sur la vidéo,
+ * et la marge négative faisait alors passer la bande photo par-dessus celle-ci.
+ * À partir de `md`, la vidéo occupe la colonne droite et le bas du Hero est vide :
+ * la bande peut y remonter sans rien recouvrir.
+ */
 /** Le bandeau est forcé à déborder de 24 % pour garder de la course au scroll. */
 const STRIP_MIN_WIDTH = '124%';
 /** Gouttière blanche entre deux vignettes (≈ 2,8 % de la hauteur, comme la planche d'origine). */
@@ -104,12 +111,8 @@ const HeroScrollStrip: React.FC = () => {
     <div
       ref={frameRef}
       aria-hidden="true"
-      className="relative w-full overflow-hidden bg-white"
-      style={{
-        height: STRIP_HEIGHT,
-        // Remonte le bandeau sous le Hero pour qu'on en aperçoive le haut dès l'accueil.
-        marginTop: 'calc(-1 * clamp(64px, 7vw, 100px))',
-      }}
+      className="hero-strip relative w-full overflow-hidden bg-white"
+      style={{ height: STRIP_HEIGHT }}
     >
       <div
         ref={trackRef}

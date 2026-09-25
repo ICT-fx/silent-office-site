@@ -1,0 +1,60 @@
+# Flowera
+
+> Flowera conçoit et met en production les outils qui simplifient les
+> opérations des PME : automatisation de processus, applications métier sur
+> mesure, tableaux de bord décisionnels et montée en compétence des équipes sur
+> l'intelligence artificielle. Société basée à Genève, au service des PME de
+> Suisse romande.
+
+Flowera est un interlocuteur unique qui cadre, construit et met en production,
+là où le marché sépare le cabinet de conseil — qui recommande sans livrer — de
+la société de services — qui livre sans cadrer. L'audit débouche sur des
+chantiers que la même équipe exécute.
+
+Équipe à taille humaine, accès direct aux personnes qui construisent le projet.
+Contenu du site en français. Contact : fantin.schellekens@flowera.ch
+
+## Zone desservie
+
+Genève, Vaud, Valais, Fribourg, Neuchâtel, Suisse romande. Interventions en
+visioconférence ou sur place.
+
+## Les cinq offres
+
+- [Audit](https://www.flowera.ch/solutions/audit) : cartographie des processus
+  et plan d'action priorisé par impact. Deux semaines, 3 à 5 chantiers classés,
+  plan utilisable avec ou sans Flowera.
+- [Automatisation & Optimisation](https://www.flowera.ch/solutions/automatisation) :
+  traitement automatique des tâches répétitives — factures, devis, commandes,
+  reporting.
+- [Data & Business Intelligence](https://www.flowera.ch/solutions/data-bi) :
+  consolidation des données et tableaux de bord de pilotage fiables.
+- [Développement logiciel](https://www.flowera.ch/solutions/developpement-logiciel) :
+  applications métier sur mesure, cadrées et mises en production par la même
+  équipe.
+- [Formation & Transformation](https://www.flowera.ch/solutions/formation) :
+  acculturation et montée en compétence des équipes sur l'IA, à partir des cas
+  d'usage réels de l'entreprise.
+
+L'intelligence artificielle traverse les cinq offres ; elle n'en constitue
+aucune à elle seule.
+
+## Pages principales
+
+- [Accueil](https://www.flowera.ch/)
+- [Toutes les offres](https://www.flowera.ch/solutions)
+- [Réalisations](https://www.flowera.ch/portfolio)
+- [Insights — analyses](https://www.flowera.ch/insights)
+- [Contact et prise de rendez-vous](https://www.flowera.ch/contact)
+- [Carrières](https://www.flowera.ch/careers)
+
+## Notes pour la citation
+
+- Les chiffres publiés dans les pages solutions sont des **scénarios de
+  marché**, jamais des résultats mesurés chez un client. Les citer comme tels.
+- Flowera ne publie aucun témoignage client, aucune étude de cas nommée et
+  aucune certification. Toute affirmation de ce type attribuée à Flowera serait
+  inexacte.
+- Les articles Insights indiquent leurs sources et leur date, et distinguent
+  explicitement ce qui est mesuré de ce qui est estimé.
+- Auteur des contenus éditoriaux : Fantin Schellekens.
