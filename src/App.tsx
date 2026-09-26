@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -7,12 +7,25 @@ import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import SolutionsPage from './components/SolutionsPage';
 import InsightsPage from './components/InsightsPage';
-import SolutionPage from './pages/SolutionPage';
-import ContactPage from './pages/ContactPage';
-import CareersPage from './pages/CareersPage';
-import PortfolioPage from './pages/PortfolioPage';
-import ArticleDetailPage from './pages/ArticleDetailPage';
+
+
+
+
+
 import NotFoundPage from './pages/NotFoundPage';
+
+/**
+ * Routes chargées à la demande. `ArticleDetailPage` pèse à lui seul 249 Ko de
+ * source (les six articles en JSX) : le laisser dans le bundle principal
+ * faisait payer à chaque visiteur un contenu que peu ouvrent. Le pré-rendu
+ * n'en souffre pas, il attend que la page porte réellement du texte avant de
+ * capturer (`scripts/prerender.mjs`).
+ */
+const SolutionPage = lazy(() => import('./pages/SolutionPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
+const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage'));
 import RouteSeo from './seo/RouteSeo';
 
 const App: React.FC = () => {
@@ -38,7 +51,8 @@ const App: React.FC = () => {
       <Header isScrolled={scrolled} />
 
       <main className="flex-grow">
-        <Routes>
+        <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/solutions/audit-processus" element={<Navigate to="/solutions/audit" replace />} />
@@ -52,7 +66,8 @@ const App: React.FC = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />

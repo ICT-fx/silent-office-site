@@ -1,10 +1,34 @@
 
 import React from 'react';
-import { Mail, MapPin, Linkedin, Twitter, ArrowRight, Instagram, Check, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Linkedin, ArrowRight, Instagram, Check, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { solutionsList } from '../data/solutions';
 import { useContactForm } from '../hooks/useContactForm';
 import { CONTACT_EMAIL, COMPANY_ADDRESS_LINES } from '../config/booking';
+import { SOCIAL_PROFILES } from '../seo/siteMeta';
+
+/**
+ * Pictogrammes des réseaux. TikTok est dessiné à la main : lucide-react n'en
+ * fournit pas, et les marques propriétaires n'y ont pas leur place.
+ */
+const SOCIAL_ICONS: Record<string, React.FC> = {
+  LinkedIn: () => <Linkedin size={18} />,
+  Instagram: () => <Instagram size={18} />,
+  TikTok: () => (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-[18px] h-[18px]"
+      aria-hidden
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  ),
+};
 
 const Footer: React.FC = () => {
   const { status, error, formRef, handleSubmit, reset } = useContactForm('Pied de page');
@@ -54,16 +78,29 @@ const Footer: React.FC = () => {
 
             {/* Icônes 18px, mais cible tactile 44px : au doigt, le pictogramme
                 seul est trop petit pour être visé de façon fiable. Le retrait
-                négatif garde l'alignement optique sur la colonne. */}
+                négatif garde l'alignement optique sur la colonne.
+
+                Les URL viennent de `SOCIAL_PROFILES`, que le JSON-LD déclare
+                aussi en `sameAs` : un profil ajouté ici est immédiatement
+                connu des moteurs. L'icône X a été retirée, faute de compte.
+                `rel="me"` confirme la réciprocité site ↔ profil. */}
             <div className="flex gap-0.5 pt-1 -ml-3">
-              <a href="#" className="p-3 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors" title="LinkedIn" aria-label="LinkedIn"><Linkedin size={18} /></a>
-              <a href="#" className="p-3 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors" title="X (Twitter)" aria-label="X (Twitter)"><Twitter size={18} /></a>
-              <a href="#" className="p-3 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors" title="Instagram" aria-label="Instagram"><Instagram size={18} /></a>
-              <a href="#" className="p-3 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors" title="TikTok" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
-                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-                </svg>
-              </a>
+              {SOCIAL_PROFILES.map(({ name, url }) => {
+                const Icon = SOCIAL_ICONS[name];
+                return (
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    className="p-3 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors"
+                    title={name}
+                    aria-label={`Flowera sur ${name}`}
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

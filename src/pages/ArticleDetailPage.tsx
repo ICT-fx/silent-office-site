@@ -24,6 +24,929 @@ const ArticleDetailPage: React.FC = () => {
     }, [id]);
 
     // -------- CONTENU ARTICLE 2 (ROI IA) --------
+    // -------- CONTENU ARTICLE 7 (nLPD & IA) --------
+    if (id === '7') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img
+                        src="/images/articles/nlpd-ia-hero.svg"
+                        alt=""
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                                Expertise
+                            </span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
+                                nLPD et IA : cinq vérifications avant de brancher un outil
+                            </h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                En Suisse, l’amende ne tombe pas sur l’entreprise. Elle tombe sur la personne qui a décidé. C’est la différence que la plupart des dirigeants découvrent trop tard.
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={16} className="text-[#027333]" />
+                                    <span>10 Sep 2026</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Clock size={16} className="text-[#027333]" />
+                                    <span>13 min de lecture</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <User size={16} className="text-[#027333]" />
+                                    <span>Fantin Schellekens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            La conversation se déroule presque toujours de la même façon. Un dirigeant nous montre l’outil que son équipe a adopté le mois dernier. Il fonctionne, tout le monde l’aime. Puis vient la question : « au fait, où vont les documents qu’on y dépose ? » Et personne autour de la table ne sait répondre.
+                        </p>
+                        <p>
+                            Ce n’est pas une négligence. C’est la conséquence d’un décalage : les outils d’IA s’adoptent en quelques minutes, par les équipes elles‑mêmes, alors que le cadre juridique suisse suppose une décision documentée, prise en amont, par quelqu’un d’identifiable. Entre les deux, il y a un vide que personne n’a rempli.
+                        </p>
+                        <p>
+                            Cet article ne fait pas l’inventaire de la nouvelle loi fédérale sur la protection des données. Il isole les cinq points qui, dans notre expérience, décident réellement si un déploiement d’IA tient ou ne tient pas — et il commence par celui que presque personne ne connaît.
+                        </p>
+                    </div>
+
+                    {/* SECTION 1 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. La sanction ne vise pas votre entreprise</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            C’est le point le plus mal compris de la nLPD, entrée en vigueur le 1<sup>er</sup> septembre 2023 en remplacement de la loi de 1992. Beaucoup de dirigeants raisonnent par analogie avec le RGPD européen, où l’amende frappe la société et se calcule en pourcentage du chiffre d’affaires. Le mécanisme suisse est différent, et il est plus personnel.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Les articles 60 et suivants de la LPD prévoient une amende pouvant aller jusqu’à 250 000 francs, prononcée par l’autorité judiciaire cantonale, et dirigée contre <strong>la personne physique responsable</strong> — un directeur, un membre du conseil. L’entreprise ne peut pas la prendre à sa charge. Au‑delà de 5 000 francs, une inscription au casier judiciaire devient possible.
+                        </p>
+
+                        {/* FIGURE 1 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Qui paie, et combien</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Deux régimes de sanction qu’on confond souvent, alors qu’ils ne visent pas la même personne.</p>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="bg-white rounded-xl p-6 border border-gray-200">
+                                    <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">RGPD — Union européenne</div>
+                                    <div className="text-3xl font-bold text-[#262626] mb-1">4 %</div>
+                                    <div className="text-sm text-gray-500 mb-5">du chiffre d’affaires mondial, plafond haut</div>
+                                    <ul className="text-sm text-gray-600 space-y-2">
+                                        <li className="flex gap-2"><span className="text-gray-400">•</span> Vise <strong>l’entreprise</strong></li>
+                                        <li className="flex gap-2"><span className="text-gray-400">•</span> Négligence incluse</li>
+                                        <li className="flex gap-2"><span className="text-gray-400">•</span> Assurable, provisionnable</li>
+                                    </ul>
+                                </div>
+
+                                <div className="bg-[#262626] rounded-xl p-6">
+                                    <div className="text-xs font-bold uppercase tracking-widest text-[#93BF9E] mb-4">nLPD — Suisse</div>
+                                    <div className="text-3xl font-bold text-white mb-1">250 000 CHF</div>
+                                    <div className="text-sm text-gray-400 mb-5">montant maximal, prononcé au pénal</div>
+                                    <ul className="text-sm text-gray-300 space-y-2">
+                                        <li className="flex gap-2"><span className="text-[#93BF9E]">•</span> Vise <strong className="text-white">la personne physique</strong></li>
+                                        <li className="flex gap-2"><span className="text-[#93BF9E]">•</span> Infractions <strong className="text-white">intentionnelles</strong> seulement</li>
+                                        <li className="flex gap-2"><span className="text-[#93BF9E]">•</span> Non prise en charge par la société</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-6">Sources : art. 60 ss LPD ; PFPDT, dispositions pénales (voir note méthodologique)</p>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-8">
+                            Deux nuances comptent. D’abord, seule l’infraction <em>intentionnelle</em> est punissable : la négligence ne l’est pas, ce qui est nettement plus clément que le régime européen. Ensuite, « intentionnel » ne veut pas dire « malveillant ». Savoir qu’une obligation existe et choisir de ne pas s’en occuper suffit. C’est précisément la situation d’un dirigeant à qui l’on a signalé le sujet et qui l’a repoussé à plus tard.
+                        </p>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Ce que cela change en pratique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    La conformité cesse d’être un sujet qu’on délègue à l’informatique. Quand la sanction est personnelle et non assurable, la décision de brancher ou non un outil sur des données personnelles remonte naturellement au niveau qui l’assume. C’est inconfortable, mais c’est aussi ce qui rend le sujet traitable : il y a un décideur identifié, pas un comité.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 2 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Le registre : l’exemption est plus étroite qu’on ne croit</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            L’article 12 LPD impose de tenir un registre des activités de traitement. L’article 24 de l’ordonnance en dispense les entreprises de moins de 250 collaborateurs. Beaucoup de PME s’arrêtent à cette phrase et concluent qu’elles ne sont pas concernées. La condition d’effectif n’est pourtant que la première des deux.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            L’exemption suppose aussi que les traitements présentent un <strong>risque limité</strong> d’atteinte à la personnalité. Un traitement de données sensibles à grande échelle, ou un profilage à risque élevé, fait tomber la dispense quel que soit l’effectif. Or brancher un service d’IA sur des dossiers RH, des données de santé ou des évaluations de collaborateurs relève souvent de cette catégorie.
+                        </p>
+
+                        {/* FIGURE 2 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Êtes‑vous réellement dispensé de registre&nbsp;?</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Les deux conditions sont cumulatives. Une seule qui tombe, et le registre redevient obligatoire.</p>
+
+                            <div className="space-y-4">
+                                {[
+                                    { q: 'Moins de 250 collaborateurs ?', oui: 'On continue', non: 'Registre obligatoire', tone: 'neutral' },
+                                    { q: 'Aucun traitement de données sensibles à grande échelle ?', oui: 'On continue', non: 'Registre obligatoire', tone: 'neutral' },
+                                    { q: 'Aucun profilage à risque élevé ?', oui: 'Dispense applicable', non: 'Registre obligatoire', tone: 'final' },
+                                ].map((row, i) => (
+                                    <div key={row.q} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                                        <div className="px-5 py-4 flex items-start gap-3">
+                                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#262626] text-white text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                                            <span className="font-medium text-[#262626]">{row.q}</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 border-t border-gray-100 text-sm">
+                                            <div className="px-5 py-3 border-r border-gray-100">
+                                                <span className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-1">Oui</span>
+                                                <span className={row.tone === 'final' ? 'font-bold text-[#027333]' : 'text-gray-600'}>{row.oui}</span>
+                                            </div>
+                                            <div className="px-5 py-3 bg-[#FCFBF8]">
+                                                <span className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-1">Non</span>
+                                                <span className="font-bold text-[#262626]">{row.non}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-6">Sources : art. 12 LPD ; art. 24 OPDo</p>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Notre recommandation est pragmatique : tenez le registre même si vous êtes dispensé. Pas pour la conformité, pour vous. C’est le seul document qui répond en trente secondes à la question « quelles données partent où, et sous quel contrat ». Sans lui, chaque nouvel outil rouvre une enquête interne.
+                        </p>
+                    </section>
+
+                    {/* SECTION 3 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Brancher un outil d’IA, c’est un transfert</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Un service d’IA n’est pas un logiciel installé chez vous. C’est un sous‑traitant, souvent établi à l’étranger, à qui vous confiez des données. Le trajet compte autant que la destination : entre le moment où un collaborateur colle un extrait de contrat dans une interface et le moment où ce texte est traité, il franchit plusieurs frontières juridiques.
+                        </p>
+
+                        {/* FIGURE 3 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. Le trajet réel d’un document déposé dans un outil d’IA</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Chaque étape soulève une question distincte. Une seule sans réponse suffit à bloquer le déploiement.</p>
+
+                            <div className="space-y-3">
+                                {[
+                                    { icon: FileSearch, etape: 'Le collaborateur dépose un document', question: 'Contient‑il des données personnelles ? Sensibles ?' },
+                                    { icon: Network, etape: 'Le contenu part vers le fournisseur', question: 'Dans quel pays ? Sous quel régime de transfert ?' },
+                                    { icon: Database, etape: 'Le fournisseur le conserve', question: 'Combien de temps ? Est‑il utilisé pour l’entraînement ?' },
+                                    { icon: KeyRound, etape: 'Des tiers peuvent y accéder', question: 'Sous‑traitants ultérieurs ? Autorités du pays d’accueil ?' },
+                                    { icon: Repeat, etape: 'Vous devez pouvoir revenir en arrière', question: 'Comment obtenir la suppression, et qui la vérifie ?' },
+                                ].map(({ icon: Icon, etape, question }) => (
+                                    <div key={etape} className="bg-white rounded-xl border border-gray-200 px-5 py-4 flex items-start gap-4">
+                                        <Icon className="text-[#027333] flex-shrink-0 mt-0.5" size={20} />
+                                        <div className="min-w-0">
+                                            <div className="font-medium text-[#262626] text-sm">{etape}</div>
+                                            <div className="text-sm text-gray-500 mt-1">{question}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Sur le transfert lui‑même, la situation s’est simplifiée pour un cas très fréquent : depuis le 15 septembre 2024, le Conseil fédéral reconnaît le <em>Swiss‑US Data Privacy Framework</em>. Les transferts vers une entreprise américaine certifiée sous ce cadre ne nécessitent plus de clauses contractuelles types ni d’analyse d’impact du transfert. Encore faut‑il vérifier que votre fournisseur figure effectivement sur la liste des certifiés — beaucoup ne le sont pas.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Hors de ce cas, deux voies subsistent : le pays figure sur la liste des États à protection adéquate annexée à l’ordonnance, ou vous encadrez le transfert par des clauses contractuelles types assorties d’une analyse d’impact. Ce n’est pas insurmontable. C’est simplement un travail qui doit être fait avant le déploiement, pas après.
+                        </p>
+                    </section>
+
+                    {/* SECTION 4 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">4. Les cinq vérifications</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Voici la liste que nous passons systématiquement avant d’ouvrir un outil d’IA à des équipes. Elle tient en une réunion d’une heure quand les réponses existent, et elle révèle en général deux ou trois trous qu’il vaut mieux découvrir maintenant.
+                        </p>
+
+                        <div className="space-y-4 mb-12">
+                            {[
+                                {
+                                    t: 'Qui est le responsable identifié ?',
+                                    d: 'Une personne nommée, pas une fonction. Puisque la sanction est personnelle, l’ambiguïté sur ce point n’est pas tenable. Cette personne doit pouvoir dire non.',
+                                },
+                                {
+                                    t: 'Quelles catégories de données peuvent y entrer, et lesquelles sont interdites ?',
+                                    d: 'Écrit, diffusé, et appliqué par des règles techniques quand c’est possible. Une consigne orale ne survit pas à la première urgence.',
+                                },
+                                {
+                                    t: 'Où partent les données, et sous quel régime de transfert ?',
+                                    d: 'Liste des États à protection adéquate, Swiss‑US Data Privacy Framework, ou clauses contractuelles types avec analyse d’impact. L’une des trois, documentée.',
+                                },
+                                {
+                                    t: 'Le contrat de sous‑traitance existe‑t‑il vraiment ?',
+                                    d: 'Les conditions générales acceptées d’un clic en font rarement office. Vérifiez la durée de conservation, l’usage pour l’entraînement, et les sous‑traitants ultérieurs.',
+                                },
+                                {
+                                    t: 'Que se passe‑t‑il le jour de l’incident ?',
+                                    d: 'La violation de sécurité doit être annoncée au PFPDT dans les meilleurs délais. Si personne ne sait qui appelle qui, le délai est déjà dépassé quand la question se pose.',
+                                },
+                            ].map((item, i) => (
+                                <div key={item.t} className="flex gap-5 bg-white rounded-2xl border border-gray-200 p-6">
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#027333] text-white font-bold flex items-center justify-center">
+                                        {i + 1}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-[#262626] mb-2">{item.t}</h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h3 className="text-xl font-bold text-[#262626] mb-6">Quatre erreurs qui reviennent</h3>
+                        <ul className="space-y-4 mb-8">
+                            {[
+                                'Interdire l’IA par note de service. L’usage passe en clandestinité, sur des comptes personnels, et vous perdez toute visibilité — le contraire du résultat recherché.',
+                                'Confondre « données anonymisées » et « données dont on a retiré le nom ». Un dossier reste identifiant par son contenu, pas par son en‑tête.',
+                                'S’appuyer sur une mention de conformité affichée par le fournisseur sans vérifier le registre officiel des certifications.',
+                                'Traiter le sujet comme un projet informatique. La décision est de gouvernance : c’est celui qui porte la responsabilité pénale qui doit trancher.',
+                            ].map((item) => (
+                                <li key={item} className="flex gap-3 items-start text-gray-700">
+                                    <AlertTriangle className="text-[#027333] flex-shrink-0 mt-0.5" size={20} />
+                                    <span className="leading-relaxed">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Cet article s’appuie sur le texte de la loi fédérale sur la protection des données et de son ordonnance, ainsi que sur les informations publiées par le Préposé fédéral à la protection des données et à la transparence. Il décrit un cadre général et ne constitue pas un avis juridique : la qualification d’un traitement donné, l’étendue d’une dispense ou la nécessité d’une analyse d’impact dépendent de circonstances que seul un examen du cas permet d’établir. Pour une décision engageante, faites valider votre situation par un conseil qualifié. Les échéances et références citées sont à jour au 10 septembre 2026.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Conclusion */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Le régime suisse a une propriété inhabituelle : en visant la personne plutôt que la société, il rend le sujet impossible à diluer. Personne ne peut provisionner cette amende ni la faire disparaître dans un budget conformité. Cela déplaît, et c’est pourtant ce qui permet d’avancer — il y a quelqu’un dont c’est la décision.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La bonne nouvelle, c’est que les cinq vérifications ci‑dessus ne demandent ni outil ni budget. Elles demandent une heure, un responsable nommé et l’acceptation d’écrire ce qui était jusque‑là implicite. Dans la plupart des PME que nous accompagnons, le travail réel tient en une demi‑journée.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Ce qui coûte cher, ce n’est jamais la conformité. C’est de découvrir après coup que trois services différents ont chacun branché leur propre outil sur les mêmes dossiers clients, sans que personne n’ait tranché.
+                        </p>
+                    </section>
+
+                    {/* Sources */}
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Loi fédérale sur la protection des données (LPD), entrée en vigueur le 1<sup>er</sup> septembre 2023 — notamment art. 12 (registre des activités de traitement), art. 22 (analyse d’impact), art. 24 (annonce des violations de la sécurité des données) et art. 60 ss (dispositions pénales).</li>
+                            <li>Ordonnance sur la protection des données (OPDo), art. 24 — dispense de registre pour les entreprises de moins de 250 collaborateurs dont les traitements présentent un risque limité ; annexe 1 — liste des États assurant une protection adéquate.</li>
+                            <li>Préposé fédéral à la protection des données et à la transparence (PFPDT), informations publiées sur les dispositions pénales et sur l’annonce des violations de la sécurité des données.</li>
+                            <li>Conseil fédéral, reconnaissance du <em>Swiss‑US Data Privacy Framework</em> — décision annoncée le 14 août 2024, modification de l’annexe 1 OPDo en vigueur depuis le 15 septembre 2024.</li>
+                        </ul>
+                    </section>
+
+                    {/* CTA */}
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Savez‑vous où partent les données que vos équipes déposent&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous passons les cinq vérifications avec vous, sur les outils réellement utilisés dans votre entreprise, et nous écrivons ce qui manque. Une demi‑journée, un responsable nommé, un cadre applicable.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            Cadrer notre usage de l’IA
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
+    // -------- CONTENU ARTICLE 8 (HÉBERGEMENT & SOUVERAINETÉ) --------
+    if (id === '8') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img
+                        src="/images/articles/hebergement-donnees-hero.svg"
+                        alt=""
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                                Expertise
+                            </span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
+                                Où héberger vos données quand vous utilisez l’IA
+                            </h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                « Nos serveurs sont en Suisse » ne répond pas à la question. La bonne question n’est pas où sont les données, mais qui peut légalement exiger d’y accéder.
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={16} className="text-[#027333]" />
+                                    <span>18 Sep 2026</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Clock size={16} className="text-[#027333]" />
+                                    <span>12 min de lecture</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <User size={16} className="text-[#027333]" />
+                                    <span>Fantin Schellekens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Un argument commercial revient dans presque tous les appels d’offres : « hébergement en Suisse ». Il rassure, il se vend bien, et il ne dit presque rien. Un centre de données situé à Zurich mais exploité par une filiale d’un groupe américain n’offre pas la protection que le dirigeant croit acheter.
+                        </p>
+                        <p>
+                            Ce n’est pas une subtilité de juriste. C’est la différence entre une garantie géographique et une garantie juridique. La première se voit sur une carte, la seconde dépend du droit auquel l’exploitant est soumis — et ces deux choses ne coïncident pas toujours.
+                        </p>
+                        <p>
+                            Cet article reformule la question dans le bon ordre, décrit les trois régimes de transfert applicables depuis la nLPD, explique ce que la reconnaissance du <em>Swiss‑US Data Privacy Framework</em> a changé en septembre 2024, et propose une façon de trancher selon la nature des données plutôt que selon le discours du fournisseur.
+                        </p>
+                    </div>
+
+                    {/* SECTION 1 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. La question est mal posée</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La localisation physique répond à une question de latence et de continuité de service. Elle ne répond pas à la question de l’accès. Ce qui détermine qui peut exiger la communication de vos données, c’est le droit applicable à l’entreprise qui les exploite, pas la longitude du bâtiment.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            L’exemple le plus documenté est le <em>CLOUD Act</em> américain, adopté en 2018 : il permet aux autorités des États‑Unis d’exiger d’un fournisseur soumis à leur juridiction la production de données qu’il détient, y compris lorsqu’elles sont stockées à l’étranger. Un hébergement suisse opéré par une société de droit américain reste donc dans le champ. Ce n’est ni un scandale ni une fatalité : c’est un paramètre à connaître avant de signer.
+                        </p>
+
+                        {/* FIGURE 1 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Deux questions qu’on confond</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">La première se vérifie sur une facture. La seconde demande de lire le contrat et de savoir qui contrôle l’exploitant.</p>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="bg-white rounded-xl p-6 border border-gray-200">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <Database className="text-gray-400" size={18} />
+                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Où sont les données</span>
+                                    </div>
+                                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                                        Réponse géographique. Utile pour la latence, la continuité et parfois pour une exigence sectorielle.
+                                    </p>
+                                    <div className="text-xs text-gray-400 border-t border-gray-100 pt-3">
+                                        Se vérifie facilement. Ne protège pas d’un accès légal étranger.
+                                    </div>
+                                </div>
+
+                                <div className="bg-[#262626] rounded-xl p-6">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <KeyRound className="text-[#93BF9E]" size={18} />
+                                        <span className="text-xs font-bold uppercase tracking-widest text-[#93BF9E]">Qui peut y accéder</span>
+                                    </div>
+                                    <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                        Réponse juridique. Dépend du droit applicable à l’exploitant, de sa maison mère, et de ses sous‑traitants.
+                                    </p>
+                                    <div className="text-xs text-gray-400 border-t border-gray-700 pt-3">
+                                        C’est celle qui détermine votre exposition réelle.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 2 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Les trois régimes de transfert</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Dès que des données personnelles quittent la Suisse, la LPD impose de justifier le transfert par l’un de trois mécanismes. Ce n’est pas une formalité : c’est ce qui rend le transfert licite, et c’est la première chose qu’on vous demandera en cas de contrôle.
+                        </p>
+
+                        {/* FIGURE 2 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Les trois voies, de la plus simple à la plus lourde</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Une seule suffit, mais il en faut une. L’absence de justification n’est pas une option.</p>
+
+                            <div className="space-y-4">
+                                {[
+                                    {
+                                        n: '1',
+                                        titre: 'État à protection adéquate',
+                                        charge: 'Aucune démarche',
+                                        d: 'Le pays de destination figure à l’annexe 1 de l’ordonnance. Les États membres de l’Espace économique européen en font partie. Le transfert se fait sans formalité supplémentaire.',
+                                        ton: 'light',
+                                    },
+                                    {
+                                        n: '2',
+                                        titre: 'Swiss‑US Data Privacy Framework',
+                                        charge: 'Vérifier la certification',
+                                        d: 'Pour les États‑Unis uniquement, et seulement vers une entreprise effectivement certifiée. Ni clauses contractuelles types, ni analyse d’impact du transfert. La vérification au registre officiel reste indispensable.',
+                                        ton: 'accent',
+                                    },
+                                    {
+                                        n: '3',
+                                        titre: 'Clauses contractuelles types + analyse d’impact',
+                                        charge: 'Travail documenté',
+                                        d: 'La voie par défaut pour tout le reste. Il faut conclure les clauses et évaluer si le droit du pays de destination ne les vide pas de leur substance. C’est là que la plupart des dossiers s’enlisent.',
+                                        ton: 'dark',
+                                    },
+                                ].map((v) => (
+                                    <div
+                                        key={v.n}
+                                        className={
+                                            'rounded-xl p-6 border ' +
+                                            (v.ton === 'dark'
+                                                ? 'bg-[#262626] border-[#262626]'
+                                                : v.ton === 'accent'
+                                                  ? 'bg-white border-[#027333]'
+                                                  : 'bg-white border-gray-200')
+                                        }
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <span
+                                                className={
+                                                    'flex-shrink-0 w-8 h-8 rounded-full font-bold text-sm flex items-center justify-center ' +
+                                                    (v.ton === 'dark' ? 'bg-[#93BF9E] text-[#262626]' : 'bg-[#027333] text-white')
+                                                }
+                                            >
+                                                {v.n}
+                                            </span>
+                                            <div className="min-w-0 flex-1">
+                                                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                                    <h3 className={'font-bold ' + (v.ton === 'dark' ? 'text-white' : 'text-[#262626]')}>{v.titre}</h3>
+                                                    <span className={'text-xs font-bold uppercase tracking-wider ' + (v.ton === 'dark' ? 'text-[#93BF9E]' : 'text-[#027333]')}>
+                                                        {v.charge}
+                                                    </span>
+                                                </div>
+                                                <p className={'text-sm leading-relaxed ' + (v.ton === 'dark' ? 'text-gray-300' : 'text-gray-600')}>{v.d}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-6">Sources : art. 16 ss LPD ; annexe 1 OPDo ; décision du Conseil fédéral du 14 août 2024</p>
+                        </div>
+                    </section>
+
+                    {/* SECTION 3 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Ce que septembre 2024 a changé</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Avant cette date, tout transfert vers les États‑Unis relevait de la troisième voie : clauses contractuelles types et analyse d’impact, pour chaque fournisseur. Beaucoup de PME ont renoncé à des outils utiles pour cette seule raison, ou — plus souvent — les ont utilisés sans faire le travail.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            La reconnaissance du <em>Swiss‑US Data Privacy Framework</em>, annoncée le 14 août 2024 et effective au 15 septembre 2024, fait basculer les fournisseurs certifiés dans la première catégorie. La charge administrative disparaît pour eux. Elle reste entière pour les autres, et c’est un point que les argumentaires commerciaux entretiennent volontiers dans le flou.
+                        </p>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <ShieldCheck className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">La vérification qui prend deux minutes</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Une mention « conforme au Data Privacy Framework » sur une page marketing ne vaut pas certification. Le programme tient un registre public des entreprises certifiées, avec le statut en cours de validité. Cherchez le nom exact de l’entité contractante — pas celui du produit, pas celui du groupe. Une certification échue ou détenue par une autre filiale ne vous couvre pas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Le Conseil fédéral a par ailleurs indiqué qu’il réexaminerait régulièrement cette reconnaissance. Un cadre d’adéquation n’est pas un acquis définitif : l’histoire des accords transatlantiques précédents invite à garder une voie de repli documentée plutôt qu’à construire toute son architecture sur une seule décision administrative.
+                        </p>
+                    </section>
+
+                    {/* SECTION 4 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">4. Comment trancher, concrètement</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            La réponse n’est pas « tout en Suisse » — ce serait coûteux et souvent disproportionné. Elle consiste à classer les données par sensibilité, puis à n’appliquer la contrainte forte que là où elle se justifie. Voici la grille que nous utilisons au cadrage.
+                        </p>
+
+                        {/* FIGURE 3 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. Quelle exigence pour quelles données</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Proposition de classement, à ajuster selon le secteur et les engagements contractuels déjà pris.</p>
+
+                            <div className="space-y-3">
+                                {[
+                                    {
+                                        cat: 'Données de santé, données de collaborateurs, secrets d’affaires',
+                                        exig: 'Suisse, exploitant de droit suisse',
+                                        bg: 'bg-[#027333]',
+                                        text: 'text-white',
+                                        sub: 'text-[#93BF9E]',
+                                        note: 'Ou traitement local, sans sortie du périmètre.',
+                                    },
+                                    {
+                                        cat: 'Données clients nominatives, dossiers contractuels',
+                                        exig: 'Suisse ou EEE',
+                                        bg: 'bg-[#93BF9E]',
+                                        text: 'text-[#262626]',
+                                        sub: 'text-[#025928]',
+                                        note: 'États‑Unis acceptable si l’entité est certifiée au Framework.',
+                                    },
+                                    {
+                                        cat: 'Documents internes sans données personnelles',
+                                        exig: 'Libre, sous contrat de sous‑traitance',
+                                        bg: 'bg-white border border-gray-200',
+                                        text: 'text-[#262626]',
+                                        sub: 'text-gray-500',
+                                        note: 'Vérifier tout de même l’usage pour l’entraînement.',
+                                    },
+                                    {
+                                        cat: 'Contenus publics, documentation déjà publiée',
+                                        exig: 'Aucune contrainte de transfert',
+                                        bg: 'bg-white border border-dashed border-gray-300',
+                                        text: 'text-gray-600',
+                                        sub: 'text-gray-400',
+                                        note: 'La LPD ne s’applique pas en l’absence de données personnelles.',
+                                    },
+                                ].map((r) => (
+                                    <div key={r.cat} className={`${r.bg} rounded-xl p-5`}>
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                                            <span className={`text-sm font-medium ${r.text}`}>{r.cat}</span>
+                                            <span className={`text-xs font-bold uppercase tracking-wider ${r.sub}`}>{r.exig}</span>
+                                        </div>
+                                        <p className={`text-xs mt-2 ${r.sub}`}>{r.note}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-[#262626] mb-6">Les questions à poser au fournisseur</h3>
+                        <ul className="space-y-4 mb-8">
+                            {[
+                                'Quelle entité juridique signe le contrat, et de quel droit relève‑t‑elle ? Le nom du produit ne suffit pas.',
+                                'Mes contenus sont‑ils utilisés pour entraîner des modèles ? Si oui, est‑ce désactivable par contrat, et non par une case dans les réglages ?',
+                                'Quels sous‑traitants ultérieurs interviennent, et où ? La chaîne s’arrête rarement au premier fournisseur.',
+                                'Quelle est la durée de conservation, et quelle procédure de suppression puis‑je déclencher — avec quelle preuve ?',
+                                'En cas de violation de sécurité, sous quel délai serai‑je informé ? La nLPD m’impose d’annoncer au PFPDT dans les meilleurs délais.',
+                            ].map((item) => (
+                                <li key={item} className="flex gap-3 items-start text-gray-700">
+                                    <CheckCircle2 className="text-[#027333] flex-shrink-0 mt-0.5" size={20} />
+                                    <span className="leading-relaxed">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Cet article décrit le cadre issu de la loi fédérale sur la protection des données et de son ordonnance, tel qu’applicable au 18 septembre 2026. Le classement de la figure 3 est une proposition de travail, pas une norme : la sensibilité réelle d’une catégorie de données dépend du secteur, des engagements contractuels déjà pris et, pour certaines activités, de réglementations spécifiques qui priment. La mention du CLOUD Act décrit un mécanisme d’accès documenté et non une pratique systématique. Rien de ceci ne constitue un avis juridique ; pour une décision engageante, faites valider votre cas par un conseil qualifié.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Conclusion */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La souveraineté des données est devenue un argument de vente, ce qui l’a rendue confuse. Ramenée à l’essentiel, elle tient en une phrase : vous devez savoir quelle entité juridique détient vos données et à quel droit elle répond. Tout le reste en découle.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Poser cette question fait un tri immédiat parmi les fournisseurs. Ceux qui ont fait le travail répondent en une phrase et vous envoient le document. Les autres renvoient vers une page marketing. Cette réaction est, en pratique, l’information la plus utile de tout l’appel d’offres.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Et le bon réflexe n’est pas de tout rapatrier en Suisse. C’est de décider, catégorie par catégorie, ce qui mérite cette contrainte — puis de l’écrire, pour que la décision survive au départ de celui qui l’a prise.
+                        </p>
+                    </section>
+
+                    {/* Sources */}
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Loi fédérale sur la protection des données (LPD), en vigueur depuis le 1<sup>er</sup> septembre 2023 — art. 16 ss sur la communication de données personnelles à l’étranger ; art. 24 sur l’annonce des violations de la sécurité des données.</li>
+                            <li>Ordonnance sur la protection des données (OPDo), annexe 1 — liste des États dont la législation assure une protection adéquate.</li>
+                            <li>Conseil fédéral, reconnaissance du <em>Swiss‑US Data Privacy Framework</em> : décision annoncée le 14 août 2024, modification de l’annexe 1 OPDo en vigueur depuis le 15 septembre 2024, avec réexamen périodique annoncé.</li>
+                            <li>Préposé fédéral à la protection des données et à la transparence (PFPDT), communication du 15 août 2024 sur le nouveau cadre Suisse‑États‑Unis.</li>
+                            <li><em>Clarifying Lawful Overseas Use of Data Act</em> (CLOUD Act), États‑Unis, 2018 — production de données détenues par un fournisseur soumis à la juridiction américaine, y compris stockées hors du territoire.</li>
+                        </ul>
+                    </section>
+
+                    {/* CTA */}
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Quelle entité détient réellement vos données&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous classons vos données par sensibilité, vérifions le régime de transfert de chaque outil déjà en place, et posons le cadre qui manque. Le résultat tient en une page, lisible par votre direction.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            Faire le point sur nos données
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
+    // -------- CONTENU ARTICLE 9 (EU AI ACT & PME SUISSES) --------
+    if (id === '9') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img
+                        src="/images/articles/ai-act-suisse-hero.svg"
+                        alt=""
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">
+                                Stratégie
+                            </span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">
+                                L’EU AI Act s’applique‑t‑il à votre PME suisse&nbsp;?
+                            </h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                La Suisse n’est pas dans l’Union européenne. Le critère du règlement n’est pourtant pas votre siège : c’est le marché que vous touchez et l’endroit où votre résultat est utilisé.
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={16} className="text-[#027333]" />
+                                    <span>26 Sep 2026</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Clock size={16} className="text-[#027333]" />
+                                    <span>11 min de lecture</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <User size={16} className="text-[#027333]" />
+                                    <span>Fantin Schellekens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Deux réponses circulent en Suisse romande, et toutes deux sont fausses. « On n’est pas dans l’UE, ça ne nous concerne pas. » Et son symétrique anxieux : « tout est repoussé à 2027, on a le temps. » La réalité tient entre les deux, et elle demande dix minutes pour être tranchée.
+                        </p>
+                        <p>
+                            Le règlement européen sur l’intelligence artificielle a une portée extraterritoriale assumée. Une entreprise suisse entre dans son champ dès lors qu’elle met un système d’IA sur le marché de l’Union, ou que le résultat produit par son système y est utilisé. Pas besoin de filiale européenne, ni même de client européen au sens commercial.
+                        </p>
+                        <p>
+                            Par ailleurs, le paquet de simplification adopté cet été a bien repoussé certaines échéances — mais pas celles qui concernent le plus grand nombre de PME. Cet article démêle ce qui s’applique aujourd’hui de ce qui attendra décembre 2027, et propose un test en quatre questions.
+                        </p>
+                    </div>
+
+                    {/* SECTION 1 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. Le critère n’est pas votre siège</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Le règlement suit la logique des textes européens récents : il s’attache à l’effet, pas à l’implantation. Deux rattachements suffisent à faire entrer une société suisse dans le champ. Le premier : vous mettez un système d’IA à disposition sur le marché de l’Union, directement ou par un intégrateur. Le second, moins intuitif : le <em>résultat</em> produit par votre système est utilisé dans l’Union.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Ce second cas attrape beaucoup de situations ordinaires. Une PME genevoise qui trie des candidatures avec un outil d’IA, et dont certains candidats résident dans l’Union, produit un résultat utilisé dans l’Union. Une société vaudoise qui vend un logiciel doté d’une fonction d’IA à un client allemand également. Le siège suisse ne change rien à l’un ni à l’autre.
+                        </p>
+
+                        {/* FIGURE 1 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Quatre situations courantes</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Aucune de ces entreprises n’a d’établissement dans l’Union européenne.</p>
+
+                            <div className="space-y-3">
+                                {[
+                                    { cas: 'Outil interne d’IA, collaborateurs et clients exclusivement suisses', concerne: false, pourquoi: 'Aucun rattachement au marché de l’Union.' },
+                                    { cas: 'Logiciel doté d’une fonction d’IA vendu à un client allemand', concerne: true, pourquoi: 'Mise sur le marché de l’Union.' },
+                                    { cas: 'Tri de candidatures par IA, candidats résidant dans l’Union', concerne: true, pourquoi: 'Résultat utilisé dans l’Union.' },
+                                    { cas: 'Agent conversationnel sur un site accessible depuis l’Union', concerne: true, pourquoi: 'Interaction avec des personnes situées dans l’Union.' },
+                                ].map((r) => (
+                                    <div
+                                        key={r.cas}
+                                        className={
+                                            'rounded-xl p-5 flex items-start gap-4 ' +
+                                            (r.concerne ? 'bg-[#262626]' : 'bg-white border border-gray-200')
+                                        }
+                                    >
+                                        <span
+                                            className={
+                                                'flex-shrink-0 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded ' +
+                                                (r.concerne ? 'bg-[#93BF9E] text-[#262626]' : 'bg-gray-100 text-gray-500')
+                                            }
+                                        >
+                                            {r.concerne ? 'Concerné' : 'Hors champ'}
+                                        </span>
+                                        <div className="min-w-0">
+                                            <div className={'text-sm font-medium ' + (r.concerne ? 'text-white' : 'text-[#262626]')}>{r.cas}</div>
+                                            <div className={'text-xs mt-1 ' + (r.concerne ? 'text-gray-400' : 'text-gray-500')}>{r.pourquoi}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-6">Lecture des critères de rattachement du règlement (voir note méthodologique)</p>
+                        </div>
+                    </section>
+
+                    {/* SECTION 2 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Ce qui s’applique déjà</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            C’est le point que le débat sur les reports a fait disparaître : <strong>les obligations de transparence de l’article 50 sont entrées en application le 2 août 2026 et n’ont pas bougé.</strong> Le paquet de simplification ne les a pas touchées.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Concrètement, une personne qui interagit avec un système d’IA doit en être informée, sauf si cela est évident. Les contenus de synthèse — texte, image, son, vidéo — doivent être marqués comme tels dans un format lisible par machine. Pour les systèmes déjà déployés, une tolérance courait jusqu’au 2 décembre 2026 sur l’exigence de marquage. Elle arrive à échéance.
+                        </p>
+
+                        {/* FIGURE 2 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Le calendrier, avant et après le paquet de simplification</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Règlement (UE) 2026/1744, publié au Journal officiel le 24 juillet 2026, en vigueur depuis le 27 juillet 2026.</p>
+
+                            <div className="space-y-5">
+                                {[
+                                    { obj: 'Interdictions et obligation de compétence en IA', avant: '2 février 2025', apres: 'inchangé', bouge: false },
+                                    { obj: 'Modèles d’IA à usage général', avant: '2 août 2025', apres: 'inchangé', bouge: false },
+                                    { obj: 'Transparence (art. 50)', avant: '2 août 2026', apres: 'inchangé', bouge: false },
+                                    { obj: 'Haut risque — annexe III, systèmes autonomes', avant: '2 août 2026', apres: '2 décembre 2027', bouge: true },
+                                    { obj: 'Haut risque — intégré à un produit réglementé', avant: '2 août 2027', apres: '2 août 2028', bouge: true },
+                                ].map((r) => (
+                                    <div key={r.obj} className="bg-white rounded-xl border border-gray-200 p-5">
+                                        <div className="font-medium text-[#262626] text-sm mb-3">{r.obj}</div>
+                                        <div className="flex items-center gap-3 flex-wrap">
+                                            <span className={'text-sm px-3 py-1.5 rounded ' + (r.bouge ? 'line-through text-gray-400 bg-gray-50' : 'text-[#262626] bg-gray-50 font-medium')}>
+                                                {r.avant}
+                                            </span>
+                                            {r.bouge && (
+                                                <>
+                                                    <span className="text-gray-300">→</span>
+                                                    <span className="text-sm px-3 py-1.5 rounded bg-[#027333] text-white font-medium">{r.apres}</span>
+                                                </>
+                                            )}
+                                            {!r.bouge && (
+                                                <span className="text-xs font-bold uppercase tracking-wider text-[#027333]">déjà applicable</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Autrement dit : le report concerne la catégorie la plus lourde, celle qui touche le moins de PME. Ce qui s’applique à la plus grande partie d’entre elles — dire que c’est une IA, marquer ce qu’elle produit, former les équipes qui l’utilisent — est en vigueur maintenant.
+                        </p>
+                    </section>
+
+                    {/* SECTION 3 */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Le test en quatre questions</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Ce test ne remplace pas une qualification juridique. Il sert à savoir si vous devez en demander une, et c’est déjà l’essentiel : la plupart des PME que nous rencontrons n’ont jamais posé la question.
+                        </p>
+
+                        <div className="space-y-4 mb-12">
+                            {[
+                                {
+                                    q: 'Un résultat produit par un de vos systèmes d’IA est‑il utilisé dans l’Union européenne ?',
+                                    d: 'Candidats, clients, prospects, utilisateurs finaux. Si la réponse est oui, même marginalement, vous êtes dans le champ. C’est la question qui élimine le plus de faux négatifs.',
+                                },
+                                {
+                                    q: 'Une personne peut‑elle interagir avec votre IA sans savoir que c’en est une ?',
+                                    d: 'Agent conversationnel, assistant de prise de rendez‑vous, réponse automatique. Si oui, l’obligation d’information de l’article 50 s’applique aujourd’hui.',
+                                },
+                                {
+                                    q: 'Produisez‑vous du contenu de synthèse diffusé à l’extérieur ?',
+                                    d: 'Texte, visuel, voix, vidéo. L’exigence de marquage lisible par machine est en vigueur, et la tolérance accordée aux systèmes déjà déployés expire le 2 décembre 2026.',
+                                },
+                                {
+                                    q: 'Votre système sert‑il à décider de l’accès à un emploi, à un crédit, à une formation ou à un service essentiel ?',
+                                    d: 'Vous êtes alors probablement dans la catégorie haut risque de l’annexe III. L’échéance a été repoussée au 2 décembre 2027 : c’est du temps pour se préparer, pas une dispense.',
+                                },
+                            ].map((item, i) => (
+                                <div key={item.q} className="flex gap-5 bg-white rounded-2xl border border-gray-200 p-6">
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#027333] text-white font-bold flex items-center justify-center">
+                                        {i + 1}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-[#262626] mb-2">{item.q}</h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* FIGURE 3 */}
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. L’échelle des sanctions</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Pour une PME, c’est le montant le plus faible des deux qui s’applique — l’inverse du régime prévu pour les grandes entreprises.</p>
+
+                            <div className="grid sm:grid-cols-3 gap-4">
+                                <div className="bg-white rounded-xl p-5 border border-gray-200">
+                                    <div className="text-2xl font-bold text-[#262626]">15 M€</div>
+                                    <div className="text-xs text-gray-500 mt-2 leading-snug">plafond en valeur absolue</div>
+                                </div>
+                                <div className="bg-white rounded-xl p-5 border border-gray-200">
+                                    <div className="text-2xl font-bold text-[#262626]">3 %</div>
+                                    <div className="text-xs text-gray-500 mt-2 leading-snug">du chiffre d’affaires annuel mondial</div>
+                                </div>
+                                <div className="bg-[#027333] rounded-xl p-5">
+                                    <div className="text-2xl font-bold text-white">le plus bas</div>
+                                    <div className="text-xs text-[#93BF9E] mt-2 leading-snug">des deux, pour une PME ou une jeune pousse</div>
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                Ces plafonds valent pour les manquements aux obligations. D’autres seuils, plus élevés, s’appliquent aux pratiques interdites. Pour une PME suisse, le risque immédiat n’est toutefois pas l’amende : c’est le client européen qui exige une attestation de conformité au moment de signer, et qui ne l’obtient pas.
+                            </p>
+                        </div>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Les échéances citées reflètent l’état du droit au 26 septembre 2026, après l’entrée en vigueur du règlement (UE) 2026/1744 dit « omnibus numérique sur l’IA ». Le classement d’un système donné en haut risque, l’identification du rôle exact de l’entreprise — fournisseur, déployeur, importateur — et l’application des exemptions demandent un examen au cas par cas que cet article ne remplace pas. Les quatre situations de la figure 1 sont des illustrations construites, non des cas tranchés par une autorité. La Suisse ne dispose pas à ce jour d’une réglementation générale équivalente ; les travaux en cours au niveau fédéral pourraient modifier ce constat.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Conclusion */}
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Le report de décembre 2027 a produit un effet secondaire regrettable : il a laissé croire que le sujet pouvait attendre. Pour la catégorie haut risque, c’est vrai. Pour la transparence, qui concerne bien plus d’entreprises, c’est faux — elle s’applique depuis le 2 août 2026.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La bonne nouvelle pour une PME suisse, c’est que les obligations en vigueur sont les moins coûteuses du règlement. Signaler qu’un agent conversationnel est une IA, marquer les contenus de synthèse, former les équipes qui manipulent ces outils : rien là‑dedans ne demande un programme de conformité. Cela demande d’avoir posé la question une fois.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Et il y a un bénéfice commercial à s’en occuper tôt. Vos clients européens, eux, sont soumis au règlement sans ambiguïté. Le fournisseur qui sait répondre à leurs questions de conformité gagne un avantage que la concurrence mettra des mois à rattraper.
+                        </p>
+                    </section>
+
+                    {/* Sources */}
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Règlement (UE) 2024/1689 établissant des règles harmonisées concernant l’intelligence artificielle — champ d’application territorial, obligations de transparence (art. 50), classification des systèmes à haut risque (annexe III), régime des sanctions.</li>
+                            <li>Règlement (UE) 2026/1744, dit « omnibus numérique sur l’IA » — publié au Journal officiel de l’Union européenne le 24 juillet 2026, entré en vigueur le 27 juillet 2026 ; report des obligations relatives aux systèmes à haut risque de l’annexe III au 2 décembre 2027, et au 2 août 2028 pour ceux intégrés à des produits réglementés.</li>
+                            <li>Calendrier d’application antérieur : interdictions et obligation de compétence en IA depuis le 2 février 2025 ; modèles d’IA à usage général depuis le 2 août 2025 ; obligations de transparence depuis le 2 août 2026, avec tolérance de marquage pour les systèmes déjà déployés jusqu’au 2 décembre 2026.</li>
+                        </ul>
+                    </section>
+
+                    {/* CTA */}
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Vos systèmes d’IA touchent‑ils le marché européen&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous passons le test avec vous sur vos usages réels, identifions ce qui relève de l’article 50 et ce qui peut attendre, et préparons les réponses que vos clients européens vous demanderont.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            Faire le test avec nous
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
     if (id === '2') {
         return (
             <div className="min-h-screen bg-white">
@@ -585,7 +1508,7 @@ const ArticleDetailPage: React.FC = () => {
                     {/* Introduction */}
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
                         <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
-                            La demande arrive presque toujours formulée de la même façon : « il nous faut trois semaines pour sortir le pack du conseil, il faut automatiser ». C’est une bonne intuition et un mauvais diagnostic. Dans la plupart des organisations, le pack n’est pas trop lent à produire. Il est trop long à lire.
+                            La demande arrive presque toujours formulée de la même façon : « il nous faut trois semaines pour sortir le pack du conseil, il faut automatiser ». C’est une bonne intuition et un mauvais diagnostic. Dans la plupart des organisations, le pack n’est pas trop lent à produire. Il est trop long à lire.
                         </p>
                         <p>
                             Automatiser un processus sans le repenser produit exactement le même résultat, plus vite et moins cher. Appliqué au reporting board, cela donne 226 pages que personne ne lit, livrées le mardi au lieu du vendredi. Le gain est réel pour l’équipe finance ; il est nul pour le conseil.
@@ -643,7 +1566,7 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
 
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            Le jugement porté sur ces documents suit la même pente. Moins de la moitié des administrateurs estiment que les documents du conseil apportent de la valeur ; plus de quatre sur dix les jugent sans effet ; une minorité considère qu’ils <em>nuisent</em> au débat. Et près des deux tiers notent leur pack « faible » ou « médiocre ».
+                            Le jugement porté sur ces documents suit la même pente. Moins de la moitié des administrateurs estiment que les documents du conseil apportent de la valeur ; plus de quatre sur dix les jugent sans effet ; une minorité considère qu’ils <em>nuisent</em> au débat. Et près des deux tiers notent leur pack « faible » ou « médiocre ».
                         </p>
 
                         {/* FIGURE 2 — Perception */}
@@ -674,7 +1597,7 @@ const ArticleDetailPage: React.FC = () => {
 
                             <div className="mt-8 pt-6 border-t border-gray-200 flex items-baseline gap-4">
                                 <span className="text-4xl font-bold text-[#262626]">63 %</span>
-                                <span className="text-sm text-gray-600 leading-snug">des administrateurs et professionnels de la gouvernance notent leur pack « faible » ou « médiocre ».</span>
+                                <span className="text-sm text-gray-600 leading-snug">des administrateurs et professionnels de la gouvernance notent leur pack « faible » ou « médiocre ».</span>
                             </div>
                         </div>
 
@@ -848,7 +1771,7 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">4. Où l’IA a sa place, et où elle n’en a aucune</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            C’est le point sur lequel il faut être catégorique, parce qu’il engage la responsabilité des administrateurs. <strong className="text-[#262626]">Un modèle de langage ne doit jamais produire un chiffre destiné au conseil.</strong> Pas « rarement », pas « sous réserve de relecture » : jamais.
+                            C’est le point sur lequel il faut être catégorique, parce qu’il engage la responsabilité des administrateurs. <strong className="text-[#262626]">Un modèle de langage ne doit jamais produire un chiffre destiné au conseil.</strong> Pas « rarement », pas « sous réserve de relecture » : jamais.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-10">
                             Les chiffres viennent de traitements déterministes — des requêtes, des règles de calcul versionnées, une piste d’audit rejouable. Ce qu’un modèle sait très bien faire, en revanche, c’est travailler <em>par-dessus</em> des chiffres déjà vérifiés : détecter les écarts qui méritent un commentaire, rédiger une première version de la narration, reformuler pour un lecteur non financier, résumer une annexe de quarante pages en un paragraphe. La frontière est nette et elle est facile à tenir.
@@ -903,7 +1826,7 @@ const ArticleDetailPage: React.FC = () => {
                             <div>
                                 <h4 className="font-bold text-lg mb-2">Le test à appliquer avant toute mise en production</h4>
                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                    Prenez n’importe quel chiffre du pack généré et demandez sa provenance. Si la réponse n’est pas « telle table, telle règle de calcul, telle version, exécutée à telle date », le chiffre n’est pas publiable devant un conseil. Cette exigence n’a rien de spécifique à l’IA : c’est la même que pour un tableur. La différence est qu’un tableur ne produit pas de phrase convaincante pour masquer une lacune.
+                                    Prenez n’importe quel chiffre du pack généré et demandez sa provenance. Si la réponse n’est pas « telle table, telle règle de calcul, telle version, exécutée à telle date », le chiffre n’est pas publiable devant un conseil. Cette exigence n’a rien de spécifique à l’IA : c’est la même que pour un tableur. La différence est qu’un tableur ne produit pas de phrase convaincante pour masquer une lacune.
                                 </p>
                             </div>
                         </div>
@@ -917,7 +1840,7 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">5. Le périmètre vient de changer : la CSRD après l’Omnibus</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            Une partie de l’inflation des packs venait de la préparation au reporting de durabilité. Le cadre a été substantiellement revu. La directive dite « Omnibus I », adoptée par le Parlement européen en décembre 2025, validée par le Conseil le 24 février 2026, publiée au Journal officiel de l’Union le 26 février et entrée en vigueur le 18 mars 2026, relève fortement les seuils d’application de la CSRD.
+                            Une partie de l’inflation des packs venait de la préparation au reporting de durabilité. Le cadre a été substantiellement revu. La directive dite « Omnibus I », adoptée par le Parlement européen en décembre 2025, validée par le Conseil le 24 février 2026, publiée au Journal officiel de l’Union le 26 février et entrée en vigueur le 18 mars 2026, relève fortement les seuils d’application de la CSRD.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-10">
                             Le seuil passe à 1 000 salariés et 450 millions d’euros de chiffre d’affaires net. L’effet sur le périmètre est massif.
@@ -970,7 +1893,7 @@ const ArticleDetailPage: React.FC = () => {
                             Le calendrier glisse en conséquence : les grandes entreprises non cotées de la deuxième vague ne publieront qu’en 2028, sur l’exercice 2027, au lieu de 2026 ; les PME cotées de la troisième vague en 2029 sur l’exercice 2028.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            Deux conclusions opposées et également fausses circulent. La première : « nous sommes sortis du périmètre, le sujet est clos ». Sauf que donneurs d’ordre, banques et investisseurs continuent de réclamer les mêmes données, sans le calendrier réglementaire pour les cadrer. La seconde : « rien ne change, continuons comme prévu ». Sauf qu’une organisation hors périmètre qui maintient un dispositif calibré pour la conformité intégrale dépense pour un besoin qui n’existe plus.
+                            Deux conclusions opposées et également fausses circulent. La première : « nous sommes sortis du périmètre, le sujet est clos ». Sauf que donneurs d’ordre, banques et investisseurs continuent de réclamer les mêmes données, sans le calendrier réglementaire pour les cadrer. La seconde : « rien ne change, continuons comme prévu ». Sauf qu’une organisation hors périmètre qui maintient un dispositif calibré pour la conformité intégrale dépense pour un besoin qui n’existe plus.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-8">
                             La bonne lecture est plus ennuyeuse et plus utile : le report est une fenêtre de dix-huit à vingt-quatre mois pour construire la collecte proprement, plutôt que de la bricoler dans l’urgence. Les indicateurs extra-financiers relèvent exactement de la même discipline que les indicateurs financiers — une définition, un propriétaire, une source, une piste d’audit.
@@ -1077,7 +2000,7 @@ const ArticleDetailPage: React.FC = () => {
                             {[
                                 'Commencer par choisir un outil. La structure du pack et le contrat de données déterminent l’outil, jamais l’inverse.',
                                 'Automatiser un indicateur dont la définition n’est pas écrite : vous industrialiserez un désaccord au lieu de le résoudre.',
-                                'Conserver « au cas où » les sections que personne n’a ouvertes. Une annexe consultable à la demande remplit la même fonction sans coûter d’attention.',
+                                'Conserver « au cas où » les sections que personne n’a ouvertes. Une annexe consultable à la demande remplit la même fonction sans coûter d’attention.',
                                 'Laisser un modèle de langage produire, arrondir ou compléter un chiffre — même sur une page de synthèse, même relue.',
                                 'Livrer le pack automatisé sans piste d’audit : le premier chiffre contesté en séance annulera dix mois de crédibilité.',
                             ].map((item) => (
@@ -1093,10 +2016,10 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
                         <p className="text-gray-700 leading-relaxed mb-6">
-                            Le reporting board souffre d’un désalignement simple : il est évalué sur ce qu’il produit, jamais sur ce qu’il permet de décider. Tant que l’indicateur de succès reste « le pack est sorti à temps », l’automatisation ne fera qu’accélérer la production d’un document dont près de la moitié ne sera pas lue.
+                            Le reporting board souffre d’un désalignement simple : il est évalué sur ce qu’il produit, jamais sur ce qu’il permet de décider. Tant que l’indicateur de succès reste « le pack est sorti à temps », l’automatisation ne fera qu’accélérer la production d’un document dont près de la moitié ne sera pas lue.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-6">
-                            Changez l’indicateur et tout le projet se réorganise. Si le succès devient « chaque page du pack a servi à une décision ou à un contrôle », alors la première tâche n’est plus technique : c’est de supprimer. L’automatisation vient ensuite, de bas en haut, et devient beaucoup plus simple — il y a moins à automatiser.
+                            Changez l’indicateur et tout le projet se réorganise. Si le succès devient « chaque page du pack a servi à une décision ou à un contrôle », alors la première tâche n’est plus technique : c’est de supprimer. L’automatisation vient ensuite, de bas en haut, et devient beaucoup plus simple — il y a moins à automatiser.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
                             Quant à l’IA, elle a une place réelle, mais étroite et clairement bornée : au-dessus des chiffres, jamais à leur place. Un conseil d’administration engage sa responsabilité sur des données. Une phrase bien tournée sur un chiffre inventé reste un chiffre inventé.
@@ -1110,8 +2033,8 @@ const ArticleDetailPage: React.FC = () => {
                             <li>Board Intelligence, enquêtes sur l’état du reporting de conseil — plus de 1 000 administrateurs et professionnels de la gouvernance, près de 700 organisations ; étude complémentaire sur le temps de lecture menée auprès d’une cinquantaine de participants (voir note méthodologique).</li>
                             <li>Association for Financial Professionals &amp; APQC, enquête auprès de plus de 430 professionnels du pilotage financier — répartition du temps de travail.</li>
                             <li>APQC, Open Standards Benchmarking — délais de clôture mensuelle et annuelle, plus de 10 000 organisations.</li>
-                            <li>Vena &amp; Benchmarkit, « 2026 FP&amp;A Impact Report » — 431 professionnels de la finance interrogés en octobre 2025.</li>
-                            <li>Directive (UE) « Omnibus I », publiée au Journal officiel de l’Union européenne le 26 février 2026, entrée en vigueur le 18 mars 2026 — relèvement des seuils CSRD et report du calendrier.</li>
+                            <li>Vena &amp; Benchmarkit, « 2026 FP&amp;A Impact Report » — 431 professionnels de la finance interrogés en octobre 2025.</li>
+                            <li>Directive (UE) « Omnibus I », publiée au Journal officiel de l’Union européenne le 26 février 2026, entrée en vigueur le 18 mars 2026 — relèvement des seuils CSRD et report du calendrier.</li>
                         </ul>
                     </section>
 
@@ -1188,7 +2111,7 @@ const ArticleDetailPage: React.FC = () => {
                     {/* Introduction */}
                     <div className="prose prose-lg max-w-none text-gray-800 mb-16">
                         <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
-                            La plupart des discours sur « l’IA et la cybersécurité » se trompent de sujet. Ils cherchent la nouvelle attaque spectaculaire. Or ce qui a changé n’est pas la nature des attaques : c’est leur économie. Une opération qui demandait une semaine à un attaquant compétent en demande désormais dix minutes à un attaquant médiocre.
+                            La plupart des discours sur « l’IA et la cybersécurité » se trompent de sujet. Ils cherchent la nouvelle attaque spectaculaire. Or ce qui a changé n’est pas la nature des attaques : c’est leur économie. Une opération qui demandait une semaine à un attaquant compétent en demande désormais dix minutes à un attaquant médiocre.
                         </p>
                         <p>
                             Trois frontières se déplacent en même temps, et il faut les traiter séparément sous peine de confusion. <strong>La première</strong> est offensive : l’IA industrialise ce qui relevait de l’artisanat — l’usurpation d’identité, le prétexte crédible, le message parfaitement contextualisé. <strong>La deuxième</strong> est nouvelle : vos propres systèmes d’IA sont devenus une cible, avec des classes de vulnérabilités qui n’existaient pas dans vos référentiels il y a trois ans. <strong>La troisième</strong> est défensive : l’IA est aussi, à ce jour, le seul levier dont l’effet sur le coût d’une violation soit mesuré et significatif.
@@ -1205,7 +2128,7 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">1. Première frontière : l’économie de l’attaque s’est effondrée</h2>
                         <p className="text-gray-700 leading-relaxed mb-6">
-                            L’ingénierie sociale reposait historiquement sur un goulot d’étranglement : produire un prétexte crédible coûtait du temps humain. Reconnaître une voix, repérer une faute de français, sentir qu’un message « sonne faux » — ces réflexes défensifs fonctionnaient parce que la contrefaçon de qualité était rare et chère.
+                            L’ingénierie sociale reposait historiquement sur un goulot d’étranglement : produire un prétexte crédible coûtait du temps humain. Reconnaître une voix, repérer une faute de français, sentir qu’un message « sonne faux » — ces réflexes défensifs fonctionnaient parce que la contrefaçon de qualité était rare et chère.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-10">
                             Cette barrière est tombée. Trois secondes d’audio public suffisent aujourd’hui à cloner une voix exploitable. Le résultat n’est pas une attaque nouvelle : c’est la même fraude au président, produite à l’échelle industrielle et personnalisée à chaque cible.
@@ -1248,7 +2171,7 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
 
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            Ce déplacement a une conséquence opérationnelle immédiate : <strong className="text-[#262626]">tous vos contrôles qui reposent sur la reconnaissance humaine sont désormais caducs.</strong> « J’ai reconnu sa voix », « c’est bien son visage à l’écran », « le mail vient de son adresse » — ces trois preuves ne prouvent plus rien. Elles doivent être remplacées par des contrôles qui ne dépendent pas de la perception : un canal de rappel indépendant, un secret partagé hors bande, un double seuil de validation sur les virements.
+                            Ce déplacement a une conséquence opérationnelle immédiate : <strong className="text-[#262626]">tous vos contrôles qui reposent sur la reconnaissance humaine sont désormais caducs.</strong> « J’ai reconnu sa voix », « c’est bien son visage à l’écran », « le mail vient de son adresse » — ces trois preuves ne prouvent plus rien. Elles doivent être remplacées par des contrôles qui ne dépendent pas de la perception : un canal de rappel indépendant, un secret partagé hors bande, un double seuil de validation sur les virements.
                         </p>
                     </section>
 
@@ -1296,7 +2219,7 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
 
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            L’injection de prompt mérite qu’on s’y arrête, car elle n’est pas un bug à corriger mais une propriété structurelle. Un modèle de langage reçoit les instructions et les données <em>dans le même canal</em>, sans séparation. Quand votre agent lit un e-mail, un ticket ou une page web, il ne dispose d’aucun moyen fiable de distinguer « voici du contenu à analyser » de « voici un ordre à exécuter ». C’est exactement le problème de l’injection SQL — sauf qu’il n’existe pas encore d’équivalent robuste des requêtes paramétrées.
+                            L’injection de prompt mérite qu’on s’y arrête, car elle n’est pas un bug à corriger mais une propriété structurelle. Un modèle de langage reçoit les instructions et les données <em>dans le même canal</em>, sans séparation. Quand votre agent lit un e-mail, un ticket ou une page web, il ne dispose d’aucun moyen fiable de distinguer « voici du contenu à analyser » de « voici un ordre à exécuter ». C’est exactement le problème de l’injection SQL — sauf qu’il n’existe pas encore d’équivalent robuste des requêtes paramétrées.
                         </p>
 
                         <div className="flex gap-4 items-start bg-[#262626] text-white rounded-2xl p-8 mb-12">
@@ -1353,7 +2276,7 @@ const ArticleDetailPage: React.FC = () => {
                             Le risque le plus rapide en progression ne vient pas des systèmes que vous avez mis en production. Il vient de ceux que vos équipes utilisent sans vous le dire — comptes personnels sur des services grand public, extensions de navigateur, assistants intégrés à des outils SaaS activés par défaut.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-10">
-                            La part des incidents de sécurité impliquant cette « IA de l’ombre » a plus que doublé en un an.
+                            La part des incidents de sécurité impliquant cette « IA de l’ombre » a plus que doublé en un an.
                         </p>
 
                         {/* FIGURE 4 — Shadow AI */}
@@ -1524,7 +2447,7 @@ const ArticleDetailPage: React.FC = () => {
                         </div>
 
                         <p className="text-gray-700 leading-relaxed mb-10">
-                            À cette pression opérationnelle s’ajoute un changement de régime réglementaire. La directive NIS2, transposée en droit français par la loi dite « Résilience », étend massivement le périmètre : d’environ 500 opérateurs sous NIS1 à près de 15 000 entités réparties dans 18 secteurs. Les sanctions peuvent atteindre 10 millions d’euros ou 2 % du chiffre d’affaires mondial pour une entité essentielle.
+                            À cette pression opérationnelle s’ajoute un changement de régime réglementaire. La directive NIS2, transposée en droit français par la loi dite « Résilience », étend massivement le périmètre : d’environ 500 opérateurs sous NIS1 à près de 15 000 entités réparties dans 18 secteurs. Les sanctions peuvent atteindre 10 millions d’euros ou 2 % du chiffre d’affaires mondial pour une entité essentielle.
                         </p>
 
                         {/* FIGURE 8 — Timeline NIS2 */}
@@ -1720,7 +2643,7 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
                         <p className="text-gray-700 leading-relaxed mb-6">
-                            La formule « l’IA change tout en cybersécurité » est à la fois vraie et inutile. Ce qu’elle change précisément, c’est le rapport entre le coût de l’attaque et le coût de la défense. Produire une contrefaçon crédible ne coûte presque plus rien ; vérifier une identité coûte toujours le même effort humain. Tant que cet écart reste ouvert, chaque contrôle fondé sur la perception se dégrade mécaniquement.
+                            La formule « l’IA change tout en cybersécurité » est à la fois vraie et inutile. Ce qu’elle change précisément, c’est le rapport entre le coût de l’attaque et le coût de la défense. Produire une contrefaçon crédible ne coûte presque plus rien ; vérifier une identité coûte toujours le même effort humain. Tant que cet écart reste ouvert, chaque contrôle fondé sur la perception se dégrade mécaniquement.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-6">
                             La bonne nouvelle est que le rééquilibrage est documenté et chiffré : près de deux millions de dollars et 65 jours d’écart entre une organisation qui a outillé sa défense et une qui ne l’a pas fait. Le problème n’est donc pas de savoir si l’investissement se justifie — la réponse est publiée — mais de constater que seules 36 % des organisations l’ont fait sur l’ensemble du cycle.
@@ -1734,9 +2657,9 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="border-t border-gray-200 pt-8 mt-8">
                         <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
                         <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
-                            <li>IBM, « Cost of a Data Breach Report 2026 » — 602 organisations victimes d’une violation entre mars 2025 et février 2026, 16 pays.</li>
-                            <li>ANSSI, « Panorama de la cybermenace 2025 » (CERT-FR) — événements, signalements et incidents traités en France.</li>
-                            <li>OWASP, « Top 10 for LLM Applications », édition 2025, et « Top 10 for Agentic Applications », annoncé fin 2025.</li>
+                            <li>IBM, « Cost of a Data Breach Report 2026 » — 602 organisations victimes d’une violation entre mars 2025 et février 2026, 16 pays.</li>
+                            <li>ANSSI, « Panorama de la cybermenace 2025 » (CERT-FR) — événements, signalements et incidents traités en France.</li>
+                            <li>OWASP, « Top 10 for LLM Applications », édition 2025, et « Top 10 for Agentic Applications », annoncé fin 2025.</li>
                             <li>ANSSI, Référentiel Cyber France (ReCyF), publié en mars 2026 ; calendrier de transposition de la directive NIS2 par la loi Résilience.</li>
                             <li>Agrégats de pertes liées aux deepfakes : trackers privés du secteur, méthodologies variables (voir note méthodologique).</li>
                             <li>Cas Arup, Hong Kong, janvier 2024 — 25 M$ détournés via une visioconférence intégralement falsifiée.</li>
@@ -1825,7 +2748,7 @@ const ArticleDetailPage: React.FC = () => {
                             Autrement dit : la surface d’attaque s’industrialise pendant que les moyens de la couvrir deviennent enfin disponibles. Une organisation qui continue de contrôler 25 écritures sur 100 000 ne fait plus un arbitrage coût/bénéfice. Elle assume une exposition qu’elle ne mesure pas.
                         </p>
                         <p>
-                            Cet article ne plaide pas pour « mettre de l’IA dans la finance ». Il montre, chiffres à l’appui, pourquoi la question n’est plus <em>si</em> l’audit doit passer à l’exhaustif, mais ce que coûte chaque trimestre de retard.
+                            Cet article ne plaide pas pour « mettre de l’IA dans la finance ». Il montre, chiffres à l’appui, pourquoi la question n’est plus <em>si</em> l’audit doit passer à l’exhaustif, mais ce que coûte chaque trimestre de retard.
                         </p>
                     </div>
 
@@ -1993,7 +2916,7 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="mb-20">
                         <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Le déclencheur français : septembre 2026</h2>
                         <p className="text-gray-700 leading-relaxed mb-8">
-                            Il existe une objection classique à l’audit exhaustif : « nos données ne sont pas assez propres ni assez structurées ». En France, cette objection a une date d’expiration.
+                            Il existe une objection classique à l’audit exhaustif : « nos données ne sont pas assez propres ni assez structurées ». En France, cette objection a une date d’expiration.
                         </p>
                         <p className="text-gray-700 leading-relaxed mb-10">
                             La réforme de la facturation électronique impose qu’au <strong className="text-[#262626]">1<sup>er</sup> septembre 2026</strong>, toutes les entreprises assujetties à la TVA — de la micro-entreprise au grand groupe — soient capables de <em>recevoir</em> des factures électroniques. À la même date, les grandes entreprises et les ETI doivent <em>émettre</em> au format électronique et transmettre leurs données de transaction et de paiement à l’administration (e-reporting). Les PME, TPE et indépendants suivent au 1<sup>er</sup> septembre 2027.
@@ -2074,7 +2997,7 @@ const ArticleDetailPage: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-right text-xs text-gray-400 mt-6">Source : R. Panko, « What We Know About Spreadsheet Errors », University of Hawaii</p>
+                            <p className="text-right text-xs text-gray-400 mt-6">Source : R. Panko, « What We Know About Spreadsheet Errors », University of Hawaii</p>
                         </div>
 
                         <p className="text-gray-700 leading-relaxed mb-8">
@@ -2291,11 +3214,11 @@ const ArticleDetailPage: React.FC = () => {
                     <section className="border-t border-gray-200 pt-8 mt-8">
                         <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
                         <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
-                            <li>ACFE, « Occupational Fraud 2026: A Report to the Nations » — analyse de 2 402 cas de fraude professionnelle.</li>
+                            <li>ACFE, « Occupational Fraud 2026: A Report to the Nations » — analyse de 2 402 cas de fraude professionnelle.</li>
                             <li>The IIA &amp; AuditBoard, enquête menée au T4 2025 auprès de 373 responsables d’audit interne (Amérique du Nord).</li>
                             <li>Gartner, enquête auprès de 119 directeurs de l’audit interne, août 2025 (résultats publiés en janvier 2026).</li>
                             <li>Wolters Kluwer, enquête auprès de 4 214 professionnels de l’audit interne sur l’adoption de l’IA.</li>
-                            <li>R. Panko, « What We Know About Spreadsheet Errors », University of Hawaii — revue de littérature sur les taux d’erreur des tableurs.</li>
+                            <li>R. Panko, « What We Know About Spreadsheet Errors », University of Hawaii — revue de littérature sur les taux d’erreur des tableurs.</li>
                             <li>Calendrier officiel de la réforme de la facturation électronique, economie.gouv.fr (échéances du 1<sup>er</sup> septembre 2026 et du 1<sup>er</sup> septembre 2027).</li>
                         </ul>
                     </section>
@@ -2769,7 +3692,7 @@ const ArticleDetailPage: React.FC = () => {
                             <li>Commission de l’IA, "IA : notre ambition pour la France", mars 2024</li>
                             <li>The state of AI in early 2024: Gen AI adoption spikes and starts to generate value, mai 2024</li>
                             <li>Baromètre France Num 2024, septembre 2024</li>
-                            <li>« L’IA dans les PME et ETI françaises, une révolution tranquille », juin 2025</li>
+                            <li>« L’IA dans les PME et ETI françaises, une révolution tranquille », juin 2025</li>
                         </ul>
                     </div>
 

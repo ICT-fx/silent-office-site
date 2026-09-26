@@ -43,6 +43,22 @@ export type PortfolioProject = {
     category: string;
     clientId: string;
     media: ProjectMedia;
+    /**
+     * Une phrase : ce que c'est. En français, contrairement au titre.
+     * C'est le seul texte qu'un moteur génératif a des chances de citer tel
+     * quel, il doit donc tenir debout hors de la page.
+     */
+    summary: string;
+    /** Le besoin tel qu'il se pose côté client, avant l'outil. */
+    context: string;
+    /**
+     * Ce qui a été construit, concrètement.
+     *
+     * Décrit le livrable, jamais son effet chez le client : aucun résultat
+     * chiffré n'est mesuré ni publiable (`PRODUCT.md`). Ce qui est décrit ici
+     * doit être visible dans les captures ou le schéma associés.
+     */
+    delivered: string[];
 };
 
 export const CLIENTS: Client[] = [
@@ -70,6 +86,18 @@ export const PROJECTS: PortfolioProject[] = [
         title: 'Supply Chain Dashboard',
         category: 'Pharmaceutical industry',
         clientId: 'pharma',
+        summary:
+            "Un poste de pilotage unique pour une chaîne d'approvisionnement pharmaceutique répartie sur plusieurs sites et une trentaine d'entités.",
+        context:
+            "L'activité, la production, les stocks et le transport vivaient dans des extractions séparées. Rapprocher un coût d'acheminement d'un volume expédié, ou une valeur de stock d'un risque de péremption, demandait un travail manuel à refaire à chaque question.",
+        delivered: [
+            "Six vues (synthèse, activité, production, stocks, transport, détail produit) lisant le même jeu de données, avec des filtres croisés : exercice, groupe, entité, famille, produit, zone, canal, client.",
+            "Comparaison systématique à l'exercice précédent et projection d'atterrissage sur chaque indicateur.",
+            "Production suivie en budget, plan et réalisé, sous-traitance comprise, avec l'écart au plan par sous-traitant.",
+            "Stocks décomposés par nature (produits finis, en-cours, substances actives, matières premières, conditionnement), avec couverture en mois et part à risque de péremption.",
+            "Transport ventilé par mode (air, express, route, mer) et par zone, jusqu'au coût moyen par expédition.",
+            "Export des tableaux à chaque niveau, pour reprendre l'analyse hors de l'outil.",
+        ],
         media: {
             kind: 'stack',
             shots: [
@@ -85,6 +113,16 @@ export const PROJECTS: PortfolioProject[] = [
         title: 'E-commerce Website',
         category: 'Trading & Logistics',
         clientId: 'telcash',
+        summary:
+            "La boutique en ligne d'un revendeur de smartphones reconditionnés, du catalogue au tunnel d'achat.",
+        context:
+            "Vendre du reconditionné se joue sur la confiance : l'acheteur doit comprendre l'état réel de l'appareil, la garantie et le service après-vente avant de sortir sa carte. Le site devait porter cette réassurance sans alourdir le parcours.",
+        delivered: [
+            "Catalogue structuré par gamme et par accessoire, avec recherche et fiches produit détaillées.",
+            "Les engagements (état de la batterie, certification, garantie 24 mois, délai de livraison) remontés au premier écran plutôt que relégués en bas de page.",
+            "Compte client, panier et tunnel de commande complets.",
+            "Identité visuelle et rédaction des pages, dans la continuité de la marque.",
+        ],
         media: {
             kind: 'video',
             sources: ['/videos/telcash.webm', '/videos/telcash.mp4'],
@@ -96,6 +134,17 @@ export const PROJECTS: PortfolioProject[] = [
         title: 'Order Entry Automation',
         category: 'Pharmaceutical industry',
         clientId: 'pharma',
+        summary:
+            "La saisie des commandes clients prise en charge de bout en bout, avec sa boucle de contrôle et ses trois issues explicites.",
+        context:
+            "Les commandes arrivaient en fichiers à ouvrir un par un et à ressaisir ligne par ligne. Une erreur de saisie ne se découvrait qu'en aval, une fois la commande déjà engagée.",
+        delivered: [
+            "Un déclenchement récurrent qui relève les nouveaux fichiers et les traite un par un, sans intervention.",
+            "Trois issues explicites par ligne : traitée, à revoir, en erreur. Chacune a son dossier, personne ne pousse une ligne douteuse à l'aveugle.",
+            "Rapport, journal et notification de l'équipe à chaque exécution, y compris lorsque tout s'est bien passé.",
+            "Versionnement et sauvegarde avant écriture, pour pouvoir revenir en arrière.",
+            "Les exceptions restent à l'humain : l'automatisation exécute, elle n'arbitre pas.",
+        ],
         media: {
             kind: 'diagram',
             src: '/images/portfolio/order-entry-flow.webp',

@@ -39,6 +39,25 @@ export const AREA_SERVED = [
 ] as const;
 
 /**
+ * Profils officiels. Source unique : le pied de page les affiche et le JSON-LD
+ * les déclare en `sameAs`, qui est l'un des signaux les plus lus par les
+ * moteurs génératifs pour résoudre « Flowera » comme une entité unique plutôt
+ * que comme une chaîne de caractères ambiguë.
+ *
+ * Ne jamais déclarer ici un profil qui n'existe pas : un `sameAs` mort abîme
+ * la résolution d'entité au lieu de l'aider.
+ *
+ * LinkedIn est référencé par son identifiant numérique, seule forme dont
+ * l'appartenance est certaine (relevée dans l'URL d'administration). Si un
+ * nom court est configuré côté LinkedIn, le remplacer ici.
+ */
+export const SOCIAL_PROFILES = [
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/company/130184124/' },
+    { name: 'Instagram', url: 'https://www.instagram.com/flowera.ch/' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@flowera.dev' },
+] as const;
+
+/**
  * Identifiants stables du graphe JSON-LD. Les `@id` permettent aux moteurs
  * de rattacher chaque nœud à la même entité au lieu d'en créer plusieurs.
  */
@@ -48,10 +67,9 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 /**
  * Nœud entité de l'organisation.
  *
- * `sameAs` est volontairement absent : les liens sociaux du Footer sont encore
- * des placeholders `#`. Déclarer de faux profils casserait la résolution
- * d'entité au lieu de l'aider. À remplir dès que LinkedIn, Zefix et Crunchbase
- * existent — c'est l'un des signaux les plus lus par les moteurs génératifs.
+ * `sameAs` liste les profils de `SOCIAL_PROFILES`. À compléter au fil de l'eau
+ * avec Zefix, Crunchbase et Wikidata : plus l'entité est corroborée ailleurs,
+ * plus les moteurs génératifs la citent avec des faits exacts.
  */
 export const organizationNode = () => ({
     '@type': 'ProfessionalService',
@@ -64,6 +82,7 @@ export const organizationNode = () => ({
     },
     image: `${SITE_URL}/flowera-logo.png`,
     email: CONTACT_EMAIL,
+    sameAs: SOCIAL_PROFILES.map((profile) => profile.url),
     description:
         "Flowera conçoit et met en production les outils qui simplifient les opérations des PME : automatisation de processus, applications métier sur mesure, tableaux de bord décisionnels et montée en compétence des équipes sur l'IA.",
     address: {

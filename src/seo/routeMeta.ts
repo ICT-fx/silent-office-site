@@ -91,6 +91,9 @@ export const SOLUTION_META: Record<string, RouteMeta> = {
  * article — sans quoi le repli générique ci-dessous s'applique.
  */
 export const ARTICLE_META: Record<string, string> = {
+    '7': "Responsabilité personnelle du dirigeant, registre des traitements, transferts vers un service d'IA : ce qu'une PME suisse doit vérifier avant de confier des données à un outil.",
+    '8': "Suisse, Union européenne ou États-Unis : les trois régimes de transfert applicables depuis la nLPD, ce que le Swiss-US Data Privacy Framework a changé, et comment trancher.",
+    '9': "Extraterritorialité, obligations de transparence en vigueur depuis août 2026 et échéances repoussées par le Digital Omnibus : le test en quatre questions pour une PME suisse.",
     '6': "Comment automatiser la production du reporting destiné au conseil d'administration : périmètre, sources de données, points de contrôle et pièges à éviter.",
     '99': "Ce que l'IA générative change concrètement à la surface d'attaque d'une entreprise, et les mesures qui tiennent réellement face aux nouveaux vecteurs.",
     '3': "Pourquoi l'audit financier mené à la main devient un risque, et ce que l'automatisation des contrôles change en matière de fiabilité et de traçabilité.",

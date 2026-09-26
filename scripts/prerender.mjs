@@ -244,6 +244,12 @@ async function main() {
                 timeout: 30000,
             });
             await page.waitForSelector(SEO_READY, { timeout: 15000 });
+            // `RouteSeo` vit dans App, donc son signal peut précéder l'arrivée
+            // d'une route chargée à la demande : sans cette seconde attente, le
+            // snapshot figerait le fallback vide de <Suspense>.
+            await page.waitForFunction(() => document.body.innerText.trim().length > 400, {
+                timeout: 15000,
+            });
 
             const html = clean(await page.content());
             const outDir = route === '/' ? DIST : join(DIST, route);
@@ -262,6 +268,7 @@ async function main() {
     try {
         await page.goto(`http://localhost:${PORT}/__introuvable__`, { waitUntil: 'networkidle' });
         await page.waitForSelector(SEO_READY, { timeout: 15000 });
+        await page.waitForFunction(() => document.body.innerText.trim().length > 400, { timeout: 15000 });
         await writeFile(join(DIST, '404.html'), clean(await page.content()), 'utf-8');
         results.push({ route: '404.html', bytes: 0, text: 0 });
     } catch (error) {

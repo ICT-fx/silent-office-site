@@ -4,6 +4,30 @@ import { InsightPost } from '../types';
 // et par le carrousel de la page d'accueil. Ordre = du plus récent au plus ancien.
 export const insightPosts: InsightPost[] = [
   {
+    id: '9',
+    title: "L'EU AI Act s'applique-t-il à votre PME suisse ?",
+    category: "Stratégie",
+    date: "26 Sep 2026",
+    image: "/images/articles/ai-act-suisse-hero.svg",
+    readTime: "11 min"
+  },
+  {
+    id: '8',
+    title: "Où héberger vos données quand vous utilisez l'IA",
+    category: "Expertise",
+    date: "18 Sep 2026",
+    image: "/images/articles/hebergement-donnees-hero.svg",
+    readTime: "12 min"
+  },
+  {
+    id: '7',
+    title: "nLPD et IA : cinq vérifications avant de brancher un outil",
+    category: "Expertise",
+    date: "10 Sep 2026",
+    image: "/images/articles/nlpd-ia-hero.svg",
+    readTime: "13 min"
+  },
+  {
     id: '6',
     title: "Automatiser le reporting Board : guide pratique",
     category: "Finance",
@@ -57,7 +81,7 @@ export const insightCategories = ['Tous', 'Stratégie', 'Finance', 'Expertise', 
 
 // Ordre imposé en tête du carrousel de la page d'accueil. Les articles non
 // listés ici suivent, dans l'ordre chronologique ci-dessus.
-const homeFeaturedIds = ['5', '4', '6'];
+const homeFeaturedIds = ['7', '9', '8'];
 
 export const homeCarouselPosts: InsightPost[] = [
   ...homeFeaturedIds

@@ -299,6 +299,62 @@ const Entry: React.FC<{ project: PortfolioProject; index: number }> = ({ project
                     <span aria-hidden="true" className="w-6 h-px" style={{ backgroundColor: GREEN }} />
                     {project.category}
                 </p>
+
+                {/* Le texte de la réalisation. Avant, chaque projet n'affichait
+                    que son titre et son secteur : la page entière tenait en
+                    1 615 caractères, ce qui la rendait illisible pour un moteur
+                    comme pour un visiteur pressé. Le résumé est écrit pour
+                    tenir debout cité seul, hors de la page. */}
+                <p
+                    className="mt-6"
+                    style={{
+                        fontFamily: BODY,
+                        fontSize: '1.05rem',
+                        lineHeight: 1.55,
+                        letterSpacing: '-0.01em',
+                        color: INK,
+                    }}
+                >
+                    {project.summary}
+                </p>
+
+                <p
+                    className="mt-4"
+                    style={{ fontFamily: BODY, fontSize: '0.96rem', lineHeight: 1.65, color: 'rgba(38,38,38,0.7)' }}
+                >
+                    {project.context}
+                </p>
+
+                <h3
+                    className="mt-8 mb-3"
+                    style={{
+                        fontFamily: BODY,
+                        fontSize: '0.74rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.13em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(38,38,38,0.5)',
+                    }}
+                >
+                    Ce qui a été livré
+                </h3>
+
+                <ul className="space-y-2.5">
+                    {project.delivered.map((item) => (
+                        <li
+                            key={item}
+                            className="flex gap-3"
+                            style={{ fontFamily: BODY, fontSize: '0.94rem', lineHeight: 1.6, color: 'rgba(38,38,38,0.75)' }}
+                        >
+                            <span
+                                aria-hidden="true"
+                                className="mt-[0.6em] w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                style={{ backgroundColor: GREEN }}
+                            />
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
             {!bare && (
