@@ -31,9 +31,14 @@ capture le DOM rendu par Chromium après le signal `html[data-seo-ready]`, et
 Le pré-rendu est **strict** : il fait échouer le build plutôt que de déployer
 un site dont les routes renverraient 404.
 
-**Reste à faire, par ordre d'impact :** § 4.1 (adresse de rue réelle),
-§ 4.2 (fiche Google Business Profile), § 4.3 (annuaires), § 5 (contenu par
-cluster), § 6 `FAQPage`, `sameAs` dès que les profils sociaux existent.
+**Ajouté le 26/09/2026** — série réglementaire (3 articles : nLPD et IA,
+hébergement et souveraineté, EU AI Act), portfolio décrit (799 → 4 344 car.),
+bundle découpé (826 → 364 Ko sur le chunk principal), `sameAs` câblé sur
+LinkedIn / Instagram / TikTok, typographie des guillemets corrigée.
+
+**Reste à faire, par ordre d'impact :** § 4.1 (présence suisse réelle),
+§ 4.2 (fiche Google Business Profile), § 4.3 (annuaires), § 5 (suite du
+contenu par cluster), § 3.7 (Core Web Vitals à mesurer sur données terrain).
 
 ---
 
@@ -244,6 +249,18 @@ d'automatisation à Genève » lisent massivement ces données.
   du § 4.3. Une virgule d'écart dilue le signal.
 
 ### 4.3 Citations et annuaires (signaux d'entité)
+
+**Verrou à connaître :** l'essentiel des annuaires suisses suppose une
+inscription au registre du commerce suisse ou une adresse suisse vérifiable.
+Sans présence suisse formelle, cette section reste largement fermée, et c'est
+elle qui porte la corroboration d'entité que lisent les moteurs génératifs.
+
+La voie habituelle pour une société établie à l'étranger est la **succursale**
+inscrite au registre du commerce : même nom, même but social, aucun capital à
+constituer, mais une adresse suisse et un représentant domicilié en Suisse
+(art. 718 al. 4 CO). Une domiciliation genevoise se trouve autour de
+70 à 90 CHF par mois. C'est une décision d'entreprise, pas une décision SEO :
+elle débloque simultanément Zefix, local.ch, la fiche Google et la CCIG.
 
 Cohérence NAP sur chacun. Ils alimentent autant Google que les LLM.
 
@@ -480,9 +497,10 @@ python3 ~/.claude/skills/best-aeo-skill/scripts/audit.py \
 | **7** | **§ 4.2 fiche Google Business Profile** | 🔲 dépend du 6 |
 | 8 | § 4.3 annuaires et citations | 🔲 dépend du 6 |
 | 9 | § 6 `FAQPage` sur les pages solutions | ✅ fait |
-| 10 | § 5 contenu par cluster, angle nLPD en priorité | 🔲 |
+| 10 | § 5 contenu par cluster, angle nLPD | ✅ 3 articles publiés, à poursuivre |
 | 11 | § 3.8 sitemap + lastmod | ✅ fait |
-| 12 | § 3.7 Core Web Vitals (bundle 818 Ko), § 3.9 portfolio | 🔲 |
+| 12 | § 3.9 portfolio (799 → 4 344 car.) | ✅ fait |
+| 13 | § 3.7 Core Web Vitals : bundle découpé, reste à mesurer sur données terrain | 🟡 partiel |
 
 Le déploiement des points 1 à 5 doit précéder toute demande de réindexation
 dans la Search Console.
