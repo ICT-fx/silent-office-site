@@ -4,7 +4,7 @@ import { Mail, MapPin, Linkedin, ArrowRight, Instagram, Check, Loader2 } from 'l
 import { Link } from 'react-router-dom';
 import { solutionsList } from '../data/solutions';
 import { useContactForm } from '../hooks/useContactForm';
-import { CONTACT_EMAIL, COMPANY_ADDRESS_LINES } from '../config/booking';
+import { CONTACT_EMAIL, COMPANY_ADDRESS_LINES, COMPANY_SERVICE_AREA } from '../config/booking';
 import { SOCIAL_PROFILES } from '../seo/siteMeta';
 
 /**
@@ -59,6 +59,10 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#027333] mt-0.5 flex-shrink-0" />
+                {/* L'adresse dit où est le siège, la ligne suivante où l'on
+                    travaille. Sans la seconde, un visiteur genevois conclut
+                    d'une adresse haut-savoyarde que Flowera n'intervient pas
+                    chez lui. */}
                 <span>
                   {COMPANY_ADDRESS_LINES.map((line, i) => (
                     <React.Fragment key={line}>
@@ -66,6 +70,7 @@ const Footer: React.FC = () => {
                       {line}
                     </React.Fragment>
                   ))}
+                  <span className="block mt-1.5 text-gray-500">{COMPANY_SERVICE_AREA}</span>
                 </span>
               </li>
               <li className="flex items-center gap-3">

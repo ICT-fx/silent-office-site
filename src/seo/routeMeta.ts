@@ -19,7 +19,7 @@ export interface RouteMeta {
 export const HOME_META: RouteMeta = {
     title: 'Automatisation et logiciels sur mesure pour PME — Genève',
     description:
-        "Flowera conçoit et met en production les outils qui simplifient vos opérations : automatisation de processus, applications métier, tableaux de bord. Suisse romande.",
+        "Flowera conçoit et met en production les outils qui simplifient vos opérations : automatisation de processus, applications métier, tableaux de bord. Suisse romande et Genevois français.",
 };
 
 export const STATIC_META: Record<string, RouteMeta> = {
@@ -91,6 +91,9 @@ export const SOLUTION_META: Record<string, RouteMeta> = {
  * article — sans quoi le repli générique ci-dessous s'applique.
  */
 export const ARTICLE_META: Record<string, string> = {
+    '10': "Ce qui fait vraiment le prix : taux d'exception, qualité des données d'entrée, points de validation. Quatre fourchettes en francs suisses et les coûts que les devis oublient.",
+    '11': "Un prestataire de développement explique pourquoi il déconseille le sur mesure la plupart du temps, et les quatre cas où il reste la bonne réponse.",
+    '12': "Les données circulent librement entre France et Suisse depuis la décision d'adéquation de janvier 2024. Ce qui demande attention : la superposition nLPD et RGPD, et l'obligation de représentation.",
     '7': "Responsabilité personnelle du dirigeant, registre des traitements, transferts vers un service d'IA : ce qu'une PME suisse doit vérifier avant de confier des données à un outil.",
     '8': "Suisse, Union européenne ou États-Unis : les trois régimes de transfert applicables depuis la nLPD, ce que le Swiss-US Data Privacy Framework a changé, et comment trancher.",
     '9': "Extraterritorialité, obligations de transparence en vigueur depuis août 2026 et échéances repoussées par le Digital Omnibus : le test en quatre questions pour une PME suisse.",

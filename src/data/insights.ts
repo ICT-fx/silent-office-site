@@ -4,6 +4,22 @@ import { InsightPost } from '../types';
 // et par le carrousel de la page d'accueil. Ordre = du plus récent au plus ancien.
 export const insightPosts: InsightPost[] = [
   {
+    id: '10',
+    title: "Combien coûte l'automatisation d'un processus ?",
+    category: "Stratégie",
+    date: "24 Sep 2026",
+    image: "/images/articles/cout-automatisation-hero.svg",
+    readTime: "10 min"
+  },
+  {
+    id: '11',
+    title: "Sur mesure ou solution du marché : comment trancher",
+    category: "Point de vue",
+    date: "22 Sep 2026",
+    image: "/images/articles/sur-mesure-ou-marche-hero.svg",
+    readTime: "9 min"
+  },
+  {
     id: '9',
     title: "L'EU AI Act s'applique-t-il à votre PME suisse ?",
     category: "Stratégie",
@@ -18,6 +34,14 @@ export const insightPosts: InsightPost[] = [
     date: "18 Sep 2026",
     image: "/images/articles/hebergement-donnees-hero.svg",
     readTime: "12 min"
+  },
+  {
+    id: '12',
+    title: "Données entre France et Suisse : ce qu'une PME frontalière doit savoir",
+    category: "Expertise",
+    date: "14 Sep 2026",
+    image: "/images/articles/donnees-france-suisse-hero.svg",
+    readTime: "11 min"
   },
   {
     id: '7',
@@ -81,7 +105,7 @@ export const insightCategories = ['Tous', 'Stratégie', 'Finance', 'Expertise', 
 
 // Ordre imposé en tête du carrousel de la page d'accueil. Les articles non
 // listés ici suivent, dans l'ordre chronologique ci-dessus.
-const homeFeaturedIds = ['7', '9', '8'];
+const homeFeaturedIds = ['10', '7', '12'];
 
 export const homeCarouselPosts: InsightPost[] = [
   ...homeFeaturedIds

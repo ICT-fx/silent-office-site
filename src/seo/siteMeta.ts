@@ -25,8 +25,12 @@ export const absoluteUrl = (path: string): string => {
 };
 
 /**
- * Zone desservie, ordonnée du plus précis au plus large.
- * Sert au JSON-LD et aux pages locales.
+ * Zone desservie, des deux côtés de la frontière.
+ *
+ * Le siège est en Haute-Savoie, la cible principale est la Suisse romande :
+ * les deux doivent apparaître. Déclarer uniquement la Suisse contredirait
+ * l'adresse et affaiblirait la résolution d'entité ; déclarer uniquement la
+ * France ferait manquer le marché visé.
  */
 export const AREA_SERVED = [
     'Genève',
@@ -35,7 +39,10 @@ export const AREA_SERVED = [
     'Fribourg',
     'Neuchâtel',
     'Suisse romande',
-    'Suisse',
+    'Genevois français',
+    'Haute-Savoie',
+    'Pays de Gex',
+    'Annecy',
 ] as const;
 
 /**

@@ -83,34 +83,48 @@ export const calLink = (option: BookingOption) => `${CAL_USERNAME}/${option.slug
 export const CONTACT_EMAIL = 'fantin.schellekens@flowera.ch';
 
 /**
- * Adresse publique, volontairement au niveau du quartier.
+ * Adresse publique de la société.
  *
- * Tant qu'aucune domiciliation genevoise n'est signée, un numéro de rue
- * inventé produirait un NAP invérifiable : Google refuse de valider une fiche
- * dont l'adresse ne correspond à rien, et l'erreur se propage ensuite à tous
- * les annuaires où le NAP doit rester identique au caractère près.
- * 1205 est le code postal de Plainpalais / Jonction.
+ * Flowera est une SAS française, établie à Feigères (Haute-Savoie), dans le
+ * Genevois français : une quinzaine de kilomètres de Genève. C'est l'adresse
+ * réelle, et c'est elle qui doit figurer partout — site, fiche Google,
+ * annuaires — sous peine d'un NAP incohérent qui dilue les signaux au lieu
+ * de les renforcer.
  *
- * Dès que l'adresse réelle existe, remplacer `STREET` et la réutiliser
- * partout : Footer, ContactPage, JSON-LD `LocalBusiness`, Google Business
- * Profile, annuaires. Voir `docs/SEO-GEO-PLAYBOOK.md` § 4.
+ * `street` est volontairement vide : il s'agit du domicile du dirigeant. Une
+ * fois un numéro de rue publié, indexé puis archivé, il ne se retire plus.
+ * La commune suffit à Google pour situer l'entreprise ; l'adresse complète se
+ * transmet à la fiche Google Business Profile, qui permet de la masquer
+ * publiquement (établissement de type « zone desservie »).
+ *
+ * Le jour où une succursale suisse est inscrite au registre du commerce,
+ * c'est ici que l'adresse change, et tout le reste suit : Footer, page
+ * Contact, JSON-LD. Voir `docs/SEO-GEO-PLAYBOOK.md` § 4.
  */
 export const COMPANY_ADDRESS = {
     street: '',
-    district: 'Quartier de Plainpalais',
-    postalCode: '1205',
-    locality: 'Genève',
-    region: 'GE',
-    country: 'Suisse',
-    countryCode: 'CH',
+    district: 'Genevois français',
+    postalCode: '74160',
+    locality: 'Feigères',
+    region: 'Haute-Savoie',
+    country: 'France',
+    countryCode: 'FR',
 } as const;
 
-/** Lignes prêtes à afficher, sans ligne vide si la rue n'est pas connue. */
+/** Lignes prêtes à afficher, sans ligne vide si la rue n'est pas renseignée. */
 export const COMPANY_ADDRESS_LINES: string[] = [
     COMPANY_ADDRESS.street,
     COMPANY_ADDRESS.district,
     `${COMPANY_ADDRESS.postalCode} ${COMPANY_ADDRESS.locality}, ${COMPANY_ADDRESS.country}`,
 ].filter(Boolean);
+
+/**
+ * Phrase de zone desservie, affichée sous l'adresse.
+ * L'adresse dit où est le siège ; celle-ci dit où l'on travaille. Les deux
+ * sont nécessaires : sans la seconde, un visiteur genevois conclut à tort
+ * que Flowera n'intervient pas chez lui.
+ */
+export const COMPANY_SERVICE_AREA = 'Interventions à Genève, en Suisse romande et en Haute-Savoie.';
 
 /** Fourchettes en francs suisses, alignées sur des budgets de PME. */
 export const BUDGET_OPTIONS = [

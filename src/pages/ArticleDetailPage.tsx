@@ -947,6 +947,572 @@ const ArticleDetailPage: React.FC = () => {
         );
     }
 
+    // -------- CONTENU ARTICLE 10 (COÛT DE L'AUTOMATISATION) --------
+    if (id === '10') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img src="/images/articles/cout-automatisation-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Stratégie</span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">Combien coûte l’automatisation d’un processus&nbsp;?</h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                Personne ne répond à cette question, et c’est justement pour ça qu’elle revient à chaque premier rendez-vous. Voici la réponse, avec ce qui fait varier le chiffre.
+                            </p>
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#027333]" /><span>24 Sep 2026</span></div>
+                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#027333]" /><span>10 min de lecture</span></div>
+                                <div className="flex items-center gap-2"><User size={16} className="text-[#027333]" /><span>Fantin Schellekens</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Cherchez «&nbsp;combien coûte l’automatisation d’un processus&nbsp;» et vous tomberez sur des pages qui répondent «&nbsp;cela dépend&nbsp;» en deux mille mots. C’est commode pour le prestataire et inutile pour le dirigeant, qui a besoin d’un ordre de grandeur avant d’ouvrir le sujet en comité.
+                        </p>
+                        <p>
+                            La vérité est qu’un ordre de grandeur existe, et qu’il est assez stable. Ce qui varie n’est presque jamais la technologie : c’est le nombre d’exceptions à traiter, la qualité des données d’entrée, et le nombre de personnes qui doivent valider quelque chose en cours de route.
+                        </p>
+                        <p>
+                            Cet article donne des fourchettes, explique ce qui fait basculer d’une fourchette à l’autre, et signale les coûts que les devis oublient systématiquement. Les montants sont en francs suisses.
+                        </p>
+                    </div>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. Ce qui détermine le prix</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Un processus n’a pas de prix en soi. Il a un prix une fois qu’on connaît quatre choses. Aucune d’elles n’est technique, et c’est la raison pour laquelle un devis donné avant l’audit est un devis inventé.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Les quatre variables qui font le chiffre</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Classées par impact décroissant sur le coût final, d’après les projets que nous cadrons.</p>
+                            <div className="space-y-4">
+                                {[
+                                    { v: 'Le taux d’exception', d: 'Un processus où 95 % des cas se ressemblent coûte une fraction d’un processus où un dossier sur trois sort du cadre. Les exceptions ne s’automatisent pas : elles se routent vers un humain, et chaque route est du travail.', poids: 'Impact majeur' },
+                                    { v: 'La qualité des entrées', d: 'Un fichier structuré, toujours au même format, se traite vite. Des PDF scannés de qualité variable, des libellés libres, des doublons : le coût se déplace vers la fiabilisation, avant même de parler d’automatisation.', poids: 'Impact majeur' },
+                                    { v: 'Le nombre de points de validation', d: 'Chaque personne qui doit approuver quelque chose ajoute une interface, une notification, un état intermédiaire et un cas d’erreur. Deux validations doublent rarement le coût ; quatre le triplent souvent.', poids: 'Impact moyen' },
+                                    { v: 'L’accès aux systèmes existants', d: 'Une interface de programmation documentée coûte peu. Un logiciel sans interface, ou dont l’éditeur facture l’accès, déplace le projet vers des solutions de contournement plus longues à construire et plus fragiles.', poids: 'Impact variable' },
+                                ].map((r, i) => (
+                                    <div key={r.v} className="bg-white rounded-xl border border-gray-200 p-5">
+                                        <div className="flex items-start gap-4">
+                                            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#027333] text-white font-bold text-sm flex items-center justify-center">{i + 1}</span>
+                                            <div className="min-w-0 flex-1">
+                                                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                                    <h3 className="font-bold text-[#262626]">{r.v}</h3>
+                                                    <span className="text-xs font-bold uppercase tracking-wider text-[#027333]">{r.poids}</span>
+                                                </div>
+                                                <p className="text-sm text-gray-600 leading-relaxed">{r.d}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Notez ce qui ne figure pas dans cette liste : l’outil, le langage, l’hébergement, la présence ou non d’intelligence artificielle. Ces choix ont un effet sur le coût, mais d’un ordre de grandeur inférieur aux quatre variables ci-dessus. Un projet dérape rarement parce qu’on a choisi la mauvaise technologie. Il dérape parce qu’on a découvert les exceptions en cours de route.
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Les fourchettes</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Voici les ordres de grandeur que nous utilisons en cadrage. Ce sont des scénarios de marché, pas des tarifs : ils servent à savoir dans quelle conversation on entre, pas à signer.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Quatre fourchettes, quatre situations</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Montants en francs suisses, mise en production comprise, hors coûts récurrents.</p>
+                            <div className="space-y-3">
+                                {[
+                                    { f: 'Moins de 10 000 CHF', t: 'Un processus, peu d’exceptions', d: 'Entrées structurées, une seule validation, systèmes accessibles. Typiquement : une relance client, un transfert de fichiers, un rapport récurrent.', bg: 'bg-white border border-gray-200', tx: 'text-[#262626]', sub: 'text-gray-500' },
+                                    { f: '10 000 – 25 000 CHF', t: 'Un processus métier complet', d: 'Plusieurs sources, des exceptions à router, deux ou trois validations. La majorité des premiers chantiers d’une PME tombent ici.', bg: 'bg-[#93BF9E]', tx: 'text-[#262626]', sub: 'text-[#025928]' },
+                                    { f: '25 000 – 50 000 CHF', t: 'Une chaîne, pas un processus', d: 'Plusieurs processus enchaînés, ou un processus à fort taux d’exception, ou une fiabilisation de données préalable.', bg: 'bg-[#027333]', tx: 'text-white', sub: 'text-[#93BF9E]' },
+                                    { f: 'Plus de 50 000 CHF', t: 'Un périmètre à redécouper', d: 'À ce niveau, la bonne réponse est rarement un devis. C’est un audit, puis un découpage en chantiers livrables séparément.', bg: 'bg-[#262626]', tx: 'text-white', sub: 'text-gray-400' },
+                                ].map((r) => (
+                                    <div key={r.f} className={`${r.bg} rounded-xl p-5`}>
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
+                                            <span className={`font-bold ${r.tx}`}>{r.f}</span>
+                                            <span className={`text-xs font-bold uppercase tracking-wider ${r.sub}`}>{r.t}</span>
+                                        </div>
+                                        <p className={`text-sm leading-relaxed ${r.sub}`}>{r.d}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                La dernière ligne mérite qu’on s’y arrête. Un besoin qui dépasse 50 000 francs n’est presque jamais un besoin trop gros : c’est un besoin mal découpé. Le réflexe utile est de chercher le sous-ensemble qui produit un effet mesurable tout seul, et de commencer par lui.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Les coûts que les devis oublient</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Le prix de construction n’est pas le coût du projet. Quatre postes reviennent systématiquement et figurent rarement sur le devis initial. Les connaître à l’avance évite la conversation désagréable du quatrième mois.
+                        </p>
+
+                        <ul className="space-y-4 mb-12">
+                            {[
+                                { t: 'Les abonnements du dispositif', d: 'Plateforme d’automatisation, appels à des services d’IA, hébergement. Quelques dizaines à quelques centaines de francs par mois, à porter au budget de fonctionnement et non au projet.' },
+                                { t: 'Le temps de vos équipes pendant le chantier', d: 'C’est le poste le plus sous-estimé. Un processus ne se décrit bien que par ceux qui l’exécutent : comptez plusieurs demi-journées de leur temps, et prévoyez-les dans le planning.' },
+                                { t: 'La reprise de l’historique', d: 'Automatiser le flux à venir est une chose ; reprendre deux ans de dossiers en arrière en est une autre. Décidez explicitement si vous le faites, plutôt que de le découvrir à la mise en service.' },
+                                { t: 'L’entretien', d: 'Un fournisseur change un format, une réglementation évolue, un système est mis à jour. Prévoyez une enveloppe annuelle de maintenance. Un dispositif sans budget d’entretien se dégrade en dix-huit mois.' },
+                            ].map((item) => (
+                                <li key={item.t} className="flex gap-3 items-start">
+                                    <AlertTriangle className="text-[#027333] flex-shrink-0 mt-1" size={20} />
+                                    <div>
+                                        <span className="font-bold text-[#262626]">{item.t}.</span>{' '}
+                                        <span className="text-gray-700 leading-relaxed">{item.d}</span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Les fourchettes de la figure 2 sont des scénarios de marché construits à partir des projets que nous cadrons, et non des tarifs publiés ni des résultats mesurés chez un client. Elles valent pour des PME de Suisse romande et du Genevois français, pour un périmètre d’un à quelques processus, et supposent une mise en production incluse. Elles ne transposent pas à des contextes réglementés lourds, ni à des refontes de système d’information. Le classement des variables de la figure 1 reflète notre expérience de cadrage, pas une étude statistique : nous le donnons comme une grille de lecture, pas comme une mesure.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La question du coût est presque toujours posée trop tôt, et c’est normal : sans ordre de grandeur, impossible de savoir si le sujet mérite une réunion. Les fourchettes ci-dessus servent exactement à cela, et à rien de plus.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Ce qu’elles ne remplacent pas, c’est le comptage des exceptions. Deux processus qui se ressemblent en réunion peuvent différer d’un facteur trois une fois qu’on a listé les cas particuliers que les équipes traitent à la main sans même y penser. C’est cette liste qui fait le devis, pas la description du processus.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Et si un prestataire vous donne un prix ferme avant d’avoir vu vos données réelles, le chiffre n’est pas une estimation. C’est un pari, et ce n’est pas lui qui le perdra.
+                        </p>
+                    </section>
+
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Fourchettes budgétaires : scénarios de marché établis par Flowera à partir de ses cadrages, cohérents avec les tranches proposées dans son formulaire de contact. Ni tarifs publiés, ni résultats client mesurés.</li>
+                            <li>Les variables de coût de la figure 1 sont issues de l’expérience de cadrage de Flowera et données comme grille de lecture, sans prétention statistique.</li>
+                        </ul>
+                    </section>
+
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Combien d’exceptions votre processus cache-t-il&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Notre audit compte les cas particuliers que vos équipes traitent à la main, et chiffre le temps qu’ils consomment. C’est ce comptage qui transforme une fourchette en devis.
+                        </p>
+                        <Link to="/solutions/audit" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            Découvrir l’audit
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
+    // -------- CONTENU ARTICLE 12 (DONNÉES FRANCE - SUISSE) --------
+    if (id === '12') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img src="/images/articles/donnees-france-suisse-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Expertise</span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">Données entre France et Suisse : ce qu’une PME frontalière doit savoir</h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                Les données traversent la frontière librement dans les deux sens. Ce qui la traverse moins bien, c’est la certitude de savoir quelle loi s’applique à qui.
+                            </p>
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#027333]" /><span>14 Sep 2026</span></div>
+                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#027333]" /><span>11 min de lecture</span></div>
+                                <div className="flex items-center gap-2"><User size={16} className="text-[#027333]" /><span>Fantin Schellekens</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Dans le bassin genevois, des dizaines de milliers d’entreprises travaillent des deux côtés d’une frontière qui, pour les données personnelles, n’en est presque plus une. Presque. Le reste tient en trois règles que la plupart des dirigeants n’ont jamais eu l’occasion de se faire expliquer.
+                        </p>
+                        <p>
+                            Nous écrivons cet article depuis Feigères, en Haute-Savoie, à quinze kilomètres de Genève, avec des clients des deux côtés. Les questions qui suivent, nous nous les sommes posées pour nous-mêmes avant de les poser pour d’autres.
+                        </p>
+                        <p>
+                            Trois sujets, dans l’ordre où ils se présentent : le transfert des données, la loi applicable, et l’obligation de représentation que presque personne ne connaît.
+                        </p>
+                    </div>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. Le transfert n’est pas le problème</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Commençons par la bonne nouvelle, parce qu’elle est large et qu’elle règle la crainte la plus répandue. Les données personnelles circulent librement entre la France et la Suisse, dans les deux sens, sans clause contractuelle type ni analyse d’impact du transfert.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Côté suisse, les États de l’Espace économique européen figurent à l’annexe 1 de l’ordonnance sur la protection des données : le transfert vers la France ne demande aucune formalité. Côté européen, la Commission a confirmé le 15 janvier 2024 que la Suisse offre un niveau de protection adéquat, à l’issue du réexamen de onze décisions d’adéquation existantes. Les flux de l’Union vers la Suisse continuent donc sans garanties supplémentaires.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Ce qui circule, et à quelles conditions</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">La situation franco-suisse est l’une des plus simples qui soient. Le contraste avec les États-Unis est instructif.</p>
+                            <div className="space-y-3">
+                                {[
+                                    { route: 'Suisse → France (et reste de l’EEE)', regime: 'Libre', d: 'Annexe 1 OPDo : les États de l’EEE figurent parmi ceux à protection adéquate.', bg: 'bg-[#027333]', tx: 'text-white', sub: 'text-[#93BF9E]' },
+                                    { route: 'France → Suisse', regime: 'Libre', d: 'Décision d’adéquation de la Commission européenne, confirmée le 15 janvier 2024.', bg: 'bg-[#027333]', tx: 'text-white', sub: 'text-[#93BF9E]' },
+                                    { route: 'Suisse ou France → États-Unis', regime: 'Sous conditions', d: 'Cadre d’adéquation si l’entité destinataire est certifiée ; sinon clauses contractuelles types et analyse d’impact.', bg: 'bg-white border border-gray-200', tx: 'text-[#262626]', sub: 'text-gray-500' },
+                                    { route: 'Vers un pays sans décision d’adéquation', regime: 'Travail documenté', d: 'Clauses contractuelles types, plus évaluation du droit local. C’est là que les dossiers s’enlisent.', bg: 'bg-[#262626]', tx: 'text-white', sub: 'text-gray-400' },
+                                ].map((r) => (
+                                    <div key={r.route} className={`${r.bg} rounded-xl p-5`}>
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
+                                            <span className={`font-bold text-sm ${r.tx}`}>{r.route}</span>
+                                            <span className={`text-xs font-bold uppercase tracking-wider ${r.sub}`}>{r.regime}</span>
+                                        </div>
+                                        <p className={`text-sm leading-relaxed ${r.sub}`}>{r.d}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-right text-xs text-gray-400 mt-6">Sources : annexe 1 OPDo ; décision de la Commission européenne du 15 janvier 2024</p>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Les deux lois s’appliquent en même temps</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            C’est ici que la plupart des raisonnements dérapent. Beaucoup de dirigeants cherchent <em>quelle</em> loi s’applique à leur entreprise, comme s’il fallait en choisir une. La question est mal posée : les deux textes se déclenchent sur les personnes concernées, pas sur le siège de l’entreprise.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Une société française qui traite des données de personnes se trouvant en Suisse entre dans le champ de la nLPD. Une société suisse qui traite des données de personnes se trouvant dans l’Union entre dans le champ du RGPD. Une PME frontalière avec des clients des deux côtés relève donc, en pratique, des deux régimes simultanément.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Quatre situations frontalières</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Le siège de l’entreprise ne détermine rien. Ce sont les personnes concernées qui décident.</p>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-sm">
+                                    <thead>
+                                        <tr className="text-left">
+                                            <th className="pb-3 pr-4 text-xs font-bold uppercase tracking-widest text-gray-400">Entreprise</th>
+                                            <th className="pb-3 pr-4 text-xs font-bold uppercase tracking-widest text-gray-400">Personnes concernées</th>
+                                            <th className="pb-3 text-xs font-bold uppercase tracking-widest text-gray-400">Régime</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="align-top">
+                                        {[
+                                            ['Française', 'Clients français uniquement', 'RGPD'],
+                                            ['Française', 'Clients suisses également', 'RGPD + nLPD'],
+                                            ['Suisse', 'Clients suisses uniquement', 'nLPD'],
+                                            ['Suisse', 'Clients dans l’Union également', 'nLPD + RGPD'],
+                                        ].map(([e, p, r]) => (
+                                            <tr key={e + p} className="border-t border-gray-200">
+                                                <td className="py-3 pr-4 text-gray-700">{e}</td>
+                                                <td className="py-3 pr-4 text-gray-700">{p}</td>
+                                                <td className="py-3">
+                                                    <span className={'font-bold ' + (r.includes('+') ? 'text-[#027333]' : 'text-[#262626]')}>{r}</span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                En pratique, un socle commun couvre l’essentiel des deux textes : registre des traitements, information des personnes, contrats de sous-traitance, procédure en cas de violation. Les différences sont réelles mais portent sur des points précis, pas sur l’architecture. Construire deux dispositifs séparés est une erreur coûteuse.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. L’obligation que personne ne connaît</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            L’article 14 de la LPD impose à un responsable de traitement privé établi à l’étranger de <strong>désigner un représentant en Suisse</strong> lorsqu’il traite des données de personnes se trouvant en Suisse. L’obligation existe aussi en miroir dans le RGPD, à son article 27, pour les responsables établis hors de l’Union.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Côté suisse, quatre conditions doivent être réunies <em>cumulativement</em>. C’est ce caractère cumulatif qui sauve la plupart des PME — et qui fait que celles qui sont concernées ne s’en doutent généralement pas.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. Les quatre conditions de l’article 14 LPD</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Les quatre doivent être remplies ensemble. Une seule qui manque, et l’obligation ne s’applique pas.</p>
+                            <div className="space-y-3">
+                                {[
+                                    'Le traitement est lié à l’offre de biens ou de services à des personnes en Suisse, ou à l’observation de leur comportement.',
+                                    'Le traitement est effectué à grande échelle.',
+                                    'Le traitement est régulier.',
+                                    'Le traitement présente un risque élevé pour la personnalité des personnes concernées.',
+                                ].map((c, i) => (
+                                    <div key={c} className="bg-white rounded-xl border border-gray-200 p-5 flex items-start gap-4">
+                                        <span className="flex-shrink-0 w-7 h-7 rounded bg-[#262626] text-white text-xs font-bold flex items-center justify-center">{String.fromCharCode(97 + i)}</span>
+                                        <span className="text-sm text-gray-700 leading-relaxed">{c}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                Détail qui compte : le caractère « à risque élevé » s’apprécie <strong>sans tenir compte</strong> des mesures que l’entreprise prend pour réduire ce risque. Autrement dit, bien se protéger ne fait pas sortir du champ. Le représentant, lorsqu’il est requis, est le point de contact des personnes concernées et du Préposé fédéral ; son nom et son adresse doivent être publiés, typiquement dans la déclaration de protection des données.
+                            </p>
+                            <p className="text-right text-xs text-gray-400 mt-4">Source : art. 14 LPD ; PFPDT, information sur la représentation des responsables du traitement</p>
+                        </div>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Cet article décrit le cadre applicable au 14 septembre 2026, tel qu’il résulte de la loi fédérale suisse sur la protection des données et de son ordonnance, du règlement général européen sur la protection des données, et des décisions d’adéquation en vigueur de part et d’autre. Les notions de « grande échelle » et de « risque élevé » de l’article 14 LPD ne sont pas définies par des seuils chiffrés : elles s’apprécient au cas par cas, et le tableau de la figure 2 est une grille de lecture, non une qualification juridique. Une décision d’adéquation peut être réexaminée et modifiée. Pour une situation engageante, faites valider votre cas par un conseil qualifié des deux côtés de la frontière.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La frontière franco-suisse est, pour les données personnelles, l’une des plus perméables qui soient. Les deux sens sont ouverts, sans formalité, et cette situation est confirmée par des décisions récentes de part et d’autre. La crainte du transfert, qui occupe l’essentiel des conversations, n’a pratiquement pas lieu d’être.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Ce qui demande de l’attention, c’est la superposition des régimes. Une PME frontalière relève souvent des deux, et l’erreur coûteuse consiste à construire deux dispositifs parallèles. Un socle commun — registre, information, contrats, procédure d’incident — couvre l’essentiel ; les spécificités se traitent ensuite, par exception.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Quant au représentant de l’article 14, la plupart des PME n’y sont pas soumises, précisément parce que les quatre conditions sont cumulatives. Mais celles qui le sont l’ignorent presque toujours. Une demi-heure suffit à trancher la question ; ne pas se la poser du tout coûte nettement plus cher.
+                        </p>
+                    </section>
+
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Loi fédérale sur la protection des données (LPD), en vigueur depuis le 1<sup>er</sup> septembre 2023 — art. 3 (champ d’application), art. 14 (représentation des responsables du traitement établis à l’étranger), art. 16 ss (communication à l’étranger).</li>
+                            <li>Ordonnance sur la protection des données (OPDo), annexe 1 — liste des États assurant un niveau de protection adéquat, dont les États de l’Espace économique européen.</li>
+                            <li>Commission européenne, décision du 15 janvier 2024 confirmant l’adéquation du niveau de protection assuré par la Suisse, à l’issue du réexamen de onze décisions d’adéquation adoptées sous la directive antérieure au RGPD.</li>
+                            <li>Règlement (UE) 2016/679 (RGPD) — art. 3 (champ d’application territorial), art. 27 (représentant des responsables du traitement non établis dans l’Union).</li>
+                            <li>Préposé fédéral à la protection des données et à la transparence (PFPDT), information publiée sur l’obligation de désigner un représentant au sens de l’art. 14 LPD.</li>
+                        </ul>
+                    </section>
+
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Vos clients sont des deux côtés de la frontière&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous cartographions vos traitements, identifions lesquels relèvent de quel régime, et posons le socle commun plutôt que deux dispositifs parallèles. Basés à quinze kilomètres de Genève, nous travaillons des deux côtés au quotidien.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            En parler avec nous
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
+    // -------- CONTENU ARTICLE 11 (SUR MESURE OU MARCHÉ) --------
+    if (id === '11') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img src="/images/articles/sur-mesure-ou-marche-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Point de vue</span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">Sur mesure ou solution du marché : comment trancher</h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                Nous développons sur mesure, et nous vous le déconseillons la plupart du temps. Voici les quatre cas où c’est pourtant la bonne réponse.
+                            </p>
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#027333]" /><span>22 Sep 2026</span></div>
+                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#027333]" /><span>9 min de lecture</span></div>
+                                <div className="flex items-center gap-2"><User size={16} className="text-[#027333]" /><span>Fantin Schellekens</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Un prestataire de développement qui vous dit d’acheter une solution existante perd une vente. C’est pourtant le conseil que nous donnons dans la majorité des cas, et il y a une raison simple à cela : un logiciel sur mesure construit sans nécessité devient une charge que vous porterez pendant des années.
+                        </p>
+                        <p>
+                            La question ne se tranche pas sur le prix d’achat. Un abonnement à 200 francs par mois coûte 12 000 francs sur cinq ans, soit l’ordre de grandeur d’un petit développement — et il ne demande ni maintenance, ni reprise, ni documentation. Le calcul naïf est presque toujours favorable au marché.
+                        </p>
+                        <p>
+                            Ce qui fait basculer, ce n’est pas l’argent. C’est la distance entre votre façon de travailler et celle que le logiciel impose.
+                        </p>
+                    </div>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. La question à poser en premier</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Un logiciel du marché encode une manière de faire. Quand vous l’adoptez, vous adoptez aussi cette manière de faire, et c’est très souvent une bonne affaire : l’éditeur a vu mille entreprises, vous en avez vu une.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Le problème apparaît quand votre façon de faire n’est pas une mauvaise habitude à corriger, mais précisément ce qui vous distingue. Dans ce cas, plier votre processus à l’outil revient à effacer votre avantage pour économiser une licence.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Deux natures de spécificité</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">La même phrase — «&nbsp;notre processus est particulier&nbsp;» — recouvre deux situations opposées.</p>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="bg-white rounded-xl p-6 border border-gray-200">
+                                    <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Spécificité subie</div>
+                                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                                        Le processus est particulier parce qu’il s’est sédimenté, qu’une personne l’a conçu il y a dix ans, ou qu’un ancien outil l’imposait. Personne ne le défendrait s’il fallait le justifier.
+                                    </p>
+                                    <div className="text-xs font-bold text-[#262626] border-t border-gray-100 pt-3">→ Acheter, et se plier à l’outil</div>
+                                </div>
+                                <div className="bg-[#262626] rounded-xl p-6">
+                                    <div className="text-xs font-bold uppercase tracking-widest text-[#93BF9E] mb-4">Spécificité choisie</div>
+                                    <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                        Le processus est particulier parce qu’il produit un résultat que vos concurrents n’obtiennent pas. Vos clients le remarquent, même sans savoir le nommer.
+                                    </p>
+                                    <div className="text-xs font-bold text-white border-t border-gray-700 pt-3">→ Construire, et protéger l’écart</div>
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                Le test pratique : demandez à trois personnes qui exécutent le processus pourquoi il se fait ainsi. Si les réponses divergent ou remontent à une contrainte disparue, la spécificité est subie.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Les quatre cas où le sur mesure se justifie</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            En dehors de ces quatre situations, notre conseil est d’acheter. Et si aucune ne s’applique mais que l’outil du marché ne couvre pas tout, la bonne réponse est souvent une troisième voie : acheter le socle, et n’automatiser sur mesure que le raccord manquant.
+                        </p>
+
+                        <div className="space-y-4 mb-12">
+                            {[
+                                { t: 'Le processus est votre avantage', d: 'Il produit un résultat que le marché n’obtient pas, et l’outil disponible vous forcerait à y renoncer. C’est le seul cas vraiment stratégique des quatre.' },
+                                { t: 'L’addition des licences dépasse le coût de construction', d: 'Arrive quand le nombre d’utilisateurs est élevé, ou quand l’éditeur facture à l’usage sur un volume qui croît. Le calcul se fait sur cinq ans, maintenance comprise, sinon il ment.' },
+                                { t: 'Aucun outil ne couvre le périmètre sans contorsion', d: 'Non pas « aucun outil n’est parfait », mais : il en faudrait trois, mal raccordés, avec des ressaisies entre eux. Le coût caché est dans les raccords, pas dans les licences.' },
+                                { t: 'Une contrainte réglementaire ou de souveraineté l’impose', d: 'Hébergement en Suisse exigé par un client, données qui ne peuvent pas sortir d’un périmètre, exigence sectorielle. Rare, mais alors dirimant.' },
+                            ].map((item, i) => (
+                                <div key={item.t} className="flex gap-5 bg-white rounded-2xl border border-gray-200 p-6">
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#027333] text-white font-bold flex items-center justify-center">{i + 1}</div>
+                                    <div>
+                                        <h3 className="font-bold text-[#262626] mb-2">{item.t}</h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h3 className="text-xl font-bold text-[#262626] mb-6">Trois mauvaises raisons de construire</h3>
+                        <ul className="space-y-4 mb-8">
+                            {[
+                                'L’outil du marché est « moche ». L’ergonomie se supporte ; une dette logicielle de cinq ans, beaucoup moins.',
+                                'Il manque une fonction. Vérifiez d’abord si elle existe dans la feuille de route de l’éditeur, ou si une intégration la couvre. Construire un logiciel entier pour une fonction est un mauvais échange.',
+                                'Pour ne pas dépendre d’un éditeur. Vous dépendrez alors de votre prestataire, ou de la seule personne qui connaît le code. Ce n’est pas moins risqué, c’est différemment risqué.',
+                            ].map((item) => (
+                                <li key={item} className="flex gap-3 items-start text-gray-700">
+                                    <AlertTriangle className="text-[#027333] flex-shrink-0 mt-0.5" size={20} />
+                                    <span className="leading-relaxed">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Ce qu’il faut exiger si vous construisez</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            La décision prise, quatre garanties déterminent si vous possédez réellement l’outil ou si vous avez seulement changé de dépendance. Elles se négocient avant, jamais après.
+                        </p>
+
+                        <ul className="space-y-4 mb-12">
+                            {[
+                                'Le code et les données vous appartiennent, et vous en avez une copie utilisable sans votre prestataire.',
+                                'Les technologies sont courantes. Un choix exotique divise par dix le nombre de personnes capables de reprendre le projet.',
+                                'La première version est étroite mais réellement en production. Un pilote qui ne sort jamais de la salle de réunion n’apprend rien.',
+                                'Une enveloppe d’entretien est budgétée dès la première année. Un logiciel sans maintenance se dégrade en dix-huit mois, quel que soit son auteur.',
+                            ].map((item) => (
+                                <li key={item} className="flex gap-3 items-start text-gray-700">
+                                    <CheckCircle2 className="text-[#027333] flex-shrink-0 mt-0.5" size={20} />
+                                    <span className="leading-relaxed">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                            <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Cet article expose une grille de décision issue de la pratique de cadrage de Flowera, et non les résultats d’une étude. L’exemple de calcul de l’introduction est une illustration arithmétique à partir d’un abonnement hypothétique, pas un tarif observé. Les seuils évoqués — cinq ans d’horizon, dix-huit mois de dégradation — sont des ordres de grandeur de terrain, donnés pour fixer les idées et non comme des mesures. Flowera développe des logiciels sur mesure : ce texte recommande majoritairement de ne pas y recourir, ce qui va contre son intérêt commercial immédiat, et nous préférons le signaler plutôt que de le laisser deviner.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Le sur mesure n’est pas un niveau supérieur d’ambition. C’est un choix qui se paie en maintenance, en documentation et en dépendance à ceux qui connaissent le code. Quand il est justifié, il n’a pas d’équivalent. Quand il ne l’est pas, il transforme un problème réglé en chantier permanent.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La bonne question n’est donc jamais « peut-on le développer ». On peut presque toujours. Elle est : « ce que nous faisons différemment mérite-t-il d’être protégé, ou serait-il mieux remplacé ? »
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Et la réponse la plus fréquente, dans les PME que nous accompagnons, est un mélange : acheter le socle, construire le raccord. C’est moins spectaculaire qu’un logiciel maison, et c’est presque toujours ce qui tient le mieux dans le temps.
+                        </p>
+                    </section>
+
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>Grille de décision et ordres de grandeur issus de la pratique de cadrage de Flowera. Aucun chiffre de cet article ne constitue un résultat mesuré chez un client ni un tarif publié.</li>
+                        </ul>
+                    </section>
+
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Votre spécificité est-elle subie ou choisie&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous passons la grille avec vous, processus par processus, et nous vous disons honnêtement lesquels méritent du sur mesure. Y compris quand la réponse est «&nbsp;aucun&nbsp;».
+                        </p>
+                        <Link to="/solutions/developpement-logiciel" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            Voir l’offre développement
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
     if (id === '2') {
         return (
             <div className="min-h-screen bg-white">

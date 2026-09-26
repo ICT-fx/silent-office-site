@@ -19,6 +19,7 @@ import {
     BUDGET_OPTIONS,
     CONTACT_EMAIL,
     COMPANY_ADDRESS_LINES,
+    COMPANY_SERVICE_AREA,
     calLink,
     type BookingOption,
 } from '../config/booking';
@@ -684,6 +685,12 @@ const ContactPage: React.FC = () => {
                                                 style={{ fontFamily: BODY, fontWeight: 600, fontSize: '0.98rem', color: INK }}
                                             >
                                                 {COMPANY_ADDRESS_LINES.join(', ')}
+                                            </span>
+                                            <span
+                                                className="block mt-1"
+                                                style={{ fontFamily: BODY, fontSize: '0.88rem', color: 'rgba(38,38,38,0.6)' }}
+                                            >
+                                                {COMPANY_SERVICE_AREA}
                                             </span>
                                         </span>
                                     </div>

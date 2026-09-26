@@ -168,34 +168,39 @@ Suisse romande — bien plus vite que sur « automatisation ».
 
 ## 4. Chantier 2 — Ancrage local (Genève → Suisse → France)
 
-### 4.1 NAP — partiellement traité
+### 4.1 NAP — réglé le 26/09/2026
 
-**Fait le 24/09/2026** — source unique dans `src/config/booking.ts`
-(`COMPANY_ADDRESS`, `COMPANY_ADDRESS_LINES`), consommée par le Footer, la page
-Contact et le JSON-LD `ProfessionalService` :
+**Flowera est une SAS française établie à Feigères (74160), Haute-Savoie,
+dans le Genevois français : une quinzaine de kilomètres de Genève.** C'est
+l'adresse réelle, et c'est elle qui figure désormais partout. Source unique :
+`COMPANY_ADDRESS` dans `src/config/booking.ts`.
 
-- [x] Adresse parisienne remplacée par **Plainpalais, 1205 Genève, Suisse**.
-- [x] Téléphone `+33` **retiré** du site (Footer et page Contact). La page
-      Contact affiche l'adresse à la place — c'est elle que Google lit pour
-      les signaux locaux.
-- [x] Page Careers relocalisée : Genève, Lausanne, Suisse romande, Remote.
-- [x] `lang="fr-CH"` et `og:locale="fr_CH"` (au lieu de `fr_FR`).
+- [x] Adresse réelle affichée (commune seule, sans numéro de rue : il s'agit
+      du domicile du dirigeant, et une adresse publiée ne se retire plus des
+      index et des archives). L'adresse complète va à Google Business Profile,
+      qui permet de la masquer publiquement.
+- [x] `COMPANY_SERVICE_AREA` affiché sous l'adresse : sans cette ligne, un
+      visiteur genevois conclut d'une adresse haut-savoyarde que Flowera
+      n'intervient pas chez lui.
+- [x] `areaServed` transfrontalier dans le JSON-LD : Genève, Vaud, Valais,
+      Fribourg, Neuchâtel, Suisse romande, Genevois français, Haute-Savoie,
+      Pays de Gex, Annecy.
+- [x] `llms.txt` corrigé : il annonçait « société basée à Genève », ce qui
+      était faux. Il précise maintenant l'absence d'inscription au registre
+      du commerce suisse.
+- [x] Téléphone retiré, e-mail unifié sur `@flowera.ch`.
 
-**Volontairement au niveau du quartier, sans numéro de rue.** Un numéro inventé
-produirait un NAP invérifiable : Google refuse de valider une fiche dont
-l'adresse ne correspond à rien, et l'erreur se propage ensuite à tous les
-annuaires où le NAP doit rester identique au caractère près.
+**Conséquence stratégique : la voie française est ouverte, la voie suisse ne
+l'est pas.** Google Business Profile, Pages Jaunes, les annuaires et les
+citations françaises sont accessibles immédiatement et honnêtement. Les
+équivalents suisses (Zefix, local.ch, CCIG) supposent une inscription au
+registre du commerce suisse — voir § 4.3.
 
-**Reste à faire :**
-
-- [ ] **Arrêter l'adresse de rue réelle** (siège, domiciliation ou bureau),
-      puis renseigner `COMPANY_ADDRESS.street`. Tout le reste suit
-      automatiquement, y compris le JSON-LD.
-- [ ] **Numéro suisse `+41 22 …`** si tu veux en réafficher un. Un `+33` sur un
-      `.ch` était un signal contradictoire ; pas de numéro vaut mieux qu'un
-      mauvais numéro, mais un numéro genevois vaut mieux que pas de numéro.
-- [ ] **Unifier l'e-mail** sur `@flowera.ch` partout (`PRODUCT.md` mentionne
-      encore `contact@flowera.fr`).
+**Le Genevois français est un atout, pas un pis-aller.** « Prestataire du
+bassin genevois qui travaille des deux côtés de la frontière » est une
+position crédible et vérifiable, et elle ouvre un ensemble de requêtes que
+personne ne sert : automatisation PME Annemasse, Saint-Julien, Annecy,
+frontalier, Pays de Gex.
 
 ### 4.2 Google Business Profile — quand et comment
 
