@@ -235,21 +235,46 @@ async function main() {
     const server = await startServer();
 
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+
+    /**
+     * Le pré-rendu ne sort pas du site.
+     *
+     * `/contact` embarque l'agenda Cal.com : sur le conteneur de build Vercel,
+     * cette requête externe n'aboutissait pas et `networkidle` n'arrivait
+     * jamais, faisant échouer tout le déploiement pour une page sur vingt-
+     * quatre. Or rien de ce qui vient d'un tiers ne peut figurer dans le HTML
+     * capturé — une iframe cross-origin n'expose pas son contenu au document.
+     * Les bloquer rend le build déterministe, et plus rapide.
+     */
+    await page.route('**/*', (route) => {
+        const url = route.request().url();
+        return url.startsWith(`http://localhost:${PORT}`) || url.startsWith('data:')
+            ? route.continue()
+            : route.abort();
+    });
+
     const results = [];
 
     for (const { route } of routes) {
         try {
+            // `domcontentloaded` plutôt que `networkidle` : les deux attentes
+            // qui suivent sont des signaux de contenu réel, pas d'absence de
+            // trafic réseau. Elles disent ce qu'on veut vraiment savoir.
             await page.goto(`http://localhost:${PORT}${route}`, {
-                waitUntil: 'networkidle',
+                waitUntil: 'domcontentloaded',
                 timeout: 30000,
             });
             await page.waitForSelector(SEO_READY, { timeout: 15000 });
-            // `RouteSeo` vit dans App, donc son signal peut précéder l'arrivée
-            // d'une route chargée à la demande : sans cette seconde attente, le
-            // snapshot figerait le fallback vide de <Suspense>.
-            await page.waitForFunction(() => document.body.innerText.trim().length > 400, {
-                timeout: 15000,
-            });
+            // `RouteSeo` vit dans App : son signal précède l'arrivée d'une
+            // route chargée à la demande. On attend donc le contenu de <main>,
+            // qui ne porte que la route — le header et le pied de page en sont
+            // exclus. Compter le texte du document entier ne marchait pas : le
+            // menu déplié pèse à lui seul 1 400 caractères, et le seuil était
+            // franchi avant que <Suspense> ait résolu quoi que ce soit.
+            await page.waitForFunction(
+                () => (document.querySelector('main')?.innerText.trim().length ?? 0) > 300,
+                { timeout: 15000 },
+            );
 
             const html = clean(await page.content());
             const outDir = route === '/' ? DIST : join(DIST, route);
@@ -266,9 +291,12 @@ async function main() {
     // Page 404 : Vercel la sert avec le bon statut quand aucune route ne
     // correspond. Sans elle, une URL fautive renverrait 200 sur l'accueil.
     try {
-        await page.goto(`http://localhost:${PORT}/__introuvable__`, { waitUntil: 'networkidle' });
+        await page.goto(`http://localhost:${PORT}/__introuvable__`, { waitUntil: 'domcontentloaded' });
         await page.waitForSelector(SEO_READY, { timeout: 15000 });
-        await page.waitForFunction(() => document.body.innerText.trim().length > 400, { timeout: 15000 });
+        await page.waitForFunction(
+            () => (document.querySelector('main')?.innerText.trim().length ?? 0) > 300,
+            { timeout: 15000 },
+        );
         await writeFile(join(DIST, '404.html'), clean(await page.content()), 'utf-8');
         results.push({ route: '404.html', bytes: 0, text: 0 });
     } catch (error) {
