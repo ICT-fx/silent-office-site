@@ -19,7 +19,10 @@ const SOLUTION_ACCENTS = ['#027333', '#35762f', '#67782b', '#9a7b27', '#cc7d23']
 const CAREER_LINKS = [
   { label: 'Pourquoi nous choisir ?', to: '/careers' },
   { label: 'Consultez nos offres', to: '/careers' },
-  { label: 'Notre culture', to: '/careers/culture' },
+  // Pointait vers /careers/culture, qui n'existe pas : depuis que les 404 sont
+  // réels, ce lien présent dans le menu de chaque page envoyait Google sur une
+  // erreur 24 fois. À repointer le jour où une page culture est écrite.
+  { label: 'Notre culture', to: '/careers' },
 ];
 
 const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
