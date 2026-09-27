@@ -8,7 +8,7 @@ export const insightPosts: InsightPost[] = [
     title: "Combien coûte l'automatisation d'un processus ?",
     category: "Stratégie",
     date: "24 Sep 2026",
-    image: "/images/articles/cout-automatisation-hero.svg",
+    image: "/images/articles/cout-automatisation-hero.jpg",
     readTime: "10 min"
   },
   {
@@ -16,7 +16,7 @@ export const insightPosts: InsightPost[] = [
     title: "Sur mesure ou solution du marché : comment trancher",
     category: "Point de vue",
     date: "22 Sep 2026",
-    image: "/images/articles/sur-mesure-ou-marche-hero.svg",
+    image: "/images/articles/sur-mesure-ou-marche-hero.jpg",
     readTime: "9 min"
   },
   {
@@ -24,7 +24,7 @@ export const insightPosts: InsightPost[] = [
     title: "L'EU AI Act s'applique-t-il à votre PME suisse ?",
     category: "Stratégie",
     date: "26 Sep 2026",
-    image: "/images/articles/ai-act-suisse-hero.svg",
+    image: "/images/articles/ai-act-suisse-hero.jpg",
     readTime: "11 min"
   },
   {
@@ -32,7 +32,7 @@ export const insightPosts: InsightPost[] = [
     title: "Où héberger vos données quand vous utilisez l'IA",
     category: "Expertise",
     date: "18 Sep 2026",
-    image: "/images/articles/hebergement-donnees-hero.svg",
+    image: "/images/articles/hebergement-donnees-hero.jpg",
     readTime: "12 min"
   },
   {
@@ -40,7 +40,7 @@ export const insightPosts: InsightPost[] = [
     title: "Données entre France et Suisse : ce qu'une PME frontalière doit savoir",
     category: "Expertise",
     date: "14 Sep 2026",
-    image: "/images/articles/donnees-france-suisse-hero.svg",
+    image: "/images/articles/donnees-france-suisse-hero.jpg",
     readTime: "11 min"
   },
   {
@@ -48,7 +48,7 @@ export const insightPosts: InsightPost[] = [
     title: "nLPD et IA : cinq vérifications avant de brancher un outil",
     category: "Expertise",
     date: "10 Sep 2026",
-    image: "/images/articles/nlpd-ia-hero.svg",
+    image: "/images/articles/nlpd-ia-hero.jpg",
     readTime: "13 min"
   },
   {

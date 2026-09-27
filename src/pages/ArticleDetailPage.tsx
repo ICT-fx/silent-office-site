@@ -34,7 +34,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
                     <img
-                        src="/images/articles/nlpd-ia-hero.svg"
+                        src="/images/articles/nlpd-ia-hero.jpg"
                         alt=""
                         aria-hidden
                         className="absolute inset-0 w-full h-full object-cover"
@@ -349,7 +349,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
                     <img
-                        src="/images/articles/hebergement-donnees-hero.svg"
+                        src="/images/articles/hebergement-donnees-hero.jpg"
                         alt=""
                         aria-hidden
                         className="absolute inset-0 w-full h-full object-cover"
@@ -683,7 +683,7 @@ const ArticleDetailPage: React.FC = () => {
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
                     <img
-                        src="/images/articles/ai-act-suisse-hero.svg"
+                        src="/images/articles/ai-act-suisse-hero.jpg"
                         alt=""
                         aria-hidden
                         className="absolute inset-0 w-full h-full object-cover"
@@ -956,7 +956,7 @@ const ArticleDetailPage: React.FC = () => {
                 </div>
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
-                    <img src="/images/articles/cout-automatisation-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <img src="/images/articles/cout-automatisation-hero.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
                         <div className="max-w-4xl mx-auto text-white">
@@ -1138,7 +1138,7 @@ const ArticleDetailPage: React.FC = () => {
                 </div>
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
-                    <img src="/images/articles/donnees-france-suisse-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <img src="/images/articles/donnees-france-suisse-hero.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
                         <div className="max-w-4xl mx-auto text-white">
@@ -1340,7 +1340,7 @@ const ArticleDetailPage: React.FC = () => {
                 </div>
 
                 <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
-                    <img src="/images/articles/sur-mesure-ou-marche-hero.svg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <img src="/images/articles/sur-mesure-ou-marche-hero.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
                         <div className="max-w-4xl mx-auto text-white">
