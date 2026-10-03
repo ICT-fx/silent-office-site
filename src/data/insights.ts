@@ -4,6 +4,14 @@ import { InsightPost } from '../types';
 // et par le carrousel de la page d'accueil. Ordre = du plus récent au plus ancien.
 export const insightPosts: InsightPost[] = [
   {
+    id: '13',
+    title: "IA en local : ce que coûte une machine dans vos murs",
+    category: "Expertise",
+    date: "3 Oct 2026",
+    image: "/images/articles/ia-locale-hero.jpg",
+    readTime: "13 min"
+  },
+  {
     id: '10',
     title: "Combien coûte l'automatisation d'un processus ?",
     category: "Stratégie",
@@ -105,7 +113,7 @@ export const insightCategories = ['Tous', 'Stratégie', 'Finance', 'Expertise', 
 
 // Ordre imposé en tête du carrousel de la page d'accueil. Les articles non
 // listés ici suivent, dans l'ordre chronologique ci-dessus.
-const homeFeaturedIds = ['10', '7', '12'];
+const homeFeaturedIds = ['13', '10', '7'];
 
 export const homeCarouselPosts: InsightPost[] = [
   ...homeFeaturedIds

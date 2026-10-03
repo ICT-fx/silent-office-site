@@ -91,6 +91,7 @@ export const SOLUTION_META: Record<string, RouteMeta> = {
  * article — sans quoi le repli générique ci-dessous s'applique.
  */
 export const ARTICLE_META: Record<string, string> = {
+    '13': "Une machine d'IA posée dans vos locaux : capacité mémoire et bande passante, coût mensuel réel face aux abonnements, nombre d'utilisateurs supportés, et les deux situations où elle se justifie.",
     '10': "Ce qui fait vraiment le prix : taux d'exception, qualité des données d'entrée, points de validation. Quatre fourchettes en francs suisses et les coûts que les devis oublient.",
     '11': "Un prestataire de développement explique pourquoi il déconseille le sur mesure la plupart du temps, et les quatre cas où il reste la bonne réponse.",
     '12': "Les données circulent librement entre France et Suisse depuis la décision d'adéquation de janvier 2024. Ce qui demande attention : la superposition nLPD et RGPD, et l'obligation de représentation.",

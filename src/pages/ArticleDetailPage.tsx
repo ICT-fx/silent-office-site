@@ -24,6 +24,372 @@ const ArticleDetailPage: React.FC = () => {
     }, [id]);
 
     // -------- CONTENU ARTICLE 2 (ROI IA) --------
+    // -------- CONTENU ARTICLE 13 (IA EN LOCAL) --------
+    if (id === '13') {
+        return (
+            <div className="min-h-screen bg-white">
+                <div className="fixed top-0 left-0 w-full h-1 bg-gray-100 z-50">
+                    <div className="h-full bg-[#027333] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+                </div>
+
+                <div className="relative h-[60vh] overflow-hidden bg-[#262626]">
+                    <img src="/images/articles/ia-locale-hero.jpg" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#262626] via-[#262626]/75 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+                        <div className="max-w-4xl mx-auto text-white">
+                            <span className="bg-[#027333] text-[#262626] px-4 py-2 text-xs font-bold uppercase tracking-widest inline-block mb-6 rounded-sm">Expertise</span>
+                            <h1 className="text-3xl md:text-5xl font-light mb-6 leading-tight">IA en local&nbsp;: ce que coûte une machine dans vos murs</h1>
+                            <p className="text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-3xl">
+                                Toutes les entreprises disent que la confidentialité de leurs données est sacrée. Puis le contrat client part dans une IA en ligne. Voici le calcul complet de l’alternative.
+                            </p>
+                            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-300">
+                                <div className="flex items-center gap-2"><Calendar size={16} className="text-[#027333]" /><span>3 Oct 2026</span></div>
+                                <div className="flex items-center gap-2"><Clock size={16} className="text-[#027333]" /><span>13 min de lecture</span></div>
+                                <div className="flex items-center gap-2"><User size={16} className="text-[#027333]" /><span>Fantin Schellekens</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <article className="max-w-4xl mx-auto px-6 py-16">
+                    <Link to="/insights" className="inline-flex items-center min-h-[44px] text-gray-500 hover:text-[#027333] transition-colors mb-10 group text-sm font-medium">
+                        <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        Retour aux articles
+                    </Link>
+
+                    <div className="prose prose-lg max-w-none text-gray-800 mb-16">
+                        <p className="lead text-xl md:text-2xl leading-relaxed font-light text-[#262626] mb-8 border-l-4 border-[#027333] pl-6">
+                            Faire tourner l’IA en local, c’est poser une machine dans vos locaux et faire travailler le modèle dessus, sans que rien ne sorte de votre réseau. L’idée paraît réservée aux grands groupes. Elle est aujourd’hui à la portée d’une PME, et pour certains postes de travail, elle est la seule réponse honnête.
+                        </p>
+                        <p>
+                            Observez un service pendant une journée. Un contrat client à résumer&nbsp;: copié-collé dans une IA en ligne. Une grille de salaires à analyser&nbsp;: pareil. Une offre fournisseur, un dossier RH, un procès-verbal de conseil&nbsp;: pareil. Personne n’a rien décidé, personne n’a rien signé, et pourtant ces documents sont partis sur des serveurs qui ne sont pas les vôtres, le plus souvent américains.
+                        </p>
+                        <p>
+                            Cet article donne les chiffres de l’alternative&nbsp;: ce que coûte une machine, combien de personnes elle peut servir, dans quels cas elle se justifie, et dans quels cas la location reste plus rationnelle. Les prix matériels sont des prix catalogue relevés le 3&nbsp;octobre 2026, dans un marché de la mémoire en pleine tension&nbsp;: ils bougent vite, et plutôt vers le haut.
+                        </p>
+                    </div>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">1. Ce qui sort de vos murs sans que personne ne le décide</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Les offres professionnelles des grands éditeurs promettent que vos données n’entraînent pas leurs modèles. C’est en général exact, et c’est contractuellement vérifiable. Mais ce n’est pas la promesse que la plupart des dirigeants croient entendre. «&nbsp;Vos données n’entraînent pas le modèle&nbsp;» ne veut pas dire «&nbsp;vos données ne quittent pas votre entreprise&nbsp;».
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Entre les deux, il y a un transfert, un hébergeur, une juridiction, une durée de conservation et une liste de sous-traitants. Rien de tout cela n’est illégal. Tout cela se documente et s’encadre. Simplement, personne ne le fait quand le transfert a lieu par copier-coller, un mardi après-midi, dans l’onglet d’un navigateur.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 1. Ce que recouvre vraiment la promesse «&nbsp;zéro entraînement&nbsp;»</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Lecture des engagements publics standards des offres professionnelles d’IA générative, octobre 2026.</p>
+                            <div className="grid md:grid-cols-3 gap-4">
+                                {[
+                                    { t: 'Ce qui est promis', d: 'Vos échanges ne servent pas à entraîner le modèle. Ils sont conservés un temps limité, souvent pour des raisons de sécurité et d’abus, puis supprimés.', icon: CheckCircle2, bg: 'bg-white border border-gray-200', ic: 'text-[#027333]' },
+                                    { t: 'Ce qui n’est pas promis', d: 'Que le document ne quitte pas votre pays, qu’aucun administrateur ne puisse y accéder, qu’aucune autorité étrangère ne puisse en demander la production, ou que le fournisseur ne change pas ses conditions.', icon: AlertTriangle, bg: 'bg-white border border-gray-200', ic: 'text-[#262626]' },
+                                    { t: 'Ce qui reste votre responsabilité', d: 'Le choix de l’outil, l’information des personnes concernées, le registre des traitements et la décision de ce qui a le droit de sortir. Le fournisseur ne la porte pas à votre place.', icon: ShieldCheck, bg: 'bg-[#262626] text-white', ic: 'text-[#93BF9E]' },
+                                ].map((c) => (
+                                    <div key={c.t} className={`${c.bg} rounded-xl p-6`}>
+                                        <c.icon className={`${c.ic} mb-4`} size={24} />
+                                        <h3 className={`font-bold mb-2 ${c.bg.includes('262626') ? 'text-white' : 'text-[#262626]'}`}>{c.t}</h3>
+                                        <p className={`text-sm leading-relaxed ${c.bg.includes('262626') ? 'text-gray-300' : 'text-gray-600'}`}>{c.d}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Le cadre juridique de ces transferts est traité ailleurs&nbsp;: nous l’avons détaillé dans <Link to="/insights/8" className="text-[#027333] font-medium underline underline-offset-4 hover:text-[#025928]">Où héberger vos données quand vous utilisez l’IA</Link> et dans <Link to="/insights/7" className="text-[#027333] font-medium underline underline-offset-4 hover:text-[#025928]">nLPD et IA&nbsp;: cinq vérifications avant de brancher un outil</Link>. Le présent article part de la question suivante&nbsp;: et si certains documents ne sortaient tout simplement pas&nbsp;?
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">2. Qu’est-ce qu’une IA en local, concrètement&nbsp;?</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10 text-lg">
+                            Une IA en local, c’est un modèle de langage ouvert qui tourne sur une machine posée dans vos locaux. La question part de votre réseau, la réponse revient de votre réseau, rien ne transite par un tiers. Trois éléments suffisent&nbsp;: une machine dotée de beaucoup de mémoire, un modèle téléchargé une fois pour toutes, et une interface web interne qui ressemble à celle que vos équipes connaissent déjà.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Le fonctionnement quotidien ne change pas pour l’utilisateur&nbsp;: une adresse interne, une zone de saisie, des conversations. Ce qui change, c’est que le document reste dans le bâtiment, et que la facture ne dépend plus du nombre de pages traitées.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Il faut dire tout de suite ce que vous perdez, parce que c’est la limite la plus souvent passée sous silence. <strong className="text-[#262626]">Les modèles les plus performants du marché ne se téléchargent pas.</strong> Ils s’utilisent à distance, à l’usage. Ce qui se télécharge, ce sont des modèles ouverts, publiés par des éditeurs américains, européens et surtout chinois, qui sont très bons sur des tâches cadrées&nbsp;: résumer, reformuler, extraire, classer, répondre sur un corpus interne. Ils décrochent sur les tâches longues, le raisonnement complexe et le travail technique sophistiqué.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            L’architecture raisonnable n’est donc presque jamais «&nbsp;tout en local&nbsp;». C’est&nbsp;: le travail courant et tout ce qui est sensible sur votre machine, et un accès payé à l’usage pour le reste.
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">3. Les deux nombres qui décident du matériel</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Acheter une machine d’IA n’a rien à voir avec acheter un ordinateur de bureau. La puissance de calcul, celle qui figure en gros sur la fiche technique, n’est pas le facteur limitant. Deux autres nombres décident de presque tout.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Le premier est la <strong className="text-[#262626]">capacité mémoire</strong>&nbsp;: elle détermine quels modèles tiennent physiquement dans la machine. Le second est la <strong className="text-[#262626]">bande passante mémoire</strong>&nbsp;: la vitesse à laquelle la machine relit cette mémoire. Et elle la relit intégralement à chaque mot produit. C’est elle qui fixe la vitesse de réponse perçue par l’utilisateur. Un réservoir et une pompe&nbsp;: le réservoir dit quel moteur vous pouvez installer, la pompe dit à quelle vitesse il tourne.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 2. Trois familles de machines, trois compromis</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Prix catalogue et bande passante annoncée par les constructeurs, relevés le 3 octobre 2026. Configurations à 96–128 Go, celles qui permettent de faire tourner un modèle sérieux.</p>
+                            <div className="space-y-4">
+                                {[
+                                    { m: 'Station Apple (M5 Ultra, 96 Go)', p: '≈ 5 500 $', b: '1,2 To/s', d: 'La bande passante la plus élevée des trois, dans une machine silencieuse que vos équipes savent déjà utiliser. Mémoire soudée : la capacité se paie le jour de l’achat et ne s’étend jamais.', k: 'Vitesse et ergonomie' },
+                                    { m: 'Boîtier NVIDIA DGX Spark (128 Go)', p: '6 950 $', b: '273 Go/s', d: 'Quatre fois moins de bande passante, mais l’écosystème logiciel de référence et un traitement des documents longs nettement plus rapide. Une version 64 Go à 4 999 $ est annoncée pour fin octobre.', k: 'Compatibilité logicielle' },
+                                    { m: 'Mini-PC AMD (Ryzen AI Max+, 128 Go)', p: '≈ 2 000 – 3 700 $', b: '≈ 256 Go/s', d: 'Le prix par giga le plus bas, sous Linux, sur une machine ouverte. En contrepartie : la bande passante la plus faible, des débits réels inférieurs à l’annonce, et une tendance à chauffer.', k: 'Coût par giga' },
+                                ].map((r) => (
+                                    <div key={r.m} className="bg-white rounded-xl border border-gray-200 p-5">
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+                                            <h3 className="font-bold text-[#262626]">{r.m}</h3>
+                                            <span className="text-xs font-bold uppercase tracking-wider text-[#027333]">{r.k}</span>
+                                        </div>
+                                        <div className="flex flex-wrap gap-x-8 gap-y-1 mb-3 text-sm">
+                                            <span className="text-gray-500">Prix&nbsp;: <strong className="text-[#262626]">{r.p}</strong></span>
+                                            <span className="text-gray-500">Bande passante&nbsp;: <strong className="text-[#262626]">{r.b}</strong></span>
+                                        </div>
+                                        <p className="text-sm text-gray-600 leading-relaxed">{r.d}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                Ces prix ont fortement augmenté en douze mois. Le boîtier NVIDIA 128&nbsp;Go était lancé à 3&nbsp;999&nbsp;$ en 2025&nbsp;; il est passé à 4&nbsp;699&nbsp;$ en février 2026, puis à 6&nbsp;950&nbsp;$ le 2&nbsp;octobre 2026. Le constructeur invoque explicitement le prix de la mémoire.
+                            </p>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Un piège mérite d’être signalé, parce qu’il fausse toutes les comparaisons de fiches techniques. Deux machines affichant la même mémoire peuvent se comporter très différemment, et dans les deux sens. Certains modèles n’activent qu’une fraction de leurs circuits à chaque mot produit&nbsp;: ils vont vite même sur une machine lente. D’autres s’activent en entier à chaque mot&nbsp;: ils plafonnent à peu près à la même vitesse partout, et la bande passante supérieure que vous avez payée ne se voit pas.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Il y a par ailleurs deux temps dans une réponse, et ils ne dépendent pas de la même chose. <strong className="text-[#262626]">Lire votre question et vos documents</strong> dépend de la puissance de calcul. <strong className="text-[#262626]">Écrire la réponse</strong> dépend de la bande passante. Si votre usage consiste à faire avaler des contrats de quarante pages à la machine, c’est le premier temps qui fera patienter vos équipes, pas le second. C’est exactement là que les écarts entre machines deviennent visibles, et c’est pour cela qu’aucune ne gagne sur tous les tableaux.
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">4. Combien coûte une IA en local&nbsp;?</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10 text-lg">
+                            Comptez 5&nbsp;000 à 7&nbsp;000 francs pour une machine capable de faire tourner un modèle sérieux, soit environ 170&nbsp;francs par mois amortis sur trois ans, auxquels s’ajoutent 20 à 30&nbsp;francs d’électricité si elle reste allumée en permanence. Restent l’installation et l’entretien&nbsp;: rarement chiffrés, jamais nuls.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 3. Le coût mensuel réel d’une machine posée chez vous</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Hypothèses&nbsp;: machine à 6 000 CHF, amortissement linéaire sur 36 mois, valeur de revente considérée comme nulle, fonctionnement continu.</p>
+                            <div className="space-y-3">
+                                {[
+                                    { l: 'Amortissement du matériel', v: '≈ 167 CHF / mois', d: '6 000 CHF divisés par 36 mois. Si vous revendez la machine, le coût réel baisse d’autant.', bg: 'bg-white border border-gray-200', tx: 'text-[#262626]', sub: 'text-gray-600' },
+                                    { l: 'Électricité', v: '20 – 30 CHF / mois', d: 'De l’ordre de 100 à 150 W en charge soutenue, 24 h sur 24, au tarif professionnel suisse.', bg: 'bg-white border border-gray-200', tx: 'text-[#262626]', sub: 'text-gray-600' },
+                                    { l: 'Installation et entretien', v: 'Non chiffré ici', d: 'Mise en service, mises à jour, sauvegardes, supervision. C’est le poste qui joue contre la machine locale, et celui que les comparatifs oublient.', bg: 'bg-[#93BF9E]', tx: 'text-[#262626]', sub: 'text-[#025928]' },
+                                    { l: 'Total comparable', v: '≈ 190 – 200 CHF / mois', d: 'Hors installation et entretien. C’est ce chiffre qu’il faut mettre en face de vos abonnements.', bg: 'bg-[#262626]', tx: 'text-white', sub: 'text-gray-400' },
+                                ].map((r) => (
+                                    <div key={r.l} className={`${r.bg} rounded-xl p-5`}>
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
+                                            <span className={`font-bold ${r.tx}`}>{r.l}</span>
+                                            <span className={`text-sm font-bold ${r.tx}`}>{r.v}</span>
+                                        </div>
+                                        <p className={`text-sm leading-relaxed ${r.sub}`}>{r.d}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            En face, un abonnement professionnel à une IA en ligne coûte de l’ordre de 20 à 30&nbsp;francs par personne et par mois. L’arithmétique est alors immédiate, et c’est elle qui explique pourquoi le sujet sort aujourd’hui des laboratoires pour arriver en comité de direction.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 4. À partir de combien d’utilisateurs la machine coûte-t-elle moins cher&nbsp;?</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Abonnements calculés à 25 CHF par personne et par mois&nbsp;; machine locale à 195 CHF par mois, installation et entretien exclus des deux côtés.</p>
+                            <div className="space-y-3">
+                                {[
+                                    { n: '3 personnes', a: 75, w: 38 },
+                                    { n: '5 personnes', a: 125, w: 64 },
+                                    { n: '8 personnes', a: 200, w: 100 },
+                                    { n: '15 personnes', a: 375, w: 100 },
+                                ].map((r) => (
+                                    <div key={r.n} className="bg-white rounded-xl border border-gray-200 p-5">
+                                        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+                                            <span className="font-bold text-[#262626]">{r.n}</span>
+                                            <span className="text-sm text-gray-500">Abonnements&nbsp;: <strong className={r.a > 195 ? 'text-[#262626]' : 'text-[#027333]'}>{r.a} CHF</strong> / mois</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                                            <div className={`h-full rounded-full ${r.a > 195 ? 'bg-[#262626]' : 'bg-[#027333]'}`} style={{ width: `${r.w}%` }} />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-6 pt-5 border-t border-gray-200 leading-relaxed">
+                                La bascule se situe autour de <strong className="text-[#262626]">sept à huit utilisateurs</strong>. En dessous, les abonnements coûtent moins cher&nbsp;; au-dessus, la machine est amortie par le simple nombre de postes. Attention toutefois à ce que compare ce graphique&nbsp;: des francs, pas des livrables. Un modèle local ne fait pas tout ce que fait un modèle de pointe, et la comparaison n’a de sens que sur des tâches où vous avez vérifié que la qualité vous convient.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">5. Combien de personnes peuvent travailler sur une seule machine&nbsp;?</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10 text-lg">
+                            Quatre à cinq personnes aux besoins modérés, à condition que leurs demandes se succèdent plutôt qu’elles ne se superposent, et qu’un serveur d’inférence gère la file d’attente. Au-delà, chaque utilisateur supplémentaire ralentit tous les autres, parce qu’ils se partagent la même bande passante.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Ce point est systématiquement sous-estimé, et les démonstrations techniques n’aident pas. Quand un constructeur annonce une carte capable de traiter cinquante requêtes à plusieurs centaines de mots par seconde, ce chiffre additionne tous les flux simultanés. Il ne dit rien de la vitesse perçue par une personne devant son écran, qui est cinquante fois plus faible.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Et dès que plusieurs personnes dépendent de cette machine pour travailler, l’ordinateur posé sous un bureau devient un serveur. Ce n’est plus une question de performance mais d’exploitation&nbsp;: un point de panne unique, pas de mémoire à correction d’erreurs sur les machines grand public, pas de redondance. Il faut alors prévoir une seconde machine ou un repli vers un service en ligne, et quelqu’un dont c’est la responsabilité.
+                        </p>
+
+                        <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-6">
+                            <Network className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                            <div>
+                                <h4 className="font-bold text-lg mb-2 text-[#262626]">Le logiciel compte autant que la machine</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    Une machine locale sans serveur d’inférence correctement configuré sert mal deux personnes. La même machine, bien exploitée, en sert quatre ou cinq confortablement. L’écart ne se joue pas sur le matériel acheté mais sur la manière dont les demandes sont mises en file, dont le contexte est réutilisé d’un échange à l’autre, et dont les modèles sont chargés en mémoire. C’est du travail d’intégration, et c’est lui qui fait la différence entre une démonstration et un outil de production.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">6. Les deux situations où la machine locale se justifie</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Hors de ces deux cas, la location reste presque toujours le choix rationnel. Les reconnaître évite d’acheter du matériel pour de mauvaises raisons, et évite aussi de passer à côté quand ce sont les bonnes.
+                        </p>
+
+                        <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 mb-12">
+                            <h4 className="font-bold text-[#262626] mb-2 text-lg">Figure 5. Acheter ou louer&nbsp;: les cinq situations</h4>
+                            <p className="text-sm text-gray-500 mb-10 italic">Grille de décision établie par Flowera à partir des calculs ci-dessus. Scénarios de marché, pas résultats client mesurés.</p>
+                            <div className="space-y-4 mb-8">
+                                {[
+                                    { t: 'Une petite équipe qui utilise l’IA tous les jours', d: 'Une dizaine de personnes dont le travail passe réellement par un assistant. Une machine suffit à les servir et coûte moins cher que dix abonnements. C’est le cas d’une fiduciaire, d’une régie, d’un bureau d’ingénieurs.', ic: Cpu },
+                                    { t: 'Quelques postes qui manipulent des documents qui ne doivent pas sortir', d: 'Et c’est le cas déterminant. Un dirigeant qui prépare le rachat d’un concurrent. Une DRH qui prépare une réorganisation. Un avocat sur un dossier sous secret. Même dans une entreprise de deux cents salariés, une machine dédiée à trois ou quatre postes règle le problème à la racine : il n’y a plus de transfert à encadrer, puisqu’il n’y a plus de transfert.', ic: ShieldCheck },
+                                ].map((c) => (
+                                    <div key={c.t} className="bg-white rounded-xl border-l-4 border-[#027333] border-y border-r border-gray-200 p-5">
+                                        <div className="flex items-start gap-4">
+                                            <c.ic className="text-[#027333] flex-shrink-0 mt-1" size={22} />
+                                            <div>
+                                                <h3 className="font-bold text-[#262626] mb-1.5">{c.t}</h3>
+                                                <p className="text-sm text-gray-600 leading-relaxed">{c.d}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <h5 className="font-bold text-[#262626] mb-4 text-sm uppercase tracking-wider">Et les trois cas où il vaut mieux continuer à louer</h5>
+                            <div className="space-y-3">
+                                {[
+                                    { t: 'Usage occasionnel ou irrégulier', d: 'Une machine achetée coûte le même prix qu’elle travaille huit heures par jour ou vingt minutes. Un usage par à-coups se paie à l’usage.' },
+                                    { t: 'Trop d’utilisateurs simultanés', d: 'Au-delà de quelques personnes qui travaillent vraiment en même temps, une seule machine ne suit plus. Il faut alors en aligner plusieurs, ce qui change la nature du projet.' },
+                                    { t: 'Tâches qui exigent le meilleur modèle du moment', d: 'Analyse longue, raisonnement complexe, production technique exigeante. Ces modèles ne se téléchargent pas. Payer leur accès pour ces tâches-là reste la bonne décision.' },
+                                ].map((c) => (
+                                    <div key={c.t} className="bg-white rounded-xl border border-gray-200 p-4">
+                                        <span className="font-bold text-[#262626] text-sm">{c.t}.</span>{' '}
+                                        <span className="text-sm text-gray-600 leading-relaxed">{c.d}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                            Le jour où les besoins de vos équipes dépassent ce qu’une machine encaisse, le serveur loué reprend la main. Ce n’est pas un échec de l’installation locale&nbsp;: c’est la limite de son périmètre, et mieux vaut la connaître avant d’acheter qu’après.
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">7. Ce qu’une machine locale ne règle pas</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10">
+                            Garder les données chez soi supprime le transfert. Cela ne supprime ni les obligations, ni les risques&nbsp;; cela les déplace vers des sujets que vous maîtrisez mieux, ce qui est déjà beaucoup.
+                        </p>
+                        <ul className="space-y-4 mb-12">
+                            {[
+                                { t: 'La protection des données reste intégralement applicable', d: 'Traiter des données personnelles sur votre propre machine reste un traitement. Registre, information des personnes, droits d’accès, sécurité : la nLPD et le RGPD s’appliquent exactement comme avant.' },
+                                { t: 'La sécurité devient physique et logique', d: 'Qui entre dans le local ? Qui a un compte ? Qui peut lire les conversations des autres ? Un serveur mal protégé dans vos murs n’est pas plus sûr qu’un service en ligne bien configuré.' },
+                                { t: 'Les sauvegardes et les mises à jour vous incombent', d: 'Plus personne ne les fait pour vous. C’est une charge d’exploitation réelle, à confier explicitement à quelqu’un.' },
+                                { t: 'La qualité se mesure, elle ne se suppose pas', d: 'Avant d’acheter, faites tourner vos propres tâches sur le modèle visé et jugez les résultats. C’est la seule façon de savoir si vous comparez des prix ou des livrables acceptables.' },
+                            ].map((item) => (
+                                <li key={item.t} className="flex gap-3 items-start">
+                                    <KeyRound className="text-[#027333] flex-shrink-0 mt-1" size={20} />
+                                    <div>
+                                        <span className="font-bold text-[#262626]">{item.t}.</span>{' '}
+                                        <span className="text-gray-700 leading-relaxed">{item.d}</span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">8. Faut-il s’équiper maintenant&nbsp;?</h2>
+                        <p className="text-gray-700 leading-relaxed mb-10 text-lg">
+                            Oui, si quatre conditions sont réunies&nbsp;: vous avez testé vos propres tâches sur le modèle visé, la qualité vous convient, votre volume de travail est régulier, et quelqu’un chez vous ou à côté de vous sait exploiter la machine. Si l’une manque, attendez&nbsp;: vous achèteriez un objet, pas un gain.
+                        </p>
+
+                        <div className="bg-[#262626] rounded-2xl p-8 mb-12">
+                            <h4 className="font-bold text-white mb-6 text-lg">Les quatre conditions, dans l’ordre</h4>
+                            <div className="space-y-4">
+                                {[
+                                    'Vos tâches réelles ont été passées sur le modèle que vous installeriez, et les résultats ont été jugés par ceux qui font le travail.',
+                                    'La qualité obtenue est suffisante pour ces tâches-là. Pas pour toutes : pour celles que vous rapatriez.',
+                                    'Le volume est régulier. Une machine allumée en permanence pour un usage sporadique est une dépense, pas un investissement.',
+                                    'Quelqu’un est identifié pour l’installer, la surveiller, la mettre à jour et répondre quand elle s’arrête.',
+                                ].map((c, i) => (
+                                    <div key={i} className="flex gap-4 items-start">
+                                        <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#027333] text-white font-bold text-xs flex items-center justify-center mt-0.5">{i + 1}</span>
+                                        <p className="text-gray-300 text-sm leading-relaxed">{c}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Un mot sur le calendrier, parce qu’il pèse davantage cette année que les précédentes. Le marché de la mémoire est sous tension&nbsp;: J.P. Morgan Global Research estimait en août 2026 que les prix de la DRAM auront augmenté de plus de 400&nbsp;% entre le début 2024 et la fin 2026, et que la pénurie durera plusieurs années. Les hausses de tarifs des machines d’IA de bureau constatées en 2026 en sont la conséquence directe, et les constructeurs le disent eux-mêmes.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Ce contexte n’est pas une raison d’acheter&nbsp;: c’est une raison de ne pas repousser sans motif une décision déjà justifiée par ailleurs. Si les quatre conditions ne sont pas réunies, la pénurie de mémoire ne les remplace pas. Et si les prix baissaient d’ici l’été 2027, vous auriez acheté au plus haut&nbsp;: c’est un risque à assumer explicitement, pas à ignorer.
+                        </p>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-3xl font-bold text-[#262626] mb-8">Conclusion</h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            La bonne question n’est pas «&nbsp;local ou en ligne&nbsp;». C’est&nbsp;: <strong className="text-[#262626]">quels documents ont le droit de sortir de l’entreprise, et qui l’a décidé&nbsp;?</strong> Aujourd’hui, dans la plupart des PME, la réponse est&nbsp;: tous, et personne.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Une fois cette question posée, le calcul matériel devient secondaire. Pour une petite équipe qui travaille tous les jours avec un assistant, une machine se rentabilise vers sept ou huit postes. Pour trois ou quatre postes qui manipulent des dossiers qui ne doivent jamais sortir, la rentabilité n’est même pas le sujet&nbsp;: le jour où ces documents partent, le prix d’un ordinateur n’est plus la variable qui compte.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Et si vous deviez ne retenir qu’une chose du volet technique&nbsp;: regardez la mémoire et sa vitesse de lecture, pas le logo sur le boîtier.
+                        </p>
+                    </section>
+
+                    <div className="flex gap-4 items-start bg-[#F2F1DF] rounded-2xl p-8 mb-12">
+                        <Scale className="text-[#027333] flex-shrink-0 mt-1" size={28} />
+                        <div>
+                            <h4 className="font-bold text-lg mb-2 text-[#262626]">Note méthodologique</h4>
+                            <p className="text-gray-700 text-sm leading-relaxed">
+                                Les prix et bandes passantes de la figure 2 sont des données publiées par les constructeurs ou relevées chez les revendeurs le 3 octobre 2026, en dollars américains&nbsp;; ils évoluent rapidement et les tarifs suisses diffèrent. Les montants en francs des figures 3 et 4 sont des <strong>ordres de grandeur calculés</strong> à partir d’hypothèses explicites (6 000 CHF d’achat, 36 mois, 100–150 W, 25 CHF par abonnement), et non des coûts mesurés chez un client. La consommation électrique est une estimation issue de machines de génération précédente, Apple ne publiant pas cette donnée. Le seuil de quatre à cinq utilisateurs simultanés par machine est une grille de lecture d’ingénierie, pas une mesure&nbsp;: il dépend du modèle choisi, du serveur d’inférence et de la longueur des documents traités. Aucun résultat client, aucun témoignage et aucune performance mesurée en production ne figurent dans cet article.
+                            </p>
+                        </div>
+                    </div>
+
+                    <section className="border-t border-gray-200 pt-8 mt-8">
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Sources</h3>
+                        <ul className="text-xs text-gray-500 space-y-2 list-disc pl-5">
+                            <li>J.P. Morgan Global Research, <em>The AI-driven memory shortage</em>, 6 août 2026&nbsp;: hausse des prix de la DRAM de plus de 400&nbsp;% entre le début 2024 et la fin 2026, pénurie attendue sur plusieurs années. <a href="https://www.jpmorgan.com/insights/global-research/artificial-intelligence/dram-memory-shortage-from-ai" target="_blank" rel="noopener noreferrer" className="text-[#027333] underline underline-offset-2">jpmorgan.com</a></li>
+                            <li><em>The Register</em>, 2 octobre 2026&nbsp;: NVIDIA annonce un DGX Spark 64&nbsp;Go à 4&nbsp;999&nbsp;$ et porte la version 128&nbsp;Go à 6&nbsp;950&nbsp;$, bande passante mémoire de 273&nbsp;Go/s inchangée, hausse attribuée au prix de la mémoire. <a href="https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/" target="_blank" rel="noopener noreferrer" className="text-[#027333] underline underline-offset-2">theregister.com</a></li>
+                            <li>Prix et bande passante de la station Apple&nbsp;: configurations et tarifs catalogue relevés dans la presse spécialisée (<em>Macworld</em>, <em>Tom’s Hardware</em>) en octobre 2026 — à partir de 5&nbsp;499&nbsp;$ en 96&nbsp;Go, 1,2&nbsp;To/s de bande passante mémoire.</li>
+                            <li>Mini-PC AMD Ryzen AI Max+ 395 «&nbsp;Strix Halo&nbsp;»&nbsp;: 256&nbsp;Go/s de bande passante théorique, débits mesurés inférieurs selon les tests indépendants publiés&nbsp;; prix relevés chez les revendeurs, en hausse sensible depuis leur lancement.</li>
+                            <li>Tarifs des abonnements professionnels d’IA générative&nbsp;: grilles publiques des principaux éditeurs (offres équipe et entreprise), octobre 2026, de l’ordre de 20 à 30&nbsp;$ par utilisateur et par mois.</li>
+                            <li>Loi fédérale sur la protection des données (LPD), en vigueur depuis le 1<sup>er</sup> septembre 2023, et règlement (UE) 2016/679 (RGPD) pour les traitements concernés&nbsp;: applicables quel que soit le lieu d’hébergement.</li>
+                        </ul>
+                    </section>
+
+                    <div className="mt-20 bg-[#262626] rounded-2xl p-12 text-center text-white">
+                        <h3 className="text-2xl font-bold mb-4">Quels documents n’ont pas le droit de sortir de chez vous&nbsp;?</h3>
+                        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+                            Nous classons vos usages par sensibilité, mesurons ce qu’un modèle local sait faire sur vos tâches réelles, et chiffrons l’installation en face de vos abonnements actuels. Le résultat tient en une page.
+                        </p>
+                        <Link to="/contact" className="inline-block bg-[#027333] text-white px-8 py-4 font-bold rounded-lg hover:bg-white hover:text-[#262626] transition-all transform hover:scale-105">
+                            En parler avec nous
+                        </Link>
+                    </div>
+                </article>
+            </div>
+        );
+    }
+
     // -------- CONTENU ARTICLE 7 (nLPD & IA) --------
     if (id === '7') {
         return (

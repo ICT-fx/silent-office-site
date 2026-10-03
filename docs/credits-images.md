@@ -16,6 +16,7 @@ progressif (≤ 300 Ko), comme les visuels plus anciens du dossier.
 | `donnees-france-suisse-hero.jpg` | Rade de Genève et pont du Mont-Blanc | Xavier von Erlach | [Unsplash](https://unsplash.com/photos/aerial-view-of-city-buildings-near-body-of-water-during-daytime-yEsQzAhDKQs) | Unsplash License |
 | `cout-automatisation-hero.jpg` | Calcul d'un chiffrage au crayon | kaboompics.com | [Pexels](https://www.pexels.com/photo/bookkeeper-writing-down-on-paper-while-using-calculator-4476375/) | Pexels License |
 | `sur-mesure-ou-marche-hero.jpg` | Tailleur prenant des mesures, costume de confection en arrière-plan | Tima Miroshnichenko | [Pexels](https://www.pexels.com/photo/a-tailor-measuring-his-client-using-a-tape-measure-6765658/) | Pexels License |
+| `ia-locale-hero.jpg` | Petite machine posée sur un bureau de travail | Josh Sorenson | [Pexels](https://www.pexels.com/photo/computer-on-desk-19554898/) | Pexels License |
 
 Les visuels Unsplash marqués **Unsplash+** sont payants et ont été écartés :
 seules les photos sous licence Unsplash gratuite figurent ci-dessus.
